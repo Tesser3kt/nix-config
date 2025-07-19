@@ -89,7 +89,7 @@ in {
       animation = [
         "windows, 1, 4, shot, slide"
         "workspaces, 1, 4, swipe, slide"
-        "fade, 1, 2, progressive"
+        "fade, 1, 3, progressive"
         "border, 1, 4, linear"
         "borderangle, 1, 180, linear, loop"
       ];
@@ -152,6 +152,28 @@ in {
         ignore_opacity = true;
         new_optimizations = true;
       };
+    };
+
+    # Input settings
+    input = {
+      kb_layout = "us,cz";
+      kb_variant = ",qwerty";
+      kb_options = "caps:escape,grp:switch,grp:alt_shift_toggle";
+      numlock_by_default = true;
+      follow_mouse = true;
+
+      touchpad = {
+        disable_while_typing = true;
+        natural_scroll = true;
+        tap-to-click = true;
+        clickfinger_behavior = false;
+        drag_lock = 2;
+      };
+    };
+
+    # Gestures
+    gestures = {
+      workspace_swipe = true;
     };
   };
 }
