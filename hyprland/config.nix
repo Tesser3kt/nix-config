@@ -113,8 +113,8 @@ in {
       border_size = 1;
       resize_on_border = true;
 
-      "col.border_active" = single_border_active;
-      "col.border_inactive" = single_border_inactive;
+      "col.active_border" = single_border_active;
+      "col.inactive_border" = single_border_inactive;
 
       layout = "dwindle";
     };
