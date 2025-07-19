@@ -132,7 +132,6 @@
   services.openssh.enable = true;
 
   # Power management
-  powerManagement.enable = true;
   services.tlp.enable = true;
 
   # Open ports in the firewall.
