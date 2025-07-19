@@ -6,15 +6,13 @@
       enable = true;
 
       windows = {
-        "windows" = 
-	  let 
-	    boot-drive = "FS1";
-	  in 
-	  {
-	    title = "Windows";
-	    efiDeviceHandle = boot-drive;
-	    sortKey = "y_windows";
-	  };
+        "windows" = let
+          boot-drive = "FS1";
+        in {
+          title = "Windows";
+          efiDeviceHandle = boot-drive;
+          sortKey = "y_windows";
+        };
       };
 
       edk2-uefi-shell.enable = true;

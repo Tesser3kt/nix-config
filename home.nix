@@ -1,5 +1,9 @@
-{ config, pkgs, inputs, ... }:
 {
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     ./shell
     ./hyprland
@@ -52,7 +56,7 @@
 
     # text
     glow
-    
+
     # random
     cowsay
     file

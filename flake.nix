@@ -16,22 +16,28 @@
       inputs.nvchad-starter.follows = "nvchad-starter";
     };
   };
-  outputs = inputs@{ self, nixpkgs, home-manager, nix4nvchad, ... }: {
+  outputs = inputs @ {
+    self,
+    nixpkgs,
+    home-manager,
+    nix4nvchad,
+    ...
+  }: {
     nixosConfigurations.tesserekt-pc = nixpkgs.lib.nixosSystem {
-      system="x86_64-linux";
-      specialArgs = { inherit inputs; };
-      modules = [ 
+      system = "x86_64-linux";
+      specialArgs = {inherit inputs;};
+      modules = [
         ./configuration.nix
 
-	# Home Manager
-	home-manager.nixosModules.home-manager
-	{
-	  home-manager.useGlobalPkgs = true;
-	  home-manager.useUserPackages = true;
+        # Home Manager
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
 
-	  home-manager.users.tesserekt = import ./home.nix;
-	  home-manager.extraSpecialArgs = { inherit inputs; };
-	}
+          home-manager.users.tesserekt = import ./home.nix;
+          home-manager.extraSpecialArgs = {inherit inputs;};
+        }
       ];
     };
   };

@@ -1,5 +1,10 @@
-{ config, pkgs, lib, inputs, ... }:
 {
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}: {
   imports = [
     inputs.nix4nvchad.homeManagerModule
     ./linters.nix
@@ -27,23 +32,24 @@
       docker-language-server
       emmet-language-server
       lua-language-server
-      (python3.withPackages( p: with p; [
-        python-lsp-server
-        python-lsp-black
-        pyls-isort
-        pyls-flake8
-        pylint
-        black
-        flake8
-        rope
-        pyflakes
-        mccabe
-        pycodestyle
-        pydocstyle
-        autopep8
-        yapf
-        isort
-      ]))
+      (python3.withPackages (p:
+        with p; [
+          python-lsp-server
+          python-lsp-black
+          pyls-isort
+          pyls-flake8
+          pylint
+          black
+          flake8
+          rope
+          pyflakes
+          mccabe
+          pycodestyle
+          pydocstyle
+          autopep8
+          yapf
+          isort
+        ]))
       sqls
       tailwindcss-language-server
       texlab

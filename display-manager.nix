@@ -1,5 +1,8 @@
-{ config, pkgs, ...}:
 {
+  config,
+  pkgs,
+  ...
+}: {
   # SDDM config
   services.displayManager.enable = true;
   services.displayManager.sddm.enable = true;

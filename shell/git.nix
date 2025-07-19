@@ -1,5 +1,8 @@
-{ pkgs, lib, ... }:
 {
+  pkgs,
+  lib,
+  ...
+}: {
   # Git config
   programs.git = {
     enable = true;
@@ -8,7 +11,7 @@
 
     extraConfig = {
       credential = {
-	helper = lib.mkDefault "store";
+        helper = lib.mkDefault "store";
       };
     };
   };

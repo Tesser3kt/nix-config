@@ -1,6 +1,9 @@
 # Zsh shell
-{ config, pkgs, ... }:
 {
+  config,
+  pkgs,
+  ...
+}: {
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -10,7 +13,7 @@
     initContent = ''
       # Enable starship
       eval "$(starship init zsh)"
-      
+
       # Path
       export PATH="$HOME/bin:$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 

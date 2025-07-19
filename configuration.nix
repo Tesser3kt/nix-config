@@ -1,17 +1,20 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
-{ config, lib, pkgs, inputs, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./boot-loader.nix
-      ./amd.nix
-      ./display-manager.nix
-    ];
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./boot-loader.nix
+    ./amd.nix
+    ./display-manager.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   # boot.loader.systemd-boot.enable = true;
@@ -24,7 +27,7 @@
   networking.hostName = "tesserekt-pc"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
   # Set your time zone.
   time.timeZone = "Europe/Prague";
@@ -72,19 +75,19 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.tesserekt = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = ["wheel"]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
-       tree
+      tree
     ];
   };
   # Enable password-less sudo
   security.sudo.wheelNeedsPassword = false;
-  
+
   # Enable firefox.
   programs.firefox.enable = true;
 
   # Enable flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
   # Allow unfree packages.
