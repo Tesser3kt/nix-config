@@ -101,10 +101,12 @@ in {
       preserve_split = "yes";
       special_scale_factor = 0.8;
     };
+
     master = {
       new_on_top = 1;
       mfact = 0.5;
     };
+
     general = {
       sensitivity = 1.00;
       apply_sens_to_raw = 1;
@@ -120,16 +122,19 @@ in {
 
       layout = "dwindle";
     };
+
     group = {
       col = {
         border_active = group_border_active;
       };
+
       groupbar = {
         col = {
           active = groupbar_active;
         };
       };
     };
+
     decoration = {
       rounding = 24;
 
@@ -140,11 +145,13 @@ in {
       dim_inactive = true;
       dim_strength = 0.35;
 
-      drop_shadow = true;
-      shadow_range = 16;
-      shadow_render_power = 2;
-      shadow_offset = "2 2";
-      col.shadow = drop_shadow;
+      shadow = {
+        enabled = true;
+        range = 16;
+        render_power = 2;
+        offset = [2 2];
+        color = drop_shadow;
+      };
 
       blur = {
         enabled = true;
