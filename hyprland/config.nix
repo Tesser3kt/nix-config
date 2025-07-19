@@ -109,15 +109,14 @@ in {
 
     general = {
       sensitivity = 1.00;
-      apply_sens_to_raw = 1;
       gaps_in = 8;
       gaps_out = 8;
       border_size = 1;
       resize_on_border = true;
 
       col = {
-        active_border = single_border_active;
-        inactive_border = single_border_inactive;
+        border_active = single_border_active;
+        border_inactive = single_border_inactive;
       };
 
       layout = "dwindle";
@@ -149,7 +148,7 @@ in {
         enabled = true;
         range = 16;
         render_power = 2;
-        offset = [2 2];
+        offset = "2 2";
         color = drop_shadow;
       };
 
