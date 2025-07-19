@@ -131,6 +131,11 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
+  # Power management
+  powerManagement.enable = true;
+  services.auto-cpufreq.enable = true;
+  powerManagement.powertop.enable = true;
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
