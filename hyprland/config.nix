@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: let
-  single_border_active = "rgba(81A1C1D2) rgba(88C0D0D2) 90deg";
+  single_border_active = "rgba(81A1C1D2) rgba(8FBCBBD2) 90deg";
   single_border_inactive = "rgba(2E344096)";
   group_border_active = "rgba(81A1C1D2)";
   groupbar_active = "rgba(81A1C1D2)";
@@ -87,10 +87,10 @@ in {
         "progressive, 1.0, 0.0, 0.6, 1.0"
       ];
       animation = [
-        "windows, 1, 6, shot, slide"
-        "workspaces, 1, 6, swipe, slide"
-        "fade, 1, 4, progressive"
-        "border, 1, 6, linear"
+        "windows, 1, 4, shot, slide"
+        "workspaces, 1, 4, swipe, slide"
+        "fade, 1, 2, progressive"
+        "border, 1, 4, linear"
         "borderangle, 1, 180, linear, loop"
       ];
     };
@@ -109,7 +109,7 @@ in {
 
     general = {
       gaps_in = 8;
-      gaps_out = 8;
+      gaps_out = 12;
       border_size = 1;
       resize_on_border = true;
 
@@ -128,7 +128,7 @@ in {
     };
 
     decoration = {
-      rounding = 24;
+      rounding = 10;
 
       active_opacity = 1.0;
       inactive_opacity = 0.9;
