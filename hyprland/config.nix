@@ -2,7 +2,13 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  single_border_active = "rgba(81A1C1D2) rgba(88C0D0D2) 90deg";
+  single_border_inactive = "rgba(2E344096)";
+  group_border_active = "rgba(81A1C1D2)";
+  groupbar_active = "rgba(81A1C1D2)";
+  drop_shadow = "rgba(242933A6)";
+in {
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
     bind =
@@ -70,5 +76,83 @@
 
     # Window rules
     windowrule = [];
+
+    # Animations
+    animations = {
+      enabled = "yes";
+      bezier = [
+        "shot, 0.2, 1.0, 0.2, 1.0"
+        "swipe, 0.6, 0.0, 0.2, 1.05"
+        "linear, 0.0, 0.0, 1.0, 1.0"
+        "progressive, 1.0, 0.0, 0.6, 1.0"
+      ];
+      animation = [
+        "windows, 1, 6, shot, slide"
+        "workspaces, 1, 6, swipe, slide"
+        "fade, 1, 4, progressive"
+        "border, 1, 6, linear"
+        "borderangle, 1, 180, linear, loop"
+      ];
+    };
+
+    # General settings
+    dwindle = {
+      pseudotile = "yes";
+      preserve_split = "yes";
+      special_scale_factor = 0.8;
+    };
+    master = {
+      new_on_top = 1;
+      mfact = 0.5;
+    };
+    general = {
+      sensitivity = 1.00;
+      apply_sens_to_raw = 1;
+      gaps_in = 8;
+      gaps_out = 8;
+      border_size = 1;
+      resize_on_border = true;
+
+      col = {
+        active_border = single_border_active;
+        inactive_border = single_border_inactive;
+      };
+
+      layout = "dwindle";
+    };
+    group = {
+      col = {
+        border_active = group_border_active;
+      };
+      groupbar = {
+        col = {
+          active = groupbar_active;
+        };
+      };
+    };
+    decoration = {
+      rounding = 24;
+
+      active_opacity = 1.0;
+      inactive_opacity = 0.9;
+      fullscreen_opacity = 1.0;
+
+      dim_inactive = true;
+      dim_strength = 0.35;
+
+      drop_shadow = true;
+      shadow_range = 16;
+      shadow_render_power = 2;
+      shadow_offset = "2 2";
+      col.shadow = drop_shadow;
+
+      blur = {
+        enabled = true;
+        size = 5;
+        passes = 3;
+        ignore_opacity = true;
+        new_optimizations = true;
+      };
+    };
   };
 }
