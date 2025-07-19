@@ -108,29 +108,22 @@ in {
     };
 
     general = {
-      sensitivity = 1.00;
       gaps_in = 8;
       gaps_out = 8;
       border_size = 1;
       resize_on_border = true;
 
-      col = {
-        border_active = single_border_active;
-        border_inactive = single_border_inactive;
-      };
+      col.border_active = single_border_active;
+      col.border_inactive = single_border_inactive;
 
       layout = "dwindle";
     };
 
     group = {
-      col = {
-        border_active = group_border_active;
-      };
+      col.border_active = group_border_active;
 
       groupbar = {
-        col = {
-          active = groupbar_active;
-        };
+        col.active = groupbar_active;
       };
     };
 
