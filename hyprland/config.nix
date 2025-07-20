@@ -37,10 +37,6 @@ in {
         "$mod, Space, centerwindow, 1"
         "$mod, Space, resizeactive, exact 75% 75%"
         "$mod, F, fullscreen"
-
-        # Move/resize windows with mouse
-        "$mod, mouse:272, moveactive"
-        "$mod, mouse:273, resizeactive"
       ]
       ++ (
         # Workspace bindings
@@ -76,6 +72,21 @@ in {
           ]
         )
       );
+
+    # Mouse binds
+    bindm = [
+      # Move/resize windows with mouse
+      "$mod, mouse:272, movewindow"
+      "$mod, mouse:273, resizewindow"
+    ];
+
+    # Repeat/hold binds
+    binde = [
+      "$mod ALT, left, resizeactive, -50 0"
+      "$mod ALT, right, resizeactive, 50 0"
+      "$mod ALT, up, resizeactive, 0 -50"
+      "$mod ALT, down, resizeactive, 0 50"
+    ];
 
     monitor = [
       "DP-1, 1920x1080@143.85Hz, 0x0, 1"
