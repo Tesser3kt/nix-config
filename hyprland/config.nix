@@ -6,6 +6,7 @@
   terminal = "alacritty";
   browser = "firefox";
   files = "thunar";
+  screenshotDir = "~/Pictures/screeshots";
   single_border_active = "rgba(81A1C1D2) rgba(8FBCBBD2) 90deg";
   single_border_inactive = "rgba(2E344096)";
   group_border_active = "rgba(81A1C1D2)";
@@ -41,6 +42,12 @@ in {
         # Scroll through existing workspaces
         "$mod, period, workspace, e+1"
         "$mod, comma, workspace, e-1"
+
+        # Screenshots
+        "$mod SHIFT, S, exec, grim ${screenshotDir}/$(date +%Y-%m-%d-%H%M%S)_full.png"
+        "$mod, S, exec, grim -g '$(slurp)' ${screenshotDir}/$(date +%Y-%m-%d-%H%M%S)_region.png"
+        "$mod ALT, S, exec, grim -g \"$(hyprctl activewindow | grep -oP 'size: \K.*' | tail -1 | sed 's/,/+/')$(hyprctl activewindow | grep -oP 'at: \K.*' | tail -1 | sed 's/,/+/')\" ${screenshotDir}/$(date +%Y-%m-%d-%H%M%S)_window.png"
+        "$mod CTRL, S, exec, grim -g '$(slurp)' - | wl-copy"
       ]
       ++ (
         # Workspace bindings
