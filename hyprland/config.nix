@@ -79,10 +79,7 @@ in {
     ];
 
     # Window rules
-    windowrule = [
-      "opacity 1.0 override 1.0 override, class:^(firefox)$"
-      "nodim, true, class:^(firefox)$"
-    ];
+    windowrule = [];
 
     # Animations
     animations = {
@@ -142,7 +139,7 @@ in {
       fullscreen_opacity = 1.0;
 
       dim_inactive = true;
-      dim_strength = 0.35;
+      dim_strength = 0.25;
 
       shadow = {
         enabled = true;

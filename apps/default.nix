@@ -8,5 +8,6 @@
     ./music.nix
     ./images.nix
     ./editors.nix
+    ./file-manager.nix
   ];
 }
