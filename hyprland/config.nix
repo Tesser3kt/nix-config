@@ -175,5 +175,35 @@ in {
     gestures = {
       workspace_swipe = true;
     };
+
+    # Miscellaneous
+    misc = {
+      disable_hyprland_logo = true;
+      disable_splash_rendering = true;
+      mouse_move_enables_dpms = true;
+      vrr = 2;
+      enable_swallow = true;
+      direct_scanout = 2;
+      focus_on_activate = false;
+    };
+
+    # Binds
+    binds = {
+      workspace_back_and_forth = true;
+      allow_workspace_cycles = false;
+      workspace_center_on = 1;
+      pass_mouse_when_bound = false;
+    };
+
+    # XWayland
+    xwayland = {
+      enabled = true;
+      force_zero_scaling = true;
+    };
+
+    # Disable watchdog timeout
+    debug = {
+      watchdog_timeout = 0;
+    };
   };
 }
