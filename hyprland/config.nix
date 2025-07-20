@@ -183,8 +183,12 @@ in {
       mouse_move_enables_dpms = true;
       vrr = 2;
       enable_swallow = true;
-      direct_scanout = 2;
       focus_on_activate = false;
+    };
+    
+    # Render settings
+    render = {
+      direct_scanout = 2;
     };
 
     # Binds
@@ -199,11 +203,6 @@ in {
     xwayland = {
       enabled = true;
       force_zero_scaling = true;
-    };
-
-    # Disable watchdog timeout
-    debug = {
-      watchdog_timeout = 0;
     };
   };
 }
