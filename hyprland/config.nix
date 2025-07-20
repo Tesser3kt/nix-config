@@ -39,8 +39,8 @@ in {
         "$mod, F, fullscreen"
 
         # Move/resize windows with mouse
-        "$mod, mouse:272, movewindow"
-        "$mod, mouse:273, resizewindow"
+        "$mod, mouse:272, moveactive"
+        "$mod, mouse:273, resizeactive"
       ]
       ++ (
         # Workspace bindings
