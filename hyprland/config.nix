@@ -37,6 +37,10 @@ in {
         "$mod, Space, centerwindow, 1"
         "$mod, Space, resizeactive, exact 75% 75%"
         "$mod, F, fullscreen"
+
+        # Move/resize windows with mouse
+        "$mod, mouse:272, movewindow"
+        "$mod, mouse:273, resizewindow"
       ]
       ++ (
         # Workspace bindings
