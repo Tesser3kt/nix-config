@@ -3,6 +3,9 @@
   pkgs,
   ...
 }: let
+  terminal = "alacritty";
+  browser = "firefox";
+  files = "thunar";
   single_border_active = "rgba(81A1C1D2) rgba(8FBCBBD2) 90deg";
   single_border_inactive = "rgba(2E344096)";
   group_border_active = "rgba(81A1C1D2)";
@@ -14,8 +17,9 @@ in {
     bind =
       [
         # App bindings
-        "$mod, Return, exec, alacritty"
-        "$mod SHIFT, w, exec, firefox"
+        "$mod, Return, exec, ${terminal}"
+        "$mod SHIFT, w, exec, ${browser}"
+        "$mod, e, exec, ${files}"
 
         # Workspace 10
         "$mod, code:19, workspace, 10"
@@ -75,7 +79,10 @@ in {
     ];
 
     # Window rules
-    windowrule = [];
+    windowrule = [
+      "opacity 1.0 override 1.0 override, class:^(firefox)$"
+      "nodim true override true override, class:^(firefox)$"
+    ];
 
     # Animations
     animations = {
@@ -185,7 +192,7 @@ in {
       enable_swallow = true;
       focus_on_activate = false;
     };
-    
+
     # Render settings
     render = {
       direct_scanout = 2;
