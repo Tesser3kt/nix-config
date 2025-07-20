@@ -81,7 +81,7 @@ in {
     # Window rules
     windowrule = [
       "opacity 1.0 override 1.0 override, class:^(firefox)$"
-      "nodim true override true override, class:^(firefox)$"
+      "nodim, true, class:^(firefox)$"
     ];
 
     # Animations
