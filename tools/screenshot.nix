@@ -10,6 +10,6 @@
   ];
 
   home.sessionVariables = {
-    HYPRSHOT_DIR = "$HOME/Pictures/screenshots/";
+    HYPRSHOT_DIR = "$HOME/Pictures/screenshots";
   };
 }

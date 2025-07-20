@@ -15,6 +15,7 @@
 
   # Fonts
   home.packages = with pkgs; [
+    hyprpicker
     font-awesome
     nerd-fonts._0xproto
     nerd-fonts.adwaita-mono
