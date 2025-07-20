@@ -6,5 +6,6 @@
   imports = [
     ./system.nix
     ./text.nix
+    ./screenshot.nix
   ];
 }
