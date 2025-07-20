@@ -27,5 +27,8 @@
 
     # Media control
     playerctl
+
+    # Brightness control
+    brightnessctl
   ];
 }

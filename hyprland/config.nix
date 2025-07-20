@@ -47,6 +47,9 @@ in {
         "$mod SHIFT, S, exec, hyprshot -m output"
         "$mod, S, exec, hyprshot -m region"
         "$mod ALT, S, exec, hyprshot -m window"
+
+        # Exit hyprland
+        "CTRL ALT, Delete, exec, hyprctl dispatch exit 0"
       ]
       ++ (
         # Workspace bindings
@@ -107,6 +110,10 @@ in {
       ", XF86AudioStop, exec, playerctl stop"
       ", XF86AudioNext, exec, playerctl next"
       ", XF86AudioPrev, exec, playerctl previous"
+
+      # Brightness control
+      ", XF86MonBrightnessUp, exec, brightnessctl set +5%"
+      ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
     ];
 
     monitor = [
