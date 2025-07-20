@@ -44,10 +44,9 @@ in {
         "$mod, comma, workspace, e-1"
 
         # Screenshots
-        "$mod SHIFT, S, exec, grim ${screenshotDir}/$(date +%Y-%m-%d-%H%M%S)_full.png"
-        "$mod, S, exec, grim -g '$(slurp)' ${screenshotDir}/$(date +%Y-%m-%d-%H%M%S)_region.png"
-        "$mod ALT, S, exec, grim -g \"$(hyprctl activewindow | grep -oP 'size: \K.*' | tail -1 | sed 's/,/+/')$(hyprctl activewindow | grep -oP 'at: \K.*' | tail -1 | sed 's/,/+/')\" ${screenshotDir}/$(date +%Y-%m-%d-%H%M%S)_window.png"
-        "$mod CTRL, S, exec, grim -g '$(slurp)' - | wl-copy"
+        "$mod SHIFT, S, exec, hyprshot -m output"
+        "$mod, S, exec, hyprshot -m region"
+        "$mod ALT, S, exec, hyprshot -m window"
       ]
       ++ (
         # Workspace bindings
