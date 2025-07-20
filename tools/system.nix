@@ -30,5 +30,8 @@
 
     # Brightness control
     brightnessctl
+
+    # Network
+    networkmanagerapplet
   ];
 }

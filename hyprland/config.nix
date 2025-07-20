@@ -122,7 +122,13 @@ in {
     ];
 
     # Window rules
-    windowrule = [];
+    windowrule = [
+      # Discord on workspace 9
+      "workspace 9, class:^(WebCord)$"
+
+      # Spotify on workspace 8
+      "workspace 8, class: ^(spotify)$"
+    ];
 
     # Animations
     animations = {
@@ -251,5 +257,15 @@ in {
       enabled = true;
       force_zero_scaling = true;
     };
+
+    # Startup
+    exec-once = [
+      "waybar &"
+      "nm-applet --indicator &"
+      "swaync &"
+      "hypridle &"
+      "spotify &"
+      "webcord &"
+    ];
   };
 }
