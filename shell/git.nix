@@ -11,7 +11,7 @@
 
     extraConfig = {
       credential = {
-        helper = lib.mkDefault "store";
+        helper = ["cache --timeout=21600" "oauth"];
       };
     };
   };
