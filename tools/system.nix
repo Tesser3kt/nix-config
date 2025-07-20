@@ -23,5 +23,9 @@
 
     # Volume control
     pwvucontrol
+    wireplumber
+
+    # Media control
+    playerctl
   ];
 }

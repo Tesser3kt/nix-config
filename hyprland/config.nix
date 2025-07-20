@@ -37,6 +37,10 @@ in {
         "$mod, Space, centerwindow, 1"
         "$mod, Space, resizeactive, exact 75% 75%"
         "$mod, F, fullscreen"
+
+        # Scroll through existing workspaces
+        "$mod, period, workspace, e+1"
+        "$mod, comma, workspace, e-1"
       ]
       ++ (
         # Workspace bindings
@@ -86,6 +90,17 @@ in {
       "$mod ALT, right, resizeactive, 50 0"
       "$mod ALT, up, resizeactive, 0 -50"
       "$mod ALT, down, resizeactive, 0 50"
+
+      # Volume control
+      ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+      ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+      ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+
+      # Playback control
+      ", XF86AudioPlay, exec, playerctl play-pause"
+      ", XF86AudioStop, exec, playerctl stop"
+      ", XF86AudioNext, exec, playerctl next"
+      ", XF86AudioPrev, exec, playerctl previous"
     ];
 
     monitor = [
