@@ -8,6 +8,7 @@
     selected-normal-bg = "#434c5e";
     selected-urgent-bg = "#d08770";
     background = "#242933";
+    launcher-bg = "#2e344080";
     foreground = "#bbc3d4";
   };
 in {
@@ -170,7 +171,7 @@ in {
       fixed-height: true;
       fixed-columns: true;
 
-      background-color: @background-alt / 50%;
+      background-color: ${colors.launcher-bg};
       text-color: @text;
 
       spacing: 0px;
