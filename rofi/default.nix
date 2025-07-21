@@ -170,8 +170,7 @@ in {
       fixed-height: true;
       fixed-columns: true;
 
-      background-color: @background-alt;
-      background-opacity: 50%;
+      background-color: @background-alt / 50%;
       text-color: @text;
 
       spacing: 0px;
