@@ -6,6 +6,7 @@
   imports = [
     ./config.nix
     ./hyprpaper.nix
+    ./scripts
   ];
 
   wayland.windowManager.hyprland = {

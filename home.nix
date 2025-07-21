@@ -11,6 +11,7 @@
     ./apps
     ./nvim
     ./languages
+    ./rofi
   ];
 
   home.username = "tesserekt";
