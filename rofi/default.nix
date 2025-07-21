@@ -8,7 +8,7 @@
     selected-normal-bg = "#434c5e";
     selected-urgent-bg = "#d08770";
     background = "#242933";
-    launcher-bg = "#2e344080";
+    launcher-bg = "#2e3440A0";
     foreground = "#bbc3d4";
   };
 in {
@@ -269,7 +269,7 @@ in {
       content: " [CTRL DEL] Delete \n [ALT DEL] Wipe";
 
       border-radius: 12px;
-      background-color: @shade-bg;
+      background-color: ${colors.launcher-bg};
       text-color: white;
 
       margin: 0px;
