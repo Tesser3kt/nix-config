@@ -21,9 +21,9 @@
       eval "$(pay-respects zsh --alias)"
     '';
 
-    # Oh My Zsh disabled. Starship enabled.
+    # Oh My Zsh
     oh-my-zsh = {
-      enable = false;
+      enable = true;
       plugins = [
         "git"
         "npm"
