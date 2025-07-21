@@ -6,7 +6,6 @@
   terminal = "alacritty";
   browser = "firefox";
   files = "thunar";
-  screenshotDir = "~/Pictures/screeshots";
   single_border_active = "rgba(81A1C1D2) rgba(8FBCBBD2) 90deg";
   single_border_inactive = "rgba(2E344096)";
   group_border_active = "rgba(81A1C1D2)";
@@ -117,8 +116,7 @@ in {
     ];
 
     monitor = [
-      "DP-1, 1920x1080@143.85Hz, 0x0, 1"
-      "DP-2, 2560x1440@170.00Hz, 1920x0, 1.0666666666666666667"
+      "eDP-1, 2880x1800@120.00Hz, 0x0, 1"
     ];
 
     # Window rules
