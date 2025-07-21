@@ -25,9 +25,9 @@ in {
       text-selected: ${colors.background};
       text: ${colors.foreground};
 
-      shade-shadow: white / 6%;
-      shade-bg: white / 12%;
-      shade-border: white / 24%;
+      shade-shadow: white / 12%;
+      shade-bg: white / 24%;
+      shade-border: white / 36%;
     }
 
     window {
@@ -171,11 +171,12 @@ in {
       fixed-columns: true;
 
       background-color: @background-alt;
+      background-opacity: 50%;
       text-color: @text;
 
       spacing: 0px;
       margin: 0px;
-      padding: 12px;
+      padding: 24px;
 
       border-radius: 12px;
     }
