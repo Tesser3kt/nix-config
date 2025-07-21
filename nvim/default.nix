@@ -68,5 +68,8 @@
   };
 
   # Linking snippets folder
-  home.file.".config/nvim/snippets".source = ./snippets;
+  xdg.configFile."nvim/snippets".source = ./snippets;
+
+  # Linking spell folder
+  xdg.configFile."nvim/spell".source = ./spell;
 }
