@@ -49,7 +49,7 @@ in {
 
         # Rofi
         "$mod, D, exec, pkill rofi || rofi -show drun -modi drun,filebrowser,run,window"
-        "$mod ALT, V, exec $HOME/.config/hypr/scripts/clip_manager.sh"
+        "$mod ALT, V, exec, $HOME/.config/hypr/scripts/clip_manager.sh"
 
         # Exit hyprland
         "CTRL ALT, Delete, exec, hyprctl dispatch exit 0"

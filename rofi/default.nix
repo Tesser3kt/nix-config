@@ -170,7 +170,7 @@ in {
       fixed-height: true;
       fixed-columns: true;
 
-      background-color: transparent;
+      background-color: @background;
       text-color: @text;
 
       spacing: 0px;
