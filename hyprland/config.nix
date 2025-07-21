@@ -116,7 +116,7 @@ in {
     ];
 
     monitor = [
-      "eDP-1, 2880x1800@120.00Hz, 0x0, 1"
+      "eDP-1, 2880x1800@120.00Hz, 0x0, 1.5"
     ];
 
     # Window rules
