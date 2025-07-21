@@ -308,7 +308,7 @@ in {
       fixed-height: true;
       fixed-columns: true;
 
-      background-color: transparent;
+      background-color: ${colors.launcher-bg};
       text-color: @foreground;
 
       spacing: 12px;
