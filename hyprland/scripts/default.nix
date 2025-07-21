@@ -3,5 +3,5 @@
   pkgs,
   ...
 }: {
-  xdg.configFile."hypr/scripts/clipManager.sh".source = ./clipManager.sh;
+  xdg.configFile."hypr/scripts/clip_manager.sh".source = ./clip_manager.sh;
 }

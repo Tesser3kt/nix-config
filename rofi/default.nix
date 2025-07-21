@@ -330,6 +330,6 @@ in {
   '';
 
   xdg.configFile."rofi/config.rasi".text = ''
-    @theme "~/.config/rofi/themes/nordic.rasi"
+    @theme "~/.config/rofi/themes/launcher.rasi"
   '';
 }
