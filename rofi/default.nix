@@ -313,7 +313,8 @@ in {
 
       spacing: 12px;
       margin: 0px;
-      padding: 0px;
+      padding: 12px;
+      border-radius: 12px;
     }
 
     element {
