@@ -175,7 +175,9 @@ in {
 
       spacing: 0px;
       margin: 0px;
-      padding: 0px;
+      padding: 12px;
+
+      border-radius: 12px;
     }
 
     mode-switcher {
@@ -279,6 +281,19 @@ in {
       text-color: inherit;
       margin: 0px 0px 0px 25px;
       content: "  ";
+    }
+
+    entry {
+      cursor: inherit;
+      placeholder: "Search";
+      placeholder-color: inherit;
+
+      border-radius: 12px;
+      background-color: black / 48%;
+      text-color: @text;
+
+      padding: 16px;
+      margin: 0px;
     }
 
     listview {

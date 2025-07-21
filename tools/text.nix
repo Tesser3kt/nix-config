@@ -7,4 +7,9 @@
     wl-clipboard
     cliphist
   ];
+
+  services.cliphist = {
+    enable = true;
+    allowImages = true;
+  };
 }
