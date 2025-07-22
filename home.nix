@@ -12,6 +12,7 @@
     ./nvim
     ./languages
     ./rofi
+    ./waybar
   ];
 
   home.username = "tesserekt";

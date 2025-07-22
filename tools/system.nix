@@ -20,6 +20,7 @@
     btop
     iotop
     iftop
+    nvtopPackages.full
 
     # Volume control
     pwvucontrol
@@ -33,5 +34,8 @@
 
     # Network
     networkmanagerapplet
+
+    # Bluetooth
+    blueman
   ];
 }
