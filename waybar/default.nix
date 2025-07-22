@@ -6,6 +6,7 @@
   imports = [
     ./config.nix
     ./style.nix
+    ./wlogout.nix
   ];
 
   home.packages = with pkgs; [
