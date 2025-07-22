@@ -4,7 +4,7 @@
   ...
 }: {
   programs.waybar = {
-    settings = {
+    main = {
       layer = "top";
       position = "top";
       height = 12;
