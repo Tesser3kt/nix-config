@@ -115,7 +115,7 @@ in {
         background-image: image(url("./icons/hibernate-hover.png"));
       }
     '';
-
-    xdg.configFile."wlogout/icons".source = ./icons;
   };
+
+  xdg.configFile."wlogout/icons".source = ./icons;
 }
