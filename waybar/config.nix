@@ -138,7 +138,7 @@
 
         clock = {
           interval = 1;
-          format = "<span font='16'> </span>{:%H:%M}";
+          format = " {:%H:%M}";
           "format-alt" = " {:%H:%M   %Y, %d %B, %A}";
           "tooltip-format" = "<tt><small>{calendar}</small></tt>";
           calendar = {
