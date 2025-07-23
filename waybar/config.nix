@@ -55,8 +55,8 @@
             "5" = [];
           };
           "format-icons" = {
-            active = "";
-            default = "";
+            active = "<span font='13'></span>";
+            default = "<span font='13'></span>";
           };
         };
 
@@ -164,10 +164,10 @@
         };
 
         cpu = {
-          format = "{usage}% 󰍛";
+          format = "<span font='13'>󰍛 </span>{usage}% ";
           interval = 1;
           "format-alt-click" = "click";
-          "format-alt" = "{icon0}{icon1}{icon2}{icon3} {usage:>2}% 󰍛";
+          "format-alt" = "<span font='13'>{icon0}{icon1}{icon2}{icon3}</span> {usage:>2}%";
           "format-icons" = [" " "▂" "▃" "▄" "▅" "▆" "▇" "█"];
           "on-click" = "gnome-system-monitor";
         };
@@ -197,11 +197,11 @@
           "offscreen-css" = true;
           "offscreen-css-text" = "(inactive)";
           rewrite = {
-            "(.*) — Mozilla Firefox" = "<span font='13'> </span> $1";
-            "(.*) - fish" = "> [$1]";
-            "(.*) - zsh" = "> [$1]";
-            "(.*) - kitty" = "> [$1]";
-            "(.*) - Alacritty" = "> [$1]";
+            "(.*) — Mozilla Firefox" = "<span font='13'> </span>$1";
+            "(.*) - fish" = "<span font='13'>  </span>[$1]";
+            "(.*) - zsh" = "<span font='13'>  </span>[$1]";
+            "(.*) - kitty" = "<span font='13'>  </span>[$1]";
+            "(.*) - Alacritty" = "<span font='13'>  </span>[$1]";
           };
         };
 

@@ -115,16 +115,16 @@ in {
       }
 
       #workspaces button.active {
-      	color: whitesmoke;
+      	color: ${colors.cyan_b};
         transition: all 0.3s;
       }
 
       #workspaces button.focused {
-      	color: ${colors.white1};
+      	color: ${colors.green_b};
       }
 
       #workspaces button.urgent {
-      	color: ${colors.orange};
+      	color: ${colors.orange_b};
       }
 
       #workspaces button:hover {
@@ -182,6 +182,10 @@ in {
 
       #clock {
         color: ${colors.cyan};
+      }
+
+      #cpu {
+        color: ${colors.yellow};
       }
 
       #temperature.critical {
