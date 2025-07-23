@@ -94,7 +94,7 @@
           interval = 2;
           align = 0;
           rotate = 0;
-          "format-icons" = [" " " " " " "󰃝 " "󰃞 " "󰃟 " "󰃠 "];
+          "format-icons" = ["" "" "" "󰃝" "󰃞" "󰃟" "󰃠"];
           format = "<span font='13'>{icon}</span> {percent}%";
           "tooltip-format" = "backlight {percent}%";
           "icon-size" = 10;
@@ -349,10 +349,10 @@
         };
 
         wireplumber = {
-          format = "<span font='13'>{icon}</span> {volume} %";
-          "format-muted" = "<span font='13'></span> Mute";
+          format = "<span font='13'>{icon}</span>  {volume}%";
+          "format-muted" = "<span font='13'> </span> Mute";
           "on-click-right" = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
-          "on-click" = "pavucontrol -t 3";
+          "on-click" = "pwvucontrol";
           "on-scroll-up" = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+";
           "on-scroll-down" = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
           "format-icons" = ["" "" "󰕾" ""];

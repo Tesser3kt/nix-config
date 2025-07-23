@@ -214,7 +214,7 @@ in {
       }
 
       #backlight {
-        color: ${colors.orange};
+        color: ${colors.yellow_d};
       }
 
       #battery {
