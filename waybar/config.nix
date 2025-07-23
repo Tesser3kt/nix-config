@@ -133,9 +133,9 @@
           format = "<span font='13'></span>";
           "format-disabled" = "<span font='13'>󰂳</span>";
           "format-connected" = "<span font='13'>󰂱</span> {num_connections}";
-          "tooltip-format" = "<span font='13'></span> {device_alias}";
+          "tooltip-format" = " {device_alias}";
           "tooltip-format-connected" = "{device_enumerate}";
-          "tooltip-format-enumerate-connected" = "<span font='13'></span> {device_alias} <span font='13'>󰂄</span>{device_battery_percentage}%";
+          "tooltip-format-enumerate-connected" = " {device_alias} <span font='13'>󰂄</span>{device_battery_percentage}%";
           tooltip = true;
           "on-click" = "blueman-manager";
         };
@@ -179,7 +179,7 @@
         disk = {
           interval = 30;
           path = "/";
-          format = "<span font='13'>󰋊 </span>{percentage_used}%";
+          format = "<span font='13'>󰋊</span> {percentage_used}%";
           "tooltip-format" = "{used} used out of {total} on {path} ({percentage_used}%)";
         };
 
@@ -241,7 +241,7 @@
 
         mpris = {
           interval = 10;
-          format = "<span font='13'>{player_icon}</span> ";
+          format = "<span font='13'>{player_icon}</span> <i>{dynamic}</i>";
           "format-paused" = "<span font='13'>{status_icon}</span> <i>{dynamic}</i>";
           "on-click-middle" = "playerctl play-pause";
           "on-click" = "playerctl previous";

@@ -137,6 +137,7 @@ in {
       #battery,
       #bluetooth,
       #clock,
+      #language,
       #cpu,
       #disk,
       #idle_inhibitor,
@@ -188,6 +189,10 @@ in {
         color: ${colors.magenta};
       }
 
+      #bluetooth {
+        color: ${colors.blue0};
+      }
+
       #cpu {
         color: ${colors.yellow};
       }
@@ -202,6 +207,10 @@ in {
 
       #temperature.critical {
       	color: ${colors.red};
+      }
+
+      #disk {
+        color: ${colors.blue1};
       }
 
       @keyframes blink {
