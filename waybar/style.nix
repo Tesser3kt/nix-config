@@ -184,6 +184,10 @@ in {
         color: ${colors.cyan};
       }
 
+      #language {
+        color: ${colors.magenta};
+      }
+
       #cpu {
         color: ${colors.yellow};
       }
@@ -192,8 +196,12 @@ in {
         color: ${colors.green};
       }
 
+      #temperature {
+        color: ${colors.orange};
+      }
+
       #temperature.critical {
-      	background-color: ${colors.red};
+      	color: ${colors.red};
       }
 
       @keyframes blink {

@@ -16,6 +16,8 @@
         modules-left = [
           "clock"
           "custom/separator#blank"
+          "hyprland/language"
+          "custom/separator#blank"
           "hyprland/window"
         ];
 
@@ -27,6 +29,8 @@
           "tray"
           "custom/separator#blank"
           "mpris"
+          "custom/separator#blank"
+          "bluetooth"
           "custom/separator#blank"
           "group/motherboard"
           "custom/separator#blank"
@@ -126,12 +130,12 @@
         };
 
         bluetooth = {
-          format = "";
-          "format-disabled" = "󰂳";
-          "format-connected" = "󰂱 {num_connections}";
-          "tooltip-format" = " {device_alias}";
+          format = "<span font='13'></span>";
+          "format-disabled" = "<span font='13'>󰂳</span>";
+          "format-connected" = "<span font='13'>󰂱</span> {num_connections}";
+          "tooltip-format" = "<span font='13'></span> {device_alias}";
           "tooltip-format-connected" = "{device_enumerate}";
-          "tooltip-format-enumerate-connected" = " {device_alias} 󰂄{device_battery_percentage}%";
+          "tooltip-format-enumerate-connected" = "<span font='13'></span> {device_alias} <span font='13'>󰂄</span>{device_battery_percentage}%";
           tooltip = true;
           "on-click" = "blueman-manager";
         };
@@ -175,12 +179,12 @@
         disk = {
           interval = 30;
           path = "/";
-          format = "{percentage_used}% 󰋊";
+          format = "<span font='13'>󰋊 </span>{percentage_used}%";
           "tooltip-format" = "{used} used out of {total} on {path} ({percentage_used}%)";
         };
 
         "hyprland/language" = {
-          format = "Lang: {}";
+          format = "<span font='13'>󰌌 </span>{}";
           "format-en" = "US";
           "format-cs" = "CZ";
         };
@@ -237,8 +241,8 @@
 
         mpris = {
           interval = 10;
-          format = "{player_icon} ";
-          "format-paused" = "{status_icon} <i>{dynamic}</i>";
+          format = "<span font='13'>{player_icon}</span> ";
+          "format-paused" = "<span font='13'>{status_icon}</span> <i>{dynamic}</i>";
           "on-click-middle" = "playerctl play-pause";
           "on-click" = "playerctl previous";
           "on-click-right" = "playerctl next";
@@ -333,8 +337,8 @@
           tooltip = true;
           "hwmon-path" = ["/sys/class/hwmon/hwmon6/temp1_input" "/sys/class/thermal/thermal_zone0/temp"];
           "critical-threshold" = 85;
-          "format-critical" = "<span font='13'>{icon} </span>{temperatureC}°C";
-          format = "<span font='13'>{icon} </span>{temperatureC}°C";
+          "format-critical" = "<span font='13'>{icon}</span> {temperatureC}°C";
+          format = "<span font='13'>{icon}</span> {temperatureC}°C";
           "format-icons" = ["󰈸"];
           "on-click" = "alacritty --title nvtop -e 'nvtop'";
         };

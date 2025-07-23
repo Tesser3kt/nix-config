@@ -28,6 +28,8 @@
 
     # Media control
     playerctl
+    mpd
+    waybar-mpris
 
     # Brightness control
     brightnessctl
