@@ -11,7 +11,7 @@
         height = 12;
         margin-left = 10;
         margin-right = 10;
-        margin-top = 4;
+        margin-top = 2;
 
         modules-left = [
           "clock"
@@ -201,6 +201,7 @@
             "(.*) - fish" = "> [$1]";
             "(.*) - zsh" = "> [$1]";
             "(.*) - kitty" = "> [$1]";
+            "(.*) - Alacritty" = "> [$1]";
           };
         };
 
