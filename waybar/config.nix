@@ -95,7 +95,7 @@
           align = 0;
           rotate = 0;
           "format-icons" = [" " " " " " "󰃝 " "󰃞 " "󰃟 " "󰃠 "];
-          format = "{icon}";
+          format = "<span font='13'>{icon}</span> {percent}%";
           "tooltip-format" = "backlight {percent}%";
           "icon-size" = 10;
           "on-click" = "";
@@ -118,11 +118,11 @@
             critical = 15;
           };
           format = "{icon} {capacity}%";
-          "format-charging" = "{capacity}%";
-          "format-plugged" = "󱘖 {capacity}%";
+          "format-charging" = "<span font='13'></span> {capacity}%";
+          "format-plugged" = "<span font='13'>󱘖</span> {capacity}%";
           "format-alt-click" = "click";
-          "format-full" = "{icon} Full";
-          "format-alt" = "{icon} {time}";
+          "format-full" = "<span font='13'>{icon}</span> Full";
+          "format-alt" = "<span font='13'>{icon}</span> {time}";
           "format-icons" = ["󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
           "format-time" = "{H}h {M}min";
           tooltip = true;
@@ -349,8 +349,8 @@
         };
 
         wireplumber = {
-          format = "{icon} {volume} %";
-          "format-muted" = " Mute";
+          format = "<span font='13'>{icon}</span> {volume} %";
+          "format-muted" = "<span font='13'></span> Mute";
           "on-click-right" = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
           "on-click" = "pavucontrol -t 3";
           "on-scroll-up" = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+";
@@ -452,7 +452,7 @@
         };
 
         "custom/power" = {
-          format = " ";
+          format = "<span font='13'></span> ";
           icon-size = 20;
           on-click = "wlogout -b 5 -B 400 -T 400";
           tooltip = false;

@@ -213,6 +213,18 @@ in {
         color: ${colors.blue1};
       }
 
+      #backlight {
+        color: ${colors.orange};
+      }
+
+      #battery {
+        color: ${colors.cyan_d};
+      }
+
+      #wireplumber {
+        color: ${colors.green_b};
+      }
+
       @keyframes blink {
       	to {
           color: black;
