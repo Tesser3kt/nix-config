@@ -56,13 +56,14 @@ in {
       }
 
       button {
+        color: ${colors.foreground};
         background-repeat: no-repeat;
         background-position: center;
         background-size: 20%;
         background-color: transparent;
         animation: gradient_f 20s ease-in infinite;
         transition: all 0.3s ease-in;
-        /* box-shadow: 0 0 10px 2px transparent; */
+        box-shadow: 0 0 10px 2px transparent;
         border-radius: 36px;
         margin: 10px;
       }
