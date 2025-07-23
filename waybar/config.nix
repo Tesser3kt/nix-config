@@ -349,8 +349,8 @@
         };
 
         wireplumber = {
-          format = "<span font='13'>{icon}</span>  {volume}%";
-          "format-muted" = "<span font='13'> </span> Mute";
+          format = "<span font='13'>{icon} </span>{volume}%";
+          "format-muted" = "<span font='13'> </span>Mute";
           "on-click-right" = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
           "on-click" = "pwvucontrol";
           "on-scroll-up" = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+";
