@@ -8,7 +8,7 @@
       main = {
         layer = "top";
         position = "top";
-        height = 14;
+        height = 15;
         margin-left = 10;
         margin-right = 10;
         margin-top = 2;
