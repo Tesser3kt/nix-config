@@ -51,8 +51,9 @@ in {
       window {
         font-family: Hurmit Nerd Font, sans-serif;
         font-size: 16pt;
+        font-weight: 700;
         color: ${colors.foreground};
-        background-color: rgba(24, 27, 32, 0.4);
+        background-color: rgba(24, 27, 32, 0.5);
       }
 
       button {
@@ -79,7 +80,7 @@ in {
         box-shadow: 0 0 10px 3px rgba(0,0,0,.4);
         text-shadow: none;
         background-color: ${colors.button-hover};
-        color: transparent;
+        color: ${colors.background};
         transition: all 0.3s cubic-bezier(.55, 0.0, .28, 1.682), box-shadow 0.5s ease-in;
       }
 
