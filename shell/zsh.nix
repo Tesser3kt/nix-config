@@ -21,7 +21,7 @@
       eval "$(pay-respects zsh --alias)"
     '';
     localVariables = {
-        DISABLE_AUTO_TITLE = true;
+        DISABLE_AUTO_TITLE = "true";
     };
 
     # Oh My Zsh
