@@ -78,6 +78,7 @@
     enable = true;
     powerOnBoot = true; # Enable bluetooth on boot.
   };
+  services.blueman.enable = true; # Enable blueman.
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;

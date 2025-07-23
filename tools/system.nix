@@ -41,7 +41,7 @@
     blueman
   ];
 
-  services.blueman = {
+  services.blueman-applet = {
     enable = true;
   };
 }
