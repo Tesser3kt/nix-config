@@ -63,7 +63,8 @@ in {
         background-color: transparent;
         animation: gradient_f 20s ease-in infinite;
         transition: all 0.3s ease-in;
-        box-shadow: none;
+        box-shadow: 0 0 10px 2px transparent;
+        text-shadow: none;
         border-radius: 36px;
         margin: 10px;
       }
@@ -76,6 +77,7 @@ in {
       button:hover {
         background-size: 20%;
         box-shadow: 0 0 10px 3px rgba(0,0,0,.4);
+        text-shadow: none;
         background-color: ${colors.button-hover};
         color: transparent;
         transition: all 0.3s cubic-bezier(.55, 0.0, .28, 1.682), box-shadow 0.5s ease-in;
