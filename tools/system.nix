@@ -40,4 +40,8 @@
     # Bluetooth
     blueman
   ];
+
+  services.blueman = {
+    enable = true;
+  };
 }

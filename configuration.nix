@@ -73,6 +73,12 @@
     pulse.enable = true;
   };
 
+  # Enable bluetooth support.
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true; # Enable bluetooth on boot.
+  };
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
 
