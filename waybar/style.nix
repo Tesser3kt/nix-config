@@ -111,16 +111,13 @@ in {
          	padding-left: 4px;
          	padding-right: 4px;
          	animation: gradient_f 20s ease-in infinite;
-         	transition: all 0.5s cubic-bezier(.55,-0.68,.48,1.682);
+         	transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
       }
 
       #workspaces button.active {
       	color: whitesmoke;
-         	border-radius: 15px 15px 15px 15px;
-         	padding-left: 8px;
-         	padding-right: 8px;
-         	animation: gradient_f 20s ease-in infinite;
-         	transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+        animation: gradient_f 20s ease-in infinite;
+        transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
       }
 
       #workspaces button.focused {
@@ -128,17 +125,14 @@ in {
       }
 
       #workspaces button.urgent {
-      	color: ${colors.black0};
-      	border-radius: 10px;
+      	color: ${colors.orange};
       }
 
       #workspaces button:hover {
       	color: whitesmoke;
-          border-radius: 15px;
-       	padding-left: 2px;
-          padding-right: 2px;
-          animation: gradient_f 20s ease-in infinite;
-          transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+        border-radius: 15px;
+        animation: gradient_f 20s ease-in infinite;
+        transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
       }
 
       #backlight,

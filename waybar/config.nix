@@ -55,8 +55,8 @@
             "5" = [];
           };
           "format-icons" = {
-            active = "";
-            default = "";
+            active = "";
+            default = "";
           };
         };
 
