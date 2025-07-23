@@ -8,7 +8,7 @@
       main = {
         layer = "top";
         position = "top";
-        height = 12;
+        height = 14;
         margin-left = 10;
         margin-right = 10;
         margin-top = 2;
@@ -138,8 +138,8 @@
 
         clock = {
           interval = 1;
-          format = "<span font='14'> </span>{:%H:%M}";
-          "format-alt" = "<span font='14'> </span>{:%H:%M  <span font='15'> </span>%Y, %d %B, %A}";
+          format = "<span font='13'> </span>{:%H:%M}";
+          "format-alt" = "<span font='13'> </span>{:%H:%M  <span font='13'> </span>%Y, %d %B, %A}";
           "tooltip-format" = "<tt><small>{calendar}</small></tt>";
           calendar = {
             mode = "year";
