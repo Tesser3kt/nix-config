@@ -104,20 +104,18 @@ in {
 
       #workspaces button {
       	color: ${colors.gray5};
-         	box-shadow: none;
+        box-shadow: none;
       	text-shadow: none;
-         	padding: 0px;
-         	border-radius: 9px;
-         	padding-left: 4px;
-         	padding-right: 4px;
-         	animation: gradient_f 20s ease-in infinite;
-         	transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+        padding: 0px;
+        border-radius: 9px;
+        padding-left: 4px;
+        padding-right: 4px;
+        transition: all 0.3s;
       }
 
       #workspaces button.active {
       	color: whitesmoke;
-        animation: gradient_f 20s ease-in infinite;
-        transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+        transition: all 0.3s;
       }
 
       #workspaces button.focused {
@@ -131,8 +129,7 @@ in {
       #workspaces button:hover {
       	color: whitesmoke;
         border-radius: 15px;
-        animation: gradient_f 20s ease-in infinite;
-        transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+        transition: all 0.3s;
       }
 
       #backlight,
