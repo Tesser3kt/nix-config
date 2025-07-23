@@ -188,6 +188,10 @@ in {
         color: ${colors.yellow};
       }
 
+      #memory {
+        color: ${colors.green};
+      }
+
       #temperature.critical {
       	background-color: ${colors.red};
       }

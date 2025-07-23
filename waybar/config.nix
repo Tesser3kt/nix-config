@@ -164,7 +164,7 @@
         };
 
         cpu = {
-          format = "<span font='13'>󰍛 </span>{usage}% ";
+          format = "<span font='13'>󰍛 </span>{usage}%";
           interval = 1;
           "format-alt-click" = "click";
           "format-alt" = "<span font='13'>{icon0}{icon1}{icon2}{icon3}</span> {usage:>2}%";
@@ -198,10 +198,10 @@
           "offscreen-css-text" = "(inactive)";
           rewrite = {
             "(.*) — Mozilla Firefox" = "<span font='13'> </span>$1";
-            "(.*) - fish" = "<span font='13'>  </span>[$1]";
-            "(.*) - zsh" = "<span font='13'>  </span>[$1]";
-            "(.*) - kitty" = "<span font='13'>  </span>[$1]";
-            "(.*) - Alacritty" = "<span font='13'>  </span>[$1]";
+            "(.*) - fish" = "<span font='12'> </span>[$1]";
+            "(.*) - zsh" = "<span font='12'> </span>[$1]";
+            "(.*) - kitty" = "<span font='12'> </span>[$1]";
+            "(.*) - Alacritty" = "<span font='12'> </span>[$1]";
           };
         };
 
@@ -227,8 +227,8 @@
 
         memory = {
           interval = 10;
-          format = "{used:0.1f}G 󰾆";
-          "format-alt" = "{percentage}% 󰾆";
+          format = "<span font='13'>󰾆 </span>{used:0.1f}G";
+          "format-alt" = "<span font='13'>󰾆 </span>{percentage}%";
           "format-alt-click" = "click";
           tooltip = true;
           "tooltip-format" = "{used:0.1f}GB/{total:0.1f}G";
@@ -332,15 +332,15 @@
           interval = 10;
           tooltip = true;
           "hwmon-path" = ["/sys/class/hwmon/hwmon6/temp1_input" "/sys/class/thermal/thermal_zone0/temp"];
-          "critical-threshold" = 82;
-          "format-critical" = "{temperatureC}°C {icon}";
-          format = "{temperatureC}°C {icon}";
+          "critical-threshold" = 85;
+          "format-critical" = "<span font='13'>{icon} </span>{temperatureC}°C";
+          format = "<span font='13'>{icon} </span>{temperatureC}°C";
           "format-icons" = ["󰈸"];
-          "on-click" = "alacritty --title nvtop sh -c 'nvtop'";
+          "on-click" = "alacritty --title nvtop -e 'nvtop'";
         };
 
         tray = {
-          "icon-size" = 15;
+          "icon-size" = 18;
           spacing = 8;
         };
 
