@@ -55,6 +55,7 @@ in {
       *{
       	font-family: "Hurmit Nerd Font";
       	font-weight: bold;
+        font-size: 16px;
       	min-height: 0;
       	/* set font-size to 100% if font scaling is set to 1.00 using nwg-look */
       	font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
@@ -177,6 +178,10 @@ in {
       	padding-bottom: 3px;
       	padding-right: 6px;
       	padding-left: 6px;
+      }
+
+      #clock {
+        color: ${colors.cyan};
       }
 
       #temperature.critical {

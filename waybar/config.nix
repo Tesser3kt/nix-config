@@ -122,7 +122,7 @@
           "format-icons" = ["󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
           "format-time" = "{H}h {M}min";
           tooltip = true;
-          "tooltip-format" = "{timeTo} {power}w";
+          "tooltip-format" = "{timeTo} {power}W";
         };
 
         bluetooth = {
@@ -138,7 +138,7 @@
 
         clock = {
           interval = 1;
-          format = " {:%H:%M}";
+          format = "<span font='20'></span> {:%H:%M}";
           "format-alt" = " {:%H:%M   %Y, %d %B, %A}";
           "tooltip-format" = "<tt><small>{calendar}</small></tt>";
           calendar = {
