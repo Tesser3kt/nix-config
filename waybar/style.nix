@@ -63,7 +63,7 @@ in {
       }
 
       window#waybar {
-      	background: ${colors.blue0};
+      	background: transparent;
       	border-radius: 1px;
       	color: whitesmoke;
       }

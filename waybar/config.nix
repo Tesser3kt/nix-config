@@ -197,7 +197,7 @@
           "offscreen-css" = true;
           "offscreen-css-text" = "(inactive)";
           rewrite = {
-            "(.*) — Mozilla Firefox" = " $1";
+            "(.*) — Mozilla Firefox" = "<span font='13'> </span> $1";
             "(.*) - fish" = "> [$1]";
             "(.*) - zsh" = "> [$1]";
             "(.*) - kitty" = "> [$1]";
