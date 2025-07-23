@@ -138,8 +138,8 @@
 
         clock = {
           interval = 1;
-          format = " {:%H:%M}";
-          "format-alt" = " {:%H:%M   %Y, %d %B, %A}";
+          format = "<span font='15'> </span>{:%H:%M}";
+          "format-alt" = "<span font='15'> </span>{:%H:%M  <span font='15'> </span>%Y, %d %B, %A}";
           "tooltip-format" = "<tt><small>{calendar}</small></tt>";
           calendar = {
             mode = "year";
