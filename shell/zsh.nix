@@ -47,7 +47,7 @@
 
     # Oh My Zsh
     oh-my-zsh = {
-      enable = false;
+      enable = true;
       plugins = [
         "git"
         "npm"

@@ -2,9 +2,7 @@
   config,
   pkgs,
   ...
-}: let
-  colors = import ../nordic.nix;
-in {
+}:{
   home.packages = with pkgs; [
     hyprlock
   ];
@@ -14,6 +12,7 @@ in {
     settings = {
       background = [
         {
+          monitor = "";
           path = "$HOME/Pictures/wallpaper.png";
           blur_size = 4;
           blur_passes = 3;
@@ -26,8 +25,9 @@ in {
       ];
       label = [
         {
+          monitor = "";
           text = "cmd[update:1000] echo \"<b><big> $(date +\"%H\") </big></b>\"";
-          color = colors.cyan;
+          color = "rgb(8FBCBB)";
           font_size = 112;
           font_family = "GeistMono Nerd Font 10";
           shadow_passes = 3;
@@ -38,8 +38,9 @@ in {
           valign = "center";
         }
         {
+          monitor = "";
           text = "cmd[update:1000] echo \"<b><big> $(date +\"%M\") </big></b>\"";
-          color = colors.cyan;
+          color = "rgb(8FBCBB)";
           font_size = 112;
           font_family = "Geist Mono 10";
           shadow_passes = 3;
@@ -50,8 +51,9 @@ in {
           valign = "center";
         }
         {
+          monitor = "";
           text = "cmd[update:18000000] echo \"<b><big> \"$(date +'%A')\" </big></b>\"";
-          color = colors.blue0;
+          color = "rgb(5E81AC)";
           font_size = 22;
           font_family = "Hurmit Nerd Font 10";
 
@@ -60,8 +62,9 @@ in {
           valign = "center";
         }
         {
+          monitor = "";
           text = "cmd[update:18000000] echo \"<b> \"$(date +'%d %b')\" </b>\"";
-          color = colors.blue0;
+          color = "rgb(5E81AC)";
           font_size = 18;
           font_family = "Hurmit Nerd Font 10";
 
@@ -72,18 +75,18 @@ in {
       ];
       input_field = [
         {
+          monitor = "";
           size = "250, 50";
           outline_thickness = 3;
 
           dots_size = 0.26;
           dots_spacing = 0.64;
           dots_center = true;
-          dots_rounding = -1;
 
           rounding = 22;
-          outer_color = colors.white0;
-          inner_color = colors.white0;
-          font_color = colors.cyan;
+          outer_color = "rgb(BBC3D4)";
+          inner_color = "rgb(BBC3D4)";
+          font_color = "rgb(8FBCBB)";
           fade_on_empty = true;
           placeholder_text = "<i>Password...</i>";
 
