@@ -12,6 +12,10 @@
   groupbar_active = "rgba(81A1C1D2)";
   drop_shadow = "rgba(242933A6)";
 in {
+  imports = [
+    ./output.nix
+  ];
+
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
     bind =
@@ -120,10 +124,6 @@ in {
       # Brightness control
       ", XF86MonBrightnessUp, exec, brightnessctl set +5%"
       ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
-    ];
-
-    monitor = [
-      "eDP-1, 2880x1800@120.00Hz, 0x0, 1.5"
     ];
 
     # Window rules

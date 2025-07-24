@@ -1,0 +1,12 @@
+{
+  config,
+  pkgs,
+  ...
+}: {
+  wayland.windowManager.hyprland.settings = {
+    monitor = [
+      "DP-1, 1920x1080@143.85Hz, 0x0, 1"
+      "DP-2, 2560x1440@170.00Hz, 1920x0, 1.066666666666666666667"
+    ];
+  };
+}
