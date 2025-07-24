@@ -6,7 +6,6 @@
   terminal = "alacritty";
   browser = "firefox";
   files = "thunar";
-  screenshotDir = "~/Pictures/screeshots";
   single_border_active = "rgba(81A1C1D2) rgba(8FBCBBD2) 90deg";
   single_border_inactive = "rgba(2E344096)";
   group_border_active = "rgba(81A1C1D2)";
@@ -47,6 +46,13 @@ in {
         "$mod SHIFT, S, exec, hyprshot -m output"
         "$mod, S, exec, hyprshot -m region"
         "$mod ALT, S, exec, hyprshot -m window"
+
+        # Rofi
+        "$mod, D, exec, pkill rofi || rofi -show drun -modi drun,filebrowser,run,window"
+        "$mod ALT, V, exec, $HOME/.config/hypr/scripts/clip_manager.sh"
+
+        # Logout menu
+        "$mod, X, exec, wlogout -b 5 -B 400 -T 400"
 
         # Exit hyprland
         "CTRL ALT, Delete, exec, hyprctl dispatch exit 0"
@@ -117,8 +123,7 @@ in {
     ];
 
     monitor = [
-      "DP-1, 1920x1080@143.85Hz, 0x0, 1"
-      "DP-2, 2560x1440@170.00Hz, 1920x0, 1.0666666666666666667"
+      "eDP-1, 2880x1800@120.00Hz, 0x0, 1.5"
     ];
 
     # Window rules

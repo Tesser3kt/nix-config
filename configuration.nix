@@ -12,7 +12,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./boot-loader.nix
-    ./amd.nix
+    ./intel.nix
     ./display-manager.nix
   ];
 
@@ -24,7 +24,7 @@
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  networking.hostName = "tesserekt-pc"; # Define your hostname.
+  networking.hostName = "tesserekt-laptop"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
@@ -72,6 +72,13 @@
     enable = true;
     pulse.enable = true;
   };
+
+  # Enable bluetooth support.
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true; # Enable bluetooth on boot.
+  };
+  services.blueman.enable = true; # Enable blueman.
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;

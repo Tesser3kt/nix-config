@@ -41,5 +41,22 @@
         }
       ];
     };
+    nixosConfigurations.tesserekt-laptop = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = {inherit inputs;};
+      modules = [
+        ./configuration.nix
+
+        # Home Manager
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+
+          home-manager.users.tesserekt = import ./home.nix;
+          home-manager.extraSpecialArgs = {inherit inputs;};
+        }
+      ];
+    };
   };
 }

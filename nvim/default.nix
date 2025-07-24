@@ -65,8 +65,21 @@
       tex-fmt
       alejandra
     ];
+
+    extraConfig = ''
+      require("luasnip").config.set_config {
+        -- Autotriggered snippets
+        enable_autosnippets = true,
+
+        -- Tab to trigger visual selection
+        store_selection_keys = "<Tab>",
+      }
+    '';
   };
 
   # Linking snippets folder
-  home.file.".config/nvim/snippets".source = ./snippets;
+  xdg.configFile."nvim/snippets".source = ./snippets;
+
+  # Linking spell folder
+  xdg.configFile."nvim/spell".source = ./spell;
 }

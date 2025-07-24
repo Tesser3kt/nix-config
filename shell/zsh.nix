@@ -19,11 +19,35 @@
 
       # Pay respects
       eval "$(pay-respects zsh --alias)"
-    '';
 
-    # Oh My Zsh disabled. Starship enabled.
+      function set_custom_title() {
+        local title="%~ - zsh" 
+
+        if [[ -n "$_LAST_COMMAND" ]]; then
+          title="''${_LAST_COMMAND} - zsh"
+        fi
+
+        print -Pn "\e]2;''${title}\a"
+
+        print -Pn "\e]1;''${title}\a"
+      }
+      precmd_functions=(set_custom_title)
+
+      _LAST_COMMAND=""
+      preexec() {
+        _LAST_COMMAND="$1"
+      }
+      precmd() {
+        _LAST_COMMAND=""
+      }
+    '';
+    localVariables = {
+        DISABLE_AUTO_TITLE = "true";
+    };
+
+    # Oh My Zsh
     oh-my-zsh = {
-      enable = false;
+      enable = true;
       plugins = [
         "git"
         "npm"

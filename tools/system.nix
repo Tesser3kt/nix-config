@@ -20,6 +20,7 @@
     btop
     iotop
     iftop
+    nvtopPackages.full
 
     # Volume control
     pwvucontrol
@@ -27,11 +28,18 @@
 
     # Media control
     playerctl
+    mpd
+    waybar-mpris
 
     # Brightness control
     brightnessctl
 
     # Network
     networkmanagerapplet
+
+    # Bluetooth
+    blueman
   ];
+
+  services.blueman-applet.enable = false;
 }
