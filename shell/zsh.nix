@@ -21,7 +21,7 @@
       eval "$(pay-respects zsh --alias)"
 
       function set_custom_title() {
-        local title="%~ - zsh" 
+        local title="%~ - zsh"
 
         if [[ -n "$_LAST_COMMAND" ]]; then
           title="''${_LAST_COMMAND} - zsh"
@@ -42,12 +42,12 @@
       }
     '';
     localVariables = {
-        DISABLE_AUTO_TITLE = "true";
+      DISABLE_AUTO_TITLE = "true";
     };
 
     # Oh My Zsh
     oh-my-zsh = {
-      enable = true;
+      enable = false;
       plugins = [
         "git"
         "npm"

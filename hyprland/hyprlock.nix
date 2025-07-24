@@ -26,7 +26,7 @@ in {
       ];
       label = [
         {
-          text = "text = cmd[update:1000] echo \"<b><big> $(date +\"%H\") </big></b>";
+          text = "text = cmd[update:1000] echo \"<b><big> $(date +\"%H\") </big></b>\"";
           color = colors.cyan;
           font_size = 112;
           font_family = "GeistMono Nerd Font 10";
@@ -38,7 +38,7 @@ in {
           valign = "center";
         }
         {
-          text = "cmd[update:1000] echo \"<b><big> $(date +\"%M\") </big></b>";
+          text = "cmd[update:1000] echo \"<b><big> $(date +\"%M\") </big></b>\"";
           color = colors.cyan;
           font_size = 112;
           font_family = "Geist Mono 10";
@@ -50,7 +50,7 @@ in {
           valign = "center";
         }
         {
-          text = "cmd[update:18000000] echo \"<b><big> \"$(date +'%A')\" </big></b>";
+          text = "cmd[update:18000000] echo \"<b><big> \"$(date +'%A')\" </big></b>\"";
           color = colors.blue0;
           font_size = 22;
           font_family = "Hurmit Nerd Font 10";
@@ -60,7 +60,7 @@ in {
           valign = "center";
         }
         {
-          text = "cmd[update:18000000] echo \"<b> \"$(date +'%d %b')\" </b>";
+          text = "cmd[update:18000000] echo \"<b> \"$(date +'%d %b')\" </b>\"";
           color = colors.blue0;
           font_size = 18;
           font_family = "Hurmit Nerd Font 10";
