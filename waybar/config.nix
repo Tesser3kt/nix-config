@@ -206,6 +206,7 @@
             "(.*) - zsh" = "<span font='12'> </span>[$1]";
             "(.*) - kitty" = "<span font='12'> </span>[$1]";
             "(.*) - Alacritty" = "<span font='12'> </span>[$1]";
+            "WebCord - (.*)" = "<span font='13'> </span>$1";
           };
         };
 
