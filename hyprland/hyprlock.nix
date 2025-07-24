@@ -33,7 +33,7 @@
           shadow_passes = 3;
           shadow_size = 4;
 
-          position = "0, 260";
+          position = "0, 300";
           halign = "center";
           valign = "center";
         }
@@ -46,14 +46,14 @@
           shadow_passes = 3;
           shadow_size = 4;
 
-          position = "0, 80";
+          position = "0, 160";
           halign = "center";
           valign = "center";
         }
         {
           monitor = "";
           text = "cmd[update:18000000] echo \"<b><big> \"$(date +'%A')\" </big></b>\"";
-          color = "rgb(5E81AC)";
+          color = "rgb(E5E9F0)";
           font_size = 22;
           font_family = "Hurmit Nerd Font 10";
 
@@ -64,7 +64,7 @@
         {
           monitor = "";
           text = "cmd[update:18000000] echo \"<b> \"$(date +'%d %b')\" </b>\"";
-          color = "rgb(5E81AC)";
+          color = "rgb(E5E9F0)";
           font_size = 18;
           font_family = "Hurmit Nerd Font 10";
 
@@ -86,7 +86,7 @@
           rounding = 22;
           outer_color = "rgb(BBC3D4)";
           inner_color = "rgb(BBC3D4)";
-          font_color = "rgb(8FBCBB)";
+          font_color = "rgb(60728A)";
           fade_on_empty = true;
           placeholder_text = "<i>Password...</i>";
 
