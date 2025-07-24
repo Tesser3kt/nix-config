@@ -18,6 +18,9 @@
   home.username = "tesserekt";
   home.homeDirectory = "/home/tesserekt";
 
+  # Link wallpaper file
+  home.file."~/Pictures/wallpaper.png".source = ./wallpaper.png;
+
   home.packages = with pkgs; [
     # terminal stuff
     neofetch
