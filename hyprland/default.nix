@@ -6,6 +6,7 @@
   imports = [
     ./config.nix
     ./hyprpaper.nix
+    ./hyprlock.nix
     ./scripts
   ];
 
