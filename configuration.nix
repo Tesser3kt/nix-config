@@ -58,6 +58,13 @@
     portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
 
+  # Enable hibernation.
+  swapDevices = [
+    {device = "/dev/disk/by-label/swap";}
+  ];
+  boot.initrd.systemd.enable = true;
+  boot.resumeDevice = "/dev/disk/by-label/swap"; # Set the swap device for hibernation.
+
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
