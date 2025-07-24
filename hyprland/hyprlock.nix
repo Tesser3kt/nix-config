@@ -51,7 +51,7 @@ in {
         }
         {
           text = "cmd[update:18000000] echo \"<b><big> \"$(date +'%A')\" </big></b>";
-          color = colors.blue;
+          color = colors.blue0;
           font_size = 22;
           font_family = "Hurmit Nerd Font 10";
 
@@ -61,7 +61,7 @@ in {
         }
         {
           text = "cmd[update:18000000] echo \"<b> \"$(date +'%d %b')\" </b>";
-          color = colors.blue;
+          color = colors.blue0;
           font_size = 18;
           font_family = "Hurmit Nerd Font 10";
 
