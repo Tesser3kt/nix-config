@@ -33,7 +33,7 @@
           shadow_passes = 3;
           shadow_size = 4;
 
-          position = "0, 220";
+          position = "0, 260";
           halign = "center";
           valign = "center";
         }
@@ -73,7 +73,7 @@
           valign = "center";
         }
       ];
-      input_field = [
+      input-field = [
         {
           monitor = "";
           size = "250, 50";
