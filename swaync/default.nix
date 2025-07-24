@@ -10,6 +10,7 @@
 
   home.packages = with pkgs; [
     swaynotificationcenter
+    libnotify
   ];
 
   # Enable swaync service
