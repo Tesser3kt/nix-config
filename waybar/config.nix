@@ -336,7 +336,7 @@
         temperature = {
           interval = 10;
           tooltip = true;
-          "hwmon-path" = ["/sys/class/hwmon/hwmon6/temp1_input" "/sys/class/thermal/thermal_zone0/temp"];
+          "hwmon-path" = ["/sys/class/thermal/thermal_zone0/temp"];
           "critical-threshold" = 85;
           "format-critical" = "<span font='13'>{icon}</span> {temperatureC}°C";
           format = "<span font='13'>{icon}</span> {temperatureC}°C";
