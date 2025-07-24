@@ -13,6 +13,7 @@
     ./languages
     ./rofi
     ./waybar
+    ./swaync
   ];
 
   home.username = "tesserekt";

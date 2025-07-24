@@ -58,6 +58,9 @@ in {
         # Logout menu
         "$mod, X, exec, wlogout -b 5 -B 400 -T 400"
 
+        # Sway notification center panel
+        "$mod SHIFT, N, exec, swaync-client -t -sw"
+
         # Exit hyprland
         "CTRL ALT, Delete, exec, hyprctl dispatch exit 0"
       ]

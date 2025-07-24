@@ -25,6 +25,7 @@
     # Volume control
     pwvucontrol
     wireplumber
+    alsa-utils
 
     # Media control
     playerctl
@@ -39,6 +40,9 @@
 
     # Bluetooth
     blueman
+
+    # GTK theme editor
+    nwg-look
   ];
 
   services.blueman-applet.enable = false;
