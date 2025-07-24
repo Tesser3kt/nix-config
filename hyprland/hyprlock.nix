@@ -68,7 +68,7 @@
           font_size = 18;
           font_family = "Hurmit Nerd Font 10";
 
-          position = "0, 6";
+          position = "0, 0";
           halign = "center";
           valign = "center";
         }

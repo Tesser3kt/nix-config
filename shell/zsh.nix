@@ -31,7 +31,7 @@
 
         print -Pn "\e]1;''${title}\a"
       }
-      precmd_functions=(set_custom_title)
+      precmd_functions+=(set_custom_title)
 
       _LAST_COMMAND=""
       preexec() {
