@@ -26,7 +26,7 @@ in {
       ];
       label = [
         {
-          text = "text = cmd[update:1000] echo \"<b><big> $(date +\"%H\") </big></b>\"";
+          text = "cmd[update:1000] echo \"<b><big> $(date +\"%H\") </big></b>\"";
           color = colors.cyan;
           font_size = 112;
           font_family = "GeistMono Nerd Font 10";
