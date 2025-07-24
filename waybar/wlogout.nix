@@ -36,7 +36,7 @@ in {
       }
       {
         label = "hibernate";
-        action = "hyprlock && systemctl hibernate";
+        action = "hyprlock & sleep 0.5; systemctl hibernate";
         text = "Hibernate";
         keybind = "h";
       }
