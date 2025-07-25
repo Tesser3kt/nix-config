@@ -57,7 +57,7 @@
       recolor = true;
 
       # Font and GUI options
-      font = "Hurmit Nerd Font";
+      font = "Hurmit Nerd Font 12";
       guioptions = "none";
     };
   };
