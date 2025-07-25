@@ -3,11 +3,6 @@
   pkgs,
   ...
 }: {
-  home.packages = with pkgs; [
-    nordic
-    # papirus-nord
-  ];
-
   gtk = {
     enable = true;
     theme = {
@@ -19,7 +14,7 @@
       size = 11;
     };
     iconTheme = {
-      name = "Papirus Nord";
+      name = "Papirus-Dark";
       package = pkgs.papirus-nord.override {
         accent = "frostblue3";
       };
