@@ -5,6 +5,7 @@
   ...
 }: {
   imports = [
+    ./fonts.nix
     ./shell
     ./hyprland
     ./tools
