@@ -18,11 +18,11 @@
       name = "Source Sans Pro";
       size = 11;
     };
-    # iconTheme = {
-    #   name = "Papirus Nord";
-    #   package = pkgs.papirus-nord.override {
-    #     accent = "frostblue3";
-    #   };
-    # };
+    iconTheme = {
+      name = "Papirus Nord";
+      package = pkgs.papirus-nord.override {
+        accent = "frostblue3";
+      };
+    };
   };
 }
