@@ -7,7 +7,6 @@
     nordic
     papirus-nord
     papirus-folders
-    papirus-icon-theme
   ];
 
   gtk = {
@@ -21,8 +20,8 @@
       size = 11;
     };
     iconTheme = {
-      name = "Papirus";
-      package = pkgs.papirus-icon-theme;
+      name = "Papirus Nord";
+      package = pkgs.papirus-nord;
     };
   };
 }
