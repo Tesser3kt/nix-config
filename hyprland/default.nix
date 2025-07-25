@@ -22,15 +22,7 @@
   ];
 
   # Cursor
-  home.pointerCursor = {
-    enable = true;
-    name = "BreezeX-Dark";
-    hyprcursor = {
-      enable = true;
-      size = 24;
-    };
-  };
-  home.file.".icons/BreezeX-Dark".source = ./hyprcursors/BreezeX-Dark;
+  home.file.".local/share/icons/BreezeX-Dark".source = ./hyprcursors/BreezeX-Dark;
 
   # Environment
   home.sessionVariables = {
