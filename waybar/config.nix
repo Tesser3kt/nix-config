@@ -34,8 +34,8 @@
           "custom/separator#blank"
           "group/motherboard"
           "custom/separator#blank"
-          "group/laptop"
-          "custom/separator#blank"
+          # "group/laptop"
+          # "custom/separator#blank"
           "group/audio"
           "custom/separator#blank"
           "custom/power"
@@ -207,6 +207,7 @@
             "(.*) - kitty" = "<span font='12'> </span>[$1]";
             "(.*) - Alacritty" = "<span font='12'> </span>[$1]";
             "WebCord - (.*)" = "<span font='13'> </span>$1";
+            "*WebCord - (.*)" = "<span font='13'> </span>$1";
           };
         };
 
