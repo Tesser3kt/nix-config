@@ -6,7 +6,6 @@
   home.packages = with pkgs; [
     nordic
     papirus-nord
-    papirus-folders
   ];
 
   gtk = {
@@ -20,8 +19,10 @@
       size = 11;
     };
     iconTheme = {
-      name = "Papirus Folders";
-      package = pkgs.papirus-folders;
+      name = "Papirus Nord";
+      package = pkgs.papirus-nord.override {
+        accent = "frostblue3";
+      };
     };
   };
 }
