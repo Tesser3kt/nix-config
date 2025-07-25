@@ -5,7 +5,7 @@
 }: {
   qt = {
     enable = true;
-    platformTheme = "qt5ct";
+    platformTheme = "qtct";
     style = {
       name = "kvantum";
     };
