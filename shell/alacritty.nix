@@ -26,7 +26,7 @@ in {
       colors = {
         # Nordic palette to match neovim
         primary = {
-          background = "#343a46";
+          background = "#2a303c";
           foreground = "#BBC3D4";
         };
         normal = {
