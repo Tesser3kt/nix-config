@@ -6,8 +6,13 @@
   qt = {
     enable = true;
     style = {
-      name = "Utterly Nord Plasma";
-      package = pkgs.utterly-nord-plasma;
+      name = "kvantum";
     };
   };
+
+  xdg.configFile."Kvantum/kvantum.kvconfig".text = ''
+    [General]
+    theme=GraphiteNordDark
+  '';
+  xdg.configFile."Kvantum/GraphiteNord".source = "${pkgs.graphite-kde-theme}/share/Kvantum/GraphiteNord";
 }
