@@ -30,7 +30,7 @@ in {
       }
       {
         label = "logout";
-        action = "loginctl kill-session $XDG_SESSION_ID";
+        action = "hyprctl dispatch exit";
         text = "Logout";
         keybind = "e";
       }
