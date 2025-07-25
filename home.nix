@@ -14,6 +14,7 @@
     ./rofi
     ./waybar
     ./swaync
+    ./gtk
   ];
 
   home.username = "tesserekt";
