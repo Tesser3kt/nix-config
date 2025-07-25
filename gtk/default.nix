@@ -6,6 +6,8 @@
   home.packages = with pkgs; [
     nordic
     papirus-nord
+    papirus-folders
+    papirus-icon-theme
   ];
 
   gtk = {
@@ -19,8 +21,8 @@
       size = 11;
     };
     iconTheme = {
-      name = "Papirus Nord";
-      package = pkgs.papirus-nord;
+      name = "Papirus";
+      package = pkgs.papirus-icon-theme;
     };
   };
 }
