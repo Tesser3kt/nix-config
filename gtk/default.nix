@@ -14,8 +14,8 @@
       package = pkgs.nordic;
     };
     font = {
-      name = "Hurmit Nerd Font";
-      size = 12;
+      name = "Source Code Pro";
+      size = 11;
     };
   };
 }

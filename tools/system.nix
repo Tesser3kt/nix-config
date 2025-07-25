@@ -43,6 +43,9 @@
 
     # GTK theme editor
     nwg-look
+
+    # RGB lighting control
+    openrgb-with-all-plugins
   ];
 
   services.blueman-applet.enable = false;
