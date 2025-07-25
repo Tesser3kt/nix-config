@@ -5,6 +5,7 @@
 }: {
   home.packages = with pkgs; [
     nordic
+    papirus-nord
   ];
 
   gtk = {
@@ -14,8 +15,12 @@
       package = pkgs.nordic;
     };
     font = {
-      name = "Source Code Pro";
+      name = "Source Sans Pro";
       size = 11;
+    };
+    iconTheme = {
+      name = "Papirus Nord";
+      package = pkgs.papirus-nord;
     };
   };
 }

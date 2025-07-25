@@ -244,6 +244,7 @@ in {
       mouse_move_enables_dpms = true;
       vrr = 2;
       enable_swallow = true;
+      swallow_regex = "^(Alacritty)$";
       focus_on_activate = false;
     };
 

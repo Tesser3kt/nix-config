@@ -44,10 +44,6 @@
     localVariables = {
       DISABLE_AUTO_TITLE = "true";
     };
-    # Remove padding on launching nvim
-    shellAliases = {
-      nvim = "alacritty -o window.padding.x=0 -o window.padding.y=0 -e nvim";
-    };
 
     # Oh My Zsh
     oh-my-zsh = {

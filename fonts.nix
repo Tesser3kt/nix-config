@@ -25,6 +25,7 @@
     nerd-fonts.victor-mono
     nerd-fonts.zed-mono
     source-code-pro
+    source-sans-pro
   ];
   fonts.fontconfig.enable = true;
 }
