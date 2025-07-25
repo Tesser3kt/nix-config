@@ -70,7 +70,7 @@
       # Color values as space-separated strings
       "background_color" = "0.925490 0.937255 0.956863";
       "dark_mode_background_color" = "0.180392 0.203922 0.250980";
-      "default_dark_mode" = 1;
+      "default_dark_mode" = "1";
 
       "text_highlight_color" = "0.368627 0.505882 0.674510";
       "visual_mark_color" = "0.298039 0.337255 0.415686 0.95";
@@ -87,7 +87,7 @@
       "highlight_color_f" = "0.639216 0.745098 0.549020";
       "highlight_color_g" = "0.705882 0.556863 0.678431";
 
-      "font_size" = 12;
+      "font_size" = "12";
       "ui_font" = "Hurmit Nerd Font";
 
       "custom_background_color" = "0.180392 0.203922 0.250980";
@@ -98,7 +98,7 @@
       "ui_selected_text_color" = "0.298039 0.337255 0.415686";
       "ui_selected_text_background_color" = "0.368627 0.505882 0.674510";
 
-      "status_bar_font_size" = 12;
+      "status_bar_font_size" = "12";
     };
   };
 }
