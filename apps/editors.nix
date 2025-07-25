@@ -7,6 +7,7 @@
     sioyek
   ];
 
+  # Zathura configuration
   programs.zathura = {
     enable = true;
     options = {
@@ -62,6 +63,7 @@
     };
   };
 
+  # Sioyek configuration
   programs.sioyek = {
     enable = true;
     config = {

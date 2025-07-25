@@ -16,10 +16,17 @@
     package = pkgs.hyprland;
   };
 
-  # Fonts
   home.packages = with pkgs; [
     hyprpicker
+    hyprcursor
   ];
+
+  # Cursor
+  home.pointerCursor.hyprcursor = {
+    enable = true;
+    size = 24;
+  };
+  home.file.".local/share/icons/BreezeX-Dark".source = ./hyprcursors/BreezeX-Dark;
 
   # Environment
   home.sessionVariables = {
@@ -34,5 +41,6 @@
     XDG_CURRENT_DESKTOP = "Hyprland";
     XDG_SESSION_DESKTOP = "Hyprland";
     XDG_SESSION_TYPE = "wayland";
+    HYPRCURSOR_THEME = "BreezeX-Dark";
   };
 }
