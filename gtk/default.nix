@@ -20,8 +20,8 @@
       size = 11;
     };
     iconTheme = {
-      name = "Papirus Nord";
-      package = pkgs.papirus-nord;
+      name = "Papirus Folders";
+      package = pkgs.papirus-folders;
     };
   };
 }
