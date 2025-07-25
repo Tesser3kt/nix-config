@@ -5,7 +5,7 @@
 }: {
   home.packages = with pkgs; [
     nordic
-    papirus-nord
+    # papirus-nord
   ];
 
   gtk = {
