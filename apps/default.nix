@@ -9,6 +9,5 @@
     ./images.nix
     ./editors.nix
     ./file-manager.nix
-    ./openrgb.nix
   ];
 }
