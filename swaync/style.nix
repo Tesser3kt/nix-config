@@ -89,7 +89,7 @@ in {
       margin: 6px;
       padding: 2px;
       border-radius: 6px;
-      background-color: transparent;
+      background-color: @background-alt-opaque;
       border: 1px solid transparent;
     }
 
