@@ -13,17 +13,23 @@
   groupbar_active = "rgba(81A1C1D2)";
   drop_shadow = "rgba(242933A6)";
   output = {
-    "pc" = import ./output-pc.nix {
-      inherit config pkgs;
-    };
-    "laptop" = import ./output-laptop.nix {
-      inherit config pkgs;
-    };
+    "pc" = [
+      import
+      ./output-pc.nix
+      {
+        inherit config pkgs;
+      }
+    ];
+    "laptop" = [
+      import
+      ./output-laptop.nix
+      {
+        inherit config pkgs;
+      }
+    ];
   };
 in {
-  imports = (
-    output.${displayConfig} or []
-  );
+  imports = output.${displayConfig} or [];
 
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
