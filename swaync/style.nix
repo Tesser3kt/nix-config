@@ -32,10 +32,10 @@ in {
       padding: 0px;
     }
     .floating-notifications.background .notification-row .notification-background {
-      background: alpha(@background, .55);
+      background: alpha(@background, .8);
       box-shadow: 0 0 8px 0 rgba(0,0,0,.6);
       border: 1px solid @selected;
-      border-radius: 24px;
+      border-radius: 12px;
       margin: 16px;
       padding: 0;
     }
