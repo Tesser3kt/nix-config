@@ -35,13 +35,13 @@ in {
       background: alpha(@background, .8);
       box-shadow: 0 0 8px 0 rgba(0,0,0,.6);
       border: 1px solid @selected;
-      border-radius: 12px;
+      border-radius: 6px;
       margin: 16px;
       padding: 0;
     }
     .floating-notifications.background .notification-row .notification-background .notification {
       padding: 6px;
-      border-radius: 12px;
+      border-radius: 6px;
     }
 
     .floating-notifications.background .notification-row .notification-background .notification.critical {
@@ -113,7 +113,7 @@ in {
     }
     .control-center {
       background: alpha(@background, .55);
-      border-radius: 24px;
+      border-radius: 12px;
       border: 1px solid @selected;
       box-shadow: 0 0 10px 0 rgba(0,0,0,.6);
       margin: 18px;
@@ -123,7 +123,7 @@ in {
     .control-center .notification-row .notification-background,
     .control-center .notification-row .notification-background .notification.critical {
       background-color: @background-alt-opaque;
-      border-radius: 16px;
+      border-radius: 12px;
       margin: 4px 0px;
       padding: 4px;
     }
