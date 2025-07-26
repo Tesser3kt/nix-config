@@ -7,6 +7,7 @@
 in {
   services.swaync.style = ''
     @define-color text                  ${colors.white0};
+    @define-color background            ${colors.gray0};
     @define-color background-alt        ${colors.gray1};
     @define-color background-alt-opaque alpha(${colors.gray1}, 0.4);
     @define-color selected              ${colors.cyan};
