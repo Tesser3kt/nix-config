@@ -7,4 +7,7 @@
     google-chrome
     brave
   ];
+
+  # Set default browser
+  programs.defaultBrowser = "firefox";
 }
