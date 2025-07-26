@@ -14,6 +14,7 @@
     # default apps
     EDITOR = "nvim";
     BROWSER = "firefox";
+    DEFAULT_BROWSER = "firefox";
     TERMINAL = "alacritty";
   };
 
