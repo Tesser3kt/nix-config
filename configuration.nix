@@ -8,14 +8,6 @@
   inputs,
   ...
 }: {
-  imports = [
-    # Include the results of the hardware scan.
-    ./hardware-configuration.nix
-    ./boot-loader.nix
-    ./amd.nix
-    ./display-manager.nix
-  ];
-
   # Use the systemd-boot EFI boot loader.
   # boot.loader.systemd-boot.enable = true;
   # boot.loader.systemd-boot.edk2-uefi-shell.enable = true;

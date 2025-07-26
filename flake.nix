@@ -29,6 +29,10 @@
       specialArgs = {inherit inputs;};
       modules = [
         ./configuration.nix
+        ./boot-loader-pc.nix
+        ./hw-pc.nix
+        ./amd.nix
+        ./display-manager.nix
 
         # Home Manager
         home-manager.nixosModules.home-manager
