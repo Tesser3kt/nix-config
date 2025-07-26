@@ -44,6 +44,7 @@
           home-manager.extraSpecialArgs = {
             inherit inputs;
             displayConfig = "pc";
+            waybarConfig = "pc";
           };
         }
       ];
@@ -68,6 +69,7 @@
           home-manager.extraSpecialArgs = {
             inherit inputs;
             displayConfig = "laptop";
+            waybarConfig = "laptop";
           };
         }
       ];

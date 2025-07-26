@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  waybarConfig,
   ...
 }: {
   programs.waybar = {
@@ -25,22 +26,30 @@
           "hyprland/workspaces"
         ];
 
-        modules-right = [
-          "tray"
-          "custom/separator#blank"
-          "mpris"
-          "custom/separator#blank"
-          "bluetooth"
-          "custom/separator#blank"
-          "group/motherboard"
-          "custom/separator#blank"
-          # "group/laptop"
-          # "custom/separator#blank"
-          "group/audio"
-          "custom/separator#blank"
-          "custom/power"
-        ];
-
+        modules-right =
+          [
+            "tray"
+            "custom/separator#blank"
+            "mpris"
+            "custom/separator#blank"
+            "bluetooth"
+            "custom/separator#blank"
+            "group/motherboard"
+            "custom/separator#blank"
+          ]
+          ++ (
+            if waybarConfig == "laptop"
+            then [
+              "group/laptop"
+              "custom/separator#blank"
+            ]
+            else []
+          )
+          ++ [
+            "group/audio"
+            "custom/separator#blank"
+            "custom/power"
+          ];
         # HYPRLAND WORKSPACES. CHOOSE as desired and place on waybar configs
         # CIRCLES Style
         "hyprland/workspaces" = {
