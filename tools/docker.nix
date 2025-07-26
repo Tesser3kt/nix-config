@@ -8,4 +8,9 @@
     docker-compose
     docker-buildx
   ];
+
+  virtualisation.docker = {
+    enable = true;
+    enableOnBoot = true;
+  };
 }
