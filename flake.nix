@@ -41,7 +41,10 @@
           home-manager.useUserPackages = true;
 
           home-manager.users.tesserekt = import ./home.nix;
-          home-manager.extraSpecialArgs = {inherit inputs;};
+          home-manager.extraSpecialArgs = {
+            inherit inputs;
+            displayConfig = "pc";
+          };
         }
       ];
     };
@@ -50,6 +53,10 @@
       specialArgs = {inherit inputs;};
       modules = [
         ./configuration.nix
+        ./boot-loader-laptop.nix
+        ./hw-laptop.nix
+        ./intel.nix
+        ./display-manager.nix
 
         # Home Manager
         home-manager.nixosModules.home-manager
@@ -58,7 +65,10 @@
           home-manager.useUserPackages = true;
 
           home-manager.users.tesserekt = import ./home.nix;
-          home-manager.extraSpecialArgs = {inherit inputs;};
+          home-manager.extraSpecialArgs = {
+            inherit inputs;
+            displayConfig = "laptop";
+          };
         }
       ];
     };
