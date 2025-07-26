@@ -161,6 +161,12 @@
     };
   };
 
+  # Enable Docker
+  virtualisation.docker = {
+    enable = true;
+    enableOnBoot = true;
+  };
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
