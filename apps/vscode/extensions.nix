@@ -1,0 +1,35 @@
+{
+  config,
+  pkgs,
+  ...
+}: {
+  programs.vscode.extensions = with pkgs.vscode-extensions; [
+    ms-python.vscode-pylance
+    vue.volar
+    ms-python.black-formatter
+    ms-vscode.cpptools
+    ms-azuretools.vscode-containers
+    leonardssh.vscord
+    dbaeumer.vscode-eslint
+    github.copilot
+    github.copilot-chat
+    ms-python.isort
+    ms-toolsai.jupyter
+    ms-toolsai.jupyter-keymap
+    ms-toolsai.jupyter-renderers
+    ms-toolsai.vscode-jupyter-cell-tags
+    ms-toolsai.vscode-jupyter-slideshow
+    ms-vscode.live-server
+    ms-vsliveshare.vsliveshare
+    arcticicestudio.nord-visual-studio-code
+    esbenp.prettier-vscode
+    ms-python.debugpy
+    ms-python.python
+    ban.spellright
+    bradlc.vscode-tailwindcss
+    myriad-dreamin.tinymist
+    vscodevim.vim
+    chrischinchilla.vscode-pandoc
+    tomoki1207.pdf
+  ];
+}

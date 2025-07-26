@@ -9,5 +9,6 @@
     ./images.nix
     ./editors.nix
     ./file-manager.nix
+    ./vscode
   ];
 }
