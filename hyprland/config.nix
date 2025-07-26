@@ -14,18 +14,22 @@
   drop_shadow = "rgba(242933A6)";
   output = {
     "pc" = [
-      import
-      ./output-pc.nix
-      {
-        inherit config pkgs;
-      }
+      (
+        import
+        ./output-pc.nix
+        {
+          inherit config pkgs;
+        }
+      )
     ];
     "laptop" = [
-      import
-      ./output-laptop.nix
-      {
-        inherit config pkgs;
-      }
+      (
+        import
+        ./output-laptop.nix
+        {
+          inherit config pkgs;
+        }
+      )
     ];
   };
 in {
