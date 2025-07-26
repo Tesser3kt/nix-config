@@ -14,7 +14,9 @@
 
   programs.vscode = {
     enable = true;
-    enableUpdateCheck = true;
-    enableExtensionUpdateCheck = true;
+    profiles.default = {
+      enableUpdateCheck = true;
+      enableExtensionUpdateCheck = true;
+    };
   };
 }

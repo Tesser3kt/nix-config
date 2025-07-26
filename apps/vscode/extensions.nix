@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: {
-  programs.vscode.extensions = with pkgs.vscode-extensions; [
+  programs.vscode.profiles.default.extensions = with pkgs.vscode-extensions; [
     ms-python.vscode-pylance
     vue.volar
     ms-python.black-formatter

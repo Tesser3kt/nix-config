@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: {
-  programs.vscode.userSettings = {
+  programs.vscode.profiles.default.userSettings = {
     "files.autoSave" = "on";
     "editor.lineNumbers" = "relative";
     "editor.insertSpaces" = false;
