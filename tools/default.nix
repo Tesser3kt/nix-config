@@ -8,7 +8,6 @@
     ./text.nix
     ./screenshot.nix
     ./night-light.nix
-    ./docker.nix
     ./web.nix
   ];
 }
