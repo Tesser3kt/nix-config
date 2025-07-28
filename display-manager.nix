@@ -12,7 +12,7 @@
     };
     theme = "sddm-astronaut";
     extraPackages = with pkgs; [
-      sddm-theme-astronaut
+      sddm-astronaut
     ];
   };
 }
