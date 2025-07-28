@@ -3,6 +3,11 @@
   pkgs,
   ...
 }: {
+  environment.systemPackages = with pkgs; [
+    # SDDM theme
+    sddm-astronaut
+  ];
+
   # SDDM config
   services.displayManager.enable = true;
   services.displayManager.sddm = {
