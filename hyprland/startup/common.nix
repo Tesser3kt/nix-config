@@ -1,4 +1,4 @@
-{}: [
+[
   "waybar &"
   "nm-applet --indicator &"
   "swaync &"

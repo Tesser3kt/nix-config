@@ -1,3 +1,3 @@
-{}: [
+[
   "openrgb --startminimized &"
 ]
