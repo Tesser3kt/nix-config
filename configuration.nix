@@ -129,9 +129,9 @@
     automake
     texlive.combined.scheme-full
     zathura
-    # libsForQt5.qt5ct
-    # libsForQt5.qtstyleplugin-kvantum
-    # kdePackages.qt6ct
+    libsForQt5.qt5ct
+    libsForQt5.qtstyleplugin-kvantum
+    kdePackages.qt6ct
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

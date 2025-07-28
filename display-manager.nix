@@ -9,6 +9,7 @@
     enable = true;
     wayland = {
       enable = true;
+      compositor = "kwin";
     };
     theme = "sddm-astronaut";
     extraPackages = with pkgs; [
