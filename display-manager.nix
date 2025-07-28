@@ -7,7 +7,7 @@
   services.displayManager.enable = true;
   services.displayManager.sddm = {
     enable = true;
-    package = pkgs.libsForQt5.sddm;
+    package = pkgs.kdePackages.sddm;
     wayland = {
       enable = true;
     };
