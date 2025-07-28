@@ -7,9 +7,9 @@
   services.displayManager.enable = true;
   services.displayManager.sddm = {
     enable = true;
+    package = pkgs.libsForQt5.sddm;
     wayland = {
       enable = true;
-      compositor = "kwin";
     };
     theme = "sddm-astronaut";
     extraPackages = with pkgs; [
