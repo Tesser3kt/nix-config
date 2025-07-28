@@ -45,6 +45,7 @@
             inherit inputs;
             displayConfig = "pc";
             waybarConfig = "pc";
+            startupConfig = "pc";
           };
         }
       ];
@@ -70,6 +71,7 @@
             inherit inputs;
             displayConfig = "laptop";
             waybarConfig = "laptop";
+            startupConfig = "laptop";
           };
         }
       ];

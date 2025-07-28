@@ -33,7 +33,11 @@
     ];
   };
 in {
-  imports = output.${displayConfig} or [];
+  imports =
+    [
+      ./startup
+    ]
+    ++ output.${displayConfig} or [];
 
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
@@ -285,15 +289,5 @@ in {
       enabled = true;
       force_zero_scaling = true;
     };
-
-    # Startup
-    exec-once = [
-      "waybar &"
-      "nm-applet --indicator &"
-      "swaync &"
-      "hypridle &"
-      "spotify &"
-      "webcord &"
-    ];
   };
 }
