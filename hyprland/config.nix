@@ -14,32 +14,14 @@
   groupbar_active = "rgba(81A1C1D2)";
   drop_shadow = "rgba(242933A6)";
   output = {
-    "pc" = [
-      (
-        import
-        ./output-pc.nix
-        {
-          inherit config pkgs;
-        }
-      )
-    ];
-    "laptop" = [
-      (
-        import
-        ./output-laptop.nix
-        {
-          inherit config pkgs;
-        }
-      )
-    ];
+    "pc" = import ./output/pc.nix;
+    "laptop" = import ./output/laptop.nix;
   };
   startup = {
     "common" = import ./startup/common.nix;
     "pc" = import ./startup/pc.nix;
   };
 in {
-  imports = output.${displayConfig} or [];
-
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
     bind =
@@ -152,6 +134,9 @@ in {
       ", XF86MonBrightnessUp, exec, brightnessctl set +5%"
       ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
     ];
+
+    # Output configuration
+    monitor = output.${displayConfig} or [];
 
     # Window rules
     windowrule = [
