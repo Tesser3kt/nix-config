@@ -16,7 +16,7 @@
     wayland = {
       enable = true;
     };
-    theme = "sddm-astronaut";
+    theme = "sddm-astronaut-theme";
     extraPackages = with pkgs; [
       sddm-astronaut
     ];
