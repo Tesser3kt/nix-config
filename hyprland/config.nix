@@ -2,6 +2,7 @@
   config,
   pkgs,
   displayConfig,
+  startupConfig,
   ...
 }: let
   terminal = "alacritty";
@@ -32,12 +33,20 @@
       )
     ];
   };
+  startup = {
+    "common" = [
+      (
+        import ./startup/common.nix
+      )
+    ];
+    "pc" = [
+      (
+        import ./startup/pc.nix
+      )
+    ];
+  };
 in {
-  imports =
-    [
-      ./startup
-    ]
-    ++ output.${displayConfig} or [];
+  imports = output.${displayConfig} or [];
 
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
@@ -289,5 +298,10 @@ in {
       enabled = true;
       force_zero_scaling = true;
     };
+
+    # Startup apps
+    exec-once =
+      startup.common
+      ++ startup.${startupConfig} or [];
   };
 }
