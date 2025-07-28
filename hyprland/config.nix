@@ -34,16 +34,8 @@
     ];
   };
   startup = {
-    "common" = [
-      (
-        import ./startup/common.nix
-      )
-    ];
-    "pc" = [
-      (
-        import ./startup/pc.nix
-      )
-    ];
+    "common" = import ./startup/common.nix;
+    "pc" = import ./startup/pc.nix;
   };
 in {
   imports = output.${displayConfig} or [];
