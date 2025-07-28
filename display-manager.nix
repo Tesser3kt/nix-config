@@ -12,5 +12,5 @@
   environment.systemPackages = with pkgs; [
     sddm-astronaut
   ];
-  services.displayManager.sddm.theme = "sddm-astronaut-theme";
+  services.displayManager.sddm.theme = "sddm-astronaut";
 }
