@@ -3,6 +3,7 @@
   pkgs,
   displayConfig,
   startupConfig,
+  deviceConfig,
   ...
 }: let
   terminal = "alacritty";
@@ -20,6 +21,9 @@
   startup = {
     "common" = import ./startup/common.nix;
     "pc" = import ./startup/pc.nix;
+  };
+  devices = {
+    "pc" = import ./tablet/pc.nix;
   };
 in {
   wayland.windowManager.hyprland.settings = {
@@ -280,5 +284,8 @@ in {
     exec-once =
       startup.common
       ++ startup.${startupConfig} or [];
+
+    # Per-device config
+    device = devices.${deviceConfig} or [];
   };
 }

@@ -46,6 +46,7 @@
             displayConfig = "pc";
             waybarConfig = "pc";
             startupConfig = "pc";
+            deviceConfig = "pc";
           };
         }
       ];
