@@ -11,5 +11,6 @@
     ./file-manager.nix
     ./browsers.nix
     ./vscode
+    ./math.nix
   ];
 }
