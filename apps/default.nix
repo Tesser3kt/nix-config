@@ -12,6 +12,5 @@
     ./browsers.nix
     ./vscode
     ./math.nix
-    ./coolercontrol.nix
   ];
 }
