@@ -72,6 +72,11 @@
     pulse.enable = true;
   };
 
+  # Enable graphics
+  hardware.graphics = {
+    enable = true;
+  };
+
   # Enable bluetooth support.
   hardware.bluetooth = {
     enable = true;
