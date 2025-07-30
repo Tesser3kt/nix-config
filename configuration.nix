@@ -7,21 +7,7 @@
   pkgs,
   inputs,
   ...
-}: let
-  hyprutilsDev = pkgs.hyprutils.overrideAttrs (finalAttrs: previousAttrs: {
-    pname = "hyprutils";
-    version = "0.8.2";
-    src = pkgs.fetchFromGitHub {
-      owner = "hyprwm";
-      repo = "hyprutils";
-      rev = "c65d41d4f4e6ded6fdb9d508a73e2fe90e55cdf7";
-      hash = "sha256-W0xgXsaqGa/5/7IBzKNhf0+23MqGPymYYfqT7ECqeTE=";
-    };
-  });
-  hyprlandDev = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland.overrideAttrs (finalAttrs: previousAttrs: {
-    buildInputs = lib.lists.remove (x: x == pkgs.hyprutils) finalAttrs.buildInputs ++ [hyprutilsDev];
-  });
-in {
+}: {
   # Use the systemd-boot EFI boot loader.
   # boot.loader.systemd-boot.enable = true;
   # boot.loader.systemd-boot.edk2-uefi-shell.enable = true;
@@ -60,7 +46,7 @@ in {
   # Enable hyprland (development version)
   programs.hyprland = {
     enable = true;
-    package = hyprlandDev;
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
 
