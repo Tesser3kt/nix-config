@@ -6,8 +6,20 @@
   lib,
   pkgs,
   inputs,
+  fetchFromGitHub,
   ...
-}: {
+}: let
+  hyprutilsDev = pkgs.hyprutils.overrideAttrs (finalAttrs: previousAttrs: {
+    pname = "hyprutils";
+    version = "0.8.2";
+    src = fetchFromGitHub {
+      owner = "hyprwm";
+      repo = "hyprutils";
+      rev = "c65d41d4f4e6ded6fdb9d508a73e2fe90e55cdf7";
+      hash = "sha256-W0xgXsaqGa/5/7IBzKNhf0+23MqGPymYYfqT7ECqeTE=";
+    };
+  });
+in {
   # Use the systemd-boot EFI boot loader.
   # boot.loader.systemd-boot.enable = true;
   # boot.loader.systemd-boot.edk2-uefi-shell.enable = true;
@@ -137,6 +149,7 @@
     libsForQt5.qt5ct
     libsForQt5.qtstyleplugin-kvantum
     kdePackages.qt6ct
+    hyprutilsDev
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
