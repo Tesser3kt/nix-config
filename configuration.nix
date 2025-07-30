@@ -104,7 +104,6 @@
   # Enable browsers.
   programs.firefox.enable = true;
   programs.google-chrome.enable = true;
-  programs.brave.enable = true;
   programs.chromium.enable = true;
 
   # Enable flakes
@@ -140,6 +139,7 @@
     libsForQt5.qt5ct
     libsForQt5.qtstyleplugin-kvantum
     kdePackages.qt6ct
+    brave
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
