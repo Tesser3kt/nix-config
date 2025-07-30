@@ -139,7 +139,7 @@
     libsForQt5.qtstyleplugin-kvantum
     kdePackages.qt6ct
     brave
-    webkitgtk
+    webkitgtk_6_0
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
