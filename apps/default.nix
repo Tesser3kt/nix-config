@@ -9,7 +9,6 @@
     ./images.nix
     ./editors.nix
     ./file-manager.nix
-    ./browsers.nix
     ./vscode
     ./math.nix
   ];

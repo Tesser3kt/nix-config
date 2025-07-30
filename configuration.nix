@@ -101,8 +101,11 @@
   # Enable password-less sudo
   security.sudo.wheelNeedsPassword = false;
 
-  # Enable firefox.
+  # Enable browsers.
   programs.firefox.enable = true;
+  programs.google-chrome.enable = true;
+  programs.brave.enable = true;
+  programs.chromium.enable = true;
 
   # Enable flakes
   nix.settings.experimental-features = ["nix-command" "flakes"];
