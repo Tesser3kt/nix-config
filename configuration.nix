@@ -18,6 +18,9 @@
       hash = "sha256-W0xgXsaqGa/5/7IBzKNhf0+23MqGPymYYfqT7ECqeTE=";
     };
   });
+  hyprlandDev = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland.overrideAttrs (finalAttrs: previousAttrs: {
+    buildInputs = lib.lists.remove (x: x == pkgs.hyprutils) finalAttrs.buildInputs ++ [hyprutilsDev];
+  });
 in {
   # Use the systemd-boot EFI boot loader.
   # boot.loader.systemd-boot.enable = true;
@@ -57,7 +60,7 @@ in {
   # Enable hyprland (development version)
   programs.hyprland = {
     enable = true;
-    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    package = hyprlandDev;
     portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
 
