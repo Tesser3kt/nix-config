@@ -103,10 +103,7 @@
 
   # Enable browsers.
   programs.firefox.enable = true;
-  programs.chromium = {
-    enable = true;
-    enablePepperFlash = true; # Enable Pepper Flash plugin.
-  };
+  programs.chromium.enable = true;
 
   # Enable flakes
   nix.settings.experimental-features = ["nix-command" "flakes"];
