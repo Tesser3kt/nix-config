@@ -6,13 +6,12 @@
   lib,
   pkgs,
   inputs,
-  fetchFromGithub,
   ...
 }: let
   hyprutilsDev = pkgs.hyprutils.overrideAttrs (finalAttrs: previousAttrs: {
     pname = "hyprutils";
     version = "0.8.2";
-    src = fetchFromGithub {
+    src = builtins.fetchFromGithub {
       owner = "hyprwm";
       repo = "hyprutils";
       rev = "c65d41d4f4e6ded6fdb9d508a73e2fe90e55cdf7";
