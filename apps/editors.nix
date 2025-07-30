@@ -5,6 +5,8 @@
 }: {
   home.packages = with pkgs; [
     sioyek
+    arduino-ide
+    arduino-cli
   ];
 
   # Zathura configuration
