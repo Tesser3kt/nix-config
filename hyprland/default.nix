@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  inputs,
   ...
 }: {
   imports = [
@@ -20,8 +19,6 @@
   home.packages = with pkgs; [
     hyprpicker
     hyprcursor
-    # Dev version of hyprutils
-    inputs.hyprutils.packages.${pkgs.stdenv.hostPlatform.system}.hyprutils
   ];
 
   # Cursor
