@@ -27,12 +27,18 @@
 
   # Set default apps
   xdg.mimeApps.defaultApplications = {
-    "text/html" = ["firefox.desktop"];
-    "application/xhtml+xml" = ["firefox.desktop"];
-    "x-scheme-handler/http" = ["firefox.desktop"];
-    "x-scheme-handler/https" = ["firefox.desktop"];
-    "x-scheme-handler/about" = ["firefox.desktop"];
-    "x-scheme-handler/unknown" = ["firefox.desktop"];
+    "text/html" = ["firefox-beta.desktop"];
+    "application/xhtml+xml" = ["firefox-beta.desktop"];
+    "x-scheme-handler/http" = ["firefox-beta.desktop"];
+    "x-scheme-handler/https" = ["firefox-beta.desktop"];
+    "x-scheme-handler/about" = ["firefox-beta.desktop"];
+    "x-scheme-handler/unknown" = ["firefox-beta.desktop"];
+    "application/pdf" = ["zathura.desktop"];
+    "application/x-shellscript" = ["alacritty.desktop"];
+    "text/plain" = ["nvim.desktop"];
+    "image/png" = ["gwenview.desktop"];
+    "image/jpeg" = ["gwenview.desktop"];
+    "image/gif" = ["gwenview.desktop"];
   };
 
   home.packages = with pkgs; [

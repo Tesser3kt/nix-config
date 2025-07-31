@@ -13,8 +13,8 @@
   home.sessionVariables = {
     # default apps
     EDITOR = "nvim";
-    BROWSER = "firefox";
-    DEFAULT_BROWSER = "firefox";
+    BROWSER = "firefox-beta";
+    DEFAULT_BROWSER = "firefox-beta";
     TERMINAL = "alacritty";
   };
 
