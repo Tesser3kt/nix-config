@@ -102,7 +102,10 @@
   security.sudo.wheelNeedsPassword = false;
 
   # Enable browsers.
-  programs.firefox.enable = true;
+  programs.firefox = {
+    enable = true;
+    package = pkgs.firefox-beta; # Use Firefox Beta
+  };
   programs.chromium.enable = true;
 
   # Enable flakes
