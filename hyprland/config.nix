@@ -7,7 +7,7 @@
   ...
 }: let
   terminal = "alacritty";
-  browser = "firefox";
+  browser = "firefox-beta";
   files = "thunar";
   single_border_active = "rgba(81A1C1D2) rgba(8FBCBBD2) 90deg";
   single_border_inactive = "rgba(2E344096)";
