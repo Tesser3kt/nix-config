@@ -31,7 +31,7 @@
   }: let
     system = "x86_64-linux";
     fonts-overlay = final: prev: {
-      additional-fonts = additional-fonts.packages.${system}.palatino;
+      palatino-font = additional-fonts.packages.${system}.palatino;
     };
   in {
     nixosConfigurations.tesserekt-pc = nixpkgs.lib.nixosSystem {
@@ -71,6 +71,7 @@
         ./hw-laptop.nix
         ./intel.nix
         ./display-manager.nix
+        {nixpkgs.overlays = [fonts-overlay];}
 
         # Home Manager
         home-manager.nixosModules.home-manager
