@@ -4,6 +4,10 @@
   inputs,
   ...
 }: {
+  imports = [
+    inputs.additional-fonts.defaultPackage
+  ];
+
   home.packages = with pkgs; [
     font-awesome
     nerd-fonts._0xproto
@@ -27,7 +31,7 @@
     nerd-fonts.zed-mono
     source-code-pro
     source-sans-pro
-    inputs.additional-fonts.palatino
+    palatino
   ];
   fonts.fontconfig.enable = true;
 }
