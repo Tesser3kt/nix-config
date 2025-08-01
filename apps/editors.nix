@@ -62,6 +62,10 @@
       # Font and GUI options
       font = "Hurmit Nerd Font 12";
       guioptions = "none";
+
+      # Inverse search
+      synctex = true;
+      synctex-editor-command = "nvr --remote-silent +%{line} %{input}";
     };
   };
 
