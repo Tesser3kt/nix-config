@@ -31,7 +31,7 @@
   }: let
     system = "x86_64-linux";
     fonts-overlay = final: prev: {
-      additional-fonts = additional-fonts.packages.${system}.defaultPackage;
+      additional-fonts = additional-fonts.packages.${system}.palatino;
     };
   in {
     nixosConfigurations.tesserekt-pc = nixpkgs.lib.nixosSystem {
