@@ -34,12 +34,6 @@
       additional-fonts = additional-fonts.packages.${system}.defaultPackage;
     };
   in {
-    pkgs = import nixpkgs {
-      inherit system;
-      overlays = [
-        fonts-overlay
-      ];
-    };
     nixosConfigurations.tesserekt-pc = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {inherit inputs;};
@@ -49,6 +43,7 @@
         ./hw-pc.nix
         ./amd.nix
         ./display-manager.nix
+        {nixpkgs.overlays = [fonts-overlay];}
 
         # Home Manager
         home-manager.nixosModules.home-manager
