@@ -38,11 +38,6 @@
         ./hw-pc.nix
         ./amd.nix
         ./display-manager.nix
-        ({pkgs, ...}: {
-          nixpkgs.overlays = [
-            additional-fonts.defaultPackage
-          ];
-        })
 
         # Home Manager
         home-manager.nixosModules.home-manager
