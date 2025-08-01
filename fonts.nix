@@ -27,7 +27,7 @@
     nerd-fonts.zed-mono
     source-code-pro
     source-sans-pro
-    palatino-font
+    additional-fonts
   ];
   fonts.fontconfig.enable = true;
 }

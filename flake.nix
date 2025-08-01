@@ -28,7 +28,18 @@
     nix4nvchad,
     additional-fonts,
     ...
-  }: {
+  }: let
+    system = "x86_64-linux";
+    fonts-overlay = final: prev: {
+      additional-fonts = additional-fonts.packages.${system}.defaultPackage;
+    };
+  in {
+    pkgs = import nixpkgs {
+      inherit system;
+      overlays = [
+        fonts-overlay
+      ];
+    };
     nixosConfigurations.tesserekt-pc = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {inherit inputs;};
