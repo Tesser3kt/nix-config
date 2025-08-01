@@ -65,7 +65,7 @@
 
       # Inverse search
       synctex = true;
-      synctex-editor-command = "nvr --remote-silent +%{line} %{input}";
+      synctex-editor-command = "${pkgs.neovim-remote}/bin/nvr --remote-silent +%{line} %{input}";
     };
   };
 
