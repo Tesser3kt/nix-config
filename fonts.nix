@@ -27,7 +27,7 @@
     nerd-fonts.zed-mono
     source-code-pro
     source-sans-pro
-    inputs.additional-fonts.defaultPackage
+    inputs.additional-fonts.defaultPackage.palatino
   ];
   fonts.fontconfig.enable = true;
 }
