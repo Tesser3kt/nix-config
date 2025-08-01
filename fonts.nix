@@ -4,10 +4,6 @@
   inputs,
   ...
 }: {
-  imports = [
-    inputs.additional-fonts.defaultPackage
-  ];
-
   home.packages = with pkgs; [
     font-awesome
     nerd-fonts._0xproto
