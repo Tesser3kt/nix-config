@@ -1,5 +1,26 @@
 {
   "nodes": {
+    "additional-fonts": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1689525788,
+        "narHash": "sha256-wsTvfIVjiFLDt9bwQqkbfo2cxsfDKCe8jOaWr4Kvhfk=",
+        "owner": "jeslie0",
+        "repo": "fonts",
+        "rev": "b2d2aa51642832d68f60348867467b3d8093eb87",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jeslie0",
+        "repo": "fonts",
+        "type": "github"
+      }
+    },
     "aquamarine": {
       "inputs": {
         "hyprutils": [
@@ -50,6 +71,21 @@
       }
     },
     "flake-utils": {
+      "locked": {
+        "lastModified": 1649676176,
+        "narHash": "sha256-OWKJratjt2RW151VUlJPRALb7OU2S5s+f0vLj4o1bHM=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "a4b154ebbdc88c8498a5c7b01589addc9e9cb678",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "flake-utils_2": {
       "inputs": {
         "systems": "systems_2"
       },
@@ -370,7 +406,7 @@
     },
     "nix4nvchad": {
       "inputs": {
-        "flake-utils": "flake-utils",
+        "flake-utils": "flake-utils_2",
         "nixpkgs": [
           "nixpkgs"
         ],
@@ -465,6 +501,7 @@
     },
     "root": {
       "inputs": {
+        "additional-fonts": "additional-fonts",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
         "nix4nvchad": "nix4nvchad",

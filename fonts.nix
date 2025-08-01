@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  inputs,
   ...
 }: {
   home.packages = with pkgs; [
@@ -26,6 +27,7 @@
     nerd-fonts.zed-mono
     source-code-pro
     source-sans-pro
+    inputs.additional-fonts.defaultPackage
   ];
   fonts.fontconfig.enable = true;
 }

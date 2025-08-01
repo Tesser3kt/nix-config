@@ -16,12 +16,17 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nvchad-starter.follows = "nvchad-starter";
     };
+    additional-fonts = {
+      url = "github:jeslie0/fonts";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = inputs @ {
     self,
     nixpkgs,
     home-manager,
     nix4nvchad,
+    additional-fonts,
     ...
   }: {
     nixosConfigurations.tesserekt-pc = nixpkgs.lib.nixosSystem {
