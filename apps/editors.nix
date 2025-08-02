@@ -65,6 +65,7 @@
 
       # Inverse search
       synctex = true;
+      synctex-editor-command = "/etc/profiles/per-user/tesserekt/bin/nvr --remote-silent +%{line} %{input}";
     };
   };
 
