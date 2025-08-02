@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: {
-  home.packahge = with pkgs; [
+  home.packages = with pkgs; [
     neomutt
     mutt-wizard
     goimapnotify
