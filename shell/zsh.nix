@@ -48,6 +48,9 @@
       # Platwright browsers
       PLAYWRIGHT_BROWSERS_PATH = "${pkgs.playwright.browsers}";
       PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = true;
+      
+      # Neovim remote
+      NVIM_LISTEN_ADDRESS = "/tmp/nvimsocket";
     };
 
     # Oh My Zsh
