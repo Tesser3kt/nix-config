@@ -89,5 +89,32 @@
         }
       ];
     };
+    nixosConfigurations.tesserekt-raider = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = {inherit inputs;};
+      modules = [
+        ./configuration.nix
+        ./boot-loader-raider.nix
+        ./hw-raider.nix
+	./nvidia.nix
+        ./display-manager.nix
+        {nixpkgs.overlays = [fonts-overlay];}
+
+        # Home Manager
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+
+          home-manager.users.tesserekt = import ./home.nix;
+          home-manager.extraSpecialArgs = {
+            inherit inputs;
+            displayConfig = "raider";
+            waybarConfig = "laptop";
+            startupConfig = "raider";
+          };
+        }
+      ];
+    };
   };
 }

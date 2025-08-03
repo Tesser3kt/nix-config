@@ -25,7 +25,12 @@
   devices = {
     "pc" = import ./tablet/pc.nix;
   };
+  additionalSettings = {
+    "raider" = [ (import ./no-hw-cursor.nix { inherit config pkgs; }) ];
+  };
 in {
+  imports = additionalSettings.${displayConfig} or [];
+
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
     bind =
