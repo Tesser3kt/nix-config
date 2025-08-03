@@ -44,9 +44,6 @@
     # GTK theme editor
     nwg-look
 
-    # MSI Control Center
-    mcontrolcenter
-
     # Logitech stuff
     solaar
   ];

@@ -143,6 +143,7 @@
     kdePackages.qt6ct
     brave
     webkitgtk_6_0
+    mcontrolcenter
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
