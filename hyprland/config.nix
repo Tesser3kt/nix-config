@@ -17,16 +17,18 @@
   output = {
     "pc" = import ./output/pc.nix;
     "laptop" = import ./output/laptop.nix;
+    "raider" = import ./output/raider.nix;
   };
   startup = {
     "common" = import ./startup/common.nix;
     "pc" = import ./startup/pc.nix;
+    "raider" = import ./startup/raider.nix;
   };
   devices = {
     "pc" = import ./tablet/pc.nix;
   };
   additionalSettings = {
-    "raider" = [ (import ./no-hw-cursor.nix { inherit config pkgs; }) ];
+    "raider" = [(import ./no-hw-cursor.nix {inherit config pkgs;})];
   };
 in {
   imports = additionalSettings.${displayConfig} or [];

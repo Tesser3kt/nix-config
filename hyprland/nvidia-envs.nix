@@ -1,5 +1,8 @@
-{ config, pkgs, ...}:
 {
+  config,
+  pkgs,
+  ...
+}: {
   home.sessionVariables = {
     LIBVA_DRIVER_NAME = "nvidia";
     GDM_BACKEND = "nvidia-drm";

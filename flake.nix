@@ -96,7 +96,7 @@
         ./configuration.nix
         ./boot-loader-raider.nix
         ./hw-raider.nix
-	./nvidia.nix
+        ./nvidia.nix
         ./display-manager.nix
         {nixpkgs.overlays = [fonts-overlay];}
 
@@ -112,6 +112,7 @@
             displayConfig = "raider";
             waybarConfig = "laptop";
             startupConfig = "raider";
+            deviceConfig = "raider";
           };
         }
       ];
