@@ -16,7 +16,7 @@
   boot.initrd.kernelModules = [];
   boot.kernelModules = ["kvm-intel" "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" "msi-ec"];
   boot.extraModulePackages = [config.boot.kernelPackages.msi-ec];
-  boot.kernelParams = ["ec_sys.write_support=1"];
+  boot.kernelParams = ["ec_sys.write_support=1 msi-ec.firmware=17S1IMS1.105"];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/42a39eff-b8f1-42b6-a111-1eb253a6b264";
