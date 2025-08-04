@@ -33,6 +33,7 @@
     fonts-overlay = final: prev: {
       palatino-font = additional-fonts.packages.${system}.palatino;
     };
+    sioyek-overlay = nixpkgs.callPackage ./apps/sioyek.nix {};
   in {
     nixosConfigurations.tesserekt-pc = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -43,7 +44,11 @@
         ./hw-pc.nix
         ./amd.nix
         ./display-manager.nix
-        {nixpkgs.overlays = [fonts-overlay];}
+        {
+          nixpkgs.overlays = [
+            fonts-overlay
+          ];
+        }
 
         # Home Manager
         home-manager.nixosModules.home-manager
@@ -98,7 +103,12 @@
         ./hw-raider.nix
         ./nvidia.nix
         ./display-manager.nix
-        {nixpkgs.overlays = [fonts-overlay];}
+        {
+          nixpkgs.overlays = [
+            fonts-overlay
+            (import ./apps/sioyek.nix)
+          ];
+        }
 
         # Home Manager
         home-manager.nixosModules.home-manager
