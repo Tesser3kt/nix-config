@@ -39,6 +39,9 @@
     "image/png" = ["gwenview.desktop"];
     "image/jpeg" = ["gwenview.desktop"];
     "image/gif" = ["gwenview.desktop"];
+    "video/mp4" = ["vlc.desktop"];
+    "video/x-matroska" = ["vlc.desktop"];
+    "video/x-msvideo" = ["vlc.desktop"];
   };
 
   home.packages = with pkgs; [
