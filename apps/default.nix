@@ -5,8 +5,7 @@
 }: {
   imports = [
     ./communication.nix
-    ./music.nix
-    ./images.nix
+    ./media.nix
     ./editors.nix
     ./file-manager.nix
     ./vscode
