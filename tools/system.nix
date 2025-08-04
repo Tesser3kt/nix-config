@@ -46,6 +46,9 @@
 
     # Logitech stuff
     solaar
+
+    # HID devices control
+    hidapi
   ];
 
   services.blueman-applet.enable = false;
