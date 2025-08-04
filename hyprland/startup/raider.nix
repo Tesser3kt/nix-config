@@ -1,5 +1,4 @@
 [
-  "openrgb --startminimized &"
   "mcontrolcenter &"
   "solaar &"
 ]
