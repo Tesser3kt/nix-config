@@ -15,7 +15,7 @@
   boot.initrd.availableKernelModules = ["vmd" "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc"];
   boot.initrd.kernelModules = [];
   boot.kernelModules = ["kvm-intel" "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" "msi-ec"];
-  boot.extraModulePackages = [pkgs.linuxPackages_latest.msi-ec];
+  boot.extraModulePackages = [config.boot.kernelPackages.msi-ec];
   boot.kernelParams = ["ec_sys.write_support=1"];
 
   fileSystems."/" = {
