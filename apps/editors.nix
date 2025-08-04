@@ -103,7 +103,6 @@
       "ui_text_color" = "0.925490 0.937255 0.956863";
       "ui_background_color" = "0.298039 0.337255 0.415686";
       "ui_selected_text_color" = "0.298039 0.337255 0.415686";
-      "ui_selected_text_background_color" = "0.368627 0.505882 0.674510";
 
       "status_bar_font_size" = "12";
     };
