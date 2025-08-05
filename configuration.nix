@@ -108,6 +108,7 @@
     extraGroups = [
       "wheel"
       "docker"
+      "networkmanager"
     ]; # Enable ‘sudo’ for the user and add to docker group.
     packages = with pkgs; [
       tree
