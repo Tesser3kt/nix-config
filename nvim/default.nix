@@ -57,6 +57,7 @@
       tinymist
       arduino-language-server
       arduino-cli
+      libclang
 
       # Linters & Formatters
       stylua
