@@ -49,6 +49,9 @@
 
     # HID devices control
     hidapi
+
+    # Dbus explorer
+    d-spy
   ];
 
   services.blueman-applet.enable = false;
