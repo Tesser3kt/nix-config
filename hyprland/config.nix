@@ -156,6 +156,9 @@ in {
 
       # Spotify on workspace 8
       "workspace 8, class: ^(spotify)$"
+
+      # Idle inhibit fullscreen apps
+      "idleinhibit fullscreen, fullscreen:1"
     ];
 
     # Animations
