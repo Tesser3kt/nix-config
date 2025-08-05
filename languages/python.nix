@@ -27,6 +27,7 @@
         requests
         numpy
         pandas
+        pyserial
       ]))
   ];
 }
