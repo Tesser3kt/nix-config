@@ -50,6 +50,21 @@
     portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
 
+  # Enable XDG portal
+  xdg.portal = {
+    enable = true;
+    wlr = {
+      enable = true;
+    };
+    lxqt = {
+      enable = true;
+    };
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-kde
+      xdg-desktop-portal-gtk
+    ];
+  };
+
   # Enable hibernation.
   swapDevices = [
     {device = "/dev/disk/by-label/swap";}
@@ -116,9 +131,6 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-    xdg-desktop-portal
-    xdg-desktop-portal-gtk
-    xdg-desktop-portal-wlr
     vim
     wget
     python3
