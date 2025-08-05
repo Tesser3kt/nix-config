@@ -63,11 +63,6 @@
       kdePackages.xdg-desktop-portal-kde
       xdg-desktop-portal-gtk
     ];
-    config.hyprland = {
-      default = ["hyprland" "gtk"];
-      "org.freedesktop.impl.portal.FileChooser" = "kde";
-      "org.freedesktop.impl.portal.Print" = "kde";
-    };
   };
 
   # Enable hibernation.
@@ -136,6 +131,9 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    xdg-desktop-portal-gtk
+    xdg-desktop-portal-wlr
+    kdePackages.xdg-desktop-portal-kde
     vim
     wget
     python3
