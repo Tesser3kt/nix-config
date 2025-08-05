@@ -13,6 +13,7 @@
     ./lua.nix
     ./typst.nix
     ./nix.nix
+    ./arduino.nix
     ./misc.nix
   ];
 }

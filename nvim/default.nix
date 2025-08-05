@@ -55,6 +55,8 @@
       texlab
       typescript-language-server
       tinymist
+      arduino-language-server
+      arduino-cli
 
       # Linters & Formatters
       stylua

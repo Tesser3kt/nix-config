@@ -4,8 +4,7 @@
   ...
 }: {
   home.packages = with pkgs; [
-    ccls
-    clangd
-    clang-format
+    arduino-cli
+    arduino-language-server
   ];
 }
