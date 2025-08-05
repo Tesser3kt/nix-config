@@ -55,4 +55,14 @@
   ];
 
   services.blueman-applet.enable = false;
+
+  # Enable USB automount
+  services.udiskie = {
+    enable = true;
+    settings = {
+      program_options = {
+        file_manager = "${pkgs.xfce.thunar}/bin/thunar";
+      };
+    };
+  };
 }

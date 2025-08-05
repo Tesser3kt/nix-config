@@ -204,14 +204,6 @@
 
   # Enable USB automount
   services.udisks2.enable = true;
-  services.udiskie = {
-    enable = true;
-    settings = {
-      program_options = {
-        file_manager = "${pkgs.xfce.thunar}/bin/thunar";
-      };
-    };
-  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
