@@ -63,6 +63,12 @@
       kdePackages.xdg-desktop-portal-kde
       xdg-desktop-portal-gtk
     ];
+    configPackages = [config.wayland.windowManager.hyprland.package];
+    config.hyprland = {
+      default = ["hyprland" "gtk"];
+      "org.freedesktop.impl.portal.FileChooser" = "kde";
+      "org.freedesktop.impl.portal.Print" = "kde";
+    };
   };
 
   # Enable hibernation.
