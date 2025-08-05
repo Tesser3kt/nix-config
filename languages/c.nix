@@ -5,7 +5,6 @@
 }: {
   home.packages = with pkgs; [
     ccls
-    clangd
-    clang-format
+    clang
   ];
 }
