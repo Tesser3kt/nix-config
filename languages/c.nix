@@ -5,6 +5,7 @@
 }: {
   home.packages = with pkgs; [
     ccls
-    clang
+    libclang
+    clang-tools
   ];
 }
