@@ -132,9 +132,11 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    xdg-desktop-portal
     xdg-desktop-portal-gtk
     xdg-desktop-portal-wlr
     kdePackages.xdg-desktop-portal-kde
+    lxqt.xdg-desktop-portal-lxqt
     vim
     wget
     python3
