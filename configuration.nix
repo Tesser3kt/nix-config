@@ -109,6 +109,7 @@
       "wheel"
       "docker"
       "networkmanager"
+      "dialout"
     ]; # Enable ‘sudo’ for the user and add to docker group.
     packages = with pkgs; [
       tree
@@ -198,6 +199,17 @@
   virtualisation.docker = {
     enable = true;
     enableOnBoot = true;
+  };
+
+  # Enable USB automount
+  services.udisks2.enable = true;
+  services.udiskie = {
+    enable = true;
+    settings = {
+      program_options = {
+        file_manager = "${pkgs.xfce.thunar}/bin/thunar";
+      };
+    };
   };
 
   # Open ports in the firewall.
