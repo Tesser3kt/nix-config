@@ -166,6 +166,7 @@
     brave
     webkitgtk_6_0
     mcontrolcenter
+    udiskie
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
