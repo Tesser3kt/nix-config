@@ -224,7 +224,7 @@
         };
 
         idle_inhibitor = {
-          format = "{icon}";
+          format = "<span font='13'>{icon}</span>";
           "format-icons" = {
             activated = " ";
             deactivated = " ";

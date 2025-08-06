@@ -180,6 +180,10 @@ in {
         color: ${colors.green_b};
       }
 
+      #idle_inhibitor{
+        color: ${colors.orange};
+      }
+
       @keyframes blink {
       	to {
           color: black;
