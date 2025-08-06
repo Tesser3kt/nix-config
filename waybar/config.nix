@@ -19,6 +19,8 @@
           "custom/separator#blank"
           "hyprland/language"
           "custom/separator#blank"
+          "idle_inhibitor"
+          "custom/separator#blank"
           "hyprland/window"
         ];
 
