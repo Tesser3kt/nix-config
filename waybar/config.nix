@@ -154,7 +154,7 @@
         clock = {
           interval = 1;
           format = "<span font='13'> </span>{:%H:%M}";
-          "format-alt" = "<span font='13'> </span>{:%H:%M  <span font='13'> </span>%Y, %d %B, %A}";
+          "format-alt" = "<span font='13'> </span>{:%H:%M:%S  <span font='13'> </span>%Y, %d %B, %A}";
           "tooltip-format" = "<tt><small>{calendar}</small></tt>";
           calendar = {
             mode = "year";
