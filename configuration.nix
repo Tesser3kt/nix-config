@@ -205,6 +205,9 @@
   # Enable USB automount
   services.udisks2.enable = true;
 
+  # Suspend and hibernate delay.
+  systemd.sleep.extraConfig = "HibernateDelaySec=15min";
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
