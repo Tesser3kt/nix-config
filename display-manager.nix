@@ -9,8 +9,6 @@
   ];
 
   # SDDM config
-  services.displayManager.enable = true;
-  services.displayManager.autoLogin.enable = false;
   services.displayManager.sddm = {
     enable = true;
     package = pkgs.kdePackages.sddm;
