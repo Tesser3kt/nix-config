@@ -167,6 +167,7 @@
     webkitgtk_6_0
     mcontrolcenter
     udiskie
+    gnupg
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

@@ -11,7 +11,6 @@
     msmtp
     pass
     gettext
-    pam_gnupg
     lynx
     notmuch
     abook
