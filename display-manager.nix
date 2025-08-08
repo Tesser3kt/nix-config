@@ -32,11 +32,4 @@
       storeOnly = true;
     };
   };
-  home.file.".pam-gnupg".text = "73316C31F6A0A76C6B72A23C87C254BEEA04C2CB";
-  services.gpg-agent = {
-    enable = true;
-    extraConfig = ''
-      allow-preset-passphrase
-    '';
-  };
 }
