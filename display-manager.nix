@@ -10,6 +10,7 @@
 
   # SDDM config
   services.displayManager.enable = true;
+  services.displayManagwer.autoLogin.enable = false;
   services.displayManager.sddm = {
     enable = true;
     package = pkgs.kdePackages.sddm;
@@ -23,13 +24,16 @@
   };
 
   # Enable GPG keyring on SDDM login
-  security.pam.services.login.gnupg.enable = true;
+  security.pam.services.login.gnupg = {
+    enable = true;
+    noAutoStart = true;
+  };
   security.pam.services.sddm = {
     enable = true;
     enableGnomeKeyring = true;
     gnupg = {
       enable = true;
-      storeOnly = true;
+      noAutoStart = true;
     };
   };
 }
