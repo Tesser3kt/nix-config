@@ -15,11 +15,11 @@
   };
   systemd.services."mailsync" = {
     description = "Sync mail";
-    after = ["network.target"];
     wantedBy = ["default.target"];
-    script = "${pkgs.mutt-wizard}/bin/mailsync";
+    script = "/etc/profiles/per-user/tesserekt/bin/mailsync";
     serviceConfig = {
       Type = "oneshot";
+      User = "tesserekt";
     };
   };
 }
