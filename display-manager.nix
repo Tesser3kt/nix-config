@@ -31,9 +31,5 @@
       enable = true;
       storeOnly = true;
     };
-    extraConfig = ''
-      auth     optional  pam_gnupg.so store-only
-      session  optional  pam_gnupg.so
-    '';
   };
 }
