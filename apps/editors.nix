@@ -17,7 +17,6 @@
   };
 in {
   home.packages = with pkgs; [
-    sioyek
     arduino-ide
     arduino-cli
   ];
