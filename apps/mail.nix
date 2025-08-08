@@ -25,6 +25,7 @@
     enable = true;
     extraConfig = ''
       allow-preset-passphrase
+      max-cache-ttl 86400
     '';
   };
 
