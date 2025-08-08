@@ -209,6 +209,18 @@
   # Suspend and hibernate delay.
   systemd.sleep.extraConfig = "HibernateDelaySec=15min";
 
+  # Enable OpenVPN
+  services.openvpn = {
+    enable = true;
+    servers = {
+      gevoVPN = {
+        config = ''
+          config /home/tesserekt/.config/openvpn/gevovpn/GEVO-VPN.ovpn
+        '';
+      };
+    };
+  }
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
