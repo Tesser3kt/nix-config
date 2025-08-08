@@ -23,5 +23,11 @@
   };
 
   # Enable GPG keyring on SDDM login
-  security.pam.services.sddm.enableGnomeKeyring = true;
+  security.pam.services.sddm = {
+    enable = true;
+    enableGnomeKeyring = true;
+    gnupg = {
+      enable = true;
+    };
+  };
 }
