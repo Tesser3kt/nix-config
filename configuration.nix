@@ -217,6 +217,7 @@
           config /home/tesserekt/.config/openvpn/gevovpn/GEVO-VPN.ovpn
         '';
         autoStart = false;
+        updateResolvConf = true;
       };
     };
   };
