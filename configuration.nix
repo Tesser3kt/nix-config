@@ -219,7 +219,7 @@
         '';
       };
     };
-  }
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
