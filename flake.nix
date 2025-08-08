@@ -107,7 +107,6 @@
         {
           nixpkgs.overlays = [
             fonts-overlay
-            (import ./apps/sioyek.nix)
           ];
         }
 
