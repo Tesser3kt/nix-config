@@ -35,5 +35,13 @@
       enable = true;
       noAutoStart = true;
     };
+    text = ''
+      auth      substack      login
+      account   include       login
+      password  substack      login
+      session   include       login
+      auth      optional      pam_gnupg.so store-only
+      session   optional      pam_gnupg.so
+    '';
   };
 }
