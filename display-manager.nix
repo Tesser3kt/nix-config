@@ -33,7 +33,6 @@
     enableGnomeKeyring = true;
     gnupg = {
       enable = true;
-      noAutostart = true;
       storeOnly = true;
     };
     text = ''
@@ -46,7 +45,7 @@
     enableGnomeKeyring = true;
     gnupg = {
       enable = true;
-      noAutostart = true;
+      storeOnly = true;
     };
     text = ''
       auth      optional      pam_gnupg.so
