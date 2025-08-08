@@ -21,4 +21,7 @@
       sddm-astronaut
     ];
   };
+
+  # Enable GPG keyring on SDDM login
+  security.pam.services.sddm.enableGnomeKeyring = true;
 }
