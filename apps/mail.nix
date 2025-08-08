@@ -36,7 +36,7 @@
       isync
     ];
   };
-  accounts.email."djklepy@gmail.com".imapnotify = {
+  accounts.email.accounts."djklepy@gmail.com".imapnotify = {
     enable = true;
     boxes = ["Inbox"];
     onNotify = "mbsync djklepy@gmail.com";
