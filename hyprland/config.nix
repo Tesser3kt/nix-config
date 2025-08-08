@@ -8,7 +8,9 @@
 }: let
   terminal = "alacritty";
   browser = "firefox-beta";
-  files = "thunar";
+  files = "ranger";
+  calculator = "alacritty -e zsh -ic sage";
+  mail = "alacritty -e zsh -ic neomutt";
   single_border_active = "rgba(81A1C1D2) rgba(8FBCBBD2) 90deg";
   single_border_inactive = "rgba(2E344096)";
   group_border_active = "rgba(81A1C1D2)";
@@ -40,7 +42,9 @@ in {
         # App bindings
         "$mod, Return, exec, ${terminal}"
         "$mod SHIFT, w, exec, ${browser}"
-        "$mod, e, exec, ${files}"
+        "$mod, E, exec, ${files}"
+        "$mod, C, exec, ${calculator}"
+        "$mod, M, exec, ${mail}"
 
         # Workspace 10
         "$mod, code:19, workspace, 10"
