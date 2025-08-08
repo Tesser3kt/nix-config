@@ -44,6 +44,7 @@
         ./hw-pc.nix
         ./amd.nix
         ./display-manager.nix
+        ./timers.nix
         {
           nixpkgs.overlays = [
             fonts-overlay
@@ -76,6 +77,7 @@
         ./hw-laptop.nix
         ./intel.nix
         ./display-manager.nix
+        ./timers.nix
         {nixpkgs.overlays = [fonts-overlay];}
 
         # Home Manager
