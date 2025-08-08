@@ -26,14 +26,14 @@
   # Enable GPG keyring on SDDM login
   security.pam.services.login.gnupg = {
     enable = true;
-    noAutoStart = true;
+    noAutostart = true;
   };
   security.pam.services.sddm = {
     enable = true;
     enableGnomeKeyring = true;
     gnupg = {
       enable = true;
-      noAutoStart = true;
+      noAutostart = true;
     };
     text = ''
       auth      substack      login
