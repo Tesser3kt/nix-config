@@ -17,7 +17,7 @@
     description = "Sync mail";
     after = ["network.target"];
     wantedBy = ["default.target"];
-    script = "${pkgs.mailsync}/bin/mailsync";
+    script = "mailsync";
     serviceConfig = {
       Type = "oneshot";
     };
