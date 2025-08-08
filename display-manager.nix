@@ -34,6 +34,7 @@
     gnupg = {
       enable = true;
       noAutostart = true;
+      storeOnly = true;
     };
     text = ''
       auth      optional      pam_gnupg.so store-only
