@@ -20,7 +20,7 @@
   ];
 
   # GPG agent configuration
-  home.file.".pam-gnupg".text = "73316C31F6A0A76C6B72A23C87C254BEEA04C2CB";
+  home.file.".pam-gnupg".text = "4D7F773E7B92A663FDF2BF2BA723378E50AAE17A";
   services.gpg-agent = {
     enable = true;
     extraConfig = ''
