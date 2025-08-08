@@ -1,8 +1,21 @@
 {
   config,
   pkgs,
+  graphics,
   ...
-}: {
+}: let
+  sioyekPackage = {
+    "nvidia" = pkgs.symlinkJoin {
+      name = "sioyek";
+      paths = [pkgs.sioyek];
+      buildInputs = [pkgs.makeWrapper];
+      postBuild = ''
+        wrapProgram $out/bin/sioyek \
+          --set QT_QPA_PLATFORM xcb
+      '';
+    };
+  };
+in {
   home.packages = with pkgs; [
     sioyek
     arduino-ide
@@ -71,6 +84,7 @@
   # Sioyek configuration
   programs.sioyek = {
     enable = true;
+    package = sioyekPackage.${graphics} or pkgs.sioyek;
     config = {
       "startup_commands" = "toggle_custom_color";
 

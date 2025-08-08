@@ -33,7 +33,6 @@
     fonts-overlay = final: prev: {
       palatino-font = additional-fonts.packages.${system}.palatino;
     };
-    sioyek-overlay = nixpkgs.callPackage ./apps/sioyek.nix {};
   in {
     nixosConfigurations.tesserekt-pc = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -64,6 +63,7 @@
             waybarConfig = "pc";
             startupConfig = "pc";
             deviceConfig = "pc";
+            graphics = "amd";
           };
         }
       ];
@@ -92,6 +92,7 @@
             displayConfig = "laptop";
             waybarConfig = "laptop";
             startupConfig = "laptop";
+            graphics = "intel";
           };
         }
       ];
@@ -125,6 +126,7 @@
             waybarConfig = "laptop";
             startupConfig = "raider";
             deviceConfig = "raider";
+            graphics = "nvidia";
           };
         }
       ];

@@ -2,10 +2,11 @@
   config,
   pkgs,
   displayConfig,
+  graphics,
   ...
 }: let
   envVariables = {
-    "raider" = [(import ./nvidia-envs.nix {inherit config pkgs;})];
+    "nvidia" = [(import ./nvidia-envs.nix {inherit config pkgs;})];
   };
 in {
   imports =
@@ -16,7 +17,7 @@ in {
       ./hypridle.nix
       ./scripts
     ]
-    ++ (envVariables.${displayConfig} or []);
+    ++ (envVariables.${graphics} or []);
 
   wayland.windowManager.hyprland = {
     enable = true;

@@ -4,6 +4,7 @@
   displayConfig,
   startupConfig,
   deviceConfig,
+  graphics,
   ...
 }: let
   terminal = "alacritty";
@@ -30,10 +31,10 @@
     "pc" = import ./tablet/pc.nix;
   };
   additionalSettings = {
-    "raider" = [(import ./no-hw-cursor.nix {inherit config pkgs;})];
+    "nvidia" = [(import ./no-hw-cursor.nix {inherit config pkgs;})];
   };
 in {
-  imports = additionalSettings.${displayConfig} or [];
+  imports = additionalSettings.${graphics} or [];
 
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
