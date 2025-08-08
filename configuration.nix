@@ -211,7 +211,6 @@
 
   # Enable OpenVPN
   services.openvpn = {
-    enable = true;
     servers = {
       gevoVPN = {
         config = ''
