@@ -40,15 +40,4 @@
       session   optional      pam_gnupg.so
     '';
   };
-  security.pam.services.hyprlock = {
-    enable = true;
-    enableGnomeKeyring = true;
-    gnupg = {
-      enable = true;
-      storeOnly = true;
-    };
-    text = ''
-      auth      optional      pam_gnupg.so
-    '';
-  };
 }
