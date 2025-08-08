@@ -164,6 +164,9 @@ in {
 
       # Idle inhibit fullscreen apps
       "idleinhibit fullscreen, fullscreen:1"
+
+      # Tile sioyek as it starts in floating mode
+      "tile, class: ^(sioyek)$"
     ];
 
     # Animations
