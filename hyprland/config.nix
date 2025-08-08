@@ -8,7 +8,7 @@
 }: let
   terminal = "alacritty";
   browser = "firefox-beta";
-  files = "ranger";
+  files = "alacritty -e zsh -ic ranger";
   calculator = "alacritty -e zsh -ic sage";
   mail = "alacritty -e zsh -ic neomutt";
   single_border_active = "rgba(81A1C1D2) rgba(8FBCBBD2) 90deg";
