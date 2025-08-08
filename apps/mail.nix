@@ -6,7 +6,6 @@
   home.packages = with pkgs; [
     neomutt
     mutt-wizard
-    goimapnotify
     isync
     msmtp
     pass
@@ -26,5 +25,23 @@
     extraConfig = ''
       allow-preset-passphrase
     '';
+  };
+
+  # Enable IMAP notify
+  services.imapnotify = {
+    enable = true;
+    path = with pkgs; [
+      notmuch
+      libnotify
+      isync
+    ];
+  };
+  accounts.email."djklepy@gmail.com".imapnotify = {
+    enable = true;
+    boxes = ["Inbox"];
+    onNotify = "mbsync djklepy@gmail.com";
+    onNotifyPost = {
+      mail = "notmuch new && notify-send 'New email received'";
+    };
   };
 }
