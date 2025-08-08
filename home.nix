@@ -17,6 +17,7 @@
     ./swaync
     ./gtk
     ./qt
+    ./timers.nix
   ];
 
   home.username = "tesserekt";
