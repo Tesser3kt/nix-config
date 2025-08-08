@@ -16,6 +16,7 @@
     urlscan
     cronie
     mpop
+    goimapnotify
   ];
 
   # GPG agent configuration
@@ -35,13 +36,5 @@
       libnotify
       isync
     ];
-  };
-  accounts.email.accounts."djklepy@gmail.com".imapnotify = {
-    enable = true;
-    boxes = ["Inbox"];
-    onNotify = "mbsync djklepy@gmail.com";
-    onNotifyPost = {
-      mail = "notmuch new && notify-send 'New email received'";
-    };
   };
 }
