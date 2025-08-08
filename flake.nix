@@ -103,6 +103,7 @@
         ./hw-raider.nix
         ./nvidia.nix
         ./display-manager.nix
+        ./timers.nix
         {
           nixpkgs.overlays = [
             fonts-overlay
