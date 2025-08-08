@@ -4,5 +4,4 @@
   "swaync &"
   "hypridle &"
   "webcord &"
-  "mw -t 30 &"
 ]
