@@ -17,7 +17,7 @@
     description = "Sync mail";
     after = ["network.target"];
     wantedBy = ["default.target"];
-    script = "mailsync";
+    script = "${pkgs.mutt-wizard}/bin/mailsync";
     serviceConfig = {
       Type = "oneshot";
     };
