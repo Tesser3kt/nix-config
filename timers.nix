@@ -17,12 +17,16 @@
 
   # Systemd user services
   systemd.user.services."mailsync" = {
-    description = "Sync mail";
-    wantedBy = ["default.target"];
-    script = "${pkgs.mutt-wizard}/bin/mailsync";
-    serviceConfig = {
+    Unit = {
+      Description = "Sync mail";
+    };
+    Install = {
+      WantedBy = ["default.target"];
+    };
+    Service = {
       Type = "oneshot";
       User = username;
+      ExecStart = "${pkgs.mutt-wizard}/bin/mailsync";
     };
   };
 }
