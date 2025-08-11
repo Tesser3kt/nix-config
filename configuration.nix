@@ -207,16 +207,6 @@
   services.udisks2.enable = true;
 
   # Suspend and hibernate delay.
-  systemd.services.suspend-then-hibernate = {
-    enable = true;
-    description = "Suspend then hibernate after 15 minutes of inactivity";
-    after = ["suspend.target"];
-    wantedBy = ["sleep.target"];
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = "${pkgs.systemd}/bin/systemctl suspend-then-hibernate";
-    };
-  };
   systemd.sleep.extraConfig = "HibernateDelaySec=15m";
 
   # Enable OpenVPN
