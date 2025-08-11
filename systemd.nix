@@ -7,9 +7,15 @@
   # Systemd timers
   systemd.user.timers."mailsync" = {
     enable = true;
-    description = "Sync mail every 15 minutes";
-    wantedBy = ["timers.target"];
-    timerConfig = {
+    Unit = {
+      Description = "Mail sync timer";
+      After = ["network.target"];
+      Requires = ["network.target"];
+    };
+    Install = {
+      WantedBy = ["timers.target"];
+    };
+    Timer = {
       OnBootSec = "1min";
       OnUnitActiveSec = "15min";
       Unit = "mailsync.service";
