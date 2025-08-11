@@ -19,7 +19,6 @@
 
   # Systemd user services
   systemd.user.services."mailsync" = {
-    enable = false;
     Unit = {
       Description = "Sync mail";
     };
