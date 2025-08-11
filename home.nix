@@ -106,5 +106,16 @@
     pay-respects
   ];
 
+  # Systemd user services
+  systemd.${username}.services."mailsync" = {
+    description = "Sync mail";
+    wantedBy = ["default.target"];
+    script = "${pkgs.mutt-wizard}/bin/mailsync";
+    serviceConfig = {
+      Type = "oneshot";
+      User = username;
+    };
+  };
+
   home.stateVersion = "25.05";
 }

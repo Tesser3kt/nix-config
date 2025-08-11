@@ -14,13 +14,4 @@
   #     Unit = "mailsync.service";
   #   };
   # };
-  systemd.${username}.services."mailsync" = {
-    description = "Sync mail";
-    wantedBy = ["default.target"];
-    script = "${pkgs.mutt-wizard}/bin/mailsync";
-    serviceConfig = {
-      Type = "oneshot";
-      User = username;
-    };
-  };
 }
