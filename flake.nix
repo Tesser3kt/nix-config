@@ -52,7 +52,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
 
-          home-manager.users.tesserekt = import ./home.nix;
+          home-manager.users.${username} = import ./home.nix;
           home-manager.extraSpecialArgs = {
             inherit inputs username;
             displayConfig = "pc";
@@ -81,7 +81,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
 
-          home-manager.users.tesserekt = import ./home.nix;
+          home-manager.users.${username} = import ./home.nix;
           home-manager.extraSpecialArgs = {
             inherit inputs username;
             displayConfig = "laptop";
@@ -109,7 +109,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
 
-          home-manager.users.tesserekt = import ./home.nix;
+          home-manager.users.${username} = import ./home.nix;
           home-manager.extraSpecialArgs = {
             inherit inputs username;
             displayConfig = "raider";
