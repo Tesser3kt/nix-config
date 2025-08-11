@@ -7,7 +7,7 @@
 }: {
   imports = [
     ./fonts.nix
-    ./timers.nix
+    ./systemd.nix
     ./shell
     ./hyprland
     ./tools

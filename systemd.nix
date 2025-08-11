@@ -25,7 +25,6 @@
     };
     Service = {
       Type = "oneshot";
-      User = username;
       ExecStart = "${pkgs.mutt-wizard}/bin/mailsync";
     };
   };
