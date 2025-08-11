@@ -16,7 +16,7 @@
   systemd.services."mailsync" = {
     description = "Sync mail";
     wantedBy = ["default.target"];
-    script = "${pkgs.mutt-wizard}/bin/mailsync";
+    script = "/home/tesserekt/mailsync";
     serviceConfig = {
       Type = "oneshot";
       User = "tesserekt";
