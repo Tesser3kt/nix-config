@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  username,
   ...
 }: {
   # Systemd timers
@@ -13,18 +14,13 @@
   #     Unit = "mailsync.service";
   #   };
   # };
-  systemd.services."mailsync" = {
+  systemd.${username}.services."mailsync" = {
     description = "Sync mail";
     wantedBy = ["default.target"];
-    script = "/home/tesserekt/mailsync";
+    script = "${pkgs.mutt-wizard}/bin/mailsync";
     serviceConfig = {
       Type = "oneshot";
-      User = "tesserekt";
+      User = username;
     };
-  };
-
-  # Disable cron service
-  services.cron = {
-    enable = false;
   };
 }

@@ -6,6 +6,7 @@
   lib,
   pkgs,
   inputs,
+  username,
   ...
 }: {
   # Use the systemd-boot EFI boot loader.
@@ -41,7 +42,7 @@
 
   # Enable Zsh
   programs.zsh.enable = true;
-  users.users.tesserekt.shell = pkgs.zsh;
+  users.users.${username}.shell = pkgs.zsh;
 
   # Enable hyprland (development version)
   programs.hyprland = {
@@ -103,7 +104,7 @@
   # services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.tesserekt = {
+  users.users.${username} = {
     isNormalUser = true;
     extraGroups = [
       "wheel"
@@ -216,19 +217,6 @@
     HibernateDelaySec=900
     SuspendState=mem
   '';
-
-  # Enable OpenVPN
-  services.openvpn = {
-    servers = {
-      gevoVPN = {
-        config = ''
-          config /home/tesserekt/.config/openvpn/gevovpn/GEVO-VPN.ovpn
-        '';
-        autoStart = false;
-        updateResolvConf = true;
-      };
-    };
-  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

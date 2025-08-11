@@ -30,25 +30,21 @@
     ...
   }: let
     system = "x86_64-linux";
+    username = "tesserekt";
     fonts-overlay = final: prev: {
       palatino-font = additional-fonts.packages.${system}.palatino;
     };
   in {
     nixosConfigurations.tesserekt-pc = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = {inherit inputs;};
+      specialArgs = {inherit inputs username;};
       modules = [
         ./configuration.nix
         ./boot-loader-pc.nix
         ./hw-pc.nix
         ./amd.nix
         ./display-manager.nix
-        ./timers.nix
-        {
-          nixpkgs.overlays = [
-            fonts-overlay
-          ];
-        }
+        {nixpkgs.overlays = [fonts-overlay];}
 
         # Home Manager
         home-manager.nixosModules.home-manager
@@ -58,7 +54,7 @@
 
           home-manager.users.tesserekt = import ./home.nix;
           home-manager.extraSpecialArgs = {
-            inherit inputs;
+            inherit inputs username;
             displayConfig = "pc";
             waybarConfig = "pc";
             startupConfig = "pc";
@@ -70,14 +66,13 @@
     };
     nixosConfigurations.tesserekt-laptop = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = {inherit inputs;};
+      specialArgs = {inherit inputs username;};
       modules = [
         ./configuration.nix
         ./boot-loader-laptop.nix
         ./hw-laptop.nix
         ./intel.nix
         ./display-manager.nix
-        ./timers.nix
         {nixpkgs.overlays = [fonts-overlay];}
 
         # Home Manager
@@ -88,7 +83,7 @@
 
           home-manager.users.tesserekt = import ./home.nix;
           home-manager.extraSpecialArgs = {
-            inherit inputs;
+            inherit inputs username;
             displayConfig = "laptop";
             waybarConfig = "laptop";
             startupConfig = "laptop";
@@ -99,19 +94,14 @@
     };
     nixosConfigurations.tesserekt-raider = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = {inherit inputs;};
+      specialArgs = {inherit inputs username;};
       modules = [
         ./configuration.nix
         ./boot-loader-raider.nix
         ./hw-raider.nix
         ./nvidia.nix
         ./display-manager.nix
-        ./timers.nix
-        {
-          nixpkgs.overlays = [
-            fonts-overlay
-          ];
-        }
+        {nixpkgs.overlays = [fonts-overlay];}
 
         # Home Manager
         home-manager.nixosModules.home-manager
@@ -121,7 +111,7 @@
 
           home-manager.users.tesserekt = import ./home.nix;
           home-manager.extraSpecialArgs = {
-            inherit inputs;
+            inherit inputs username;
             displayConfig = "raider";
             waybarConfig = "laptop";
             startupConfig = "raider";

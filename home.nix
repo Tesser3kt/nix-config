@@ -2,10 +2,12 @@
   config,
   pkgs,
   inputs,
+  username,
   ...
 }: {
   imports = [
     ./fonts.nix
+    ./timers.nix
     ./shell
     ./hyprland
     ./tools
@@ -20,8 +22,8 @@
     ./qt
   ];
 
-  home.username = "tesserekt";
-  home.homeDirectory = "/home/tesserekt";
+  home.username = username;
+  home.homeDirectory = "/home/${username}";
 
   # Link wallpaper file
   home.file."Pictures/wallpaper.png".source = ./wallpaper.png;
