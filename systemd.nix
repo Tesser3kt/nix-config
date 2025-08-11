@@ -5,18 +5,21 @@
   ...
 }: {
   # Systemd timers
-  # systemd.timers."mailsync" = {
-  #   description = "Sync mail every 15 minutes";
-  #   wantedBy = ["timers.target"];
-  #   timerConfig = {
-  #     OnBootSec = "1min";
-  #     OnUnitActiveSec = "15min";
-  #     Unit = "mailsync.service";
-  #   };
-  # };
+  systemd.user.timers."mailsync" = {
+    enable = true;
+    description = "Sync mail every 15 minutes";
+    wantedBy = ["timers.target"];
+    timerConfig = {
+      OnBootSec = "1min";
+      OnUnitActiveSec = "15min";
+      Unit = "mailsync.service";
+      Persistent = true;
+    };
+  };
 
   # Systemd user services
   systemd.user.services."mailsync" = {
+    enable = false;
     Unit = {
       Description = "Sync mail";
     };
