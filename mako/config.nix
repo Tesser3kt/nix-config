@@ -36,12 +36,12 @@ in {
   };
   services.mako.extraConfig = ''
     [urgency=low]
-    background-color = ${colors.blue0};
+    background-color=${colors.blue0}
 
     [urgency=normal]
-    background-color = ${colors.yellow};
+    background-color=${colors.yellow}
 
     [urgency=high]
-    background-color = ${colors.red};
+    background-color=${colors.red}
   '';
 }
