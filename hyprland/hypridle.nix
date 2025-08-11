@@ -25,7 +25,7 @@
         # Suspend
         {
           timeout = 900;
-          on-timeout = "systemctl suspend-then-hibernate";
+          on-timeout = "systemctl suspend";
           on-resume = "hyprctl dispatch dpms on";
         }
       ];
