@@ -13,17 +13,18 @@
   #     Unit = "mailsync.service";
   #   };
   # };
-  # systemd.services."mailsync" = {
-  #   description = "Sync mail";
-  #   wantedBy = ["default.target"];
-  #   script = "/etc/profiles/per-user/tesserekt/bin/mailsync";
-  #   serviceConfig = {
-  #     Type = "oneshot";
-  #     User = "tesserekt";
-  #   };
-  # };
+  systemd.services."mailsync" = {
+    description = "Sync mail";
+    wantedBy = ["default.target"];
+    script = "${pkgs.mutt-wizard}/bin/mailsync";
+    serviceConfig = {
+      Type = "oneshot";
+      User = "tesserekt";
+    };
+  };
 
+  # Disable cron service
   services.cron = {
-    enable = true;
+    enable = false;
   };
 }
