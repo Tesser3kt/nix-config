@@ -207,7 +207,6 @@
   services.udisks2.enable = true;
 
   # Suspend and hibernate config.
-  services.power-profiles-daemon.enable = true;
   services.logind = {
     lidSwitch = "suspend-then-hibernate";
     powerKey = "hibernate";
