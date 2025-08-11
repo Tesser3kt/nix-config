@@ -14,7 +14,8 @@
     ./languages
     ./rofi
     ./waybar
-    ./swaync
+    # ./swaync
+    ./mako
     ./gtk
     ./qt
   ];
@@ -24,6 +25,9 @@
 
   # Link wallpaper file
   home.file."Pictures/wallpaper.png".source = ./wallpaper.png;
+
+  # Link notification sound
+  home.file."Music/notification.wav".source = ./notification.wav;
 
   # Set default apps
   xdg.mimeApps.defaultApplications = {
