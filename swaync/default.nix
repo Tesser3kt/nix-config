@@ -9,13 +9,13 @@
   ];
 
   home.packages = with pkgs; [
-    swaynotificationcenter
+    # swaynotificationcenter
     libnotify
   ];
 
   # Enable swaync service
   services.swaync = {
-    enable = true;
+    enable = false;
   };
 
   # Link icons folder
