@@ -6,7 +6,6 @@
 }: {
   # Systemd timers
   systemd.user.timers."mailsync" = {
-    enable = true;
     Unit = {
       Description = "Mail sync timer";
       After = ["network.target"];
