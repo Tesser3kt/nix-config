@@ -208,7 +208,7 @@
 
   # Suspend and hibernate delay.
   systemd.sleep.extraConfig = ''
-    HibernateDelaySec=1min
+    HibernateDelaySec=60
   '';
 
   # Enable OpenVPN
