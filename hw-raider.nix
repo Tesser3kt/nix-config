@@ -19,6 +19,7 @@
   boot.kernelParams = [
     "ec_sys.write_support=1"
     "msi-ec.firmware=17S1IMS1.105"
+    "mem_sleep_default=deep"
   ];
 
   fileSystems."/" = {
