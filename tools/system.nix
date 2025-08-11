@@ -52,6 +52,9 @@
 
     # Dbus explorer
     d-spy
+
+    # Notification library
+    libnotify
   ];
 
   services.blueman-applet.enable = false;
