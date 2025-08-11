@@ -1,4 +1,8 @@
-{}: let
+{
+  config,
+  pkgs,
+  ...
+}: let
   colors = import ../nordic.nix;
 in {
   services.mako.settings = {
