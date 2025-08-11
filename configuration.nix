@@ -6,7 +6,6 @@
   lib,
   pkgs,
   inputs,
-  username,
   ...
 }: {
   # Use the systemd-boot EFI boot loader.
@@ -42,7 +41,7 @@
 
   # Enable Zsh
   programs.zsh.enable = true;
-  users.users.${username}.shell = pkgs.zsh;
+  users.users.tesserekt.shell = pkgs.zsh;
 
   # Enable hyprland (development version)
   programs.hyprland = {
@@ -104,7 +103,7 @@
   # services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.${username} = {
+  users.users.tesserekt = {
     isNormalUser = true;
     extraGroups = [
       "wheel"
