@@ -207,7 +207,10 @@
   services.udisks2.enable = true;
 
   # Suspend and hibernate delay.
-  systemd.sleep.extraConfig = "HibernateDelaySec=15m";
+  systemd.sleep.extraConfig = ''
+    HibernateDelaySec=1m
+    SuspendState=mem
+  '';
 
   # Enable OpenVPN
   services.openvpn = {
