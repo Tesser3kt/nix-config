@@ -28,6 +28,7 @@
         numpy
         pandas
         pyserial
+        uv
       ]))
   ];
 }
