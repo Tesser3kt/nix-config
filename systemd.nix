@@ -8,8 +8,6 @@
   systemd.user.timers."mailsync" = {
     Unit = {
       Description = "Mail sync timer";
-      After = ["network.target"];
-      Requires = ["network.target"];
     };
     Install = {
       WantedBy = ["timers.target"];
@@ -18,7 +16,6 @@
       OnBootSec = "1min";
       OnUnitActiveSec = "15min";
       Unit = "mailsync.service";
-      Persistent = true;
     };
   };
 
