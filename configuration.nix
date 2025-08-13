@@ -214,7 +214,6 @@
   };
   systemd.sleep.extraConfig = ''
     HibernateDelaySec=900
-    SuspendState=mem
   '';
 
   # Open ports in the firewall.
