@@ -16,7 +16,7 @@
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  networking.hostName = "tesserekt-raider"; # Define your hostname.
+  networking.hostName = import ./hostname.nix; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
@@ -217,10 +217,13 @@
   '';
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [53317];
-  networking.firewall.allowedUDPPorts = [53317];
+  networking.firewall.allowedTCPPorts = [51820 53317];
+  networking.firewall.allowedUDPPorts = [51820 53317];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+
+  # Enable Mullvad VPN
+  services.mullvad-vpn.enable = true;
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
