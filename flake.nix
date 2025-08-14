@@ -40,7 +40,6 @@
       specialArgs = {inherit inputs username;};
       modules = [
         ./configuration.nix
-        ./hostname.nix
         ./boot-loader-pc.nix
         ./hw-pc.nix
         ./amd.nix
@@ -70,7 +69,6 @@
       specialArgs = {inherit inputs username;};
       modules = [
         ./configuration.nix
-        ./hostname.nix
         ./boot-loader-laptop.nix
         ./hw-laptop.nix
         ./intel.nix
@@ -98,7 +96,6 @@
       system = "x86_64-linux";
       specialArgs = {inherit inputs username;};
       modules = [
-        ./hostname.nix
         ./configuration.nix
         ./boot-loader-raider.nix
         ./hw-raider.nix
