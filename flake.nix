@@ -94,7 +94,10 @@
     };
     nixosConfigurations.tesserekt-raider = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = {inherit inputs username;};
+      specialArgs = {
+        inherit inputs username;
+        hostname = "tesserekt-raider";
+      };
       modules = [
         ./configuration.nix
         ./boot-loader-raider.nix

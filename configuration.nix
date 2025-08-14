@@ -6,12 +6,9 @@
   lib,
   pkgs,
   inputs,
+  hostname,
   ...
-}: 
-let
-  hostname = import ./hostname.nix;
-in
-{
+}: {
   # Use the systemd-boot EFI boot loader.
   # boot.loader.systemd-boot.enable = true;
   # boot.loader.systemd-boot.edk2-uefi-shell.enable = true;
