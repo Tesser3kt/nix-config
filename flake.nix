@@ -98,8 +98,8 @@
       system = "x86_64-linux";
       specialArgs = {inherit inputs username;};
       modules = [
-        ./configuration.nix
         ./hostname.nix
+        ./configuration.nix
         ./boot-loader-raider.nix
         ./hw-raider.nix
         ./nvidia.nix
