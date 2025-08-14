@@ -37,7 +37,10 @@
   in {
     nixosConfigurations.tesserekt-pc = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = {inherit inputs username;};
+      specialArgs = {
+        inherit inputs username;
+        hostname = "tesserekt-pc";
+      };
       modules = [
         ./configuration.nix
         ./boot-loader-pc.nix
@@ -66,7 +69,10 @@
     };
     nixosConfigurations.tesserekt-laptop = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = {inherit inputs username;};
+      specialArgs = {
+        inherit inputs username;
+        hostname = "tesserekt-laptop";
+      };
       modules = [
         ./configuration.nix
         ./boot-loader-laptop.nix
