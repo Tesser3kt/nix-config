@@ -30,7 +30,7 @@ in {
       }
       {
         label = "logout";
-        action = "hyprctl dispatch exit";
+        action = "loginctl kill-session $(loginctl list-sessions | grep -Eo '^[0-9]+' | head -n 1)";
         text = "Logout";
         keybind = "e";
       }
