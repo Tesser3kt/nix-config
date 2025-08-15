@@ -43,5 +43,10 @@ in {
 
     [urgency=high]
     border-color=${colors.red}
+
+    [mode=dnd]
+    invisible=1
+    history=1
+    on-notify=exec true
   '';
 }

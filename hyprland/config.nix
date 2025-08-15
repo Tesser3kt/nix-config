@@ -80,6 +80,9 @@ in {
         # Logout menu
         "$mod, X, exec, wlogout -b 5 -B 400 -T 400"
 
+        # Enable DND mode
+        "$mod, P, exec, $HOME/.config/mako/toggle-dnd.sh"
+
         # Sway notification center panel
         "$mod SHIFT, N, exec, swaync-client -t -sw"
 
