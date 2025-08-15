@@ -15,7 +15,7 @@ in {
     height = 150;
     border-size = 2;
     border-color = colors.gray3;
-    border-radius = 10;
+    border-radius = 5;
     max-visible = 3;
     max-history = 5;
     on-button-left = "invoke-default-action";
