@@ -46,6 +46,7 @@
     "image/jpeg" = ["gwenview.desktop"];
     "image/gif" = ["gwenview.desktop"];
     "video/mp4" = ["vlc.desktop"];
+    "video/mkv" = ["vlc.desktop"];
     "video/x-matroska" = ["vlc.desktop"];
     "video/x-msvideo" = ["vlc.desktop"];
   };
