@@ -1,4 +1,4 @@
 [
   "mcontrolcenter &"
-  "solaar &"
+  "solaar -w hide &"
 ]

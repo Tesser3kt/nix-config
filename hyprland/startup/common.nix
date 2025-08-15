@@ -3,5 +3,5 @@
   "nm-applet --indicator &"
   "swaync &"
   "hypridle &"
-  "webcord &"
+  "webcord -m &"
 ]
