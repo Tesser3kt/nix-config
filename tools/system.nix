@@ -55,6 +55,9 @@
 
     # Notification library
     libnotify
+
+    # Android tablet as drawing pad
+    waylus
   ];
 
   services.blueman-applet.enable = false;
