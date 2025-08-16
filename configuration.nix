@@ -220,8 +220,8 @@
   '';
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [53317];
-  networking.firewall.allowedUDPPorts = [53317];
+  networking.firewall.allowedTCPPorts = [1701 9001 53317];
+  networking.firewall.allowedUDPPorts = [1701 9001 53317];
 
   # Allow wireguard through firewall
   networking.firewall.checkReversePath = "loose";
