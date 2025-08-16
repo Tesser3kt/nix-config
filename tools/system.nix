@@ -57,7 +57,7 @@
     libnotify
 
     # Android tablet as drawing pad
-    waylus
+    weylus
   ];
 
   services.blueman-applet.enable = false;
