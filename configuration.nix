@@ -111,6 +111,7 @@
       "docker"
       "networkmanager"
       "dialout"
+      "uinput"
     ]; # Enable ‘sudo’ for the user and add to docker group.
     packages = with pkgs; [
       tree
