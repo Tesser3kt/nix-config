@@ -220,11 +220,18 @@
   '';
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [1701 9001 53317];
-  networking.firewall.allowedUDPPorts = [1701 9001 53317];
+  networking.firewall.allowedTCPPorts = [53317];
+  networking.firewall.allowedUDPPorts = [53317];
 
   # Allow wireguard through firewall
   networking.firewall.checkReversePath = "loose";
+
+  # Enable Weylus
+  programs.weylus = {
+    enable = true;
+    openFirewall = true; # Open firewall for Weylus.
+    users = ["tesserekt"]; # Allow Weylus for the user.
+  };
 
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;

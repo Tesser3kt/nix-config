@@ -55,9 +55,6 @@
 
     # Notification library
     libnotify
-
-    # Android tablet as drawing pad
-    weylus
   ];
 
   services.blueman-applet.enable = false;
