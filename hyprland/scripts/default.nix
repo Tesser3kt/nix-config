@@ -7,4 +7,8 @@
     source = ./clip_manager.sh;
     executable = true;
   };
+  xdg.configFile."hypr/scripts/startup-external.sh" = {
+    source = ./startup-external.sh;
+    executable = true;
+  };
 }
