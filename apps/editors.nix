@@ -77,6 +77,9 @@ in {
 
       # Inverse search
       synctex = true;
+
+      # Copy to clipboard
+      selection-clipboard = "clipboard";
     };
   };
 
