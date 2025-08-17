@@ -22,6 +22,12 @@
     "laptop" = import ./output/laptop.nix;
     "raider" = import ./output/raider.nix;
   };
+  outputWorkspaces = {
+    "raider" = [
+      "workspace 2, monitor:eDP-1"
+      "workspace 1, monitor:DP-2"
+    ];
+  };
   startup = {
     "common" = import ./startup/common.nix;
     "pc" = import ./startup/pc.nix;
@@ -171,6 +177,9 @@ in {
       # Tile sioyek as it starts in floating mode
       "tile, class: ^(sioyek)$"
     ];
+
+    # Workspace rules
+    workspace = outputWorkspaces.${displayConfig} or [];
 
     # Animations
     animations = {
