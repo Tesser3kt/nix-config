@@ -1,26 +1,30 @@
-#!/bin/bash
+#!/bin/sh
 
-# Check if the correct number of arguments are provided
+# Check if at least two arguments are provided (monitor name and a command).
 if [ "$#" -lt 2 ]; then
-    echo "Usage: $0 MONITOR_NAME \"APP_COMMAND [app_args...]\""
+    printf 'Usage: %s MONITOR_NAME "APP_COMMAND [app_args...]"\\n' "$0"
     exit 1
 fi
 
 MONITOR_NAME="$1"
-# All arguments from the second one onwards are treated as the command to execute
-APP_COMMAND="${@:2}"
+shift # Removes the first argument, so the rest ($@) become the command.
+APP_COMMAND="$@" # Assign all remaining arguments to APP_COMMAND.
 
-# Poll for the external monitor to be connected
-# We add a timeout to prevent an infinite loop if the monitor is never connected
-timeout=30 # seconds
-while ! hyprctl monitors | grep -q "$MONITOR_NAME"; do
+# Poll for the external monitor for up to 30 seconds.
+timeout=30
+while [ "$timeout" -gt 0 ]; do
+  # Check if the monitor is listed by hyprctl.
+  if hyprctl monitors | grep -q "$MONITOR_NAME"; then
+    # Monitor found, launch the application in the background and exit successfully.
+    eval "$APP_COMMAND" &
+    exit 0
+  fi
+  
   sleep 1
   timeout=$((timeout - 1))
-  if [ "$timeout" -eq 0 ]; then
-    echo "Error: Monitor '$MONITOR_NAME' not found after 30 seconds."
-    exit 1
-  fi
 done
 
-# Launch the application
-eval "$APP_COMMAND" &
+# If the loop finishes, the monitor was not found in time.
+# Print error to stderr (>%2) and exit with a failure code.
+echo "Error: Monitor '$MONITOR_NAME' not found after 30 seconds." >&2
+exit 1
