@@ -93,6 +93,7 @@
             displayConfig = "laptop";
             waybarConfig = "laptop";
             startupConfig = "laptop";
+            deviceConfig = "laptop";
             graphics = "intel";
           };
         }
