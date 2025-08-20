@@ -57,7 +57,7 @@
         "hyprland/workspaces" = {
           "active-only" = false;
           "all-outputs" = false;
-          format = "{name}";
+          format = "{icon}";
           "show-special" = false;
           "on-click" = "activate";
           "on-scroll-up" = "hyprctl dispatch workspace e+1";
