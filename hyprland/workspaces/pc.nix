@@ -1,0 +1,46 @@
+{
+  config,
+  pkgs,
+  ...
+}: {
+  wayland.windowManager.hyprland.settings = {
+    # Workspace bindings
+    bind =
+      (
+        builtins.concatLists (builtins.genList (
+            i: let
+              ws = i + 1;
+            in [
+              "$mod, code:1${toString i}, workspace, ${toString ws}"
+              "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
+            ]
+          )
+          4)
+      )
+      ++ (
+        builtins.concatLists (builtins.genList (
+            i: let
+              ws = i + 6;
+            in [
+              "CTRL, code:1${toString i}, workspace, ${toString ws}"
+              "CTRL SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
+            ]
+          )
+          4)
+      );
+
+    # Bind workspaces to monitors
+    workspace = [
+      "workspace 1, monitor:DP-2, default:true"
+      "workspace 2, monitor:DP-2"
+      "workspace 3, monitor:DP-2"
+      "workspace 4, monitor:DP-2"
+      "workspace 5, monitor:DP-2"
+      "workspace 6, monitor:DP-1, default:true"
+      "workspace 7, monitor:DP-1"
+      "workspace 8, monitor:DP-1"
+      "workspace 9, monitor:DP-1"
+      "workspace 10, monitor:DP-1"
+    ];
+  };
+}

@@ -22,12 +22,6 @@
     "laptop" = import ./output/laptop.nix;
     "raider" = import ./output/raider.nix;
   };
-  outputWorkspaces = {
-    "raider" = [
-      "workspace 2, monitor:eDP-1"
-      "workspace 1, monitor:DP-2"
-    ];
-  };
   startup = {
     "common" = import ./startup/common.nix;
     "pc" = import ./startup/pc.nix;
@@ -39,8 +33,17 @@
   additionalSettings = {
     "nvidia" = [(import ./no-hw-cursor.nix {inherit config pkgs;})];
   };
+  workspaceSettings = {
+    "pc" = [(import ./workspaces/pc.nix {inherit config pkgs;})];
+  };
 in {
-  imports = additionalSettings.${graphics} or [];
+  imports =
+    (
+      additionalSettings.${graphics} or []
+    )
+    ++ (
+      workspaceSettings.${displayConfig} or []
+    );
 
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
@@ -177,9 +180,6 @@ in {
       # Tile sioyek as it starts in floating mode
       "tile, class: ^(sioyek)$"
     ];
-
-    # Workspace rules
-    workspace = outputWorkspaces.${displayConfig} or [];
 
     # Animations
     animations = {
