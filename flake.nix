@@ -63,6 +63,7 @@
             startupConfig = "pc";
             deviceConfig = "pc";
             graphics = "amd";
+            gpgKeygrip = "91957720EE42E89A4DDF080DE22E95D7E3E98FA4";
           };
         }
       ];
@@ -127,6 +128,7 @@
             startupConfig = "raider";
             deviceConfig = "raider";
             graphics = "nvidia";
+            gpgKeygrip = "4D7F773E7B92A663FDF2BF2BA723378E50AAE17A";
           };
         }
       ];

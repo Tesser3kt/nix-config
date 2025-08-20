@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  gpgKeygrip,
   ...
 }: {
   home.packages = with pkgs; [
@@ -20,7 +21,7 @@
   ];
 
   # GPG agent configuration
-  home.file.".pam-gnupg".text = "4D7F773E7B92A663FDF2BF2BA723378E50AAE17A";
+  home.file.".pam-gnupg".text = gpgKeygrip;
   services.gpg-agent = {
     enable = true;
     extraConfig = ''
