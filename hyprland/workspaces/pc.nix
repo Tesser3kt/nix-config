@@ -31,32 +31,24 @@
 
     # Bind workspaces to monitors
     workspace = [
-      "1, monitor:DP-2, default:true"
-      "2, monitor:DP-2"
-      "3, monitor:DP-2"
-      "4, monitor:DP-2"
-      "5, monitor:DP-2"
-      "6, monitor:DP-1, default:true"
-      "7, monitor:DP-1"
-      "8, monitor:DP-1"
-      "9, monitor:DP-1"
-      "10, monitor:DP-1"
+      "name:1, monitor:DP-2, default:true"
+      "name:2, monitor:DP-2"
+      "name:3, monitor:DP-2"
+      "name:4, monitor:DP-2"
+      "name:5, monitor:DP-2"
+      "name:6, monitor:DP-1, default:true"
+      "name:7, monitor:DP-1"
+      "name:8, monitor:DP-1"
+      "name:9, monitor:DP-1"
+      "name:10, monitor:DP-1"
     ];
   };
 
   programs.waybar.settings.main = {
     "hyprland/workspaces" = {
       "persistent-workspaces" = {
-        "1" = ["DP-2"];
-        "2" = ["DP-2"];
-        "3" = ["DP-2"];
-        "4" = ["DP-2"];
-        "5" = ["DP-2"];
-        "6" = ["DP-1"];
-        "7" = ["DP-1"];
-        "8" = ["DP-1"];
-        "9" = ["DP-1"];
-        "10" = ["DP-1"];
+        "DP-2" = [1 2 3 4 5];
+        "DP-1" = [6 7 8 9 10];
       };
     };
   };
