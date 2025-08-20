@@ -56,24 +56,12 @@
         # CIRCLES Style
         "hyprland/workspaces" = {
           "active-only" = false;
-          "all-outputs" = true;
+          "all-outputs" = false;
           format = "{icon}";
           "show-special" = false;
           "on-click" = "activate";
           "on-scroll-up" = "hyprctl dispatch workspace e+1";
           "on-scroll-down" = "hyprctl dispatch workspace e-1";
-          "persistent-workspaces" = {
-            "1" = [];
-            "2" = [];
-            "3" = [];
-            "4" = [];
-            "5" = [];
-            "6" = [];
-            "7" = [];
-            "8" = [];
-            "9" = [];
-            "10" = [];
-          };
           "format-icons" = {
             active = "<span font='13'></span>";
             default = "<span font='13'></span>";

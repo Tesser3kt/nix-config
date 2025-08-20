@@ -56,10 +56,6 @@ in {
         "$mod, C, exec, ${calculator}"
         "$mod, M, exec, ${mail}"
 
-        # Workspace 10
-        "$mod, code:19, workspace, 10"
-        "$mod SHIFT, code:19, movetoworkspace, 10"
-
         # Workspaces back and forth
         "$mod, Tab, workspace, previous"
 
@@ -98,18 +94,6 @@ in {
         # Exit hyprland
         "CTRL ALT, Delete, exec, hyprctl dispatch exit 0"
       ]
-      ++ (
-        # Workspace bindings
-        builtins.concatLists (builtins.genList (
-            i: let
-              ws = i + 1;
-            in [
-              "$mod, code:1${toString i}, workspace, ${toString ws}"
-              "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
-            ]
-          )
-          9)
-      )
       ++ (
         # Focus & window movement
         builtins.concatLists (
