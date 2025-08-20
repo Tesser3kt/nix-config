@@ -57,14 +57,14 @@
         "hyprland/workspaces" = {
           "active-only" = false;
           "all-outputs" = false;
-          format = "{icon}";
+          format = "{name}";
           "show-special" = false;
           "on-click" = "activate";
           "on-scroll-up" = "hyprctl dispatch workspace e+1";
           "on-scroll-down" = "hyprctl dispatch workspace e-1";
           "format-icons" = {
-            active = "<span font='13'>{name} A</span>";
-            default = "<span font='13'>{name} I</span>";
+            active = "<span font='13'></span>";
+            default = "<span font='13'></span>";
           };
         };
 
