@@ -63,8 +63,8 @@
           "on-scroll-up" = "hyprctl dispatch workspace e+1";
           "on-scroll-down" = "hyprctl dispatch workspace e-1";
           "format-icons" = {
-            active = "<span font='13'></span>";
-            default = "<span font='13'></span>";
+            active = "<span font='13'>{name} A</span>";
+            default = "<span font='13'>{name} I</span>";
           };
         };
 
