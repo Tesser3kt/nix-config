@@ -15,7 +15,7 @@
               "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
             ]
           )
-          4)
+          5)
       )
       ++ (
         builtins.concatLists (builtins.genList (
@@ -26,21 +26,21 @@
               "CTRL SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
             ]
           )
-          4)
+          5)
       );
 
     # Bind workspaces to monitors
     workspace = [
-      "workspace 1, monitor:DP-2, default:true"
-      "workspace 2, monitor:DP-2"
-      "workspace 3, monitor:DP-2"
-      "workspace 4, monitor:DP-2"
-      "workspace 5, monitor:DP-2"
-      "workspace 6, monitor:DP-1, default:true"
-      "workspace 7, monitor:DP-1"
-      "workspace 8, monitor:DP-1"
-      "workspace 9, monitor:DP-1"
-      "workspace 10, monitor:DP-1"
+      "1, monitor:DP-2, default:true"
+      "2, monitor:DP-2"
+      "3, monitor:DP-2"
+      "4, monitor:DP-2"
+      "5, monitor:DP-2"
+      "6, monitor:DP-1, default:true"
+      "7, monitor:DP-1"
+      "8, monitor:DP-1"
+      "9, monitor:DP-1"
+      "10, monitor:DP-1"
     ];
   };
 
