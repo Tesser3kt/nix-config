@@ -35,6 +35,7 @@
   };
   workspaceSettings = {
     "pc" = [(import ./workspaces/pc.nix {inherit config pkgs;})];
+    "raider" = [(import ./workspaces/raider.nix {inherit config pkgs;})];
   };
 in {
   imports =
