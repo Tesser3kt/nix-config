@@ -55,6 +55,10 @@
 
     # Notification library
     libnotify
+
+    # Partition management
+    parted
+    tparted
   ];
 
   services.blueman-applet.enable = false;
