@@ -3,6 +3,9 @@
   pkgs,
   ...
 }: {
+  home.packages = with pkgs; [
+    nordic
+  ];
   qt = {
     enable = true;
     platformTheme.name = "qtct";
@@ -10,8 +13,8 @@
   };
 
   xdg.configFile."Kvantum/kvantum.kvconfig".text = ''
-    [General]
-    theme=GraphiteNordDark
-  '';
-  xdg.configFile."Kvantum/GraphiteNord".source = "${pkgs.graphite-kde-theme}/share/Kvantum/GraphiteNord";
+      [General]
+      theme=Nordic
+    # '';
+  # xdg.configFile."Kvantum/GraphiteNord".source = "${pkgs.graphite-kde-theme}/share/Kvantum/GraphiteNord";
 }
