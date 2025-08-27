@@ -96,6 +96,7 @@
             startupConfig = "laptop";
             deviceConfig = "laptop";
             graphics = "intel";
+            gpgKeygrip = "FD108A1438702B075EB5921DFA9C798F7614F016";
           };
         }
       ];
