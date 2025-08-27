@@ -154,9 +154,6 @@ in {
 
     # Window rules
     windowrule = [
-      # Discord on workspace 9
-      "workspace 9, class:^(WebCord)$"
-
       # Spotify on workspace 8
       "workspace 8, class: ^(spotify)$"
 
