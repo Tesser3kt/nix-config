@@ -62,6 +62,7 @@
         packageOverrides = pfinal: pprev: {
           rpy2 = pprev.rpy2.overrideAttrs (oldAttrs: {
             patches = [];
+            postPatch = "";
           });
         };
       };
