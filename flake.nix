@@ -35,7 +35,7 @@
       palatino-font = additional-fonts.packages.${system}.palatino;
     };
     lsprotocol-fix =
-      nixpkgs.python313Packages.lsprotocol.overridePythonAttrs
+      nixpkgs.python3Packages.lsprotocol.overridePythonAttrs
       (old: {
         version = "2023.0.1";
 
