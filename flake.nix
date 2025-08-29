@@ -131,7 +131,7 @@
         ./hw-raider.nix
         ./nvidia.nix
         ./display-manager.nix
-        {nixpkgs.overlays = [fonts-overlay lsprotocol-fix sagemath-ecm-fix sagemath-rpy-fix];}
+        {nixpkgs.overlays = [fonts-overlay lsprotocol-fix];}
 
         # Home Manager
         home-manager.nixosModules.home-manager
