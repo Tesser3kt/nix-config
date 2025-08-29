@@ -34,18 +34,24 @@
     fonts-overlay = final: prev: {
       palatino-font = additional-fonts.packages.${system}.palatino;
     };
-    lsprotocol-fix =
-      nixpkgs.python3Packages.lsprotocol.overridePythonAttrs
-      (old: {
-        version = "2023.0.1";
+    lsprotocol-fix = final: prev: {
+      python3 = prev.python3.override {
+        packageOverrides = self: super: {
+          lsprotocol =
+            self.lsprotocol.overridePythonAttrs
+            (old: {
+              version = "2023.0.1";
 
-        src = nixpkgs.fetchFromGitHub {
-          owner = "microsoft";
-          repo = "lsprotocol";
-          tag = "2023.0.1";
-          hash = "sha256-PHjLKazMaT6W4Lve1xNxm6hEwqE3Lr2m5L7Q03fqb68=";
+              src = nixpkgs.fetchFromGitHub {
+                owner = "microsoft";
+                repo = "lsprotocol";
+                tag = "2023.0.1";
+                hash = "sha256-PHjLKazMaT6W4Lve1xNxm6hEwqE3Lr2m5L7Q03fqb68=";
+              };
+            });
         };
-      });
+      };
+    };
   in {
     nixosConfigurations.tesserekt-pc = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
