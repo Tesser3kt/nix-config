@@ -42,7 +42,7 @@
             (oldAttrs: {
               version = "2023.0.1";
 
-              src = nixpkgs.fetchFromGitHub {
+              src = final.fetchFromGitHub {
                 owner = "microsoft";
                 repo = "lsprotocol";
                 tag = "2023.0.1";
