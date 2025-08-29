@@ -57,6 +57,15 @@
         NIX_CFLAGS_COMPILE = (oldAttrs.NIX_CFLAGS_COMPILE or "") + " -Wno-implicit-function-declaration";
       });
     };
+    sagemath-rpy-fix = final: prev: {
+      python3 = prev.python3.override {
+        packageOverrides = pfinal: pprev: {
+          rpy2 = pprev.rpy2.overrideAttrs (oldAttrs: {
+            patches = [];
+          });
+        };
+      };
+    };
   in {
     nixosConfigurations.tesserekt-pc = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -136,7 +145,7 @@
         ./hw-raider.nix
         ./nvidia.nix
         ./display-manager.nix
-        {nixpkgs.overlays = [fonts-overlay lsprotocol-fix sagemath-ecm-fix];}
+        {nixpkgs.overlays = [fonts-overlay lsprotocol-fix sagemath-ecm-fix sagemath-rpy-fix];}
 
         # Home Manager
         home-manager.nixosModules.home-manager
