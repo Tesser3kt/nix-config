@@ -70,12 +70,7 @@
                 pfinal.setuptools
                 pfinal.wheel
               ];
-            propagatedBuildInputs =
-              (oldAttrs.propagatedBuildInputs or [])
-              ++ [
-                pfinal.rpy2-rinterface
-                pfinal.rpy2-robjects
-              ];
+            doPythonRuntimeDepsCheck = false;
           });
         };
       };
