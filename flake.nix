@@ -70,7 +70,12 @@
                 pfinal.setuptools
                 pfinal.wheel
               ];
-            doPythonRuntimeDepsCheck = false;
+            pythonRuntimeDepsCheckPhase = "echo 'Skipping pythonRuntimeDepsCheckPhase due to false positive for monolithic rpy2 package'";
+            pythonImportsCheck = [
+              "rpy2.rinterface"
+              "rpy2.robjects"
+            ];
+            doCheck = true;
           });
         };
       };
