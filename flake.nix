@@ -52,6 +52,11 @@
         };
       };
     };
+    sagemath-ecm-fix = final: prev: {
+      ecm = prev.ecm.overrideAttrs (oldAttrs: {
+        NIX_CFLAGS_COMPILE = (oldAttrs.NIX_CFLAGS_COMPILE or "") + " -Wno-implicit-function-declaration";
+      });
+    };
   in {
     nixosConfigurations.tesserekt-pc = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -131,7 +136,7 @@
         ./hw-raider.nix
         ./nvidia.nix
         ./display-manager.nix
-        {nixpkgs.overlays = [fonts-overlay lsprotocol-fix];}
+        {nixpkgs.overlays = [fonts-overlay lsprotocol-fix sagemath-ecm-fix];}
 
         # Home Manager
         home-manager.nixosModules.home-manager
