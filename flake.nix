@@ -64,6 +64,12 @@
             patches = [];
             postPatch = "";
             format = "pyproject";
+            nativeBuildInputs =
+              (oldAttrs.nativeBuildInputs or [])
+              ++ [
+                pfinal.setuptools
+                pfinal.wheel
+              ];
           });
         };
       };
