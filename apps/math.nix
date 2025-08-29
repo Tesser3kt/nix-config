@@ -3,8 +3,7 @@
   pkgs,
   ...
 }: {
-  home.packages = with pkgs; [
-    # Math software
-    sage
-  ];
+  programs.sagemath = {
+    enable = true;
+  };
 }
