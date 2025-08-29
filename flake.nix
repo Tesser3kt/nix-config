@@ -60,7 +60,7 @@
     sagemath-rpy-fix = final: prev: {
       python3 = prev.python3.override {
         packageOverrides = pfinal: pprev: {
-          rpy2 = pprev.rpy2.overrideAttrs (oldAttrs: {
+          rpy2 = pprev.rpy2.overridePythonAttrs (oldAttrs: {
             patches = [];
             postPatch = "";
             format = "pyproject";
