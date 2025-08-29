@@ -211,9 +211,13 @@
 
   # Suspend and hibernate config.
   services.logind = {
-    lidSwitch = "suspend";
-    powerKey = "hibernate";
-    powerKeyLongPress = "poweroff";
+    settings = {
+      Login = {
+        HandleLidSwitch = "suspend";
+        HandlePowerKey = "hibernate";
+        HandlePowerKeyLongPress = "poweroff";
+      };
+    };
   };
   systemd.sleep.extraConfig = ''
     HibernateDelaySec=900
