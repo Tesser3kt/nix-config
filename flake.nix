@@ -98,7 +98,7 @@
         ./hw-laptop.nix
         ./intel.nix
         ./display-manager.nix
-        {nixpkgs.overlays = [fonts-overlay];}
+        {nixpkgs.overlays = [fonts-overlay lsprotocol-fix];}
 
         # Home Manager
         home-manager.nixosModules.home-manager
