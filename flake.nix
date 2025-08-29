@@ -36,10 +36,10 @@
     };
     lsprotocol-fix = final: prev: {
       python3 = prev.python3.override {
-        packageOverrides = self: super: {
+        packageOverrides = pfinal: pprev: {
           lsprotocol =
-            self.lsprotocol.overridePythonAttrs
-            (old: {
+            pprev.lsprotocol.overridePythonAttrs
+            (oldAttrs: {
               version = "2023.0.1";
 
               src = nixpkgs.fetchFromGitHub {
