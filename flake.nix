@@ -52,34 +52,6 @@
         };
       };
     };
-    sagemath-ecm-fix = final: prev: {
-      ecm = prev.ecm.overrideAttrs (oldAttrs: {
-        NIX_CFLAGS_COMPILE = (oldAttrs.NIX_CFLAGS_COMPILE or "") + " -Wno-implicit-function-declaration";
-      });
-    };
-    sagemath-rpy-fix = final: prev: {
-      python3 = prev.python3.override {
-        packageOverrides = pfinal: pprev: {
-          rpy2 = pprev.rpy2.overridePythonAttrs (oldAttrs: {
-            patches = [];
-            postPatch = "";
-            format = "pyproject";
-            nativeBuildInputs =
-              (oldAttrs.nativeBuildInputs or [])
-              ++ [
-                pfinal.setuptools
-                pfinal.wheel
-              ];
-            pythonRuntimeDepsCheckPhase = "echo 'Skipping pythonRuntimeDepsCheckPhase due to false positive for monolithic rpy2 package'";
-            pythonImportsCheck = [
-              "rpy2.rinterface"
-              "rpy2.robjects"
-            ];
-            doCheck = true;
-          });
-        };
-      };
-    };
   in {
     nixosConfigurations.tesserekt-pc = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
