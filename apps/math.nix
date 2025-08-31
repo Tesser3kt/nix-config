@@ -4,7 +4,7 @@
   ...
 }: {
   programs.sagemath = {
-    enable = true;
-    package = pkgs.sage;
+    enable = false;
+    package = pkgs.sageWithDoc;
   };
 }
