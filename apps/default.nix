@@ -11,5 +11,6 @@
     ./vscode
     ./math.nix
     ./mail.nix
+    ./office.nix
   ];
 }
