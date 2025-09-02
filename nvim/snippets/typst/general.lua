@@ -75,7 +75,7 @@ return {
 	-- Formatting snippets
 	s(
 		{
-			trig = "([^%a])em",
+			trig = "([%s%(%[%{]+)em",
 			regTrig = true,
 			wordTrig = false,
 			snippetType = "autosnippet",
@@ -89,7 +89,7 @@ return {
 	),
 	s(
 		{
-			trig = "([^%a])bf",
+			trig = "([%s%(%[%{]+)bf",
 			regTrig = true,
 			wordTrig = false,
 			snippetType = "autosnippet",
