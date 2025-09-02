@@ -55,7 +55,6 @@ return {
 
   -- Text coloring snippets
   s(
-
     {
       trig = "cl(%l+)",
       regTrig = "true",
@@ -64,6 +63,34 @@ return {
     },
     fmta("#cl<>[<>]<>", {
       f(function(_, snip) return snip.captures[1] end),
+      i(1),
+      i(0),
+    })
+  ),
+
+  -- Formatting snippets
+  s(
+    {
+      trig = "em",
+      regTrig = "true",
+      wordTrig = "false",
+      snippetType = "autosnippet",
+      dscr = "Text emphasis",
+    },
+    fmta("#emph[<>]<>", {
+      i(1),
+      i(0),
+    })
+  ),
+  s(
+    {
+      trig = "bf",
+      regTrig = "true",
+      wordTrig = "false",
+      snippetType = "autosnippet",
+      dscr = "Text strong emphasis",
+    },
+    fmta("#strong[<>]<>", {
       i(1),
       i(0),
     })
