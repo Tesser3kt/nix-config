@@ -75,26 +75,28 @@ return {
 	-- Formatting snippets
 	s(
 		{
-			trig = "em",
-			regTrig = false,
-			wordTrig = true,
+			trig = "([^%a])em",
+			regTrig = true,
+			wordTrig = false,
 			snippetType = "autosnippet",
 			dscr = "Text emphasis",
 		},
-		fmta("#emph[<>]<>", {
+		fmta("<>#emph[<>]<>", {
+      f( function(_, snip) return snip.captures[1] end ),
 			i(1),
 			i(0),
 		})
 	),
 	s(
 		{
-			trig = "bf",
-			regTrig = false,
-			wordTrig = true,
+			trig = "([^%a])bf",
+			regTrig = true,
+			wordTrig = false,
 			snippetType = "autosnippet",
 			dscr = "Text strong emphasis",
 		},
-		fmta("#strong[<>]<>", {
+		fmta("<>#strong[<>]<>", {
+      f( function(_, snip) return snip.captures[1] end ),
 			i(1),
 			i(0),
 		})
