@@ -6,7 +6,7 @@
   ...
 }: {
   imports = [
-    ./fonts.nix
+    ./fonts
     ./systemd.nix
     ./shell
     ./hyprland

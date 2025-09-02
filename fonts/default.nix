@@ -31,4 +31,7 @@
     eb-garamond
   ];
   fonts.fontconfig.enable = true;
+
+  # Copy Garamond Math to ~/.local/share/fonts
+  home.file.".local/share/fonts/Garamond-Math.otf".source = ./Garamond-Math.otf;
 }
