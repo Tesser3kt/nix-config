@@ -28,6 +28,7 @@
     source-code-pro
     source-sans-pro
     palatino-font
+    eb-garamond
   ];
   fonts.fontconfig.enable = true;
 }
