@@ -34,4 +34,8 @@
 
   # Copy Garamond Math to ~/.local/share/fonts
   home.file.".local/share/fonts/Garamond-Math.otf".source = ./Garamond-Math.otf;
+
+  # Copy Prenton to ~/.local/share/fonts
+  home.file.".local/share/fonts/Prenton-Regular.otf".source = ./Prenton-Regular.otf;
+  home.file.".local/share/fonts/Prenton-Italic.otf".source = ./Prenton-Italic.otf;
 }
