@@ -37,7 +37,13 @@
     fonts-overlay = final: prev: {
       palatino-font = additional-fonts.packages.${system}.palatino;
     };
-    sage10_5 = nixpkgs-sagemath-10_5.packages.${system}.sage;
+    pkgs-sage10_5 = import nixpkgs-sagemath-10_5 {
+      inherit system;
+      config = { allowUnfree = true; };
+    };
+    sagemath-overlay = final: prev: {
+      sage = pkgs-sage10_5.sage;
+    };
   in {
     nixosConfigurations.tesserekt-pc = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -108,7 +114,7 @@
     nixosConfigurations.tesserekt-raider = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {
-        inherit inputs username sage10_5;
+        inherit inputs username;
         hostname = "tesserekt-raider";
       };
       modules = [
@@ -117,7 +123,7 @@
         ./hw-raider.nix
         ./nvidia.nix
         ./display-manager.nix
-        {nixpkgs.overlays = [fonts-overlay];}
+        {nixpkgs.overlays = [fonts-overlay sagemath-overlay];}
 
         # Home Manager
         home-manager.nixosModules.home-manager
@@ -127,7 +133,7 @@
 
           home-manager.users.${username} = import ./home.nix;
           home-manager.extraSpecialArgs = {
-            inherit inputs username sage10_5;
+            inherit inputs username;
             displayConfig = "raider";
             waybarConfig = "laptop";
             startupConfig = "raider";
