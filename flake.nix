@@ -34,24 +34,6 @@
     fonts-overlay = final: prev: {
       palatino-font = additional-fonts.packages.${system}.palatino;
     };
-    lsprotocol-fix = final: prev: {
-      python3 = prev.python3.override {
-        packageOverrides = pfinal: pprev: {
-          lsprotocol =
-            pprev.lsprotocol.overridePythonAttrs
-            (oldAttrs: {
-              version = "2023.0.1";
-
-              src = final.fetchFromGitHub {
-                owner = "microsoft";
-                repo = "lsprotocol";
-                tag = "2023.0.1";
-                hash = "sha256-PHjLKazMaT6W4Lve1xNxm6hEwqE3Lr2m5L7Q03fqb68=";
-              };
-            });
-        };
-      };
-    };
   in {
     nixosConfigurations.tesserekt-pc = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -98,7 +80,7 @@
         ./hw-laptop.nix
         ./intel.nix
         ./display-manager.nix
-        {nixpkgs.overlays = [fonts-overlay lsprotocol-fix];}
+        {nixpkgs.overlays = [fonts-overlay];}
 
         # Home Manager
         home-manager.nixosModules.home-manager
