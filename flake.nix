@@ -20,6 +20,8 @@
       url = "github:jeslie0/fonts";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixpkgs-sagemath-10_5.url = "github:NixOS/nixpkgs/nixpkgs/bd3bac8bfb542dbde7ffffb6987a1a1f9d41699f";
+    nixpkgs-sagemath-10_5.inputs.nixpkgs.follows = "nixpkgs";
   };
   outputs = inputs @ {
     self,
@@ -27,12 +29,20 @@
     home-manager,
     nix4nvchad,
     additional-fonts,
+    nixpkgs-sagemath-10_5,
     ...
   }: let
     system = "x86_64-linux";
     username = "tesserekt";
     fonts-overlay = final: prev: {
       palatino-font = additional-fonts.packages.${system}.palatino;
+    };
+    pkgs-sagemath-10_5 = import nixpkgs-sagemath-10_5 {
+      inherit system;
+      config = { allowUnfree = true; };
+    };
+    sagemath-overlay = final: prev: {
+      sage = pkgs-sagemath-10_5.sage;
     };
   in {
     nixosConfigurations.tesserekt-pc = nixpkgs.lib.nixosSystem {
@@ -113,7 +123,7 @@
         ./hw-raider.nix
         ./nvidia.nix
         ./display-manager.nix
-        {nixpkgs.overlays = [fonts-overlay];}
+        {nixpkgs.overlays = [fonts-overlay sagemath-overlay];}
 
         # Home Manager
         home-manager.nixosModules.home-manager
