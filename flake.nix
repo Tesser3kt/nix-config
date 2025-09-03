@@ -20,7 +20,7 @@
       url = "github:jeslie0/fonts";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixpkgs-sagemath-10_5.url = "github:NixOS/nixpkgs/nixpkgs/bd3bac8bfb542dbde7ffffb6987a1a1f9d41699f";
+    nixpkgs-sagemath-10_5.url = "github:NixOS/nixpkgs/bd3bac8bfb542dbde7ffffb6987a1a1f9d41699f";
     nixpkgs-sagemath-10_5.inputs.nixpkgs.follows = "nixpkgs";
   };
   outputs = inputs @ {
@@ -37,13 +37,7 @@
     fonts-overlay = final: prev: {
       palatino-font = additional-fonts.packages.${system}.palatino;
     };
-    pkgs-sagemath-10_5 = import nixpkgs-sagemath-10_5 {
-      inherit system;
-      config = { allowUnfree = true; };
-    };
-    sagemath-overlay = final: prev: {
-      sage = pkgs-sagemath-10_5.sage;
-    };
+    sage10_5 = nixpkgs-sagemath-10_5.packages.${system}.sage;
   in {
     nixosConfigurations.tesserekt-pc = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -114,7 +108,7 @@
     nixosConfigurations.tesserekt-raider = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {
-        inherit inputs username;
+        inherit inputs username sage10_5;
         hostname = "tesserekt-raider";
       };
       modules = [
@@ -123,7 +117,7 @@
         ./hw-raider.nix
         ./nvidia.nix
         ./display-manager.nix
-        {nixpkgs.overlays = [fonts-overlay sagemath-overlay];}
+        {nixpkgs.overlays = [fonts-overlay];}
 
         # Home Manager
         home-manager.nixosModules.home-manager
@@ -133,7 +127,7 @@
 
           home-manager.users.${username} = import ./home.nix;
           home-manager.extraSpecialArgs = {
-            inherit inputs username;
+            inherit inputs username sage10_5;
             displayConfig = "raider";
             waybarConfig = "laptop";
             startupConfig = "raider";

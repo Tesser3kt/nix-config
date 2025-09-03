@@ -1,10 +1,11 @@
 {
   config,
   pkgs,
+  sage10_5,
   ...
 }: {
   programs.sagemath = {
     enable = true;
-    package = pkgs.sage;
+    package = sage10_5;
   };
 }
