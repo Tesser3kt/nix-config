@@ -28,7 +28,6 @@
     source-code-pro
     source-sans-pro
     palatino-font
-    eb-garamond
   ];
   fonts.fontconfig.enable = true;
 
@@ -38,4 +37,10 @@
   # Copy Prenton to ~/.local/share/fonts
   home.file.".local/share/fonts/Prenton-Regular.otf".source = ./Prenton-Regular.otf;
   home.file.".local/share/fonts/Prenton-Italic.otf".source = ./Prenton-Italic.otf;
+
+  # Copy EB Garamond to fonts.
+  home.file.".local/share/fonts/EBGaramond" = {
+    source = ./ebgaramond;
+    recursive = true;
+  };
 }
