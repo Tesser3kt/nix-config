@@ -57,7 +57,7 @@
         ./hw-pc.nix
         ./amd.nix
         ./display-manager.nix
-        {nixpkgs.overlays = [fonts-overlay];}
+        {nixpkgs.overlays = [fonts-overlay sagemath-overlay];}
 
         # Home Manager
         home-manager.nixosModules.home-manager
@@ -90,7 +90,7 @@
         ./hw-laptop.nix
         ./intel.nix
         ./display-manager.nix
-        {nixpkgs.overlays = [fonts-overlay];}
+        {nixpkgs.overlays = [fonts-overlay sagemath-overlay];}
 
         # Home Manager
         home-manager.nixosModules.home-manager
