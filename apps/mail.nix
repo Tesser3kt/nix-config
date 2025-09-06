@@ -6,7 +6,6 @@
 }: {
   home.packages = with pkgs; [
     neomutt
-    mutt-wizard
     isync
     msmtp
     pass
