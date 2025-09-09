@@ -9,9 +9,9 @@
     "nvidia" = [(import ./nvidia-envs.nix {inherit config pkgs;})];
   };
   idleConfig = {
-    "raider" = import ./hypridle/raider.nix {inherit config pkgs;};
-    "laptop" = import ./hypridle/laptop.nix {inherit config pkgs;};
-    "pc" = import ./hypridle/pc.nix {inherit config pkgs;};
+    "raider" = [(import ./hypridle/raider.nix {inherit config pkgs;})];
+    "laptop" = [(import ./hypridle/laptop.nix {inherit config pkgs;})];
+    "pc" = [(import ./hypridle/pc.nix {inherit config pkgs;})];
   };
 in {
   imports =
