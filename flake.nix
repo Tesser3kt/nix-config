@@ -56,8 +56,8 @@
 
         sourceRoot = "source/M2";
 
-        nativeBuildInputs = with prev; [cmake git];
-        buildInputs = with prev; [gmp ncurses zlib boost readline pkg-config blas gdbm tbb libffi];
+        nativeBuildInputs = with prev; [cmake git pkg-config];
+        buildInputs = with prev; [gmp ncurses zlib boost readline70 blas gdbm tbb libffi];
 
         meta = with prev.lib; {
           description = "Software system for research in algebraic geometry and commutative algebra";
