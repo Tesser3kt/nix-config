@@ -22,9 +22,9 @@
     };
     nixpkgs-sagemath-10_5.url = "github:NixOS/nixpkgs/bd3bac8bfb542dbde7ffffb6987a1a1f9d41699f";
     nixpkgs-sagemath-10_5.inputs.nixpkgs.follows = "nixpkgs";
-    macaulay2-src = {
-      url = "github:Macaulay2/M2";
-      flake = false;
+    macaulay2-build = {
+      url = "github:pdg137/macaulay2-build";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
   outputs = inputs @ {
@@ -34,6 +34,7 @@
     nix4nvchad,
     additional-fonts,
     nixpkgs-sagemath-10_5,
+    macaulay2-build,
     ...
   }: let
     system = "x86_64-linux";
@@ -49,22 +50,7 @@
       sage = pkgs-sage10_5.sage;
     };
     macaulay2-overlay = final: prev: {
-      macaulay2 = prev.stdenv.mkDerivation {
-        pname = "Macaulay2";
-        version = "1.25.05";
-        src = inputs.macaulay2-src;
-
-        sourceRoot = "source/M2";
-
-        nativeBuildInputs = with prev; [cmake git pkg-config];
-        buildInputs = with prev; [readline gmp ncurses zlib boost blas gdbm tbb libffi];
-
-        meta = with prev.lib; {
-          description = "Software system for research in algebraic geometry and commutative algebra";
-          homepage = "https://faculty.math.illinois.edu/Macaulay2/";
-          license = licenses.gpl3Plus;
-        };
-      };
+      macaulay2 = import macaulay2-build {pkgs = final;};
     };
   in {
     nixosConfigurations.tesserekt-pc = nixpkgs.lib.nixosSystem {
