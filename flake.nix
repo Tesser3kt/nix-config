@@ -30,7 +30,6 @@
     nix4nvchad,
     additional-fonts,
     nixpkgs-sagemath-10_5,
-    macaulay2-build,
     ...
   }: let
     system = "x86_64-linux";
