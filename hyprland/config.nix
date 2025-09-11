@@ -29,6 +29,7 @@
   };
   devices = {
     "pc" = import ./tablet/pc.nix;
+    "raider" = import ./tablet/raider.nix;
   };
   additionalSettings = {
     "nvidia" = [(import ./no-hw-cursor.nix {inherit config pkgs;})];
