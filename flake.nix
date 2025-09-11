@@ -50,7 +50,7 @@
     };
     macaulay2-overlay = final: prev: {
       macaulay2-pkgs = (import macaulay2-build) { pkgs = final; };
-      macaulay2 = final.macaulay2-pkgs.M2;
+      macaulay2 = final.macaulay2-pkgs.M2-stable;
     };
   in {
     nixosConfigurations.tesserekt-pc = nixpkgs.lib.nixosSystem {
