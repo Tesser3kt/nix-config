@@ -56,7 +56,7 @@
 
         sourceRoot = "source/M2";
 
-        nativeBuildInputs = with prev; [cmake git pkg-config];
+        nativeBuildInputs = with prev; [cmake git pkg-config blas];
         buildInputs = with prev; [gmp ncurses zlib boost];
 
         meta = with prev.lib; {
