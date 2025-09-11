@@ -404,19 +404,19 @@
         "type": "github"
       }
     },
-    "macaulay2-src": {
+    "macaulay2-build": {
       "flake": false,
       "locked": {
-        "lastModified": 1756735967,
-        "narHash": "sha256-4upDrAfj2zguqYhKzK8L04wY59OkUj2QaiQlOc77bCQ=",
-        "owner": "Macaulay2",
-        "repo": "M2",
-        "rev": "a12b1079a5374d0c8e6c174f83a24d88aeaaa697",
+        "lastModified": 1715464950,
+        "narHash": "sha256-wwxjIWNom00dtK2/VPTayR8jCjelynwfa1AaZzJx5Ww=",
+        "owner": "pdg137",
+        "repo": "macaulay2-build",
+        "rev": "d7d1adb82aeb48578d5b83a57be5b5b97031a077",
         "type": "github"
       },
       "original": {
-        "owner": "Macaulay2",
-        "repo": "M2",
+        "owner": "pdg137",
+        "repo": "macaulay2-build",
         "type": "github"
       }
     },
@@ -536,7 +536,7 @@
         "additional-fonts": "additional-fonts",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
-        "macaulay2-src": "macaulay2-src",
+        "macaulay2-build": "macaulay2-build",
         "nix4nvchad": "nix4nvchad",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-sagemath-10_5": "nixpkgs-sagemath-10_5",

@@ -24,7 +24,7 @@
     nixpkgs-sagemath-10_5.inputs.nixpkgs.follows = "nixpkgs";
     macaulay2-build = {
       url = "github:pdg137/macaulay2-build";
-      inputs.nixpkgs.follows = "nixpkgs";
+      flake = false;
     };
   };
   outputs = inputs @ {
