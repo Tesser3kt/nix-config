@@ -54,7 +54,7 @@
         version = "1.25.05";
         src = inputs.macaulay2-src;
 
-        sourceRoot = "M2";
+        sourceRoot = "source/M2";
 
         nativeBuildInputs = with prev; [cmake git];
         buildInputs = with prev; [gmp ncurses zlib boost];
