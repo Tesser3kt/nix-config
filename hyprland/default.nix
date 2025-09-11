@@ -1,12 +1,17 @@
 {
   config,
   pkgs,
-  displayConfig,
+  deviceConfig,
   graphics,
   ...
 }: let
   envVariables = {
     "nvidia" = [(import ./nvidia-envs.nix {inherit config pkgs;})];
+  };
+  idleConfig = {
+    "raider" = [(import ./hypridle/raider.nix {inherit config pkgs;})];
+    "laptop" = [(import ./hypridle/laptop.nix {inherit config pkgs;})];
+    "pc" = [(import ./hypridle/pc.nix {inherit config pkgs;})];
   };
 in {
   imports =
@@ -14,10 +19,10 @@ in {
       ./config.nix
       ./hyprpaper.nix
       ./hyprlock.nix
-      ./hypridle.nix
       ./scripts
     ]
-    ++ (envVariables.${graphics} or []);
+    ++ (envVariables.${graphics} or [])
+    ++ (idleConfig.${deviceConfig} or []);
 
   wayland.windowManager.hyprland = {
     enable = true;

@@ -17,8 +17,12 @@
   };
 in {
   home.packages = with pkgs; [
+    # Arduino
     arduino-ide
     arduino-cli
+
+    # Note-taking
+    rnote
   ];
 
   # Zathura configuration
