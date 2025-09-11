@@ -22,7 +22,7 @@
     };
     nixpkgs-sagemath-10_5.url = "github:NixOS/nixpkgs/bd3bac8bfb542dbde7ffffb6987a1a1f9d41699f";
     nixpkgs-sagemath-10_5.inputs.nixpkgs.follows = "nixpkgs";
-    };
+  };
   outputs = inputs @ {
     self,
     nixpkgs,
