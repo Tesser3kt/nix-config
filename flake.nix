@@ -48,10 +48,6 @@
     sagemath-overlay = final: prev: {
       sage = pkgs-sage10_5.sage;
     };
-    macaulay2-overlay = final: prev: {
-      macaulay2-functions = import macaulay2-build;
-      macaulay2 = final.macaulay2-functions.M2 {pkgs = final;};
-    };
   in {
     nixosConfigurations.tesserekt-pc = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -131,7 +127,7 @@
         ./hw-raider.nix
         ./nvidia.nix
         ./display-manager.nix
-        {nixpkgs.overlays = [fonts-overlay sagemath-overlay macaulay2-overlay];}
+        {nixpkgs.overlays = [fonts-overlay sagemath-overlay];}
 
         # Home Manager
         home-manager.nixosModules.home-manager
