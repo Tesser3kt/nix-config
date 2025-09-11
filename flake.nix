@@ -24,7 +24,6 @@
     nixpkgs-sagemath-10_5.inputs.nixpkgs.follows = "nixpkgs";
     macaulay2-build = {
       url = "github:pdg137/macaulay2-build";
-      flake = false;
     };
   };
   outputs = inputs @ {
@@ -50,7 +49,7 @@
       sage = pkgs-sage10_5.sage;
     };
     macaulay2-overlay = final: prev: {
-      macaulay2 = import "${macaulay2-build}/default.nix" { inherit (nixpkgs) stdenv fetchFromGitHub; };
+      macaulay2 = (import macaulay2-build) { pkgs = final; };
     };
   in {
     nixosConfigurations.tesserekt-pc = nixpkgs.lib.nixosSystem {
