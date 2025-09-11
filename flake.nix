@@ -130,7 +130,7 @@
         ./hw-raider.nix
         ./nvidia.nix
         ./display-manager.nix
-        {nixpkgs.overlays = [fonts-overlay sagemath-overlay macaulay2-overlay];}
+        {nixpkgs.overlays = [fonts-overlay sagemath-overlay];}
 
         # Home Manager
         home-manager.nixosModules.home-manager
