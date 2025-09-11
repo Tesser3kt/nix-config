@@ -49,7 +49,8 @@
       sage = pkgs-sage10_5.sage;
     };
     macaulay2-overlay = final: prev: {
-      macaulay2 = final.callPackage "${macaulay2-build}/default.nix" {};
+      macaulay2-functions = import macaulay2-build;
+      macaulay2 = final.macaulay2-functions.M2 {pkgs = final;};
     };
   in {
     nixosConfigurations.tesserekt-pc = nixpkgs.lib.nixosSystem {
