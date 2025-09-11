@@ -404,6 +404,22 @@
         "type": "github"
       }
     },
+    "macaulay2-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1756735967,
+        "narHash": "sha256-4upDrAfj2zguqYhKzK8L04wY59OkUj2QaiQlOc77bCQ=",
+        "owner": "Macaulay2",
+        "repo": "M2",
+        "rev": "a12b1079a5374d0c8e6c174f83a24d88aeaaa697",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Macaulay2",
+        "repo": "M2",
+        "type": "github"
+      }
+    },
     "nix4nvchad": {
       "inputs": {
         "flake-utils": "flake-utils_2",
@@ -520,6 +536,7 @@
         "additional-fonts": "additional-fonts",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
+        "macaulay2-src": "macaulay2-src",
         "nix4nvchad": "nix4nvchad",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-sagemath-10_5": "nixpkgs-sagemath-10_5",
