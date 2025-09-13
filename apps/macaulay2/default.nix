@@ -3,14 +3,14 @@
   pkgs,
   ...
 }: let
-  my-cohomCalg = import ./cohomCalg.nix {inherit pkgs;};
-  my-frobby = import ./frobby.nix {inherit pkgs;};
-  my-normaliz = import ./normaliz.nix {inherit pkgs;};
-  my-lrslib = import ./lrslib.nix {inherit pkgs;};
-  my-TOPCOM = import ./TOPCOM.nix {inherit pkgs;};
-  my-singular-factory = import ./singular-factory.nix {inherit pkgs;};
+  my-cohomCalg = import ./cohomCalg.nix;
+  my-frobby = import ./frobby.nix;
+  my-normaliz = import ./normaliz.nix;
+  my-lrslib = import ./lrslib.nix;
+  my-TOPCOM = import ./TOPCOM.nix;
+  my-singular-factory = import ./singular-factory.nix;
 in
-  pkgs.stdenv.mkDerivation rec {
+  pkgs.stdenv.mkDerivation {
     name = "M2";
     builder = "${pkgs.bash}/bin/bash";
     args = [./builder.sh];
