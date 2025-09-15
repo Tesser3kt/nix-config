@@ -27,7 +27,6 @@
     home-manager,
     nix4nvchad,
     additional-fonts,
-    nixpkgs-sagemath-10_5,
     ...
   }: let
     system = "x86_64-linux";
