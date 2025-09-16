@@ -59,6 +59,9 @@
     # Partition management
     parted
     tparted
+
+    # Raspberry Pi
+    rpi-imager
   ];
 
   services.blueman-applet.enable = false;
