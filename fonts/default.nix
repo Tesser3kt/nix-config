@@ -44,4 +44,7 @@
     source = ./ebgaramond;
     recursive = true;
   };
+
+  # Copy TeX Gyre Schola Math to fonts.
+  home.file.".local/share/fonts/TeX-Gyre-Schola-Math.otf" = ./texgyreschola-math.otf;
 }
