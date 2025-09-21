@@ -28,6 +28,7 @@
     source-code-pro
     source-sans-pro
     palatino-font
+    gyre-fonts
   ];
   fonts.fontconfig.enable = true;
 
