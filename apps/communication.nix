@@ -7,5 +7,6 @@
     webcord
     qbittorrent-enhanced
     localsend
+    beeper
   ];
 }
