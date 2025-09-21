@@ -46,5 +46,5 @@
   };
 
   # Copy TeX Gyre Schola Math to fonts.
-  home.file.".local/share/fonts/TeX-Gyre-Schola-Math.otf" = ./texgyreschola-math.otf;
+  home.file.".local/share/fonts/TeX-Gyre-Schola-Math.otf".source = ./texgyreschola-math.otf;
 }
