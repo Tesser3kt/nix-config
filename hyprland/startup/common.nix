@@ -4,4 +4,5 @@
   "swaync &"
   "hypridle &"
   "beeper -m &"
+  "vesktop --start-minimized &"
 ]
