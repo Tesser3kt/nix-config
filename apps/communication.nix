@@ -4,9 +4,9 @@
   ...
 }: {
   home.packages = with pkgs; [
-    webcord
     qbittorrent-enhanced
     localsend
     beeper
+    dissent
   ];
 }
