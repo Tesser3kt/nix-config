@@ -7,6 +7,6 @@
     qbittorrent-enhanced
     localsend
     beeper
-    dissent
+    vesktop
   ];
 }
