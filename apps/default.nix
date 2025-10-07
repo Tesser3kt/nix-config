@@ -13,4 +13,8 @@
     ./mail.nix
     ./office.nix
   ];
+
+  home.packages = with pkgs; [
+    zotero
+  ];
 }
