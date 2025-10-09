@@ -62,6 +62,9 @@
 
     # Raspberry Pi
     rpi-imager
+
+    # Crypto
+    libsecret
   ];
 
   services.blueman-applet.enable = false;
