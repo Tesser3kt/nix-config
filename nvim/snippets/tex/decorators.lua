@@ -276,7 +276,7 @@ return {
       snippetType = "autosnippet",
       dscr = "Latin bar overset"
     },
-    fmta("\\bar{<>}<>", { i(1), i(0) }),
+    fmta("\\overline{<>}<>", { i(1), i(0) }),
     { condition = tex_utils.in_mathzone }
   ),
   s(
@@ -289,7 +289,7 @@ return {
       dscr = "Latin bar overset auto"
     },
     fmta(
-      "\\bar{<>}<>",
+      "\\overline{<>}<>",
       {
         f(function(_, snip) return snip.captures[1] end),
         i(0)
