@@ -11,5 +11,7 @@
     vlc
     mpv
     audacity
+    ffmpeg
+    handbrake
   ];
 }
