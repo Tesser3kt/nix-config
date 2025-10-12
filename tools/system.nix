@@ -67,7 +67,7 @@
     libsecret
 
     # Mounting NTFS drives
-    ntfs-3g
+    ntfs3g
     fuse
   ];
 
