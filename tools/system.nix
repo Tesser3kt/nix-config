@@ -65,6 +65,10 @@
 
     # Crypto
     libsecret
+
+    # Mounting NTFS drives
+    ntfs-3g
+    fuse
   ];
 
   services.blueman-applet.enable = false;
