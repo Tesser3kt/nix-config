@@ -16,5 +16,5 @@
       [General]
       theme=Nordic
     # '';
-  # xdg.configFile."Kvantum/GraphiteNord".source = "${pkgs.graphite-kde-theme}/share/Kvantum/GraphiteNord";
+  xdg.configFile."Kvantum/Nordic".source = "${pkgs.nordic}/share/Kvantum/Nordic";
 }
