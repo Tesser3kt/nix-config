@@ -12,6 +12,7 @@
   files = "alacritty -e zsh -ic ranger";
   calculator = "alacritty -e zsh -ic sage";
   mail = "alacritty -e zsh -ic neomutt";
+  ai = "firefox-beta --new-window 'chatgpt.com'";
   single_border_active = "rgba(81A1C1D2) rgba(8FBCBBD2) 90deg";
   single_border_inactive = "rgba(2E344096)";
   group_border_active = "rgba(81A1C1D2)";
@@ -58,6 +59,7 @@ in {
         "$mod, E, exec, ${files}"
         "$mod, C, exec, ${calculator}"
         "$mod, M, exec, ${mail}"
+        "$mod, A, exec, ${ai}"
 
         # Workspaces back and forth
         "$mod, Tab, workspace, previous"
