@@ -12,6 +12,7 @@
     ./math.nix
     ./mail.nix
     ./office.nix
+    ./ai.nix
   ];
 
   home.packages = with pkgs; [
