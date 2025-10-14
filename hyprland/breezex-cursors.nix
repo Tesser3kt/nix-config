@@ -18,8 +18,21 @@
 
     dontBuild = true;
     installPhase = ''
-      mkdir -p $out/share/icons
-      cp -r * $out/share/icons/
+      set -eu
+      theme="BreezeX-X11-${variant}"
+      mkdir -p $out/share/icons/"$theme"
+
+      # Extract to a temp dir to inspect layout
+      tmpdir="$(mktemp -d)"
+      tar -xJf "$src" -C "$tmpdir"
+
+      # If tarball has a top-level BreezeX* dir, use it; otherwise copy all files.
+      top="$(find "$tmpdir" -mindepth 1 -maxdepth 1 -type d -name 'BreezeX*' | head -n1 || true)"
+      if [ -n "$top" ]; then
+        cp -r "$top"/* "$out/share/icons/$theme/"
+      else
+        cp -r "$tmpdir"/* "$out/share/icons/$theme/"
+      fi
     '';
 
     meta = with pkgs.lib; {
