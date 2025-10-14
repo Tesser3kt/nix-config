@@ -32,9 +32,6 @@
     "pc" = import ./tablet/pc.nix;
     "raider" = import ./tablet/raider.nix;
   };
-  additionalSettings = {
-    "nvidia" = [(import ./no-hw-cursor.nix {inherit config pkgs;})];
-  };
   workspaceSettings = {
     "pc" = [(import ./workspaces/pc.nix {inherit config pkgs;})];
     "raider" = [(import ./workspaces/raider.nix {inherit config pkgs;})];
