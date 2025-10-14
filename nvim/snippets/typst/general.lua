@@ -1,5 +1,4 @@
 -- [[ General Typst snippets ]]
-
 local line_begin = require("luasnip.extras.expand_conditions").line_begin
 
 -- Get visual selection text
@@ -42,10 +41,24 @@ return {
 		{ trig = "md", snippetType = "autosnippet", dscr = "Display math environment." },
 		fmta(
 			[[
-      #align(center)[
-       $display(
-        <>
-       )$
+      #math.equation(numbering: none, block: true)[
+        $<>$
+      ]
+      <>
+    ]],
+			{
+				i(1),
+				i(0),
+			}
+		),
+		{ condition = line_begin }
+	),
+	s(
+		{ trig = "beq", snippetType = "autosnippet", dscr = "Numbered equation environment." },
+		fmta(
+			[[
+      #math.equation(block: true)[
+        $<>$
       ]
       <>
     ]],
