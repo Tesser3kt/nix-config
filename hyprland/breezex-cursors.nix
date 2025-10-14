@@ -47,11 +47,6 @@ in {
   };
   wayland.windowManager.hyprland = {
     settings = {
-      # Hyprland’s own xcursor stanza
-      xcursor = {
-        theme = "BreezeX-X11-${variant}";
-        size = 28;
-      };
       # Make sure env vars are present for XWayland apps
       env = [
         "XCURSOR_THEME,BreezeX-X11-${variant}"
