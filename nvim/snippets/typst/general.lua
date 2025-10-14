@@ -43,7 +43,9 @@ return {
 		fmta(
 			[[
       #align(center)[
-       $<>$
+       $display(
+        <>
+       )$
       ]
       <>
     ]],
