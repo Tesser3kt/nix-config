@@ -2,7 +2,7 @@
 local line_begin = require("luasnip.extras.expand_conditions").line_begin
 
 -- Check if in math mode
-local cond = require("typst-mathzone").in_typst_math()
+local mathzone = require("typst-mathzone")
 
 -- Get visual selection text
 local get_visual = function(args, parent)
@@ -32,7 +32,7 @@ return {
         return snip.captures[2]
       end),
     }),
-    { condition = cond }
+    { condition = mathzone.in_typst_math }
   ),
   s(
     {
@@ -51,7 +51,7 @@ return {
         return snip.captures[2]
       end),
     }),
-    { condition = cond }
+    { condition = mathzone.in_typst_math }
   ),
 
   -- Index subscripts
@@ -69,7 +69,7 @@ return {
         return snip.captures[1]
       end),
     }),
-    { condition = cond }
+    { condition = mathzone.in_typst_math }
   ),
   s(
     {
@@ -85,7 +85,7 @@ return {
         return snip.captures[1]
       end),
     }),
-    { condition = cond }
+    { condition = mathzone.in_typst_math }
   ),
   s(
     {
@@ -101,7 +101,7 @@ return {
         return snip.captures[1]
       end),
     }),
-    { condition = cond }
+    { condition = mathzone.in_typst_math }
   ),
   s(
     {
@@ -117,7 +117,7 @@ return {
         return snip.captures[1]
       end),
     }),
-    { condition = cond }
+    { condition = mathzone.in_typst_math }
   ),
   s(
     {
@@ -133,7 +133,7 @@ return {
         return snip.captures[1]
       end),
     }),
-    { condition = cond }
+    { condition = mathzone.in_typst_math }
   ),
   s(
     {
@@ -149,7 +149,7 @@ return {
         return snip.captures[1]
       end),
     }),
-    { condition = cond }
+    { condition = mathzone.in_typst_math }
   ),
 
   -- General subscript
@@ -161,7 +161,7 @@ return {
       dscr = "General subscript"
     },
     fmta("_(<>)<>", { i(1), i(0) }),
-    { condition = cond }
+    { condition = mathzone.in_typst_math }
   ),
 
   -- Restriction
@@ -180,6 +180,6 @@ return {
       i(1), 
       i(0) 
     }),
-    { condition = cond }
+    { condition = mathzone.in_typst_math }
   ),
 }
