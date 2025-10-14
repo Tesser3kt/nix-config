@@ -479,11 +479,11 @@
     "nvchad-starter": {
       "flake": false,
       "locked": {
-        "lastModified": 1760459408,
-        "narHash": "sha256-nKvsisije+q54y6Ccr9SR4KkKD+sx1O7Q+ByOtSSo+g=",
+        "lastModified": 1760460072,
+        "narHash": "sha256-OQHbZZlemGeJ6iPnZPzejPOA2TwrNVDIMzYwSttrNC0=",
         "owner": "Tesser3kt",
         "repo": "nvchad-starter",
-        "rev": "c737fd4ea742213c2a19bf8f58564bd0fc5e7808",
+        "rev": "4e3daadefc315d1fdb4f2a5647a61f4b707baf33",
         "type": "github"
       },
       "original": {
