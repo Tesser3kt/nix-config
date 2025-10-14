@@ -602,11 +602,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1760435221,
-        "narHash": "sha256-DEeJ2O3AlGaseZPIqAmstl50j1XnokmdqKQMv8BDwbU=",
+        "lastModified": 1760435300,
+        "narHash": "sha256-byD/68S+HC1Avr0eHyWDso68MXfRSJwJuI+BEOw+95A=",
         "owner": "Tesser3kt",
         "repo": "zen-browser-flake",
-        "rev": "68f75481ff3586e9976b1b469eb3d79b05e37ddf",
+        "rev": "cb2502f4c57970e54151ef0d333a34c2695f5899",
         "type": "github"
       },
       "original": {
