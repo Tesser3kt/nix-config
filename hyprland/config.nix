@@ -38,13 +38,9 @@
     "laptop" = [(import ./workspaces/laptop.nix {inherit config pkgs;})];
   };
 in {
-  imports =
-    (
-      additionalSettings.${graphics} or []
-    )
-    ++ (
-      workspaceSettings.${displayConfig} or []
-    );
+  imports = (
+    workspaceSettings.${displayConfig} or []
+  );
 
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
@@ -287,7 +283,7 @@ in {
       enabled = true;
       force_zero_scaling = true;
     };
-    
+
     # Fix cursor issue in some apps.
     cursor = {
       no_hardware_cursors = true;
