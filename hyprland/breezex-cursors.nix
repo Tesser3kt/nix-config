@@ -13,7 +13,7 @@
 
     src = pkgs.fetchurl {
       url = "https://github.com/ful1e5/BreezeX_Cursor/releases/download/v${version}/BreezeX-${variant}.tar.xz";
-      sha256 = "sha256-HqjO/ogAd/dsrO5WHIilUQaq1CbiU48lEaoefcUmmBM=";
+      sha256 = "sha256-jN90NGaw8VZf5fKQ3UjvTALZF3hFjQ08xWQ3UVJVtlM=";
     };
 
     dontBuild = true;
