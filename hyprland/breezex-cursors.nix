@@ -33,7 +33,7 @@ in {
   home.packages = [breezex];
   home.pointerCursor = {
     package = breezex;
-    name = "BreezeX-${variant}";
+    name = "BreezeX-X11-${variant}";
     size = 28;
     gtk.enable = true;
     x11.enable = true;
@@ -41,7 +41,7 @@ in {
   gtk = {
     cursorTheme = {
       package = breezex;
-      name = "BreezeX-${variant}";
+      name = "BreezeX-X11-${variant}";
       size = 28;
     };
   };
@@ -49,12 +49,12 @@ in {
     settings = {
       # Hyprland’s own xcursor stanza
       xcursor = {
-        theme = "BreezeX-${variant}";
+        theme = "BreezeX-X11-${variant}";
         size = 28;
       };
       # Make sure env vars are present for XWayland apps
       env = [
-        "XCURSOR_THEME,BreezeX-${variant}"
+        "XCURSOR_THEME,BreezeX-X11-${variant}"
         "XCURSOR_SIZE,28"
       ];
     };
