@@ -1,4 +1,3 @@
--- lua/your_snippets/typst.lua
 local M = {}
 
 -- Detect if cursor is inside Typst math ($...$ or $[ ... ]$)

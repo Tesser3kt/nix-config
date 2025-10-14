@@ -2,7 +2,7 @@
 local line_begin = require("luasnip.extras.expand_conditions").line_begin
 
 -- Check if in math mode
-local cond = require("typst").in_typst_math()
+local cond = require("snippets.typst.typst").in_typst_math()
 
 -- Get visual selection text
 local get_visual = function(args, parent)
