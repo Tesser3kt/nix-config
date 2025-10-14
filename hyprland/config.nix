@@ -290,6 +290,11 @@ in {
       enabled = true;
       force_zero_scaling = true;
     };
+    
+    # Fix cursor issue in some apps.
+    cursor = {
+      no_hardware_cursors = true;
+    };
 
     # Startup apps
     exec-once =
