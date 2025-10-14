@@ -19,6 +19,7 @@ in {
       ./config.nix
       ./hyprpaper.nix
       ./hyprlock.nix
+      ./breezex-cursors.nix
       ./scripts
     ]
     ++ (envVariables.${graphics} or [])
