@@ -232,13 +232,6 @@
   # Allow wireguard through firewall
   networking.firewall.checkReversePath = "loose";
 
-  # Enable Weylus
-  programs.weylus = {
-    enable = true;
-    openFirewall = true; # Open firewall for Weylus.
-    users = ["tesserekt"]; # Allow Weylus for the user.
-  };
-
   # Or disable the firewall altogether.
   networking.firewall.enable = false;
 
