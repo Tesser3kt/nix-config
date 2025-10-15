@@ -49,18 +49,18 @@
     status_path = "~/.local/share/vdirsyncer/status/"
 
     ############# PERSONAL #############
-    [pair personal-contacts]
-    a = "personal-local"
-    b = "personal-google"
+    [pair personal_contacts]
+    a = "personal_local"
+    b = "personal_google"
     collections = [ "from b" ]
     metadata = [ "displayname" ]
 
-    [storage personal-local]
+    [storage personal_local]
     type = "filesystem"
     path = "~/.local/share/contacts/personal/"
     fileext = ".vcf"
 
-    [storage personal-google]
+    [storage personal_google]
     type = "carddav"
     url = "https://www.googleapis.com/carddav/v1/principals/djklepy@gmail.com/lists/default/"
     username = "djklepy@gmail.com"
@@ -68,18 +68,18 @@
     passwordeval = "pass show google/app-password-personal"
 
     ############# WORK #############
-    [pair work-contacts]
-    a = "work-local"
-    b = "work-google"
+    [pair work_contacts]
+    a = "work_local"
+    b = "work_google"
     collections = [ "from b" ]
     metadata = [ "displayname" ]
 
-    [storage work-local]
+    [storage work_local]
     type = "filesystem"
     path = "~/.local/share/contacts/work/"
     fileext = ".vcf"
 
-    [storage work-google]
+    [storage work_google]
     type = "carddav"
     url = "https://www.googleapis.com/carddav/v1/principals/adam.klepac@gevo.cz/lists/default/"
     username = "adam.klepac@gevo.cz"
