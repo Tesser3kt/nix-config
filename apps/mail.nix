@@ -39,4 +39,13 @@
       isync
     ];
   };
+
+  # Neomutt config for goobook
+  programs.neomutt = {
+    extraConfig = ''
+      set query_command = "goobook query '%s'"
+      set query_format = "%e\t%n"
+      bind editor <Tab> complete-query
+    '';
+  };
 }
