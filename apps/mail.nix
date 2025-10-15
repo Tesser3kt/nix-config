@@ -19,6 +19,7 @@
     cronie
     mpop
     goimapnotify
+    goobook
   ];
 
   # GPG agent configuration
