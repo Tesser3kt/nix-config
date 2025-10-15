@@ -19,7 +19,8 @@
     cronie
     mpop
     goimapnotify
-    goobook
+    khard
+    vdirsyncer
   ];
 
   # GPG agent configuration
