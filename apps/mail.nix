@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   gpgKeygrip,
   ...
 }: {
@@ -41,11 +42,20 @@
   };
 
   # Neomutt config for goobook
-  programs.neomutt = {
-    extraConfig = ''
-      set query_command = "goobook query '%s'"
-      set query_format = "%e\t%n"
-      bind editor <Tab> complete-query
-    '';
-  };
+  xdg.configFile."mutt/local.muttrc".text = ''
+    # example: Google Contacts via goobook
+    set query_command = "goobook query '%s'"
+    set query_format  = "%e\t%n"
+    bind editor <Tab> complete-query
+  '';
+
+  # Append a source line to mutt-wizard's muttrc, idempotently
+  home.activation.appendMuttLocal = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    file="$HOME/.config/mutt/muttrc"
+    mkdir -p "$(dirname "$file")"
+    touch "$file"
+    if ! grep -q 'source "~/.config/mutt/local.muttrc"' "$file"; then
+      printf '\n# HM include: local overrides\nsource "~/.config/mutt/local.muttrc"\n' >> "$file"
+    fi
+  '';
 }
