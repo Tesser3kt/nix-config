@@ -43,41 +43,78 @@
     ];
   };
 
-  # --- goobook configs (independent oauth/cache for each account) ---
-  xdg.configFile."goobook-personal.rc".text = ''
-    [DEFAULT]
-    cache_expiry_hours: 24
-    oauth_db_filename:  ~/.config/goobook-personal-oauth.json
-    cache_filename:     ~/.cache/goobook-personal-cache
+  # --- vdirsyncer config (two Google accounts) ---
+  xdg.configFile."vdirsyncer/config".text = ''
+    [general]
+    status_path = "~/.local/share/vdirsyncer/status/"
+
+    ############# PERSONAL #############
+    [pair personal-contacts]
+    a = "personal-local"
+    b = "personal-google"
+    collections = [ "from b" ]
+    metadata = [ "displayname" ]
+
+    [storage personal-local]
+    type = "filesystem"
+    path = "~/.local/share/contacts/personal/"
+    fileext = ".vcf"
+
+    [storage personal-google]
+    type = "carddav"
+    url = "https://www.googleapis.com/carddav/v1/principals/djklepy@gmail.com/lists/default/"
+    username = "djklepy@gmail.com"
+    # Use an App Password; vdirsyncer 0.22+ syntax:
+    passwordeval = "pass show google/app-password-personal"
+
+    ############# WORK #############
+    [pair work-contacts]
+    a = "work-local"
+    b = "work-google"
+    collections = [ "from b" ]
+    metadata = [ "displayname" ]
+
+    [storage work-local]
+    type = "filesystem"
+    path = "~/.local/share/contacts/work/"
+    fileext = ".vcf"
+
+    [storage work-google]
+    type = "carddav"
+    url = "https://www.googleapis.com/carddav/v1/principals/adam.klepac@gevo.cz/lists/default/"
+    username = "adam.klepac@gevo.cz"
+    passwordeval = "pass show google/app-password-work"
   '';
 
-  xdg.configFile."goobook-work.rc".text = ''
-    [DEFAULT]
-    cache_expiry_hours: 24
-    oauth_db_filename:  ~/.config/goobook-work-oauth.json
-    cache_filename:     ~/.cache/goobook-work-cache
-  '';
+  # --- khard reads both addressbooks ---
+  programs.khard = {
+    enable = true;
+    settings = {
+      general = {
+        editor = "nvim";
+        merge_editor = "nvim";
+      };
+      # Point khard at BOTH local dirs
+      addressbooks = {
+        personal = {path = "~/.local/share/contacts/personal/";};
+        work = {path = "~/.local/share/contacts/work/";};
+      };
+      # Output style helpful for NeoMutt
+      display = {
+        # khard email --parsable outputs "email<TAB>name"
+        show = ["firstname" "lastname" "email"];
+      };
+    };
+  };
 
-  # --- NeoMutt: per-account lookup using send-hook on From address ---
-  # Replace the two emails below with your actual From addresses that mutt-wizard uses.
+  # --- NeoMutt: local query via khard (works with mutt-wizard) ---
   xdg.configFile."mutt/local.muttrc".text = ''
-    # Common formatting for results
-    set query_format = "%e\t%n"
+    set query_command = "khard email --parsable '%s'"
+    set query_format  = "%e\t%n"
     bind editor <Tab> complete-query
-
-    # Default to personal (used if a hook doesn't match)
-    set query_command = "goobook -c ~/.config/goobook-personal.rc query '%s'"
-
-    # When composing from WORK account, switch to work contacts
-    send-hook "~f adam.klepac@gevo.cz" \
-      "set query_command='goobook -c ~/.config/goobook-work.rc query \"%s\"'"
-
-    # When composing from PERSONAL account, switch to personal contacts
-    send-hook "~f djklepy@gmail.com" \
-      "set query_command='goobook -c ~/.config/goobook-personal.rc query \"%s\"'"
   '';
 
-  # Ensure mutt-wizard’s main muttrc sources the local include (idempotent)
+  # Ensure mutt-wizard loads our local include exactly once
   home.activation.appendMuttLocal = lib.hm.dag.entryAfter ["writeBoundary"] ''
     file="$HOME/.config/mutt/muttrc"
     mkdir -p "$(dirname "$file")"
@@ -85,4 +122,22 @@
     grep -q 'source "~/.config/mutt/local.muttrc"' "$file" || \
       printf '\n# Local overrides (Home Manager)\nsource "~/.config/mutt/local.muttrc"\n' >> "$file"
   '';
+
+  # --- Optional: run vdirsyncer periodically (hourly) ---
+  systemd.user.timers.vdirsyncer-hourly = {
+    Unit.Description = "vdirsyncer contacts sync (daily)";
+    Timer = {
+      OnCalendar = "daily";
+      Persistent = true;
+    };
+    Install.WantedBy = ["timers.target"];
+  };
+  systemd.user.services.vdirsyncer-hourly = {
+    Unit.Description = "vdirsyncer contacts sync";
+    Service = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.vdirsyncer}/bin/vdirsyncer sync";
+    };
+    Install.WantedBy = ["default.target"];
+  };
 }
