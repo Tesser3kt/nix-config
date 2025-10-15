@@ -87,25 +87,23 @@
   '';
 
   # --- khard reads both addressbooks ---
-  programs.khard = {
-    enable = true;
-    settings = {
-      general = {
-        editor = "nvim";
-        merge_editor = "nvim";
-      };
-      # Point khard at BOTH local dirs
-      addressbooks = {
-        personal = {path = "~/.local/share/contacts/personal/";};
-        work = {path = "~/.local/share/contacts/work/";};
-      };
-      # Output style helpful for NeoMutt
-      display = {
-        # khard email --parsable outputs "email<TAB>name"
-        show = ["firstname" "lastname" "email"];
-      };
-    };
-  };
+ # --- khard: write the INI directly (don’t use programs.khard.settings) ---
+  xdg.configFile."khard/khard.conf".text = ''
+    # khard >= 0.13 config
+    [addressbooks]
+      [[personal]]
+        path = ~/.local/share/contacts/personal/
+      [[work]]
+        path = ~/.local/share/contacts/work/
+
+    [general]
+      editor = nvim
+      merge_editor = nvim
+
+    [display]
+      # khard email --parsable prints "email<TAB>name"
+      # (no extra tuning needed for neomutt)
+  '';
 
   # --- NeoMutt: local query via khard (works with mutt-wizard) ---
   xdg.configFile."mutt/local.muttrc".text = ''
