@@ -85,10 +85,10 @@
           mkdir -p "$(dirname "$cfg")" "$HOME/.local/share/contacts/personal" "$HOME/.local/share/contacts/work"
 
           # Read secrets from pass
-          cid_p=$($PASS show google/personal/client_id)
-          sec_p=$($PASS show google/personal/client_secret)
-          cid_w=$($PASS show google/work/client_id)
-          sec_w=$($PASS show google/work/client_secret)
+          cid_p="$($PASS show google/personal/client_id)"
+          sec_p="$($PASS show google/personal/client_secret)"
+          cid_w="$($PASS show google/work/client_id)"
+          sec_w="$($PASS show google/work/client_secret)"
 
           cat > "$cfg" <<'CFG'
     [general]
