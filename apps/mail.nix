@@ -43,12 +43,55 @@
     ];
   };
 
-  # --- vdirsyncer config (two Google accounts) ---
-  xdg.configFile."vdirsyncer/config".text = ''
+  # --- khard (reads local vCards) ---
+  xdg.configFile."khard/khard.conf".text = ''
+    [addressbooks]
+      [[personal]]
+        path = ~/.local/share/contacts/personal/
+      [[work]]
+        path = ~/.local/share/contacts/work/
+
+    [general]
+      editor = nano
+      merge_editor = nano
+  '';
+
+  # --- neomutt: query via khard (works with mutt-wizard) ---
+  xdg.configFile."mutt/local.muttrc".text = ''
+    set query_command = "khard email --parsable '%s'"
+    set query_format  = "%e\t%n"
+    bind editor <Tab> complete-query
+  '';
+  home.activation.appendMuttLocal = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    file="$HOME/.config/mutt/muttrc"
+    mkdir -p "$(dirname "$file")"
+    touch "$file"
+    grep -q 'source "~/.config/mutt/local.muttrc"' "$file" || \
+      printf '\n# Local overrides (Home Manager)\nsource "~/.config/mutt/local.muttrc"\n' >> "$file"
+  '';
+
+  # --- vdirsyncer config from pass (NO secrets in Nix store) ---
+  # pass entries you will create:
+  #   google/personal/client_id
+  #   google/personal/client_secret
+  #   google/work/client_id
+  #   google/work/client_secret
+  home.activation.writeVdirsyncerConfig = lib.hm.dag.entryAfter ["writeBoundary"] ''
+          set -euo pipefail
+          umask 077
+          cfg="$HOME/.config/vdirsyncer/config"
+          mkdir -p "$(dirname "$cfg")" "$HOME/.local/share/contacts/personal" "$HOME/.local/share/contacts/work"
+
+          # Read secrets from pass
+          cid_p=$(pass show google/personal/client_id)
+          sec_p=$(pass show google/personal/client_secret)
+          cid_w=$(pass show google/work/client_id)
+          sec_w=$(pass show google/work/client_secret)
+
+          cat > "$cfg" <<'CFG'
     [general]
     status_path = "~/.local/share/vdirsyncer/status/"
 
-    ############# PERSONAL #############
     [pair personal_contacts]
     a = "personal_local"
     b = "personal_google"
@@ -61,13 +104,11 @@
     fileext = ".vcf"
 
     [storage personal_google]
-    type = "carddav"
-    url = "https://www.googleapis.com/carddav/v1/principals/djklepy@gmail.com/lists/default/"
-    username = "djklepy@gmail.com"
-    # Use an App Password; vdirsyncer 0.22+ syntax:
-    passwordeval = "pass show google/app-password-personal"
+    type = "google_contacts"
+    token_file = "~/.config/vdirsyncer/google-personal.token"
+    client_id = "__CID_P__"
+    client_secret = "__SEC_P__"
 
-    ############# WORK #############
     [pair work_contacts]
     a = "work_local"
     b = "work_google"
@@ -80,48 +121,22 @@
     fileext = ".vcf"
 
     [storage work_google]
-    type = "carddav"
-    url = "https://www.googleapis.com/carddav/v1/principals/adam.klepac@gevo.cz/lists/default/"
-    username = "adam.klepac@gevo.cz"
-    passwordeval = "pass show google/app-password-work"
+    type = "google_contacts"
+    token_file = "~/.config/vdirsyncer/google-work.token"
+    client_id = "__CID_W__"
+    client_secret = "__SEC_W__"
+    CFG
+
+          # Substitute secrets safely
+          sed -i \
+            -e "s|__CID_P__|$cid_p|g" \
+            -e "s|__SEC_P__|$sec_p|g" \
+            -e "s|__CID_W__|$cid_w|g" \
+            -e "s|__SEC_W__|$sec_w|g" \
+            "$cfg"
   '';
 
-  # --- khard reads both addressbooks ---
- # --- khard: write the INI directly (don’t use programs.khard.settings) ---
-  xdg.configFile."khard/khard.conf".text = ''
-    # khard >= 0.13 config
-    [addressbooks]
-      [[personal]]
-        path = ~/.local/share/contacts/personal/
-      [[work]]
-        path = ~/.local/share/contacts/work/
-
-    [general]
-      editor = nvim
-      merge_editor = nvim
-
-    [display]
-      # khard email --parsable prints "email<TAB>name"
-      # (no extra tuning needed for neomutt)
-  '';
-
-  # --- NeoMutt: local query via khard (works with mutt-wizard) ---
-  xdg.configFile."mutt/local.muttrc".text = ''
-    set query_command = "khard email --parsable '%s'"
-    set query_format  = "%e\t%n"
-    bind editor <Tab> complete-query
-  '';
-
-  # Ensure mutt-wizard loads our local include exactly once
-  home.activation.appendMuttLocal = lib.hm.dag.entryAfter ["writeBoundary"] ''
-    file="$HOME/.config/mutt/muttrc"
-    mkdir -p "$(dirname "$file")"
-    touch "$file"
-    grep -q 'source "~/.config/mutt/local.muttrc"' "$file" || \
-      printf '\n# Local overrides (Home Manager)\nsource "~/.config/mutt/local.muttrc"\n' >> "$file"
-  '';
-
-  # --- Optional: run vdirsyncer periodically (hourly) ---
+  # Optional: hourly sync
   systemd.user.timers.vdirsyncer-hourly = {
     Unit.Description = "vdirsyncer contacts sync (daily)";
     Timer = {
@@ -136,6 +151,5 @@
       Type = "oneshot";
       ExecStart = "${pkgs.vdirsyncer}/bin/vdirsyncer sync";
     };
-    Install.WantedBy = ["default.target"];
   };
 }
