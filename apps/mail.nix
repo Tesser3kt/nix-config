@@ -47,9 +47,9 @@
   xdg.configFile."khard/khard.conf".text = ''
     [addressbooks]
       [[personal]]
-        path = ~/.local/share/contacts/personal/default/
+        path = ${config.home.homeDirectory}/.local/share/contacts/personal/default/
       [[work]]
-        path = ~/.local/share/contacts/work/default/
+        path = ${config.home.homeDirectory}/.local/share/contacts/work/default/
 
     [general]
       editor = nano
@@ -81,7 +81,9 @@
           umask 077
 
           cfg="~/.config/vdirsyncer/config"
-          mkdir -p "$(dirname "$cfg")" "~/.local/share/contacts/personal" "~/.local/share/contacts/work"
+          mkdir -p "$(dirname "$cfg")" \
+             "$HOME/.local/share/contacts/personal" \
+             "$HOME/.local/share/contacts/work"
 
           # Read secrets from pass
           cid_p="$(${pkgs.pass}/bin/pass show google/personal/client_id)"
