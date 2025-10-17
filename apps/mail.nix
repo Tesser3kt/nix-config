@@ -47,9 +47,9 @@
   xdg.configFile."khard/khard.conf".text = ''
     [addressbooks]
       [[personal]]
-        path = ~/.local/share/contacts/personal/
+        path = $HOME/.local/share/contacts/personal/default/
       [[work]]
-        path = ~/.local/share/contacts/work/
+        path = $HOME/.local/share/contacts/work/default/
 
     [general]
       editor = nano
@@ -101,12 +101,12 @@
 
     [storage personal_local]
     type = "filesystem"
-    path = "~/.local/share/contacts/personal/"
+    path = "$HOME/.local/share/contacts/personal/"
     fileext = ".vcf"
 
     [storage personal_google]
     type = "google_contacts"
-    token_file = "~/.config/vdirsyncer/google-personal.token"
+    token_file = "$HOME/.config/vdirsyncer/google-personal.token"
     client_id = "__CID_P__"
     client_secret = "__SEC_P__"
 
@@ -118,12 +118,12 @@
 
     [storage work_local]
     type = "filesystem"
-    path = "~/.local/share/contacts/work/"
+    path = "$HOME/.local/share/contacts/work/"
     fileext = ".vcf"
 
     [storage work_google]
     type = "google_contacts"
-    token_file = "~/.config/vdirsyncer/google-work.token"
+    token_file = "$HOME/.config/vdirsyncer/google-work.token"
     client_id = "__CID_W__"
     client_secret = "__SEC_W__"
     CFG
