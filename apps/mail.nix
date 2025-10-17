@@ -52,8 +52,8 @@
         path = ${config.home.homeDirectory}/.local/share/contacts/work/default/
 
     [general]
-      editor = nano
-      merge_editor = nano
+      editor = nvim
+      merge_editor = nvim
   '';
 
   # --- neomutt: query via khard (works with mutt-wizard) ---
@@ -63,11 +63,11 @@
     bind editor <Tab> complete-query
   '';
   home.activation.appendMuttLocal = lib.hm.dag.entryAfter ["writeBoundary"] ''
-    file="$HOME/.config/mutt/muttrc"
+    file="${config.home.homeDirectory}/.config/mutt/muttrc"
     mkdir -p "$(dirname "$file")"
     touch "$file"
-    grep -q 'source "~/.config/mutt/local.muttrc"' "$file" || \
-      printf '\n# Local overrides (Home Manager)\nsource "~/.config/mutt/local.muttrc"\n' >> "$file"
+    grep -q 'source "${config.home.homeDirectory}/.config/mutt/local.muttrc"' "$file" || \
+      printf '\n# Local overrides (Home Manager)\nsource "${config.home.homeDirectory}/.config/mutt/local.muttrc"\n' >> "$file"
   '';
 
   # --- vdirsyncer config from pass (NO secrets in Nix store) ---
@@ -80,10 +80,10 @@
           set -euo pipefail
           umask 077
 
-          cfg="~/.config/vdirsyncer/config"
+          cfg="${config.home.homeDirectory}/.config/vdirsyncer/config"
           mkdir -p "$(dirname "$cfg")" \
-             "$HOME/.local/share/contacts/personal" \
-             "$HOME/.local/share/contacts/work"
+             "${config.home.homeDirectory}/.local/share/contacts/personal" \
+             "${config.home.homeDirectory}/.local/share/contacts/work"
 
           # Read secrets from pass
           cid_p="$(${pkgs.pass}/bin/pass show google/personal/client_id)"
@@ -93,7 +93,7 @@
 
           cat > "$cfg" <<'CFG'
     [general]
-    status_path = "~/.local/share/vdirsyncer/status/"
+    status_path = "${config.home.homeDirectory}/.local/share/vdirsyncer/status/"
 
     [pair personal_contacts]
     a = "personal_local"
@@ -103,12 +103,12 @@
 
     [storage personal_local]
     type = "filesystem"
-    path = "~/.local/share/contacts/personal/"
+    path = "${config.home.homeDirectory}/.local/share/contacts/personal/"
     fileext = ".vcf"
 
     [storage personal_google]
     type = "google_contacts"
-    token_file = "~/.config/vdirsyncer/google-personal.token"
+    token_file = "${config.home.homeDirectory}/.config/vdirsyncer/google-personal.token"
     client_id = "__CID_P__"
     client_secret = "__SEC_P__"
 
@@ -120,12 +120,12 @@
 
     [storage work_local]
     type = "filesystem"
-    path = "~/.local/share/contacts/work/"
+    path = "${config.home.homeDirectory}/.local/share/contacts/work/"
     fileext = ".vcf"
 
     [storage work_google]
     type = "google_contacts"
-    token_file = "~/.config/vdirsyncer/google-work.token"
+    token_file = "${config.home.homeDirectory}/.config/vdirsyncer/google-work.token"
     client_id = "__CID_W__"
     client_secret = "__SEC_W__"
     CFG
