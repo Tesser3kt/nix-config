@@ -79,14 +79,16 @@
   home.activation.writeVdirsyncerConfig = lib.hm.dag.entryAfter ["writeBoundary"] ''
           set -euo pipefail
           umask 077
+
+          PASS = "${pkgs.pass}/bin/pass"
           cfg="$HOME/.config/vdirsyncer/config"
           mkdir -p "$(dirname "$cfg")" "$HOME/.local/share/contacts/personal" "$HOME/.local/share/contacts/work"
 
           # Read secrets from pass
-          cid_p=$(pass show google/personal/client_id)
-          sec_p=$(pass show google/personal/client_secret)
-          cid_w=$(pass show google/work/client_id)
-          sec_w=$(pass show google/work/client_secret)
+          cid_p=$($PASS show google/personal/client_id)
+          sec_p=$($PASS show google/personal/client_secret)
+          cid_w=$($PASS show google/work/client_id)
+          sec_w=$($PASS show google/work/client_secret)
 
           cat > "$cfg" <<'CFG'
     [general]
