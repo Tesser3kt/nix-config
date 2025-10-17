@@ -47,9 +47,9 @@
   xdg.configFile."khard/khard.conf".text = ''
     [addressbooks]
       [[personal]]
-        path = $HOME/.local/share/contacts/personal/default/
+        path = ~/.local/share/contacts/personal/default/
       [[work]]
-        path = $HOME/.local/share/contacts/work/default/
+        path = ~/.local/share/contacts/work/default/
 
     [general]
       editor = nano
@@ -80,8 +80,8 @@
           set -euo pipefail
           umask 077
 
-          cfg="$HOME/.config/vdirsyncer/config"
-          mkdir -p "$(dirname "$cfg")" "$HOME/.local/share/contacts/personal" "$HOME/.local/share/contacts/work"
+          cfg="~/.config/vdirsyncer/config"
+          mkdir -p "$(dirname "$cfg")" "~/.local/share/contacts/personal" "~/.local/share/contacts/work"
 
           # Read secrets from pass
           cid_p="$(${pkgs.pass}/bin/pass show google/personal/client_id)"
@@ -101,12 +101,12 @@
 
     [storage personal_local]
     type = "filesystem"
-    path = "$HOME/.local/share/contacts/personal/"
+    path = "~/.local/share/contacts/personal/"
     fileext = ".vcf"
 
     [storage personal_google]
     type = "google_contacts"
-    token_file = "$HOME/.config/vdirsyncer/google-personal.token"
+    token_file = "~/.config/vdirsyncer/google-personal.token"
     client_id = "__CID_P__"
     client_secret = "__SEC_P__"
 
@@ -118,12 +118,12 @@
 
     [storage work_local]
     type = "filesystem"
-    path = "$HOME/.local/share/contacts/work/"
+    path = "~/.local/share/contacts/work/"
     fileext = ".vcf"
 
     [storage work_google]
     type = "google_contacts"
-    token_file = "$HOME/.config/vdirsyncer/google-work.token"
+    token_file = "~/.config/vdirsyncer/google-work.token"
     client_id = "__CID_W__"
     client_secret = "__SEC_W__"
     CFG
