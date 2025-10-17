@@ -44,13 +44,21 @@
   };
 
   # --- khard (reads local vCards) ---
-  xdg.configFile."khard/khard.conf".text = ''
+  # personal-only config
+  xdg.configFile."khard/personal.conf".text = ''
     [addressbooks]
       [[personal]]
         path = ${config.home.homeDirectory}/.local/share/contacts/personal/default/
+    [general]
+      editor = nvim
+      merge_editor = nvim
+  '';
+
+  # work-only config
+  xdg.configFile."khard/work.conf".text = ''
+    [addressbooks]
       [[work]]
         path = ${config.home.homeDirectory}/.local/share/contacts/work/default/
-
     [general]
       editor = nvim
       merge_editor = nvim
@@ -58,10 +66,21 @@
 
   # --- neomutt: query via khard (works with mutt-wizard) ---
   xdg.configFile."mutt/local.muttrc".text = ''
-    set query_command = "khard email --parsable '%s'"
-    set query_format  = "%e\t%n"
+    set query_format = "%e\t%n"
     bind editor <Tab> complete-query
+
+    # Default to personal
+    set query_command = "khard -c ${config.home.homeDirectory}/.config/khard/personal.conf email --parsable '%s' 2>/dev/null"
+
+    # When composing from WORK identity, switch to work contacts
+    send-hook "~f your-work@example.com" \
+      "set query_command='khard -c ${config.home.homeDirectory}/.config/khard/work.conf email --parsable \"%s\" 2>/dev/null'"
+
+    # When composing from PERSONAL identity, ensure personal contacts
+    send-hook "~f your-personal@gmail.com" \
+      "set query_command='khard -c ${config.home.homeDirectory}/.config/khard/personal.conf email --parsable \"%s\" 2>/dev/null'"
   '';
+
   home.activation.appendMuttLocal = lib.hm.dag.entryAfter ["writeBoundary"] ''
     file="${config.home.homeDirectory}/.config/mutt/muttrc"
     mkdir -p "$(dirname "$file")"
