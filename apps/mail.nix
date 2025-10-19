@@ -66,21 +66,37 @@
       merge_editor = nvim
   '';
 
-  # NeoMutt: switch completion per identity
+  xdg.configFile."mutt/personal-addressbook.muttrc".text = ''
+    set query_format = "%e\t%n"
+    set query_command = "khard -c ${config.home.homeDirectory}/.config/khard/personal.conf email --parsable '%s' 2>/dev/null"
+    bind editor <Tab> complete-query
+  '';
+  xdg.configFile."mutt/work-addressbook.muttrc".text = ''
+    set query_format = "%e\t%n"
+    set query_command = "khard -c ${config.home.homeDirectory}/.config/khard/work.conf email --parsable '%s' 2>/dev/null"
+  '';
+
   xdg.configFile."mutt/local.muttrc".text = ''
     set query_format = "%e\t%n"
     bind editor <Tab> complete-query
+    # no global set query_command here
+  '';
 
-    # Default: PERSONAL
-    set query_command = "khard -c ${config.home.homeDirectory}/.config/khard/personal.conf email --parsable '%s' 2>/dev/null"
+  # Append a source line to each account file exactly once
+  home.activation.muttWizardPerAccountIncludes = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    set -euo pipefail
+    acct_personal="${config.home.homeDirectory}/.config/mutt/accounts/djklepy@gmail.com.muttrc"   # e.g. personal.muttrc
+    acct_work="${config.home.homeDirectory}/.config/mutt/accounts/adam.klepac@gevo.cz.muttrc"     # e.g. work.muttrc
 
-    # Use WORK directory cards when composing from your work account
-    send-hook "~f adam.klepac@gevo.cz" \
-      "set query_command='khard -c ${config.home.homeDirectory}/.config/khard/work.conf email --parsable \"%s\" 2>/dev/null'"
+    add_source () {
+      file="$1"; include="$2"
+      mkdir -p "$(dirname "$file")"
+      touch "$file"
+      grep -Fq "source \"$include\"" "$file" || printf '\nsource "%s"\n' "$include" >> "$file"
+    }
 
-    # Ensure PERSONAL when composing from your personal account
-    send-hook "~f djklepy@gmail.com" \
-      "set query_command='khard -c ${config.home.homeDirectory}/.config/khard/personal.conf email --parsable \"%s\" 2>/dev/null'"
+    add_source "$acct_personal" "${config.home.homeDirectory}/.config/mutt/personal-addressbook.muttrc"
+    add_source "$acct_work"     "${config.home.homeDirectory}/.config/mutt/work-addressbook.muttrc"
   '';
 
   home.activation.appendMuttLocal = lib.hm.dag.entryAfter ["writeBoundary"] ''
