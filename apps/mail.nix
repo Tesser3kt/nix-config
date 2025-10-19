@@ -155,30 +155,12 @@
     client_id = "__CID_P__"
     client_secret = "__SEC_P__"
 
-    [pair work_contacts]
-    a = "work_local"
-    b = "work_google"
-    collections = [ "from b" ]
-    metadata = [ "displayname" ]
-
-    [storage work_local]
-    type = "filesystem"
-    path = "${config.home.homeDirectory}/.local/share/contacts/work/"
-    fileext = ".vcf"
-
-    [storage work_google]
-    type = "google_contacts"
-    token_file = "${config.home.homeDirectory}/.config/vdirsyncer/google-work.token"
-    client_id = "__CID_W__"
-    client_secret = "__SEC_W__"
     CFG
 
           # Substitute secrets safely
           sed -i \
             -e "s|__CID_P__|$cid_p|g" \
             -e "s|__SEC_P__|$sec_p|g" \
-            -e "s|__CID_W__|$cid_w|g" \
-            -e "s|__SEC_W__|$sec_w|g" \
             "$cfg"
   '';
 
