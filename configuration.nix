@@ -112,6 +112,9 @@
       "networkmanager"
       "dialout"
       "uinput"
+      "libvirtd"
+      "kvm"
+      "input"
     ]; # Enable ‘sudo’ for the user and add to docker group.
     packages = with pkgs; [
       tree
@@ -207,6 +210,20 @@
     enable = true;
     enableOnBoot = true;
   };
+
+  # OSX guest support
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu = {
+      runAsRoot = true; # simpler for passthrough
+      ovmf = {
+        enable = true;
+        packages = [pkgs.OVMFFull.fd];
+      };
+    };
+  };
+  programs.virt-manager.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
 
   # Enable USB automount
   services.udisks2.enable = true;

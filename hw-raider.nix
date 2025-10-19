@@ -12,14 +12,38 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.availableKernelModules = ["vmd" "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc"];
+  boot.initrd.availableKernelModules = [
+    "vmd"
+    "xhci_pci"
+    "thunderbolt"
+    "nvme"
+    "usb_storage"
+    "sd_mod"
+    "rtsx_pci_sdmmc"
+  ];
   boot.initrd.kernelModules = [];
-  boot.kernelModules = ["kvm-intel" "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" "msi-ec"];
+  boot.kernelModules = [
+    "kvm-intel"
+    "nvidia"
+    "nvidia_modeset"
+    "nvidia_uvm"
+    "nvidia_drm"
+    "msi-ec"
+  ];
   boot.extraModulePackages = [config.boot.kernelPackages.msi-ec];
   boot.kernelParams = [
     "ec_sys.write_support=1"
     "msi-ec.firmware=17S1IMS1.105"
+    "intel_iommu=on"
+    "iommu=pt"
+    "default_hugepagesz=1G"
+    "hugepagesz=1G"
+    "hugepages=8"
   ];
+  boot.extraModprobeConfig = ''
+    options kvm ignore_msrs=1
+    options kvm_intel nested=1 emulate_invalid_guest_state=0
+  '';
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/42a39eff-b8f1-42b6-a111-1eb253a6b264";
