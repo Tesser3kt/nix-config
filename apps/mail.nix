@@ -21,42 +21,6 @@
     goimapnotify
     khard
     vdirsyncer
-    openldap
-    gawk
-    (pkgs.writeShellScriptBin "work-ldap-query" ''
-      set -euo pipefail
-      q="''${1:-}"
-      # Workspace Secure LDAP certs (put your real files here)
-      export LDAPTLS_CERT="${config.home.homeDirectory}/.config/ldap/google/client.crt"
-      export LDAPTLS_KEY="${config.home.homeDirectory}/.config/ldap/google/client.key"
-
-      BASE_DN="dc=gevo,dc=cz"   # <-- CHANGE THIS to your org's base DN
-
-      # Ask for common name/e-mail fields; -LLL gives clean LDIF, -Y EXTERNAL uses client cert auth
-      ${pkgs.openldap}/bin/ldapsearch -LLL -H ldaps://ldap.google.com:636 -Y EXTERNAL \
-        -b "$BASE_DN" "(|(mail=*''${q}*)(cn=*''${q}*)(givenName=*''${q}*)(sn=*''${q}*))" mail cn givenName sn 2>/dev/null \
-        | awk '
-            BEGIN{ FS=": "; email=""; cn=""; gn=""; sn="" }
-            /^mail: /{ email=$2; next }
-            /^cn: /  { cn=$2; next }
-            /^givenName: /{ gn=$2; next }
-            /^sn: /  { sn=$2; next }
-            /^$/{
-              if (email!="") {
-                name = (cn!=""?cn: ( (gn!=""||sn!="") ? (gn " " sn) : "" ))
-                print email "\t" name
-              }
-              email=""; cn=""; gn=""; sn=""
-            }
-            END{
-              # flush last entry if no trailing blank line
-              if (email!="") {
-                name = (cn!=""?cn: ( (gn!=""||sn!="") ? (gn " " sn) : "" ))
-                print email "\t" name
-              }
-            }' \
-        | ${pkgs.gawk}/bin/awk -F'\t' '!seen[tolower($1)]++'    # dedupe by e-mail
-    '')
   ];
 
   # GPG agent configuration
@@ -91,21 +55,30 @@
       merge_editor = nvim
   '';
 
-  # --- neomutt: query via khard (works with mutt-wizard) ---
-  # --- NeoMutt: per-account query switching ---
+  # WORK: khard reading your manually-maintained vCards
+  xdg.configFile."khard/work.conf".text = ''
+    [addressbooks]
+      [[work_directory]]
+        path = ${config.home.homeDirectory}/.local/share/contacts/work/default/
+
+    [general]
+      editor = nvim
+      merge_editor = nvim
+  '';
+
+  # NeoMutt: switch completion per identity
   xdg.configFile."mutt/local.muttrc".text = ''
     set query_format = "%e\t%n"
     bind editor <Tab> complete-query
 
-    # Default to PERSONAL contacts via khard
+    # Default: PERSONAL
     set query_command = "khard -c ${config.home.homeDirectory}/.config/khard/personal.conf email --parsable '%s' 2>/dev/null"
 
-    # When composing from WORK identity, switch to LDAP
-    # (replace with your actual From address used by mutt-wizard)
+    # Use WORK directory cards when composing from your work account
     send-hook "~f adam.klepac@gevo.cz" \
-      "set query_command='work-ldap-query \"%s\"'"
+      "set query_command='khard -c ${config.home.homeDirectory}/.config/khard/work.conf email --parsable \"%s\" 2>/dev/null'"
 
-    # When composing from PERSONAL, ensure personal contacts
+    # Ensure PERSONAL when composing from your personal account
     send-hook "~f djklepy@gmail.com" \
       "set query_command='khard -c ${config.home.homeDirectory}/.config/khard/personal.conf email --parsable \"%s\" 2>/dev/null'"
   '';
