@@ -216,10 +216,6 @@
     enable = true;
     qemu = {
       runAsRoot = true; # simpler for passthrough
-      ovmf = {
-        enable = true;
-        packages = [pkgs.OVMFFull.fd];
-      };
     };
   };
   programs.virt-manager.enable = true;
