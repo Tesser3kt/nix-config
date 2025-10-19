@@ -21,6 +21,42 @@
     goimapnotify
     khard
     vdirsyncer
+    openldap
+    gawk
+    (pkgs.writeShellScriptBin "work-ldap-query" ''
+      set -euo pipefail
+      q="''${1:-}"
+      # Workspace Secure LDAP certs (put your real files here)
+      export LDAPTLS_CERT="${config.home.homeDirectory}/.config/ldap/google/client.crt"
+      export LDAPTLS_KEY="${config.home.homeDirectory}/.config/ldap/google/client.key"
+
+      BASE_DN="dc=gevo,dc=cz"   # <-- CHANGE THIS to your org's base DN
+
+      # Ask for common name/e-mail fields; -LLL gives clean LDIF, -Y EXTERNAL uses client cert auth
+      ${pkgs.openldap}/bin/ldapsearch -LLL -H ldaps://ldap.google.com:636 -Y EXTERNAL \
+        -b "$BASE_DN" "(|(mail=*''${q}*)(cn=*''${q}*)(givenName=*''${q}*)(sn=*''${q}*))" mail cn givenName sn 2>/dev/null \
+        | awk '
+            BEGIN{ FS=": "; email=""; cn=""; gn=""; sn="" }
+            /^mail: /{ email=$2; next }
+            /^cn: /  { cn=$2; next }
+            /^givenName: /{ gn=$2; next }
+            /^sn: /  { sn=$2; next }
+            /^$/{
+              if (email!="") {
+                name = (cn!=""?cn: ( (gn!=""||sn!="") ? (gn " " sn) : "" ))
+                print email "\t" name
+              }
+              email=""; cn=""; gn=""; sn=""
+            }
+            END{
+              # flush last entry if no trailing blank line
+              if (email!="") {
+                name = (cn!=""?cn: ( (gn!=""||sn!="") ? (gn " " sn) : "" ))
+                print email "\t" name
+              }
+            }' \
+        | ${pkgs.gawk}/bin/awk -F'\t' '!seen[tolower($1)]++'    # dedupe by e-mail
+    '')
   ];
 
   # GPG agent configuration
@@ -43,41 +79,34 @@
     ];
   };
 
-  # --- khard (reads local vCards) ---
-  # personal-only config
+  # --- PERSONAL: khard (local vCards) ---
+  # Point to your *personal* vdirsyncer location (absolute paths; khard doesn't recurse)
   xdg.configFile."khard/personal.conf".text = ''
     [addressbooks]
       [[personal]]
         path = ${config.home.homeDirectory}/.local/share/contacts/personal/default/
-    [general]
-      editor = nvim
-      merge_editor = nvim
-  '';
 
-  # work-only config
-  xdg.configFile."khard/work.conf".text = ''
-    [addressbooks]
-      [[work]]
-        path = ${config.home.homeDirectory}/.local/share/contacts/work/default/
     [general]
       editor = nvim
       merge_editor = nvim
   '';
 
   # --- neomutt: query via khard (works with mutt-wizard) ---
+  # --- NeoMutt: per-account query switching ---
   xdg.configFile."mutt/local.muttrc".text = ''
     set query_format = "%e\t%n"
     bind editor <Tab> complete-query
 
-    # Default to personal
+    # Default to PERSONAL contacts via khard
     set query_command = "khard -c ${config.home.homeDirectory}/.config/khard/personal.conf email --parsable '%s' 2>/dev/null"
 
-    # When composing from WORK identity, switch to work contacts
-    send-hook "~f your-work@example.com" \
-      "set query_command='khard -c ${config.home.homeDirectory}/.config/khard/work.conf email --parsable \"%s\" 2>/dev/null'"
+    # When composing from WORK identity, switch to LDAP
+    # (replace with your actual From address used by mutt-wizard)
+    send-hook "~f adam.klepac@gevo.cz" \
+      "set query_command='work-ldap-query \"%s\"'"
 
-    # When composing from PERSONAL identity, ensure personal contacts
-    send-hook "~f your-personal@gmail.com" \
+    # When composing from PERSONAL, ensure personal contacts
+    send-hook "~f djklepy@gmail.com" \
       "set query_command='khard -c ${config.home.homeDirectory}/.config/khard/personal.conf email --parsable \"%s\" 2>/dev/null'"
   '';
 
@@ -93,8 +122,6 @@
   # pass entries you will create:
   #   google/personal/client_id
   #   google/personal/client_secret
-  #   google/work/client_id
-  #   google/work/client_secret
   home.activation.writeVdirsyncerConfig = lib.hm.dag.entryAfter ["writeBoundary"] ''
           set -euo pipefail
           umask 077
@@ -102,13 +129,10 @@
           cfg="${config.home.homeDirectory}/.config/vdirsyncer/config"
           mkdir -p "$(dirname "$cfg")" \
              "${config.home.homeDirectory}/.local/share/contacts/personal" \
-             "${config.home.homeDirectory}/.local/share/contacts/work"
 
           # Read secrets from pass
           cid_p="$(${pkgs.pass}/bin/pass show google/personal/client_id)"
           sec_p="$(${pkgs.pass}/bin/pass show google/personal/client_secret)"
-          cid_w="$(${pkgs.pass}/bin/pass show google/work/client_id)"
-          sec_w="$(${pkgs.pass}/bin/pass show google/work/client_secret)"
 
           cat > "$cfg" <<'CFG'
     [general]
