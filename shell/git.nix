@@ -6,11 +6,10 @@
   # Git config
   programs.git = {
     enable = true;
-    settings = {
-      user = {
-        name = "Adam Klepáč";
-        email = "djklepy@gmail.com";
-      };
+    userName = "Adam Klepac";
+    userEmail = "djklepy@gmail.com";
+
+    extraConfig = {
       credential = {
         helper = ["cache --timeout=21600" "oauth"];
       };
