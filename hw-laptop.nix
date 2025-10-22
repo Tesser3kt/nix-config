@@ -15,6 +15,17 @@
   boot.initrd.availableKernelModules = ["xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc"];
   boot.initrd.kernelModules = [];
   boot.kernelModules = ["kvm-intel"];
+  boot.kernelParams = [
+    "intel_iommu=on"
+    "iommu=pt"
+    "default_hugepagesz=1G"
+    "hugepagesz=1G"
+    "hugepages=8"
+  ];
+  boot.extraModprobeConfig = ''
+    options kvm ignore_msrs=1
+    options kvm_intel nested=1 emulate_invalid_guest_state=0
+  '';
   boot.extraModulePackages = [];
 
   fileSystems."/" = {
