@@ -35,6 +35,47 @@
     fonts-overlay = final: prev: {
       palatino-font = additional-fonts.packages.${system}.palatino;
     };
+    vscode-overlay = final: prev: let
+      moreLibs = with prev; [
+        cairo
+        pango
+        # (Optional, but Electron often needs these too; harmless to include)
+        glib
+        gtk3
+        gdk-pixbuf
+        fontconfig
+        freetype
+        libX11
+        libXext
+        libXrender
+        libXcursor
+        libXdamage
+        libXcomposite
+        libXrandr
+        libXi
+        libXtst
+        nss
+        nspr
+        expat
+        dbus
+      ];
+    in {
+      vscode-unwrapped = prev.vscode-unwrapped.overrideAttrs (old: {
+        nativeBuildInputs = (old.nativeBuildInputs or []) ++ [prev.autoPatchelfHook];
+        buildInputs = (old.buildInputs or []) ++ moreLibs;
+
+        # Make 100% sure auto-patchelf *searches* these libs.
+        # Different nixpkgs versions look at different knobs; the env var is the most universal.
+        # (If an attr below doesn’t exist on your channel, it’s ignored.)
+        AUTO_PATCHELF_LIBS = prev.lib.makeLibraryPath moreLibs;
+        autoPatchelfExtraLibs = (old.autoPatchelfExtraLibs or []) ++ moreLibs;
+        # Some older hooks use this name:
+        autoPatchelfHookLibraries = (old.autoPatchelfHookLibraries or []) ++ moreLibs;
+      });
+
+      # Optional: keep using the normal wrapper on top of the fixed unwrapped build
+      vscode = prev.vscode.override {inherit (final) vscode-unwrapped;};
+    };
   in {
     nixosConfigurations.tesserekt-pc = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -48,7 +89,7 @@
         ./hw-pc.nix
         ./amd.nix
         ./display-manager.nix
-        {nixpkgs.overlays = [fonts-overlay];}
+        {nixpkgs.overlays = [fonts-overlay vscode-overlay];}
 
         # Home Manager
         home-manager.nixosModules.home-manager
