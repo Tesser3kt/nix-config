@@ -36,10 +36,10 @@
       palatino-font = additional-fonts.packages.${system}.palatino;
     };
     python-overlay = final: prev: {
-      python313Packages =
-        prev.python313Packages
+      python3Packages =
+        prev.python3Packages
         // {
-          gmpy2 = prev.python313Packages.gmpy2.overridePythonAttrs (old: {
+          gmpy2 = prev.python3Packages.gmpy2.overridePythonAttrs (old: {
             disabledTests = (old.disabledTests or []) ++ ["test_mpz_to_bytes"];
           });
         };
