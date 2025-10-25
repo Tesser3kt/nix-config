@@ -16,7 +16,6 @@
   boot.initrd.kernelModules = [];
   boot.kernelModules = ["kvm-amd"];
   boot.kernelParams = [
-    "amd_iommu=on"
     "iommu=pt"
     "default_hugepagesz=1G"
     "hugepagesz=1G"
