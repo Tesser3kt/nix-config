@@ -35,6 +35,11 @@
     fonts-overlay = final: prev: {
       palatino-font = additional-fonts.packages.${system}.palatino;
     };
+    vscode-overlay = final: prev: {
+      vscode = prev.vscode.overrideAttrs (old: {
+        buildInputs = (old.buildInputs or []) ++ [prev.cairo prev.pango];
+      });
+    };
   in {
     nixosConfigurations.tesserekt-pc = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -48,7 +53,7 @@
         ./hw-pc.nix
         ./amd.nix
         ./display-manager.nix
-        {nixpkgs.overlays = [fonts-overlay];}
+        {nixpkgs.overlays = [fonts-overlay vscode-overlay];}
 
         # Home Manager
         home-manager.nixosModules.home-manager
