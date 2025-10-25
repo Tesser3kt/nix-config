@@ -21,15 +21,15 @@
           pkgs.gdk-pixbuf
           pkgs.fontconfig
           pkgs.freetype
-          pkgs.libX11
-          pkgs.libXext
-          pkgs.libXrender
-          pkgs.libXcursor
-          pkgs.libXdamage
-          pkgs.libXcomposite
-          pkgs.libXrandr
-          pkgs.libXi
-          pkgs.libXtst
+          pkgs.libx11
+          pkgs.libxext
+          pkgs.libxrender
+          pkgs.libxcursor
+          pkgs.libxdamage
+          pkgs.libxcomposite
+          pkgs.libxrandr
+          pkgs.libxi
+          pkgs.libxtst
           pkgs.nss
           pkgs.nspr
           pkgs.expat
