@@ -16,24 +16,6 @@
         ++ [
           pkgs.cairo
           pkgs.pango
-          pkgs.glib
-          pkgs.gtk3
-          pkgs.gdk-pixbuf
-          pkgs.fontconfig
-          pkgs.freetype
-          pkgs.libx11
-          pkgs.libxext
-          pkgs.libxrender
-          pkgs.libxcursor
-          pkgs.libxdamage
-          pkgs.libxcomposite
-          pkgs.libxrandr
-          pkgs.libxi
-          pkgs.libxtst
-          pkgs.nss
-          pkgs.nspr
-          pkgs.expat
-          pkgs.dbus
         ];
     });
     profiles.default = {
