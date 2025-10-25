@@ -39,7 +39,7 @@
       moreLibs = with prev; [
         cairo
         pango
-        # (Optional, but Electron often needs these too; harmless to include)
+        # Optional but safe/common for Electron:
         glib
         gtk3
         gdk-pixbuf
@@ -64,17 +64,11 @@
         nativeBuildInputs = (old.nativeBuildInputs or []) ++ [prev.autoPatchelfHook];
         buildInputs = (old.buildInputs or []) ++ moreLibs;
 
-        # Make 100% sure auto-patchelf *searches* these libs.
-        # Different nixpkgs versions look at different knobs; the env var is the most universal.
-        # (If an attr below doesn’t exist on your channel, it’s ignored.)
+        # Make sure the hook searches these libs (different nixpkgs versions look at different knobs):
         AUTO_PATCHELF_LIBS = prev.lib.makeLibraryPath moreLibs;
         autoPatchelfExtraLibs = (old.autoPatchelfExtraLibs or []) ++ moreLibs;
-        # Some older hooks use this name:
         autoPatchelfHookLibraries = (old.autoPatchelfHookLibraries or []) ++ moreLibs;
       });
-
-      # Optional: keep using the normal wrapper on top of the fixed unwrapped build
-      vscode = prev.vscode.override {inherit (final) vscode-unwrapped;};
     };
   in {
     nixosConfigurations.tesserekt-pc = nixpkgs.lib.nixosSystem {
