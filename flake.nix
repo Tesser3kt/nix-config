@@ -35,53 +35,6 @@
     fonts-overlay = final: prev: {
       palatino-font = additional-fonts.packages.${system}.palatino;
     };
-    vscode-overlay = final: prev: let
-      # libs we want auto-patchelf to search (include cairo+pango; others are harmless and common for Electron)
-      moreLibs = with prev; [
-        cairo
-        pango
-        glib
-        gtk3
-        gdk-pixbuf
-        fontconfig
-        freetype
-        libX11
-        libXext
-        libXrender
-        libXcursor
-        libXdamage
-        libXcomposite
-        libXrandr
-        libXi
-        libXtst
-        nss
-        nspr
-        expat
-        dbus
-      ];
-      libsFlags = prev.lib.concatStringsSep " " (map (p: "--libs ${p}/lib") moreLibs);
-    in {
-      vscode-unwrapped = prev.vscode-unwrapped.overrideAttrs (old: {
-        nativeBuildInputs = (old.nativeBuildInputs or []) ++ [prev.autoPatchelfHook];
-        buildInputs = (old.buildInputs or []) ++ moreLibs;
-
-        # Belt-and-suspenders env for some nixpkgs variants (harmless if unused)
-        AUTO_PATCHELF_LIBS = prev.lib.makeLibraryPath moreLibs;
-        autoPatchelfExtraLibs = (old.autoPatchelfExtraLibs or []) ++ moreLibs;
-        autoPatchelfHookLibraries = (old.autoPatchelfHookLibraries or []) ++ moreLibs;
-
-        # 👇 Force a *second* pass that targets the Code tree explicitly with the libs we want.
-        postFixup =
-          (old.postFixup or "")
-          + ''
-            echo "[vscode-unwrapped] manual auto-patchelf pass with cairo+pango"
-            auto-patchelf ${libsFlags} "$out/lib/vscode" || {
-              echo "manual auto-patchelf failed" >&2
-              exit 1
-            }
-          '';
-      });
-    };
   in {
     nixosConfigurations.tesserekt-pc = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -95,7 +48,7 @@
         ./hw-pc.nix
         ./amd.nix
         ./display-manager.nix
-        {nixpkgs.overlays = [fonts-overlay vscode-overlay];}
+        {nixpkgs.overlays = [fonts-overlay];}
 
         # Home Manager
         home-manager.nixosModules.home-manager

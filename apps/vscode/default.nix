@@ -9,7 +9,7 @@
   ];
 
   programs.vscode = {
-    enable = true;
+    enable = false;
     profiles.default = {
       enableUpdateCheck = true;
       enableExtensionUpdateCheck = true;
