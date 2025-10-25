@@ -36,13 +36,17 @@
       palatino-font = additional-fonts.packages.${system}.palatino;
     };
     python-overlay = final: prev: {
-      python3Packages =
-        prev.python3Packages
-        // {
-          gmpy2 = prev.python3Packages.gmpy2.overridePythonAttrs (old: {
+      python3 = prev.python3.override {
+        packageOverrides = self: super: {
+          gmpy2 = super.gmpy2.overridePythonAttrs (old: {
+            # simplest: skip all tests
+            # doCheck = false;
+
+            # OR, if you prefer: only skip the one flaky test
             disabledTests = (old.disabledTests or []) ++ ["test_mpz_to_bytes"];
           });
         };
+      };
     };
   in {
     nixosConfigurations.tesserekt-pc = nixpkgs.lib.nixosSystem {
