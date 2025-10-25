@@ -10,7 +10,7 @@
 
   # SDDM config
   services.displayManager.sddm = {
-    enable = false;
+    enable = true;
     package = pkgs.kdePackages.sddm;
     wayland = {
       enable = true;
@@ -20,11 +20,6 @@
       sddm-astronaut
     ];
   };
-
-  services.displayManager.gdm = {
-    enable = true;
-  };
-
   # Enable GPG keyring on SDDM login
   security.pam.services.login.gnupg = {
     enable = true;
