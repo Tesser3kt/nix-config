@@ -36,10 +36,10 @@
       palatino-font = additional-fonts.packages.${system}.palatino;
     };
     vscode-overlay = final: prev: let
+      # libs we want auto-patchelf to search (include cairo+pango; others are harmless and common for Electron)
       moreLibs = with prev; [
         cairo
         pango
-        # Optional but safe/common for Electron:
         glib
         gtk3
         gdk-pixbuf
@@ -59,15 +59,27 @@
         expat
         dbus
       ];
+      libsFlags = prev.lib.concatStringsSep " " (map (p: "--libs ${p}/lib") moreLibs);
     in {
       vscode-unwrapped = prev.vscode-unwrapped.overrideAttrs (old: {
         nativeBuildInputs = (old.nativeBuildInputs or []) ++ [prev.autoPatchelfHook];
         buildInputs = (old.buildInputs or []) ++ moreLibs;
 
-        # Make sure the hook searches these libs (different nixpkgs versions look at different knobs):
+        # Belt-and-suspenders env for some nixpkgs variants (harmless if unused)
         AUTO_PATCHELF_LIBS = prev.lib.makeLibraryPath moreLibs;
         autoPatchelfExtraLibs = (old.autoPatchelfExtraLibs or []) ++ moreLibs;
         autoPatchelfHookLibraries = (old.autoPatchelfHookLibraries or []) ++ moreLibs;
+
+        # 👇 Force a *second* pass that targets the Code tree explicitly with the libs we want.
+        postFixup =
+          (old.postFixup or "")
+          + ''
+            echo "[vscode-unwrapped] manual auto-patchelf pass with cairo+pango"
+            auto-patchelf ${libsFlags} "$out/lib/vscode" || {
+              echo "manual auto-patchelf failed" >&2
+              exit 1
+            }
+          '';
       });
     };
   in {
