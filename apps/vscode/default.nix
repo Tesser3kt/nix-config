@@ -10,14 +10,7 @@
 
   programs.vscode = {
     enable = true;
-    package = pkgs.vscode.overrideAttrs (old: {
-      buildInputs =
-        (old.buildInputs or [])
-        ++ [
-          pkgs.cairo
-          pkgs.pango
-        ];
-    });
+    package = pkgs.vscode-fhs;
     profiles.default = {
       enableUpdateCheck = true;
       enableExtensionUpdateCheck = true;
