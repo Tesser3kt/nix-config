@@ -48,6 +48,19 @@
         };
       };
     };
+    rpi-overlay = final: prev: {
+      rpi-imager = prev.rpi-imager.overrideAttrs (old: {
+        nativeBuildInputs = (old.nativeBuildInputs or []) ++ [prev.pkg-config];
+        buildInputs = (old.buildInputs or []) ++ [prev.p11-kit];
+
+        # Nuke the failing qt_add_lupdate invocation (Qt 6.10 + upstream CMakeLists hiccup)
+        postPatch =
+          (old.postPatch or "")
+          + ''
+            sed -i 's/^[[:space:]]*qt_add_lupdate(/# qt_add_lupdate (disabled on nixpkgs, see issue 454826)\n# qt_add_lupdate(/' CMakeLists.txt
+          '';
+      });
+    };
   in {
     nixosConfigurations.tesserekt-pc = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -61,7 +74,7 @@
         ./hw-pc.nix
         ./amd.nix
         ./display-manager.nix
-        {nixpkgs.overlays = [fonts-overlay python-overlay];}
+        {nixpkgs.overlays = [fonts-overlay python-overlay rpi-overlay];}
 
         # Home Manager
         home-manager.nixosModules.home-manager
