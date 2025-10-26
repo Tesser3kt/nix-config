@@ -53,11 +53,19 @@
         nativeBuildInputs = (old.nativeBuildInputs or []) ++ [prev.pkg-config];
         buildInputs = (old.buildInputs or []) ++ [prev.p11-kit];
 
-        # Nuke the failing qt_add_lupdate invocation (Qt 6.10 + upstream CMakeLists hiccup)
+        # Be defensive: locate and comment out any qt_add_lupdate(...) call(s).
         postPatch =
           (old.postPatch or "")
           + ''
-            sed -i 's/^[[:space:]]*qt_add_lupdate(/# qt_add_lupdate (disabled on nixpkgs, see issue 454826)\n# qt_add_lupdate(/' CMakeLists.txt
+            set -euxo pipefail
+            # Some nixpkgs patches already touch src/CMakeLists.txt; search the whole tree.
+            files=$(grep -RIl --exclude-dir=.git 'qt_add_lupdate' . || true)
+            if [ -n "$files" ]; then
+              for f in $files; do
+                echo "Disabling qt_add_lupdate in $f"
+                sed -i 's/^[[:space:]]*qt_add_lupdate(/# qt_add_lupdate (disabled for Nix build)\n# qt_add_lupdate(/' "$f"
+              done
+            fi
           '';
       });
     };
