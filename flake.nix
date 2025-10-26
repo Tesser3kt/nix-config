@@ -48,33 +48,6 @@
         };
       };
     };
-    rpi-overlay = final: prev: {
-      rpi-imager = prev.rpi-imager.overrideAttrs (old: {
-        nativeBuildInputs =
-          (old.nativeBuildInputs or [])
-          ++ [prev.pkg-config prev.wrapQtAppsHook];
-        buildInputs =
-          (old.buildInputs or [])
-          ++ [prev.p11-kit];
-
-        # Disable translation update steps wherever they occur (top-level or src/)
-        postPatch =
-          (old.postPatch or "")
-          + ''
-            set -euxo pipefail
-            for f in $(grep -RIl --exclude-dir=.git 'qt_add_lupdate' . || true); do
-              echo "Disabling qt_add_lupdate in $f"
-              sed -i 's/^[[:space:]]*qt_add_lupdate(/# (disabled) qt_add_lupdate(/' "$f"
-            done
-          '';
-
-        # Let wrapQtAppsHook know we’re a Qt app (harmless if already set)
-        qtWrapperArgs = (old.qtWrapperArgs or []) ++ [];
-
-        # Keep verbose configure/build to surface actual errors in logs
-        cmakeBuildType = old.cmakeBuildType or "RelWithDebInfo";
-      });
-    };
   in {
     nixosConfigurations.tesserekt-pc = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -88,7 +61,7 @@
         ./hw-pc.nix
         ./amd.nix
         ./display-manager.nix
-        {nixpkgs.overlays = [fonts-overlay python-overlay rpi-overlay];}
+        {nixpkgs.overlays = [fonts-overlay python-overlay];}
 
         # Home Manager
         home-manager.nixosModules.home-manager

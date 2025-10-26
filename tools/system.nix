@@ -61,7 +61,7 @@
     tparted
 
     # Raspberry Pi
-    rpi-imager
+    (pkgs.callPackage ./pkgs/rpi-imager-appimage.nix {})
 
     # Crypto
     libsecret
