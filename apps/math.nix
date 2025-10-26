@@ -5,6 +5,6 @@
 }: {
   programs.sagemath = {
     enable = true;
-    package = pkgs.sage;
+    package = pkgs.sageWithDoc;
   };
 }
