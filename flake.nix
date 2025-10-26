@@ -50,23 +50,29 @@
     };
     rpi-overlay = final: prev: {
       rpi-imager = prev.rpi-imager.overrideAttrs (old: {
-        nativeBuildInputs = (old.nativeBuildInputs or []) ++ [prev.pkg-config];
-        buildInputs = (old.buildInputs or []) ++ [prev.p11-kit];
+        nativeBuildInputs =
+          (old.nativeBuildInputs or [])
+          ++ [prev.pkg-config prev.wrapQtAppsHook];
+        buildInputs =
+          (old.buildInputs or [])
+          ++ [prev.p11-kit];
 
-        # Be defensive: locate and comment out any qt_add_lupdate(...) call(s).
+        # Disable translation update steps wherever they occur (top-level or src/)
         postPatch =
           (old.postPatch or "")
           + ''
             set -euxo pipefail
-            # Some nixpkgs patches already touch src/CMakeLists.txt; search the whole tree.
-            files=$(grep -RIl --exclude-dir=.git 'qt_add_lupdate' . || true)
-            if [ -n "$files" ]; then
-              for f in $files; do
-                echo "Disabling qt_add_lupdate in $f"
-                sed -i 's/^[[:space:]]*qt_add_lupdate(/# qt_add_lupdate (disabled for Nix build)\n# qt_add_lupdate(/' "$f"
-              done
-            fi
+            for f in $(grep -RIl --exclude-dir=.git 'qt_add_lupdate' . || true); do
+              echo "Disabling qt_add_lupdate in $f"
+              sed -i 's/^[[:space:]]*qt_add_lupdate(/# (disabled) qt_add_lupdate(/' "$f"
+            done
           '';
+
+        # Let wrapQtAppsHook know we’re a Qt app (harmless if already set)
+        qtWrapperArgs = (old.qtWrapperArgs or []) ++ [];
+
+        # Keep verbose configure/build to surface actual errors in logs
+        cmakeBuildType = old.cmakeBuildType or "RelWithDebInfo";
       });
     };
   in {
