@@ -16,6 +16,8 @@
     BROWSER = "firefox-beta";
     DEFAULT_BROWSER = "firefox-beta";
     TERMINAL = "alacritty";
+    XDG_CONFIG_HOME = "${config.home.homeDirectory}/.config";
+    XDG_CACHE_HOME = "${config.home.homeDirectory}/.cache";
   };
 
   home.shellAliases = {
