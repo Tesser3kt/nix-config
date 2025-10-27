@@ -27,7 +27,6 @@
       vscode-langservers-extracted
       bash-language-server
       marksman
-      ccls
       nil
       docker-language-server
       emmet-language-server
