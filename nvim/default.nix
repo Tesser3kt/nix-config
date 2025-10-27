@@ -56,7 +56,6 @@
       tinymist
       arduino-language-server
       arduino-cli
-      libclang
       clang-tools
 
       # Linters & Formatters
