@@ -13,5 +13,6 @@
     audacity
     ffmpeg
     handbrake
+    cavalier
   ];
 }
