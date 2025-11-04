@@ -20,7 +20,6 @@
       sddm-astronaut
     ];
   };
-
   # Enable GPG keyring on SDDM login
   security.pam.services.login.gnupg = {
     enable = true;

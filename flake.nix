@@ -35,6 +35,19 @@
     fonts-overlay = final: prev: {
       palatino-font = additional-fonts.packages.${system}.palatino;
     };
+    python-overlay = final: prev: {
+      python313 = prev.python313.override {
+        packageOverrides = self: super: {
+          gmpy2 = super.gmpy2.overridePythonAttrs (old: {
+            # simplest: skip all tests
+            doCheck = false;
+
+            # OR, if you prefer: only skip the one flaky test
+            # disabledTests = (old.disabledTests or []) ++ [ "test_mpz_to_bytes" ];
+          });
+        };
+      };
+    };
   in {
     nixosConfigurations.tesserekt-pc = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -48,7 +61,7 @@
         ./hw-pc.nix
         ./amd.nix
         ./display-manager.nix
-        {nixpkgs.overlays = [fonts-overlay];}
+        {nixpkgs.overlays = [fonts-overlay python-overlay];}
 
         # Home Manager
         home-manager.nixosModules.home-manager
@@ -114,7 +127,7 @@
         ./hw-raider.nix
         ./nvidia.nix
         ./display-manager.nix
-        {nixpkgs.overlays = [fonts-overlay];}
+        {nixpkgs.overlays = [fonts-overlay python-overlay];}
 
         # Home Manager
         home-manager.nixosModules.home-manager

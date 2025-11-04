@@ -23,6 +23,7 @@ in {
 
     # Note-taking
     rnote
+    pympress
   ];
 
   # Zathura configuration

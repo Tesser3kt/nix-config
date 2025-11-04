@@ -27,7 +27,6 @@
       vscode-langservers-extracted
       bash-language-server
       marksman
-      ccls
       nil
       docker-language-server
       emmet-language-server
@@ -57,7 +56,7 @@
       tinymist
       arduino-language-server
       arduino-cli
-      libclang
+      clang-tools
 
       # Linters & Formatters
       stylua
