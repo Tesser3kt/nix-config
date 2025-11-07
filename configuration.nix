@@ -176,6 +176,7 @@
     wireguard-tools
     distrobox
     inputs.zen-browser.packages.${system}.specific
+    dnsmasq
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -215,6 +216,8 @@
   virtualisation.libvirtd = {
     enable = true;
     qemu = {
+      pkgs = pkgs.qemu_kvm;
+      ovmf.packages = [ pkgs.OVMFFull.fd ];
       runAsRoot = true; # simpler for passthrough
     };
   };
