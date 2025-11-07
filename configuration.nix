@@ -216,7 +216,7 @@
   virtualisation.libvirtd = {
     enable = true;
     qemu = {
-      pkgs = pkgs.qemu_kvm;
+      package = pkgs.qemu_kvm;
       ovmf.packages = [ pkgs.OVMFFull.fd ];
       runAsRoot = true; # simpler for passthrough
     };
