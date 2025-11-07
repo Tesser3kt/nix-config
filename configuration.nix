@@ -217,7 +217,6 @@
     enable = true;
     qemu = {
       package = pkgs.qemu_kvm;
-      ovmf.packages = [ pkgs.OVMFFull.fd ];
       runAsRoot = true; # simpler for passthrough
     };
   };
