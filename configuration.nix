@@ -177,6 +177,7 @@
     distrobox
     inputs.zen-browser.packages.${system}.specific
     dnsmasq
+    virtiofsd
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
