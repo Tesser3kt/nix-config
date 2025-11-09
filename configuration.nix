@@ -219,6 +219,7 @@
     qemu = {
       package = pkgs.qemu_kvm;
       runAsRoot = true; # simpler for passthrough
+      vhostUserPackages = [ pkgs.virtiofsd ];
     };
   };
   programs.virt-manager.enable = true;
