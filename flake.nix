@@ -50,7 +50,7 @@
     };
   in {
     nixosConfigurations.tesserekt-pc = nixpkgs.lib.nixosSystem {
-      stdenv.hostPlatform.system = "x86_64-linux";
+      system = "x86_64-linux";
       specialArgs = {
         inherit inputs username;
         hostname = "tesserekt-pc";
