@@ -10,8 +10,8 @@
     systemd.enable = true;
   };
 
-  home.file.".config/quickshell" = {
-    source = ./config;
-    recursive = true;
-  };
+  # home.file.".config/quickshell" = {
+  #   source = ./config;
+  #   recursive = true;
+  # };
 }
