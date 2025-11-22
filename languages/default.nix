@@ -14,6 +14,7 @@
     ./typst.nix
     ./nix.nix
     ./arduino.nix
+    ./qml.nix
     ./misc.nix
   ];
 }
