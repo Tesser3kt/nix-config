@@ -57,6 +57,7 @@
       arduino-language-server
       arduino-cli
       clang-tools
+      kdePackages.qtdeclarative
 
       # Linters & Formatters
       stylua
