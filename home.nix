@@ -20,6 +20,7 @@
     ./mako
     ./gtk
     ./qt
+    ./quickshell
   ];
 
   home.username = username;
