@@ -1,11 +1,12 @@
 {
   config,
   pkgs,
+  inputs,
   ...
 }: {
   programs.quickshell = {
     enable = true;
-    packages = pkgs.quickshell;
+    packages = inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default;
     systemd.enable = true;
   };
 
