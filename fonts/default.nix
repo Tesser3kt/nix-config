@@ -12,8 +12,10 @@
     nerd-fonts.caskaydia-cove
     nerd-fonts.caskaydia-mono
     nerd-fonts.droid-sans-mono
+    nerd-fonts.envy-code-r
     nerd-fonts.fira-code
     nerd-fonts.fira-mono
+    nerd-fonts.geist-mono
     nerd-fonts.hurmit
     nerd-fonts.inconsolata
     nerd-fonts.iosevka
