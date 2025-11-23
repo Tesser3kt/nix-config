@@ -98,7 +98,7 @@
         ./hw-laptop.nix
         ./intel.nix
         ./display-manager.nix
-        {nixpkgs.overlays = [fonts-overlay python-overlay];}
+        {nixpkgs.overlays = [fonts-overlay];}
 
         # Home Manager
         home-manager.nixosModules.home-manager
@@ -131,7 +131,7 @@
         ./hw-raider.nix
         ./nvidia.nix
         ./display-manager.nix
-        {nixpkgs.overlays = [fonts-overlay python-overlay];}
+        {nixpkgs.overlays = [fonts-overlay];}
 
         # Home Manager
         home-manager.nixosModules.home-manager
