@@ -10,8 +10,7 @@
 
   # Add Filen syncs
   home.file.".config/filen-cli/syncPairs.json".text = ''
-    {
-      "syncPairs": [
+    [
         {
           "local": "${config.home.homeDirectory}/.config/quickshell",
           "remote": "/quickshell",
@@ -20,7 +19,6 @@
           "disableLocalTrash": true,
           "excludeDotFiles": true
         }
-      ]
-    }
+    ]
   '';
 }
