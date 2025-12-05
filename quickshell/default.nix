@@ -7,7 +7,7 @@
   programs.quickshell = {
     enable = true;
     package = inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default;
-    systemd.enable = false;
+    systemd.enable = true;
   };
 
   # home.file.".config/quickshell" = {
