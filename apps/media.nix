@@ -15,5 +15,6 @@
     ffmpeg
     handbrake
     cavalier
+    obs-studio
   ];
 }
