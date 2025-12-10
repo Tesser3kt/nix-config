@@ -16,5 +16,6 @@
     handbrake
     cavalier
     obs-studio
+    kdePackages.kdenlive
   ];
 }
