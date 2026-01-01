@@ -2,6 +2,7 @@
   description = "Basic NixOS configuration.";
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-sage.url = "github:NixOS/nixpkgs/nixos-25.11";
     hyprland.url = "github:hyprwm/Hyprland";
     zen-browser.url = "github:Tesser3kt/zen-browser-flake";
     home-manager = {
@@ -44,11 +45,12 @@
         doCheck = false;
       });
     };
+    pkgsSage = import inputs.nixpkgs-sage {inherit system;};
   in {
     nixosConfigurations.tesserekt-pc = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {
-        inherit inputs username;
+        inherit inputs username pkgsSage;
         hostname = "tesserekt-pc";
       };
       modules = [
@@ -67,7 +69,7 @@
 
           home-manager.users.${username} = import ./home.nix;
           home-manager.extraSpecialArgs = {
-            inherit inputs username;
+            inherit inputs username pkgsSage;
             displayConfig = "pc";
             waybarConfig = "pc";
             startupConfig = "pc";
