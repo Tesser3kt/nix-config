@@ -1,27 +1,27 @@
 {pkgs, ...}: let
+  # Python interpreter rebuilt using gcc14 stdenv
+  python312_gcc14 =
+    pkgs.python312.override {stdenv = pkgs.gcc14Stdenv;};
+
+  # Its package set (sagelib will come from here, using the same stdenv)
+  py312_gcc14 = python312_gcc14.pkgs;
+
   pkgsForSage =
     pkgs
     // {
-      # pin toolchain used inside Sage build
       stdenv = pkgs.gcc14Stdenv;
-
-      # pin Python used inside Sage build
-      python3 = pkgs.python312;
-      python3Packages = pkgs.python312Packages;
+      python3 = python312_gcc14;
+      python3Packages = py312_gcc14;
     };
 
-  mySageWithDoc = pkgs.sage.override {
+  sageWithDoc_py312_gcc14 = pkgs.sage.override {
     pkgs = pkgsForSage;
-
-    # equivalent of pkgs.sageWithDoc
-    withDoc = true;
-
-    # strongly recommended for rebuild stability/CI-like environments
-    requireSageTests = false;
+    withDoc = true; # = sageWithDoc
+    requireSageTests = false; # optional but recommended for rebuild stability
   };
 in {
   programs.sagemath = {
     enable = true;
-    package = mySageWithDoc;
+    package = sageWithDoc_py312_gcc14;
   };
 }
