@@ -206,6 +206,7 @@
           "offscreen-css-text" = "(inactive)";
           rewrite = {
             "(.*) — Mozilla Firefox" = "<span font='13'> </span>$1";
+            "(.*) — Zen Browser" = "<span font='13'> </span>$1";
             "(.*) - Google Chrome" = "<span font='13'> </span>$1";
             "(.*) - fish" = "<span font='12'> </span>[$1]";
             "(.*) - zsh" = "<span font='12'> </span>[$1]";
@@ -261,6 +262,7 @@
             chromium = "";
             default = "";
             firefox = "";
+            zen = "";
             kdeconnect = "";
             mopidy = "";
             mpv = "󰐹";

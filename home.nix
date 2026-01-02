@@ -34,12 +34,12 @@
 
   # Set default apps
   xdg.mimeApps.defaultApplications = {
-    "text/html" = ["firefox-beta.desktop"];
-    "application/xhtml+xml" = ["firefox-beta.desktop"];
-    "x-scheme-handler/http" = ["firefox-beta.desktop"];
-    "x-scheme-handler/https" = ["firefox-beta.desktop"];
-    "x-scheme-handler/about" = ["firefox-beta.desktop"];
-    "x-scheme-handler/unknown" = ["firefox-beta.desktop"];
+    "text/html" = ["zen.desktop"];
+    "application/xhtml+xml" = ["zen.desktop"];
+    "x-scheme-handler/http" = ["zen.desktop"];
+    "x-scheme-handler/https" = ["zen.desktop"];
+    "x-scheme-handler/about" = ["zen.desktop"];
+    "x-scheme-handler/unknown" = ["zen.desktop"];
     "application/pdf" = ["zathura.desktop"];
     "application/x-shellscript" = ["alacritty.desktop"];
     "text/plain" = ["nvim.desktop"];

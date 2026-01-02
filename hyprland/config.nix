@@ -8,7 +8,7 @@
   ...
 }: let
   terminal = "alacritty";
-  browser = "firefox-beta";
+  browser = "zen";
   files = "alacritty -e zsh -ic ranger";
   calculator = "alacritty -e zsh -ic sage";
   mail = "alacritty -e zsh -ic neomutt";

@@ -13,8 +13,8 @@
   home.sessionVariables = {
     # default apps
     EDITOR = "nvim";
-    BROWSER = "firefox-beta";
-    DEFAULT_BROWSER = "firefox-beta";
+    BROWSER = "zen";
+    DEFAULT_BROWSER = "zen";
     TERMINAL = "alacritty";
     XDG_CONFIG_HOME = "${config.home.homeDirectory}/.config";
     XDG_CACHE_HOME = "${config.home.homeDirectory}/.cache";
