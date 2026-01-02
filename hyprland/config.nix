@@ -158,7 +158,7 @@ in {
       "match:fullscreen 1, idle_inhibit fullscreen"
 
       # Tile sioyek as it starts in floating mode
-      "match:class sioyek, tile"
+      "match:class sioyek, tile on"
     ];
 
     # Animations
