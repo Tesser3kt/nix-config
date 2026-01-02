@@ -4,7 +4,7 @@
   ...
 }: {
   home.packages = with pkgs; [
-    xfce.thunar
+    thunar
     filen-cli
   ];
 

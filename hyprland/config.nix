@@ -154,14 +154,11 @@ in {
 
     # Window rules
     windowrule = [
-      # Spotify on workspace 8
-      "workspace 8, class: ^(spotify)$"
-
       # Idle inhibit fullscreen apps
-      "idleinhibit fullscreen, fullscreen:1"
+      "match:fullscreen 1, idle_inhibit fullscreen"
 
       # Tile sioyek as it starts in floating mode
-      "tile, class: ^(sioyek)$"
+      "match:class sioyek, tile"
     ];
 
     # Animations
