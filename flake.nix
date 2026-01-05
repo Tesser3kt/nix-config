@@ -146,5 +146,38 @@
         }
       ];
     };
+    nixosConfigurations.tesserekt-nvidia = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = {
+        inherit inputs username pkgsSage;
+        hostname = "tesserekt-nvidia";
+      };
+      modules = [
+        ./configuration.nix
+        ./boot-loader-nvidia.nix
+        ./hw-nvidia.nix
+        ./nvidia.nix
+        ./display-manager.nix
+        {nixpkgs.overlays = [fonts-overlay ltrace-overlay];}
+
+        # Home Manager
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+
+          home-manager.users.${username} = import ./home.nix;
+          home-manager.extraSpecialArgs = {
+            inherit inputs username pkgsSage;
+            displayConfig = "nvidia";
+            waybarConfig = "pc";
+            startupConfig = "pc";
+            deviceConfig = "nvidia";
+            graphics = "nvidia";
+            gpgKeygrip = "4D7F773E7B92A663FDF2BF2BA723378E50AAE17A";
+          };
+        }
+      ];
+    };
   };
 }
