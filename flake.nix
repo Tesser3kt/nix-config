@@ -83,7 +83,7 @@
     nixosConfigurations.tesserekt-laptop = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {
-        inherit inputs username;
+        inherit inputs username pkgsSage;
         hostname = "tesserekt-laptop";
       };
       modules = [
@@ -102,7 +102,7 @@
 
           home-manager.users.${username} = import ./home.nix;
           home-manager.extraSpecialArgs = {
-            inherit inputs username;
+            inherit inputs username pkgsSage;
             displayConfig = "laptop";
             waybarConfig = "laptop";
             startupConfig = "laptop";
