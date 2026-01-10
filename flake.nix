@@ -174,7 +174,7 @@
             startupConfig = "pc";
             deviceConfig = "nvidia";
             graphics = "nvidia";
-            gpgKeygrip = "4D7F773E7B92A663FDF2BF2BA723378E50AAE17A";
+            gpgKeygrip = "0DE4C646CC67946C9B880452C7897E02304EEC65";
           };
         }
       ];
