@@ -24,6 +24,7 @@
     "pc" = import ./output/pc.nix;
     "laptop" = import ./output/laptop.nix;
     "raider" = import ./output/raider.nix;
+    "nvidia" = import ./output/nvidia.nix;
   };
   startup = {
     "common" = import ./startup/common.nix;
@@ -32,12 +33,14 @@
   };
   devices = {
     "pc" = import ./tablet/pc.nix;
+    "nvidia" = import ./tablet/nvidia.nix;
     "raider" = import ./tablet/raider.nix;
   };
   workspaceSettings = {
     "pc" = [(import ./workspaces/pc.nix {inherit config pkgs;})];
     "raider" = [(import ./workspaces/raider.nix {inherit config pkgs;})];
     "laptop" = [(import ./workspaces/laptop.nix {inherit config pkgs;})];
+    "nvidia" = [(import ./workspaces/nvidia.nix {inherit config pkgs;})];
   };
 in {
   imports = (
