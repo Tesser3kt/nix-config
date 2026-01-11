@@ -1,0 +1,3 @@
+[
+  "solaar -w hide &"
+]

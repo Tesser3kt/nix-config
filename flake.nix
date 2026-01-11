@@ -171,7 +171,7 @@
             inherit inputs username pkgsSage;
             displayConfig = "nvidia";
             waybarConfig = "pc";
-            startupConfig = "pc";
+            startupConfig = "nvidia";
             deviceConfig = "nvidia";
             graphics = "nvidia";
             gpgKeygrip = "0DE4C646CC67946C9B880452C7897E02304EEC65";
