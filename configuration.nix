@@ -201,10 +201,14 @@
   services.hardware.openrgb = {
     enable = true;
     package = pkgs.openrgb-with-all-plugins;
-    motherboard = "amd";
     server = {
       port = 6742;
     };
+  };
+
+  # Enable Cooler Control
+  programs.coolercontrol = {
+    enable = true;
   };
 
   # Enable Docker
@@ -219,7 +223,7 @@
     qemu = {
       package = pkgs.qemu_kvm;
       runAsRoot = true; # simpler for passthrough
-      vhostUserPackages = [ pkgs.virtiofsd ];
+      vhostUserPackages = [pkgs.virtiofsd];
     };
   };
   programs.virt-manager.enable = true;

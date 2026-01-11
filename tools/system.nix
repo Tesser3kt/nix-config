@@ -82,9 +82,4 @@
       };
     };
   };
-
-  # Enable Cooler Control
-  programs.coolercontrol = {
-    enable = true;
-  };
 }
