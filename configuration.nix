@@ -178,6 +178,7 @@
     inputs.zen-browser.packages.${system}.specific
     dnsmasq
     virtiofsd
+    liquidctl
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
