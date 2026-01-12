@@ -7,6 +7,8 @@
   pkgs,
   inputs,
   hostname,
+  openrgbEnabled,
+  coolercontrolEnabled,
   ...
 }: {
   # Use the systemd-boot EFI boot loader.
@@ -200,7 +202,7 @@
 
   # Enable OpenRGB
   services.hardware.openrgb = {
-    enable = true;
+    enable = openrgbEnabled;
     package = pkgs.openrgb-with-all-plugins;
     server = {
       port = 6742;
@@ -209,7 +211,7 @@
 
   # Enable Cooler Control
   programs.coolercontrol = {
-    enable = true;
+    enable = coolercontrolEnabled;
   };
 
   # Enable Docker

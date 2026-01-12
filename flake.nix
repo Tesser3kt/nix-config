@@ -52,6 +52,8 @@
       specialArgs = {
         inherit inputs username pkgsSage;
         hostname = "tesserekt-pc";
+        openrgbEnabled = true;
+        coolercontrolEnabled = true;
       };
       modules = [
         ./configuration.nix
@@ -85,6 +87,8 @@
       specialArgs = {
         inherit inputs username pkgsSage;
         hostname = "tesserekt-laptop";
+        openrgbEnabled = false;
+        coolercontrolEnabled = false;
       };
       modules = [
         ./configuration.nix
@@ -151,6 +155,8 @@
       specialArgs = {
         inherit inputs username pkgsSage;
         hostname = "tesserekt-nvidia";
+        openrgbEnabled = true;
+        coolercontrolEnabled = true;
       };
       modules = [
         ./configuration.nix
