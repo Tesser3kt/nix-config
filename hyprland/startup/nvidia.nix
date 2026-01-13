@@ -1,3 +1,4 @@
 [
+  "coolercontrol"
   "solaar -w hide &"
 ]
