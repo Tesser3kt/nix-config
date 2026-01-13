@@ -30,6 +30,7 @@
     "common" = import ./startup/common.nix;
     "pc" = import ./startup/pc.nix;
     "raider" = import ./startup/raider.nix;
+    "nvidia" = import ./startup/nvidia.nix;
   };
   devices = {
     "pc" = import ./tablet/pc.nix;
