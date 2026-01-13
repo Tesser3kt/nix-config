@@ -54,6 +54,7 @@
         hostname = "tesserekt-pc";
         openrgbEnabled = true;
         coolercontrolEnabled = true;
+        corsairEnabled = false;
       };
       modules = [
         ./configuration.nix
@@ -89,6 +90,7 @@
         hostname = "tesserekt-laptop";
         openrgbEnabled = false;
         coolercontrolEnabled = false;
+        corsairEnabled = false;
       };
       modules = [
         ./configuration.nix
@@ -157,6 +159,7 @@
         hostname = "tesserekt-nvidia";
         openrgbEnabled = true;
         coolercontrolEnabled = true;
+        corsairEnabled = true;
       };
       modules = [
         ./configuration.nix

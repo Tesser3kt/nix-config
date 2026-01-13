@@ -9,6 +9,7 @@
   hostname,
   openrgbEnabled,
   coolercontrolEnabled,
+  corsairEnabled,
   ...
 }: {
   # Use the systemd-boot EFI boot loader.
@@ -200,7 +201,7 @@
   powerManagement.enable = true;
   services.tlp.enable = true;
 
-  # Enable OpenRGB
+  # Enable/Disable OpenRGB
   services.hardware.openrgb = {
     enable = openrgbEnabled;
     package = pkgs.openrgb-with-all-plugins;
@@ -209,9 +210,14 @@
     };
   };
 
-  # Enable Cooler Control
+  # Enable/Disable Cooler Control
   programs.coolercontrol = {
     enable = coolercontrolEnabled;
+  };
+
+  # Enable/Disable CKD
+  services.hardware.ckb-next = {
+    enable = corsairEnabled;
   };
 
   # Enable Docker
