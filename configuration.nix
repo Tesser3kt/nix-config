@@ -216,7 +216,7 @@
   };
 
   # Enable/Disable CKD
-  services.hardware.ckb-next = {
+  hardware.ckb-next = {
     enable = corsairEnabled;
   };
 
