@@ -3,6 +3,6 @@
   "nm-applet --indicator &"
   "swaync &"
   "hypridle &"
-  "beeper -m &"
+  "whatsapp-electron &"
   "vesktop --start-minimized &"
 ]
