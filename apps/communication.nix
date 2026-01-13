@@ -6,7 +6,7 @@
   home.packages = with pkgs; [
     qbittorrent-enhanced
     localsend
-    beeper
+    whatsapp-electron
     vesktop
   ];
 }
