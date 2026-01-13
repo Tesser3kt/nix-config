@@ -217,7 +217,7 @@
 
   # Enable/Disable CKD
   hardware.ckb-next = {
-    enable = corsairEnabled;
+    enable = false;
   };
 
   # Enable Docker
