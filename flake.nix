@@ -157,8 +157,8 @@
       specialArgs = {
         inherit inputs username pkgsSage;
         hostname = "tesserekt-nvidia";
-        openrgbEnabled = true;
-        coolercontrolEnabled = true;
+        openrgbEnabled = false;
+        coolercontrolEnabled = false;
         corsairEnabled = true;
       };
       modules = [
