@@ -22,6 +22,7 @@
 
   home.shellAliases = {
     update = "sudo nixos-rebuild switch";
+    lg = "lazygit";
   };
 
   home.packages = with pkgs; [
