@@ -3,14 +3,17 @@
   pkgs,
   inputs,
   ...
-}:
-let
+}: let
   quickshellConfig = "${config.home.homeDirectory}/nix-config/quickshell/config";
-in 
-{
+  quickshellPackage = inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  quickshellVulkan = pkgs.writeShellScriptBin "quickshell-vulkan" ''
+    export QSG_RHI_BACKEND=vulkan
+    exec ${quickshellPackage}/bin/quickshell "$@"
+  '';
+in {
   programs.quickshell = {
     enable = true;
-    package = inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default;
+    package = quickshellVulkan;
     systemd.enable = true;
   };
 
