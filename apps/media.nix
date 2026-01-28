@@ -11,6 +11,7 @@
     gimp3
     inkscape
     vlc
+    ffmpeg-full
     mpv
     audacity
     handbrake
@@ -18,6 +19,5 @@
     obs-studio
   ] ++ [
     pkgsStable.kdePackages.kdenlive
-    pkgsStable.ffmpeg
   ];
 }
