@@ -45,17 +45,17 @@
         doCheck = false;
       });
     };
-    kdenlive-overlay = final: prev: {
-      kdePackages =
-        prev.kdePackages
-        // {
-          kdenlive = prev.kdePackages.kdenlive.overrideAttrs (old: {
-            buildInputs = (old.buildInputs or []) ++ [prev.shaderc];
+    kdenlive-overlay = final: prev: let
+      shadercLib = prev.shaderc.lib;
+    in {
+      kdePackages = prev.kdePackages.overrideScope (kfinal: kprev: {
+        kdenlive = kprev.kdenlive.overrideAttrs (old: {
+          buildInputs = (old.buildInputs or []) ++ [shadercLib];
 
-            # Fix undefined shaderc_* coming from ffmpeg-full's libavcodec.so
-            NIX_LDFLAGS = (old.NIX_LDFLAGS or "") + " ${prev.shaderc}/lib/libshaderc_shared.so";
-          });
-        };
+          # Put shaderc at the END of the link flags, and avoid dropping it via --as-needed.
+          NIX_LDFLAGS = (old.NIX_LDFLAGS or "") + " -L${shadercLib}/lib -Wl,--no-as-needed -lshaderc_shared -Wl,--as-needed";
+        });
+      });
     };
     pkgsSage = import inputs.nixpkgs-sage {inherit system;};
   in {
