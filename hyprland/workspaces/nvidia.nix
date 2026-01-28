@@ -31,24 +31,24 @@
 
     # Bind workspaces to monitors
     workspace = [
-      "name:1, monitor:DP-1, default:true"
-      "name:2, monitor:DP-1"
-      "name:3, monitor:DP-1"
-      "name:4, monitor:DP-1"
-      "name:5, monitor:DP-1"
-      "name:6, monitor:HDMI-A-1, default:true"
-      "name:7, monitor:HDMI-A-1"
-      "name:8, monitor:HDMI-A-1"
-      "name:9, monitor:HDMI-A-1"
-      "name:10, monitor:HDMI-A-1"
+      "name:6, monitor:DP-1, default:true"
+      "name:7, monitor:DP-1"
+      "name:8, monitor:DP-1"
+      "name:9, monitor:DP-1"
+      "name:10, monitor:DP-1"
+      "name:1, monitor:HDMI-A-1, default:true"
+      "name:2, monitor:HDMI-A-1"
+      "name:3, monitor:HDMI-A-1"
+      "name:4, monitor:HDMI-A-1"
+      "name:5, monitor:HDMI-A-1"
     ];
   };
 
   programs.waybar.settings.main = {
     "hyprland/workspaces" = {
       "persistent-workspaces" = {
-        "DP-1" = [1 2 3 4 5];
-        "HDMI-A-1" = [6 7 8 9 10];
+        "HDMI-A-1" = [1 2 3 4 5];
+        "DP-1" = [6 7 8 9 10];
       };
     };
   };
