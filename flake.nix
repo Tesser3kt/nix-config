@@ -45,6 +45,18 @@
         doCheck = false;
       });
     };
+    kdenlive-overlay = final: prev: {
+      kdePackages =
+        prev.kdePackages
+        // {
+          kdenlive = prev.kdePackages.kdenlive.overrideAttrs (old: {
+            buildInputs = (old.buildInputs or []) ++ [prev.shaderc];
+
+            # Fix undefined shaderc_* coming from ffmpeg-full's libavcodec.so
+            NIX_LDFLAGS = (old.NIX_LDFLAGS or "") + " ${prev.shaderc}/lib/libshaderc_shared.so";
+          });
+        };
+    };
     pkgsSage = import inputs.nixpkgs-sage {inherit system;};
   in {
     nixosConfigurations.tesserekt-pc = nixpkgs.lib.nixosSystem {
@@ -167,7 +179,7 @@
         ./hw-nvidia.nix
         ./nvidia.nix
         ./display-manager.nix
-        {nixpkgs.overlays = [fonts-overlay];}
+        {nixpkgs.overlays = [fonts-overlay kdenlive-overlay];}
 
         # Home Manager
         home-manager.nixosModules.home-manager
