@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  pkgsStable,
   ...
 }: {
   home.packages = with pkgs; [
@@ -12,10 +13,11 @@
     vlc
     mpv
     audacity
-    ffmpeg
     handbrake
     cavalier
     obs-studio
-    kdePackages.kdenlive
+  ] ++ [
+    pkgsStable.kdePackages.kdenlive
+    pkgsStable.ffmpeg
   ];
 }

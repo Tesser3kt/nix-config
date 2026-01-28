@@ -504,7 +504,7 @@
         "type": "github"
       }
     },
-    "nixpkgs-sage": {
+    "nixpkgs-stable": {
       "locked": {
         "lastModified": 1769318308,
         "narHash": "sha256-Mjx6p96Pkefks3+aA+72lu1xVehb6mv2yTUUqmSet6Q=",
@@ -618,7 +618,7 @@
         "hyprland": "hyprland",
         "nix4nvchad": "nix4nvchad",
         "nixpkgs": "nixpkgs_2",
-        "nixpkgs-sage": "nixpkgs-sage",
+        "nixpkgs-stable": "nixpkgs-stable",
         "nvchad-starter": "nvchad-starter",
         "quickshell": "quickshell",
         "zen-browser": "zen-browser"

@@ -2,7 +2,7 @@
   description = "Basic NixOS configuration.";
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-sage.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
     hyprland.url = "github:hyprwm/Hyprland";
     zen-browser.url = "github:Tesser3kt/zen-browser-flake";
     home-manager = {
@@ -45,24 +45,12 @@
         doCheck = false;
       });
     };
-    kdenlive-overlay = final: prev: let
-      shadercLib = prev.shaderc.lib;
-    in {
-      kdePackages = prev.kdePackages.overrideScope (kfinal: kprev: {
-        kdenlive = kprev.kdenlive.overrideAttrs (old: {
-          buildInputs = (old.buildInputs or []) ++ [shadercLib];
-
-          # Put shaderc at the END of the link flags, and avoid dropping it via --as-needed.
-          NIX_LDFLAGS = (old.NIX_LDFLAGS or "") + " -L${shadercLib}/lib -Wl,--no-as-needed -lshaderc_shared -Wl,--as-needed";
-        });
-      });
-    };
-    pkgsSage = import inputs.nixpkgs-sage {inherit system;};
+    pkgsStable = import inputs.nixpkgs-stable {inherit system;};
   in {
     nixosConfigurations.tesserekt-pc = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {
-        inherit inputs username pkgsSage;
+        inherit inputs username pkgsStable;
         hostname = "tesserekt-pc";
         openrgbEnabled = true;
         coolercontrolEnabled = true;
@@ -84,7 +72,7 @@
 
           home-manager.users.${username} = import ./home.nix;
           home-manager.extraSpecialArgs = {
-            inherit inputs username pkgsSage;
+            inherit inputs username pkgsStable;
             displayConfig = "pc";
             waybarConfig = "pc";
             startupConfig = "pc";
@@ -98,7 +86,7 @@
     nixosConfigurations.tesserekt-laptop = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {
-        inherit inputs username pkgsSage;
+        inherit inputs username pkgsStable;
         hostname = "tesserekt-laptop";
         openrgbEnabled = false;
         coolercontrolEnabled = false;
@@ -120,7 +108,7 @@
 
           home-manager.users.${username} = import ./home.nix;
           home-manager.extraSpecialArgs = {
-            inherit inputs username pkgsSage;
+            inherit inputs username pkgsStable;
             displayConfig = "laptop";
             waybarConfig = "laptop";
             startupConfig = "laptop";
@@ -167,7 +155,7 @@
     nixosConfigurations.tesserekt-nvidia = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {
-        inherit inputs username pkgsSage;
+        inherit inputs username pkgsStable;
         hostname = "tesserekt-nvidia";
         openrgbEnabled = false;
         coolercontrolEnabled = false;
@@ -179,7 +167,7 @@
         ./hw-nvidia.nix
         ./nvidia.nix
         ./display-manager.nix
-        {nixpkgs.overlays = [fonts-overlay kdenlive-overlay];}
+        {nixpkgs.overlays = [fonts-overlay];}
 
         # Home Manager
         home-manager.nixosModules.home-manager
@@ -189,7 +177,7 @@
 
           home-manager.users.${username} = import ./home.nix;
           home-manager.extraSpecialArgs = {
-            inherit inputs username pkgsSage;
+            inherit inputs username pkgsStable;
             displayConfig = "nvidia";
             waybarConfig = "pc";
             startupConfig = "nvidia";
