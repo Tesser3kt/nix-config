@@ -45,6 +45,45 @@
         doCheck = false;
       });
     };
+    ffmpegAvMallocFix = final: prev: let
+      patch = final.writeText "ffmpeg-av_malloc-tablegen.patch" ''
+        diff --git a/libavcodec/vlc.c b/libavcodec/vlc.c
+        index 0000000..0000000 100644
+        --- a/libavcodec/vlc.c
+        +++ b/libavcodec/vlc.c
+        @@ -1,6 +1,12 @@
+         #include <inttypes.h>
+         #include <stdint.h>
+         #include <stdlib.h>
+         #include <string.h>
+        +
+        +/* tablegen builds may predefine AVUTIL_MEM_H (via tableprint_vlc.h),
+        + * which prevents mem.h from providing av_malloc() prototypes. */
+        +#ifdef AVUTIL_MEM_H
+        +#undef AVUTIL_MEM_H
+        +#endif
+         #include "libavutil/attributes.h"
+         #include "libavutil/avassert.h"
+         #include "libavutil/error.h"
+         #include "libavutil/internal.h"
+         #include "libavutil/intreadwrite.h"
+         #include "libavutil/log.h"
+         #include "libavutil/macros.h"
+         #include "libavutil/mem.h"
+      '';
+
+      fix = pkg:
+        pkg.overrideAttrs (old: {
+          patches = (old.patches or []) ++ [patch];
+        });
+    in {
+      # Patch whatever exists in that nixpkgs
+      ffmpeg-full = fix prev.ffmpeg-full;
+      ffmpeg_7-full =
+        if prev ? ffmpeg_7-full
+        then fix prev.ffmpeg_7-full
+        else prev.ffmpeg_7-full;
+    };
     pkgsStable = import inputs.nixpkgs-stable {inherit system;};
   in {
     nixosConfigurations.tesserekt-pc = nixpkgs.lib.nixosSystem {
@@ -167,7 +206,7 @@
         ./hw-nvidia.nix
         ./nvidia.nix
         ./display-manager.nix
-        {nixpkgs.overlays = [fonts-overlay];}
+        {nixpkgs.overlays = [fonts-overlay ffmpegAvMallocFix];}
 
         # Home Manager
         home-manager.nixosModules.home-manager

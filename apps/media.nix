@@ -11,7 +11,7 @@
     gimp3
     inkscape
     vlc
-    jellyfin-ffmpeg
+    ffmpeg-full
     mpv
     audacity
     handbrake
