@@ -1,13 +1,11 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{config, ...}: let
+  wp = "${config.home.homeDirectory}/Pictures/wallpaper.png";
+in {
   services.hyprpaper = {
     enable = true;
     settings = {
-      preload = ["~/Pictures/wallpaper.png"];
-      wallpaper = [",~/Pictures/wallpaper.png"];
+      preload = [wp];
+      wallpaper = [",${wp}"]; # applies to all monitors
     };
   };
 }
