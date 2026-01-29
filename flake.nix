@@ -45,40 +45,42 @@
         doCheck = false;
       });
     };
-    ffmpegAvMallocFix = final: prev: {
-      ffmpeg-full = prev.ffmpeg-full.overrideAttrs (old: {
-        postPatch =
-          (old.postPatch or "")
-          + ''
-            # Ensure av_malloc prototype is visible even when tablegen predefines AVUTIL_MEM_H
-            if grep -q 'libavutil/mem.h' libavcodec/vlc.c; then
-              # Insert undef block immediately before the mem.h include
-              substituteInPlace libavcodec/vlc.c \
-                --replace '#include "libavutil/mem.h"' \
-                          '#ifdef AVUTIL_MEM_H\n#undef AVUTIL_MEM_H\n#endif\n#include "libavutil/mem.h"'
-            fi
-          '';
-      });
+    ffmpegAvMallocFix = final: prev: let
+      fixOne = pkg:
+        pkg.overrideAttrs (old: {
+          postPatch =
+            (old.postPatch or "")
+            + ''
+                    # Replace any previous failed injection blocks (from earlier attempts)
+                    perl -0777 -i -pe 's@#ifdef AVUTIL_MEM_H.*?#include "libavutil/mem.h"\n@@s' libavcodec/vlc.c || true
 
-      # If your nixpkgs has ffmpeg_7-full and ffmpeg-full is an alias, patch both.
+                    replacement="$(cat <<'EOF'
+              #if defined(av_free) || defined(av_freep)
+              #ifndef av_malloc
+              #define av_malloc(x) malloc(x)
+              #endif
+              #else
+              #include "libavutil/mem.h"
+              #endif
+              EOF
+              )"
+
+                    # Now replace the mem.h include with a tablegen-safe conditional
+                    substituteInPlace libavcodec/vlc.c \
+                      --replace-fail '#include "libavutil/mem.h"' "$replacement"
+            '';
+        });
+    in {
+      ffmpeg-full = fixOne prev.ffmpeg-full;
       ffmpeg_7-full =
         if prev ? ffmpeg_7-full
-        then
-          prev.ffmpeg_7-full.overrideAttrs (old: {
-            postPatch =
-              (old.postPatch or "")
-              + ''
-                if grep -q 'libavutil/mem.h' libavcodec/vlc.c; then
-                  substituteInPlace libavcodec/vlc.c \
-                    --replace '#include "libavutil/mem.h"' \
-                              '#ifdef AVUTIL_MEM_H\n#undef AVUTIL_MEM_H\n#endif\n#include "libavutil/mem.h"'
-                fi
-              '';
-          })
+        then fixOne prev.ffmpeg_7-full
         else prev.ffmpeg_7-full;
     };
-
-    pkgsStable = import inputs.nixpkgs-stable {inherit system;};
+    pkgsStable = import inputs.nixpkgs-stable {
+      inherit system;
+      overlays = [fonts-overlay ffmpegAvMallocFix];
+    };
   in {
     nixosConfigurations.tesserekt-pc = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
