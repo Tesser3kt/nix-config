@@ -97,7 +97,7 @@
         ./hw-pc.nix
         ./amd.nix
         ./display-manager.nix
-        {nixpkgs.overlays = [fonts-overlay ltrace-overlay];}
+        {nixpkgs.overlays = [fonts-overlay ffmpegAvMallocFix];}
 
         # Home Manager
         home-manager.nixosModules.home-manager
