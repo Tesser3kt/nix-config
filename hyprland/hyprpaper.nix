@@ -3,9 +3,19 @@
 in {
   services.hyprpaper = {
     enable = true;
+
     settings = {
-      preload = [wp];
-      wallpaper = [",${wp}"]; # applies to all monitors
+      # optional
+      ipc = true;
+
+      # IMPORTANT: no preload in the new format
+      wallpaper = [
+        {
+          monitor = ""; # empty = fallback (all monitors that don't have a specific entry)
+          path = wp;
+          fit_mode = "cover"; # optional (cover/contain/tile/fill)
+        }
+      ];
     };
   };
 }
