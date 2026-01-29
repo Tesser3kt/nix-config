@@ -10,6 +10,14 @@ import qs.config
 PopupWrapper {
     id: popup
 
+    onHoveredChanged: {
+        if (!hovered && calendar.open) {
+            arrowButton.rotate();
+            calendar.open = false;
+            calendar.resetToCurrentMonth();
+        }
+    }
+
     SystemClock {
         id: clock
         precision: SystemClock.Hours

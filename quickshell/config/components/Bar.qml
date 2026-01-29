@@ -8,15 +8,28 @@ import qs.components.modules.popups
 RowLayout {
     id: root
 
-    spacing: Appearance.itemSpacing
     anchors.verticalCenter: parent.verticalCenter
 
-    Clock {
-        id: clockModule
+    RowLayout {
+        id: leftModules
+        spacing: Appearance.itemSpacing
 
-        backgroundColor: Theme.nord7
-        iconColor: Theme.nord0
-        textColor: Theme.nord0
-        hoverEnabled: true
+        Clock {
+            id: clockModule
+
+            backgroundColor: Theme.nord7
+            iconColor: Theme.nord0
+            textColor: Theme.nord0
+            hoverEnabled: true
+        }
+
+        Keyboard {
+            id: keyboardModule
+
+            backgroundColor: Theme.nord8
+            iconColor: Theme.nord0
+            textColor: Theme.nord0
+            hoverEnabled: true
+        }
     }
 }
