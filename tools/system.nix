@@ -69,6 +69,9 @@
     # Mounting NTFS drives
     ntfs3g
     fuse
+
+    # keyboard
+    libxkbcommon
   ];
 
   services.blueman-applet.enable = false;
