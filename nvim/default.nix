@@ -68,6 +68,7 @@
       tex-fmt
       alejandra
       hlint
+      ormolu
     ];
 
     extraConfig = ''
