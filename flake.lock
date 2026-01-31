@@ -555,11 +555,11 @@
     "nvchad-starter": {
       "flake": false,
       "locked": {
-        "lastModified": 1769891069,
-        "narHash": "sha256-Dfp32w6LoL5LOt7jgfOFj2EflsksAynLCe6dUUP9gDk=",
+        "lastModified": 1769892311,
+        "narHash": "sha256-/ZHnvO9QLY8wgACQP8KxC09GL47P5bb27BJPrWS6xWQ=",
         "owner": "Tesser3kt",
         "repo": "nvchad-starter",
-        "rev": "d8eeb80e856db66b0ede4a3b48859164ef7212b8",
+        "rev": "f862856779e1a9c650fa1bc39b8c066bdb1123d2",
         "type": "github"
       },
       "original": {
