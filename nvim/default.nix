@@ -57,6 +57,7 @@
       arduino-language-server
       arduino-cli
       clang-tools
+      haskell-language-server
 
       # Linters & Formatters
       stylua
@@ -66,6 +67,7 @@
       typstyle
       tex-fmt
       alejandra
+      hlint
     ];
 
     extraConfig = ''
