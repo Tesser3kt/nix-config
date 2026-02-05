@@ -75,6 +75,7 @@ in {
       recolor-lightcolor = "#2A303C";
       recolor-darkcolor = "#ECEFF4";
       recolor = true;
+      recolor-keephue = true;
 
       # Font and GUI options
       font = "Hurmit Nerd Font 12";
