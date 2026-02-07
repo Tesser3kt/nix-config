@@ -12,6 +12,7 @@
     "raider" = [(import ./hypridle/raider.nix {inherit config pkgs;})];
     "laptop" = [(import ./hypridle/laptop.nix {inherit config pkgs;})];
     "pc" = [(import ./hypridle/pc.nix {inherit config pkgs;})];
+    "nvidia" = [(import ./hypridle/nvidia.nix {inherit config pkgs;})];
   };
 in {
   imports =
