@@ -13,6 +13,7 @@
     ./mail.nix
     ./office.nix
     ./emulation.nix
+    ./ai.nix
   ];
 
   home.packages = with pkgs; [

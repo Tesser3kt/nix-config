@@ -4,7 +4,8 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
     hyprland.url = "github:hyprwm/Hyprland";
-    zen-browser.url = "github:Tesser3kt/zen-browser-flake";
+    zen-browser.url = "github:youwen5/zen-browser-flake";
+    claude-code.url = "github:sadjow/claude-code-nix";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";

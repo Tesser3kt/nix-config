@@ -178,7 +178,7 @@
     gnupg
     wireguard-tools
     distrobox
-    inputs.zen-browser.packages.${system}.specific
+    inputs.zen-browser.packages.${system}.default
     dnsmasq
     virtiofsd
     liquidctl
