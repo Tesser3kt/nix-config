@@ -1,0 +1,34 @@
+# Example Generic IMAP profile ################################################
+#
+# Change ACCOUNT_ALIAS to something meaningful (e.g. personal, work) - this should
+# match the account alias used in .config/mutt/accounts/*
+IMAPStore personal-remote
+# (check your email providers imap documentation)
+Host 127.0.0.1
+# (check your email providers imap documentation)
+Port 1143
+User myemail@domain.com
+# how to get your password ('pass' and 'gpg' are good for these)
+# using 'pass')
+PassCmd "pass emails/djklepy@pm.me"
+# using 'gpg'
+#PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d my-email-password.gpg"
+AuthMechs djklepy@pm.me
+SSLType STARTTLS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+MaildirStore personal-local
+Subfolders Verbatim
+Path ~/.local/share/mail/personal/
+Inbox ~/.local/share/mail/personal/INBOX
+Flatten .
+
+Channel personal
+Expunge Both
+Far :personal-remote:
+Near :personal-local:
+Patterns *
+Create Both
+SyncState *
+MaxMessages 0
+ExpireUnread no

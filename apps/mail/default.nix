@@ -20,5 +20,8 @@
     gcalcli
     urlscan
     pandoc
+    protonmail-bridge
+    protonmail-bridge-gui
+    pass
   ];
 }
