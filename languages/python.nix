@@ -29,6 +29,12 @@
         numpy
         pandas
         pyserial
+
+        # for neomutt
+        vobject
+        icalendar
+        pytz
+        tzlocal
       ]))
   ];
 }
