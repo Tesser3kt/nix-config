@@ -43,9 +43,9 @@
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
 
-  # Enable Zsh
-  programs.zsh.enable = true;
-  users.users.tesserekt.shell = pkgs.zsh;
+  # Enable Nushell
+  programs.zsh.enable = false;
+  users.users.tesserekt.shell = pkgs.nushell;
 
   # Enable hyprland (development version)
   programs.hyprland = {
@@ -182,6 +182,7 @@
     dnsmasq
     virtiofsd
     liquidctl
+    nushell
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

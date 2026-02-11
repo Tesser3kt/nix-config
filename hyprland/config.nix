@@ -9,9 +9,9 @@
 }: let
   terminal = "alacritty";
   browser = "zen";
-  files = "alacritty -e zsh -ic ranger";
-  calculator = "alacritty -e zsh -ic sage";
-  mail = "alacritty -e zsh -ic neomutt";
+  files = "alacritty -e nu -c 'ranger'";
+  calculator = "alacritty -e nu -c 'sage'";
+  mail = "alacritty -e nu -c 'neomutt'";
   ai = "zen --new-window 'https://chatgpt.com'";
   discord = "vesktop";
   drawing = "zen --new-window 'https://excalidraw.com'";
