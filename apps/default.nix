@@ -18,5 +18,7 @@
 
   home.packages = with pkgs; [
     zotero
+    piper
+    libratbag
   ];
 }
