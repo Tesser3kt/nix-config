@@ -3,6 +3,10 @@
   pkgs,
   ...
 }: {
+  imports = [
+    ./glow.nix
+  ];
+
   home.packages = with pkgs; [
     neomutt
     html2text

@@ -10,7 +10,7 @@
     ./file-manager.nix
     ./vscode
     ./math.nix
-    ./new-mail.nix
+    ./mail
     ./office.nix
     ./emulation.nix
     ./ai.nix
