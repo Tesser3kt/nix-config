@@ -29,6 +29,8 @@
   ];
   boot.kernelModules = [
     "kvm-amd"
+    "btusb"
+    "btmtk"
   ];
   boot.extraModulePackages = [];
   boot.kernelParams = [
