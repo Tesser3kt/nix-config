@@ -38,7 +38,6 @@
     "default_hugepagesz=1G"
     "hugepagesz=1G"
     "hugepages=8"
-    "usbcore.autosuspend=-1" 
   ];
 
   fileSystems."/" = {
