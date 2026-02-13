@@ -166,7 +166,13 @@
     libiconv
     autoconf
     automake
-    texlive.combined.scheme-full
+    (
+      texlive.withPackages
+      (ps:
+        with ps; [
+          scheme-full
+        ])
+    )
     zathura
     libsForQt5.qt5ct
     libsForQt5.qtstyleplugin-kvantum
