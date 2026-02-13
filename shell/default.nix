@@ -4,7 +4,7 @@
   ...
 }: {
   imports = [
-    ./zsh.nix
+    ./nushell.nix
     ./alacritty.nix
     ./starship.nix
     ./git.nix
