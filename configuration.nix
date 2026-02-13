@@ -44,8 +44,8 @@
   # services.xserver.enable = true;
 
   # Enable Nushell
-  programs.zsh.enable = false;
-  users.users.tesserekt.shell = pkgs.nushell;
+  programs.zsh.enable = true;
+  users.users.tesserekt.shell = pkgs.zsh;
 
   # Enable hyprland (development version)
   programs.hyprland = {
