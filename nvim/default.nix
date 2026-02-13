@@ -6,24 +6,15 @@
   ...
 }: {
   imports = [
-    inputs.nix4nvchad.homeManagerModule
     ./linters.nix
     ./tools.nix
   ];
 
-  # Disabling neovim for nvchad
   programs.neovim = {
-    enable = false;
-  };
-
-  programs.nvchad = {
     enable = true;
-    hm-activation = true;
-    backup = true;
+    defaultEditor = true;
 
-    # Add extra packages
     extraPackages = with pkgs; [
-      # Language servers
       vscode-langservers-extracted
       bash-language-server
       marksman
@@ -31,24 +22,23 @@
       docker-language-server
       emmet-language-server
       lua-language-server
-      (python3.withPackages (p:
-        with p; [
-          python-lsp-server
-          python-lsp-black
-          pyls-isort
-          pyls-flake8
-          pylint
-          black
-          flake8
-          rope
-          pyflakes
-          mccabe
-          pycodestyle
-          pydocstyle
-          autopep8
-          yapf
-          isort
-        ]))
+      (python3.withPackages (p: with p; [
+        python-lsp-server
+        python-lsp-black
+        pyls-isort
+        pyls-flake8
+        pylint
+        black
+        flake8
+        rope
+        pyflakes
+        mccabe
+        pycodestyle
+        pydocstyle
+        autopep8
+        yapf
+        isort
+      ]))
       sqls
       tailwindcss-language-server
       texlab
@@ -59,7 +49,6 @@
       clang-tools
       haskell-language-server
 
-      # Linters & Formatters
       stylua
       prettierd
       eslint_d
@@ -70,21 +59,17 @@
       hlint
       ormolu
     ];
-
-    extraConfig = ''
-      require("luasnip").config.set_config {
-        -- Autotriggered snippets
-        enable_autosnippets = true,
-
-        -- Tab to trigger visual selection
-        store_selection_keys = "<Tab>",
-      }
-    '';
   };
 
-  # Linking snippets folder
-  xdg.configFile."nvim/snippets".source = ./snippets;
+xdg.configFile."nvim".source = pkgs.fetchFromGitHub {
+  owner = "Tesser3kt";
+  repo  = "nvchad-starter";
 
-  # Linking spell folder
-  xdg.configFile."nvim/spell".source = ./spell;
+  rev = "20aeeaa138fc4623509ccd456772151288799ca3";
+
+  hash = "sha256-wL3ikaArrn8pkjSFtHvOyULJRe+79i3svqezkq/l/8Y=";
+};
+xdg.configFile."nvim/snippets".source = ./snippets;
+xdg.configFile."nvim/spell".source = ./spell;
+
 }
