@@ -17,8 +17,8 @@
   };
 
   programs.nvchad = {
-    enable = true;
-    hm-activation = true;
+    enable = false;
+    hm-activation = false;
     backup = true;
 
     # Add extra packages
