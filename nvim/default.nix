@@ -65,11 +65,9 @@ xdg.configFile."nvim".source = pkgs.fetchFromGitHub {
   owner = "Tesser3kt";
   repo  = "nvchad-starter";
 
-  rev = "20aeeaa138fc4623509ccd456772151288799ca3";
+  rev = "12a9358a7cfdd3a124333d97682543d06972daab";
 
-  hash = "sha256-wL3ikaArrn8pkjSFtHvOyULJRe+79i3svqezkq/l/8Y=";
+  hash = "sha256-gpFWiqEezEZPQZRU6FDjXfAhSfWVQ4VgQOmPEV7h9PM=";
 };
-xdg.configFile."nvim/snippets".source = ./snippets;
-xdg.configFile."nvim/spell".source = ./spell;
 
 }
