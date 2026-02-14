@@ -53,13 +53,15 @@
       alejandra
       hlint
       ormolu
+
+      claude-code
     ];
   };
 
   xdg.configFile."nvim".source = pkgs.fetchFromGitHub {
     owner = "Tesser3kt";
     repo = "nvchad-starter";
-    rev = "dd650da4ff47ab9db63084a7d46c580da11655ff";
-    hash = "sha256-pFG1etUvirfuIJ4WsUBasIpMx4S43tMDxpABhMJNLvI=";
+    rev = "257e0eb4c39a22e3b894876eee89d757803ee13b";
+    hash = "sha256-2b5fb+uiNAz6apeol3zphqWODIH+mQAGDo7ILIbmgfw=";
   };
 }
