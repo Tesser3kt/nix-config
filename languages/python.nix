@@ -29,6 +29,8 @@
         numpy
         pandas
         pyserial
+        tkinter
+        pygobject3
 
         # for neomutt
         vobject
