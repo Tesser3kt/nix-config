@@ -31,11 +31,11 @@
 
     # Bind workspaces to monitors
     workspace = [
-      "name:1, monitor:DP-1, default:true"
-      "name:2, monitor:DP-1"
-      "name:3, monitor:DP-1"
-      "name:4, monitor:DP-1"
-      "name:5, monitor:DP-1"
+      "name:6, monitor:DP-1, default:true"
+      "name:7, monitor:DP-1"
+      "name:8, monitor:DP-1"
+      "name:9, monitor:DP-1"
+      "name:10, monitor:DP-1"
       "name:1, monitor:HDMI-A-1, default:true"
       "name:2, monitor:HDMI-A-1"
       "name:3, monitor:HDMI-A-1"
