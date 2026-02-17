@@ -55,6 +55,11 @@
       ormolu
 
       claude-code
+
+      vimPlugins.nvim-treesitter
+      vimPlugins.nvim-treesitter.withAllGrammars
+      vimPlugins.nvim-treesitter-refactor
+      vimPlugins.nvim-treesitter-pyfold
     ];
   };
 
