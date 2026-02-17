@@ -72,6 +72,10 @@
 
     # keyboard
     libxkbcommon
+
+    # nix tools
+    nix-prefetch
+    nix-prefetch-git
   ];
 
   services.blueman-applet.enable = false;
