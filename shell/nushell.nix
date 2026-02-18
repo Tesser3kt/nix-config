@@ -31,6 +31,25 @@
       XDG_CONFIG_HOME = "${config.home.homeDirectory}/.config";
       XDG_CACHE_HOME = "${config.home.homeDirectory}/.cache";
     };
+    extraConfig = ''
+      $env.config.completions.external = {
+        enable: true
+        max_results: 100
+        completer: {|spans|
+          let cmd = $spans.0
+
+          # Use zoxide for 'z' command completions
+          if $cmd == 'z' {
+            ^zoxide query -l ...$spans | lines | where {|x| $x != $env.PWD}
+          } else {
+            # Fallback to carapace for other commands
+            carapace $cmd nushell ...$spans
+            | from json
+            | if ($in | default [] | where value =~ '^-.*ERR$' | is-empty) { $in } else { null }
+          }
+        }
+      }
+    '';
   };
   programs.carapace = {
     enable = true;
