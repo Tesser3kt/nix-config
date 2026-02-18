@@ -10,7 +10,8 @@
       Description = "Mail sync timer";
     };
     Install = {
-      WantedBy = ["timers.target"];
+      # WantedBy = ["timers.target"];
+      WantedBy = [];
     };
     Timer = {
       OnBootSec = "1min";
@@ -25,7 +26,8 @@
       Description = "Sync mail";
     };
     Install = {
-      WantedBy = ["default.target"];
+      # WantedBy = ["default.target"];
+      WantedBy = [];
     };
     Service = {
       Type = "oneshot";

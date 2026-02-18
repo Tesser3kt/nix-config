@@ -26,7 +26,7 @@
   # GPG agent configuration
   home.file.".pam-gnupg".text = gpgKeygrip;
   services.gpg-agent = {
-    enable = true;
+    enable = false;
     extraConfig = ''
       allow-preset-passphrase
       max-cache-ttl 86400
@@ -35,7 +35,7 @@
 
   # Enable IMAP notify
   services.imapnotify = {
-    enable = true;
+    enable = false;
     path = with pkgs; [
       notmuch
       libnotify
