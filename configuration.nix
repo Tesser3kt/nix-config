@@ -118,6 +118,8 @@
       "libvirtd"
       "kvm"
       "input"
+      "video"
+      "render"
     ]; # Enable ‘sudo’ for the user and add to docker group.
     packages = with pkgs; [
       tree
@@ -189,6 +191,8 @@
     virtiofsd
     liquidctl
     nushell
+    rocmPackages.rocminfo
+    rocmPackages.rocm-smi
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
