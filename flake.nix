@@ -155,39 +155,6 @@
         }
       ];
     };
-    nixosConfigurations.tesserekt-raider = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = {
-        inherit inputs username;
-        hostname = "tesserekt-raider";
-      };
-      modules = [
-        ./configuration.nix
-        ./boot-loader-raider.nix
-        ./hw-raider.nix
-        ./nvidia.nix
-        ./display-manager.nix
-        {nixpkgs.overlays = [fonts-overlay];}
-
-        # Home Manager
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-
-          home-manager.users.${username} = import ./home.nix;
-          home-manager.extraSpecialArgs = {
-            inherit inputs username;
-            displayConfig = "raider";
-            waybarConfig = "laptop";
-            startupConfig = "raider";
-            deviceConfig = "raider";
-            graphics = "nvidia";
-            gpgKeygrip = "4D7F773E7B92A663FDF2BF2BA723378E50AAE17A";
-          };
-        }
-      ];
-    };
     nixosConfigurations.tesserekt-nvidia = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {
