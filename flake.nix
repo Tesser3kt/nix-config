@@ -3,7 +3,6 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
-    nixpkgs-kernel.url = "github:NixOS/nixpkgs/d94e6683f5df6f1d6b565c989d2dad99b24ef20f";
     hyprland.url = "github:hyprwm/Hyprland";
     zen-browser.url = "github:youwen5/zen-browser-flake";
     claude-code.url = "github:sadjow/claude-code-nix";
@@ -164,10 +163,6 @@
         openrgbEnabled = false;
         coolercontrolEnabled = false;
         corsairEnabled = true;
-        pkgsKernel = import inputs.nixpkgs-kernel {
-          inherit system;
-          config.allowUnfree = true;
-        };
       };
       modules = [
         ./configuration.nix

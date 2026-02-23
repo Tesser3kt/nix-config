@@ -5,7 +5,6 @@
   config,
   lib,
   pkgs,
-  pkgsKernel ? pkgs,
   inputs,
   hostname,
   openrgbEnabled,
@@ -18,8 +17,8 @@
   # boot.loader.systemd-boot.edk2-uefi-shell.enable = true;
   # boot.loader.efi.canTouchEfiVariables = true;
 
-  # Use kernel 6.19.1 for NVIDIA compatibility (from pinned nixpkgs)
-  boot.kernelPackages = pkgsKernel.linuxPackages_6_19;
+  # Use latest kernel.
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = hostname; # Define your hostname.
   # Pick only one of the below networking options.

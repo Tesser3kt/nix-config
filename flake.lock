@@ -541,22 +541,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-kernel": {
-      "locked": {
-        "lastModified": 1771235239,
-        "narHash": "sha256-wJgUudeDvaEuXg8/X3vslKnE3luXfp75CZKhX0m8bpE=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "d94e6683f5df6f1d6b565c989d2dad99b24ef20f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "d94e6683f5df6f1d6b565c989d2dad99b24ef20f",
-        "type": "github"
-      }
-    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1771714954,
@@ -688,7 +672,6 @@
         "hyprland": "hyprland",
         "nix4nvchad": "nix4nvchad",
         "nixpkgs": "nixpkgs_3",
-        "nixpkgs-kernel": "nixpkgs-kernel",
         "nixpkgs-stable": "nixpkgs-stable",
         "nvchad-starter": "nvchad-starter",
         "quickshell": "quickshell",
