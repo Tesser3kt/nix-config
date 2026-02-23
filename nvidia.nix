@@ -14,7 +14,7 @@
     modesetting.enable = true;
     powerManagement.enable = true;
     powerManagement.finegrained = false;
-    open = true;
+    open = false;
     nvidiaSettings = true;
   };
   services.xserver.videoDrivers = ["nvidia"];
