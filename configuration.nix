@@ -103,6 +103,12 @@
   };
   services.blueman.enable = true; # Enable blueman.
 
+  # Enable Logitech device support (for Solaar)
+  hardware.logitech.wireless = {
+    enable = true;
+    enableGraphical = true;
+  };
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
 
