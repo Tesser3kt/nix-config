@@ -24,6 +24,9 @@ in {
     # Note-taking
     rnote
     pympress
+
+    # Okular
+    kdePackages.okular
   ];
 
   # Zathura configuration
