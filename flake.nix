@@ -122,7 +122,7 @@
     nixosConfigurations.tesserekt-laptop = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {
-        inherit inputs username;
+        inherit inputs username pkgsStable;
         hostname = "tesserekt-laptop";
         openrgbEnabled = false;
         coolercontrolEnabled = false;
