@@ -66,7 +66,7 @@
   xdg.configFile."nvim".source = pkgs.fetchFromGitHub {
     owner = "Tesser3kt";
     repo = "nvchad-starter";
-    rev = "dfc7a4d2d53679a00d095dab222455ee7f6b1865";
-    hash = "sha256-qQrC3bQPYdTFw2kacg0VRhRVtwLucJo6cwt9X/fC5GU=";
+    rev = "3c20c705fc6efde05ca608d7427f32311635d748";
+    hash = "sha256-7yrD2VniRLE0muNy7PabvkUp7hU58O5Qu11LZjZ5FFI=";
   };
 }
