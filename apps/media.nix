@@ -18,7 +18,6 @@
     cavalier
     obs-studio
     jamesdsp
-  ] ++ [
-    pkgsStable.kdePackages.kdenlive
+    kdePackages.kdenlive
   ];
 }

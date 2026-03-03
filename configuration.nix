@@ -18,7 +18,7 @@
   # boot.loader.efi.canTouchEfiVariables = true;
 
   # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_18;
 
   networking.hostName = hostname; # Define your hostname.
   # Pick only one of the below networking options.
