@@ -170,7 +170,7 @@
         ./hw-nvidia.nix
         ./nvidia.nix
         ./display-manager.nix
-        {nixpkgs.overlays = [fonts-overlay];}
+        {nixpkgs.overlays = [fonts-overlay ffmpegAvMallocFix];}
 
         # Home Manager
         home-manager.nixosModules.home-manager

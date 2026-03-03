@@ -97,7 +97,7 @@ in {
     enable = true;
     package = sioyekPackage.${graphics} or pkgs.sioyek;
     config = {
-      "startup_commands" = ["toggle_custom_color"];
+      "startup_commands" = "toggle_custom_color";
 
       # Color values as space-separated strings
       "background_color" = "0.925490 0.937255 0.956863";
