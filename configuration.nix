@@ -282,9 +282,9 @@
       };
     };
   };
-  systemd.sleep.settings.Sleep = ''
-    HibernateDelaySec=900
-  '';
+  systemd.sleep.settings.Sleep = {
+    HibernateDelaySec = "30m";
+  };
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [53317];
