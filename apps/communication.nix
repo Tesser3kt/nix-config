@@ -8,5 +8,6 @@
     localsend
     whatsapp-electron
     vesktop
+    element-desktop
   ];
 }
