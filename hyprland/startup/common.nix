@@ -5,4 +5,5 @@
   "hypridle &"
   "whatsapp-electron &"
   "vesktop --start-minimized &"
+  "element-desktop --hidden &"
 ]
