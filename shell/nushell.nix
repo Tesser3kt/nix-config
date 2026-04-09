@@ -3,7 +3,9 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  nu_plugin_audio = pkgs.callPackage ../pkgs/nu_plugin_audio.nix {};
+in {
   programs.nushell = {
     enable = true;
     settings = {
@@ -19,6 +21,7 @@
         };
       };
     };
+    plugins = [nu_plugin_audio];
     shellAliases = {
       update = "sudo nixos-rebuild switch";
       lg = "lazygit";
@@ -92,6 +95,6 @@
   };
   programs.zoxide = {
     enable = true;
-    enableNushellIntegration = false;  # We'll manually integrate with custom completions
+    enableNushellIntegration = false;  # Manually integrated with custom completions
   };
 }
