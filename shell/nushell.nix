@@ -5,6 +5,7 @@
   ...
 }: let
   nu_plugin_audio = pkgs.callPackage ../pkgs/nu_plugin_audio.nix {};
+  nu_plugin_compress = pkgs.callPackage ../pkgs/nu_plugin_compress.nix {};
 in {
   programs.nushell = {
     enable = true;
@@ -21,7 +22,7 @@ in {
         };
       };
     };
-    plugins = [nu_plugin_audio];
+    plugins = [nu_plugin_audio nu_plugin_compress];
     shellAliases = {
       update = "sudo nixos-rebuild switch";
       lg = "lazygit";
