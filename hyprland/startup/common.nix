@@ -4,6 +4,6 @@
   "swaync &"
   "hypridle &"
   "whatsapp-electron &"
-  "vesktop --start-minimized &"
+  # "vesktop --start-minimized &"
   "element-desktop --hidden &"
 ]
