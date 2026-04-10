@@ -13,7 +13,7 @@
   calculator = "alacritty -e nu -c 'sage'";
   mail = "alacritty -e nu -c 'neomutt'";
   ai = "zen --new-window 'https://chatgpt.com'";
-  discord = "vesktop";
+  chat = "element-desktop";
   drawing = "zen --new-window 'https://excalidraw.com'";
   single_border_active = "rgba(81A1C1D2) rgba(8FBCBBD2) 90deg";
   single_border_inactive = "rgba(2E344096)";
@@ -59,7 +59,7 @@ in {
         "$mod, C, exec, ${calculator}"
         "$mod, M, exec, ${mail}"
         "$mod, A, exec, ${ai}"
-        "$mod, V, exec, ${discord}"
+        "$mod, V, exec, ${chat}"
         "$mod SHIFT, D, exec, ${drawing}"
 
         # Workspaces back and forth
