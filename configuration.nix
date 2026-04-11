@@ -225,6 +225,11 @@
 
   # List services that you want to enable:
 
+  # Enable noisetorch
+  programs.noisetorch = {
+    enable = true;
+  };
+
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
