@@ -68,7 +68,6 @@ in {
       gm = "git merge";
       grh = "git reset HEAD";
       grhh = "git reset HEAD --hard";
-      gclean = "git reset --head; git clean -dfx";
       gwc = "git whatchanged -p --abbrev-commit --pretty=medium";
       gsts = "git stash show --text";
       gsta = "git stash";
@@ -79,7 +78,6 @@ in {
       ggpur = "git pull --rebase";
       ggpush = "git push";
       gpv = "git push -v";
-      ggsync = "git pull; git push";
       glp = "_git_log_prettily";
     };
     environmentVariables = {
@@ -91,6 +89,9 @@ in {
       XDG_CACHE_HOME = "${config.home.homeDirectory}/.cache";
     };
     extraConfig = ''
+      def gclean [] { git reset --hard; git clean -dfx }
+      def ggsync [] { git pull; git push }
+
       # Zoxide integration with custom completions
       # Set up PWD change hook to add directories to zoxide
       $env.config.hooks = ($env.config.hooks? | default {})
