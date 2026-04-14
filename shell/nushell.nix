@@ -22,7 +22,7 @@ in {
         };
       };
     };
-    plugins = [nu_plugin_audio nu_plugin_compress];
+    plugins = [nu_plugin_audio nu_plugin_compress pkgs.nushellPlugins.highlight];
     shellAliases = {
       update = "sudo nixos-rebuild switch";
       lg = "lazygit";
