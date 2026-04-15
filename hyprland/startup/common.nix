@@ -1,4 +1,5 @@
 [
+  "sleep 1 &"
   "waybar &"
   "nm-applet --indicator &"
   "swaync &"
