@@ -43,6 +43,8 @@
       arduino-cli
       clang-tools
       haskell-language-server
+      svelte-language-server
+      svelte-check
 
       stylua
       prettierd
@@ -60,13 +62,14 @@
       vimPlugins.nvim-treesitter.withAllGrammars
       vimPlugins.nvim-treesitter-refactor
       vimPlugins.nvim-treesitter-pyfold
+      vimPlugins.nvim-treesitter.parsers.svelte
     ];
   };
 
   xdg.configFile."nvim".source = pkgs.fetchFromGitHub {
     owner = "Tesser3kt";
     repo = "nvchad-starter";
-    rev = "3c20c705fc6efde05ca608d7427f32311635d748";
-    hash = "sha256-7yrD2VniRLE0muNy7PabvkUp7hU58O5Qu11LZjZ5FFI=";
+    rev = "763fe4b7100f7257d449b06a2a64c6491fafc74e";
+    hash = "sha256-e/nzem70Y5waalS0pHJoNh8lk7kRonkoCkKT9A00zZE=";
   };
 }
