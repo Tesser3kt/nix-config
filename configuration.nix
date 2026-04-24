@@ -225,6 +225,11 @@
 
   # List services that you want to enable:
 
+  # Enable noisetorch
+  programs.noisetorch = {
+    enable = true;
+  };
+
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
@@ -282,9 +287,9 @@
       };
     };
   };
-  systemd.sleep.extraConfig = ''
-    HibernateDelaySec=900
-  '';
+  systemd.sleep.settings.Sleep = {
+    HibernateDelaySec = "30m";
+  };
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [53317];

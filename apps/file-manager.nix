@@ -2,7 +2,11 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  ranger-archives = pkgs.callPackage ../pkgs/ranger-archives.nix {};
+in {
+  xdg.configFile."ranger/plugins/ranger-archives".source = ranger-archives;
+
   home.packages = with pkgs; [
     thunar
     filen-cli

@@ -54,7 +54,7 @@
 
   home.packages = with pkgs; [
     # terminal stuff
-    neofetch
+    fastfetch
     ranger
 
     # archives

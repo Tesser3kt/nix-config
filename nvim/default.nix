@@ -8,6 +8,11 @@
     enable = true;
     defaultEditor = true;
 
+    plugins = with pkgs.vimPlugins; [
+      nvim-treesitter.withAllGrammars
+      nvim-treesitter.parsers.svelte
+    ];
+
     extraPackages = with pkgs; [
       vscode-langservers-extracted
       bash-language-server
@@ -43,6 +48,8 @@
       arduino-cli
       clang-tools
       haskell-language-server
+      svelte-language-server
+      svelte-check
 
       stylua
       prettierd
@@ -55,18 +62,13 @@
       ormolu
 
       claude-code
-
-      vimPlugins.nvim-treesitter
-      vimPlugins.nvim-treesitter.withAllGrammars
-      vimPlugins.nvim-treesitter-refactor
-      vimPlugins.nvim-treesitter-pyfold
     ];
   };
 
   xdg.configFile."nvim".source = pkgs.fetchFromGitHub {
     owner = "Tesser3kt";
     repo = "nvchad-starter";
-    rev = "a43510c3f6bb9100de9f3dcaa0db74834b13a98b";
-    hash = "sha256-WeF6cZJ+9dRdtP2lxaA11D/WFfOM4psbmWA3B6ywlVw=";
+    rev = "b24b061f421f0640cbb0a69c9bccb919c63776a0";
+    hash = "sha256-mGv4XruV+F6Pvmf3C/qeyvZrUOdNGepZiXXoThsNJ48=";
   };
 }
