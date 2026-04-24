@@ -5,17 +5,17 @@
 }:
 rustPlatform.buildRustPackage {
   pname = "nu_plugin_highlight";
-  version = "1.4.13+0.111.0";
+  version = "1.4.14+0.112.2";
 
   src = fetchFromGitHub {
     owner = "cptpiepmatz";
     repo = "nu-plugin-highlight";
-    rev = "9f3bb51a92413e1296fff7d3a301c99f4f8e0bc2";
-    hash = "sha256-vPQgg5A7e+S9SzgscicmcwLhvusWT9+5GoTImiW0pQ4=";
+    rev = "v1.4.14+0.112.2";
+    hash = "sha256-zNvHSUpIMpRWw+1DMG4BukfdpZ3jQ6hQ2WisXFmnHGM=";
     fetchSubmodules = true;
   };
 
-  cargoHash = "sha256-56u6Yaz5YZNJTXYlb3xZiaGYB5Lte2pPIHX7TmhXPrU=";
+  cargoHash = "sha256-ZOu774x8EhW/QbP6dCIgz0BGjkv42rK0E8+oe/I7uhU=";
 
   meta = {
     description = "A nushell plugin for syntax highlighting";

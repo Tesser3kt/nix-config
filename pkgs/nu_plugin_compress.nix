@@ -10,11 +10,11 @@ rustPlatform.buildRustPackage {
   src = fetchFromGitHub {
     owner = "yybit";
     repo = "nu_plugin_compress";
-    rev = "a5498f4b41e7e5f57a862bfa485e91b98a197b74";
-    hash = "sha256-ACvobJwRT6revFX9AG/uOo4ZwI70Up++Gfk/cp7kyoA=";
+    rev = "af09945e306c104c53c830977d62d93417fd9890";
+    hash = "sha256-MmpZZUuZlOUQyoGNN38AWUPeaznR7TlJy+KORHNpMcA=";
   };
 
-  cargoHash = "sha256-cuMbnefdgljjSR0CU+yCH4MYFNMmIyjmuu7f9eVPQJc=";
+  cargoHash = "sha256-DRyT6z7P2d7cY5+4rXX7TUnxvRGKmAbSrMCoUVfxluM=";
 
   meta = {
     description = "A nushell plugin for compression and decompression, supporting zstd, gzip, bzip2, and xz";
