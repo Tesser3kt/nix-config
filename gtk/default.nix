@@ -9,6 +9,7 @@
       name = "Nordic";
       package = pkgs.nordic;
     };
+    gtk4.theme = config.gtk.theme;
     font = {
       name = "Source Sans Pro";
       size = 11;
