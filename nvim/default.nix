@@ -13,6 +13,7 @@
     plugins = with pkgs.vimPlugins; [
       nvim-treesitter.withAllGrammars
       nvim-treesitter.parsers.svelte
+      rustaceanvim
     ];
 
     extraPackages = with pkgs; [
@@ -62,6 +63,7 @@
       alejandra
       hlint
       ormolu
+      rustfmt
 
       claude-code
     ];
@@ -70,7 +72,7 @@
   xdg.configFile."nvim".source = pkgs.fetchFromGitHub {
     owner = "Tesser3kt";
     repo = "nvchad-starter";
-    rev = "b24b061f421f0640cbb0a69c9bccb919c63776a0";
-    hash = "sha256-mGv4XruV+F6Pvmf3C/qeyvZrUOdNGepZiXXoThsNJ48=";
+    rev = "b99469347b8cb7a3487a411242c800a08344c48e";
+    hash = "sha256-eSp5TfD6GpG87Zw7aByCyOOU8xGQ0k+D7BF9K+mC2YA=";
   };
 }
