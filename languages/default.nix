@@ -16,6 +16,7 @@
     ./arduino.nix
     ./qml.nix
     ./haskell.nix
+    ./rust.nix
     ./misc.nix
   ];
 }

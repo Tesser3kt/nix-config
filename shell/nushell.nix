@@ -88,12 +88,17 @@ in {
       TERMINAL = "alacritty";
       XDG_CONFIG_HOME = "${config.home.homeDirectory}/.config";
       XDG_CACHE_HOME = "${config.home.homeDirectory}/.cache";
+
+      # LLDB linking
+      # Set env variables so we can refer to them from the vim configuration
+      CODELLDB_PATH = "${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb/adapter/codelldb";
+      LIBLLDB_PATH = "${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb/lldb/lib/liblldb.so";
     };
     extraConfig = ''
       # Git functions
       def gclean [] { git reset --hard; git clean -dfx }
       def ggsync [] { git pull; git push }
-      
+
       # General aliases with variables
       def --env mkcd [folder: path] {
         mkdir $folder
@@ -160,6 +165,6 @@ in {
   };
   programs.zoxide = {
     enable = true;
-    enableNushellIntegration = false;  # Manually integrated with custom completions
+    enableNushellIntegration = false; # Manually integrated with custom completions
   };
 }
