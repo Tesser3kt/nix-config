@@ -90,8 +90,15 @@ in {
       XDG_CACHE_HOME = "${config.home.homeDirectory}/.cache";
     };
     extraConfig = ''
+      # Git functions
       def gclean [] { git reset --hard; git clean -dfx }
       def ggsync [] { git pull; git push }
+      
+      # General aliases with variables
+      def --env mkcd [folder: path] {
+        mkdir $folder
+        cd $folder
+      }
 
       # Zoxide integration with custom completions
       # Set up PWD change hook to add directories to zoxide
