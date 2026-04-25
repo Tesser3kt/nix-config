@@ -11,7 +11,6 @@
   # SDDM config
   services.displayManager.sddm = {
     enable = true;
-    package = pkgs.kdePackages.sddm;
     wayland = {
       enable = true;
     };
@@ -32,9 +31,5 @@
       enable = true;
       storeOnly = true;
     };
-    text = ''
-      auth      optional      pam_gnupg.so store-only
-      session   optional      pam_gnupg.so
-    '';
   };
 }
