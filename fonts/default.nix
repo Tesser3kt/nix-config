@@ -1,7 +1,5 @@
 {
-  config,
   pkgs,
-  inputs,
   ...
 }: {
   home.packages = with pkgs; [
@@ -19,6 +17,7 @@
     nerd-fonts.hurmit
     nerd-fonts.inconsolata
     nerd-fonts.iosevka
+    nerd-fonts.iosevka-term-slab
     nerd-fonts.jetbrains-mono
     nerd-fonts.martian-mono
     nerd-fonts.monaspace
