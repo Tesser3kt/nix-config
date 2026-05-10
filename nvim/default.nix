@@ -3,12 +3,24 @@
   pkgs,
   ...
 }: {
+  imports = [
+    ./plugins
+    ./mappings
+  ];
+
   programs.neovim = {
+    # enable neovim
     enable = true;
+
+    # set as default editor
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
+
+    # wayland clipboard support
     waylandSupport = true;
+
+    # integrated language support
     withNodeJs = true;
     withPerl = true;
     withPython3 = true;
