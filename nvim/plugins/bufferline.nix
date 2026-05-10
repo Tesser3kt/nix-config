@@ -54,11 +54,11 @@
       '';
     }
     {
-        plugin = vim-bbye;
+      plugin = vim-bbye;
     }
     {
-        plugin = nvim-web-devicons;
-        type = "lua";
+      plugin = nvim-web-devicons;
+      type = "lua";
     }
   ];
 }

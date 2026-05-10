@@ -14,5 +14,6 @@
     ./conform.nix
     ./autocompletion.nix
     ./gitsigns.nix
+    ./alpha.nix
   ];
 }
