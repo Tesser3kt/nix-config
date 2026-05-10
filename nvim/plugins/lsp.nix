@@ -178,20 +178,20 @@
           vim.lsp.config(server, cfg)
           vim.lsp.enable(server)
         end;
-    '';
+      '';
     }
     {
-        plugin = vimPlugins.fidget-nvim;
-        type = "lua";
-        config = ''
-            require('fidget').setup {
-                notification = {
-                    window = {
-                        winblend = 0,
-                    },
+      plugin = vimPlugins.fidget-nvim;
+      type = "lua";
+      config = ''
+        require('fidget').setup {
+            notification = {
+                window = {
+                    winblend = 0,
                 },
-            }
-        '';
+            },
+        }
+      '';
     }
     vimPlugins.cmp-nvim-lsp
     vimPlugins.mason-nvim
@@ -205,12 +205,12 @@
     emmet-language-server
     lua-language-server
     (python3.withPackages (p:
-    with p; [
-      python-lsp-server
-      python-lsp-black
-      pyls-isort
-      pyls-flake8
-    ]))
+      with p; [
+        python-lsp-server
+        python-lsp-black
+        pyls-isort
+        pyls-flake8
+      ]))
     sqls
     tailwindcss-language-server
     texlab

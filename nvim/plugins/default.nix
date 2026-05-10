@@ -12,5 +12,6 @@
     ./telescope.nix
     ./lsp.nix
     ./conform.nix
+    ./autocompletion.nix
   ];
 }
