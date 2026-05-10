@@ -10,5 +10,7 @@
     ./lualine.nix
     ./treesitter.nix
     ./telescope.nix
+    ./lsp.nix
+    ./conform.nix
   ];
 }
