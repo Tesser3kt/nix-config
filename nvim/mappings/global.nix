@@ -42,7 +42,7 @@
     -- Buffer mappings
     vim.keymap.set("n", "<Tab>", ":bnext<CR>", { desc = "Next buffer", noremap = true, silent = true })
     vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>", { desc = "Previous buffer", noremap = true, silent = true })
-    vim.keymap.set("n", "<leader>x", ":bdelete!<CR>", { desc = "Close buffer", noremap = true, silent = true })
+    vim.keymap.set("n", "<leader>x", ":Bdelete!<CR>", { desc = "Close buffer", noremap = true, silent = true })
     vim.keymap.set("n", "<leader>b", ":enew<CR>", { desc = "New buffer", noremap = true, silent = true })
 
     -- Window management
