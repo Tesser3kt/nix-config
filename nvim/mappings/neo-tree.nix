@@ -1,5 +1,8 @@
-{ config, pkgs, ...}:
 {
+  config,
+  pkgs,
+  ...
+}: {
   programs.neovim.initLua = ''
     -- Neotree keymaps
     vim.keymap.set("n", "<leader>e", ":Neotree focus<CR>", { desc = "Focus Neotree" })

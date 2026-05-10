@@ -1,4 +1,7 @@
-{config, pkgs, ...}:
 {
-  imports = [ ./colorscheme.nix ];
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [./global.nix ./colorscheme.nix];
 }
