@@ -9,5 +9,6 @@
     ./bufferline.nix
     ./lualine.nix
     ./treesitter.nix
+    ./telescope.nix
   ];
 }
