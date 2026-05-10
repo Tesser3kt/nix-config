@@ -20,7 +20,7 @@ in {
 
       all: unset;
       font-size: 14px;
-      font-family: "Hurmit Nerd Font 10";
+      font-family: "CaskaydiaCove Nerd Font 10";
       transition: 200ms;
     }
     .blank-window {

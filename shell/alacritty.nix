@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  font_name = "Hurmit Nerd Font";
+  font_name = "CaskaydiaCove Nerd Font";
 in {
   # Alacritty -- GPU-accelerated terminal emulator
   programs.alacritty = {
@@ -7,7 +7,7 @@ in {
     settings = {
       env.TERM = "xterm-256color";
       font = {
-        size = 12;
+        size = 12.5;
         normal = {
           family = font_name;
           style = "Regular";

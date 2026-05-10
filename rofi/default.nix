@@ -106,7 +106,7 @@ in {
       display-calc: " ";
       display-drun: " ";
       drun-display-format: "{name}";
-      font: "Hurmit Nerd Font 12";
+      font: "CaskaydiaCove Nerd Font 12";
     }
 
     @import "default.rasi"
@@ -228,7 +228,7 @@ in {
       modi: "drun";
       show-icons: false;
       drun-display-format: "{name}";
-      font: "Hurmit Nerd Font 14";
+      font: "CaskaydiaCove Nerd Font 14";
     }
 
     @import "default.rasi"

@@ -23,7 +23,7 @@ in {
     on-button-right = "dismiss";
     on-notify = "exec mpv $HOME/Music/notification.wav";
     padding = 10;
-    font = "Hurmit Nerd Font 12";
+    font = "CaskaydiaCove Nerd Font 12";
     max-icon-size = 64;
     margin = 5;
     icons = 1;

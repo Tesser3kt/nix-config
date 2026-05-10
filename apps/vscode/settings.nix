@@ -126,7 +126,7 @@
     "extensions.experimental.affinity" = {
       "asvetliakov.vscode-neovim" = 1;
     };
-    "editor.fontFamily" = "'Hurmit Nerd Font', 'monospace', monospace";
+    "editor.fontFamily" = "'CaskaydiaCove Nerd Font', 'monospace', monospace";
     "[jsonc]" = {
       "editor.defaultFormatter" = "esbenp.prettier-vscode";
     };

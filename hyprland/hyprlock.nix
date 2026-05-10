@@ -51,7 +51,7 @@
           text = "cmd[update:18000000] echo \"<b><big> \"$(date +'%A')\" </big></b>\"";
           color = "rgb(E5E9F0)";
           font_size = 22;
-          font_family = "Hurmit Nerd Font 10";
+          font_family = "CaskaydiaCove Nerd Font 10";
 
           position = "0, 30";
           halign = "center";
@@ -62,7 +62,7 @@
           text = "cmd[update:18000000] echo \"<b> \"$(date +'%d %b')\" </b>\"";
           color = "rgb(E5E9F0)";
           font_size = 18;
-          font_family = "Hurmit Nerd Font 10";
+          font_family = "CaskaydiaCove Nerd Font 10";
 
           position = "0, 0";
           halign = "center";

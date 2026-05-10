@@ -49,7 +49,7 @@ in {
     ];
     style = ''
       window {
-        font-family: Hurmit Nerd Font, sans-serif;
+        font-family: CaskaydiaCove Nerd Font, sans-serif;
         font-size: 16pt;
         font-weight: 700;
         color: ${colors.foreground};

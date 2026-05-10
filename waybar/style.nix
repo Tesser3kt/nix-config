@@ -8,9 +8,9 @@ in {
   programs.waybar = {
     style = ''
       *{
-      	font-family: "Hurmit Nerd Font";
+      	font-family: "CaskaydiaCove Nerd Font";
       	font-weight: bold;
-        font-size: 14px;
+        font-size: 16px;
       	min-height: 0;
       	/* set font-size to 100% if font scaling is set to 1.00 using nwg-look */
       	font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';

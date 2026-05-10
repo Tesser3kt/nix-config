@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     font-awesome
     nerd-fonts._0xproto
@@ -14,12 +11,15 @@
     nerd-fonts.fira-code
     nerd-fonts.fira-mono
     nerd-fonts.geist-mono
+    nerd-fonts.hasklug
     nerd-fonts.hurmit
     nerd-fonts.inconsolata
     nerd-fonts.iosevka
     nerd-fonts.iosevka-term-slab
     nerd-fonts.jetbrains-mono
+    nerd-fonts.lilex
     nerd-fonts.martian-mono
+    nerd-fonts.meslo-lg
     nerd-fonts.monaspace
     nerd-fonts.roboto-mono
     nerd-fonts.space-mono
