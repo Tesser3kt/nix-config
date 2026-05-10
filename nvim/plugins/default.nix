@@ -15,5 +15,6 @@
     ./autocompletion.nix
     ./gitsigns.nix
     ./alpha.nix
+    ./indent-blankline.nix
   ];
 }
