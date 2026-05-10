@@ -114,8 +114,8 @@
     enableGraphical = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.libinput.enable = true;
+  # Enable i2c support
+  hardware.i2c.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.tesserekt = {
@@ -218,6 +218,7 @@
     rocmPackages.rocminfo
     rocmPackages.rocm-smi
     cachix
+    ddcutil
   ];
 
   # Dynamic linking
