@@ -8,7 +8,6 @@
     ./mappings
     ./plugins
   ];
-
   programs.neovim = {
     # enable neovim
     enable = true;

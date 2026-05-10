@@ -13,5 +13,6 @@
     ./lsp.nix
     ./conform.nix
     ./autocompletion.nix
+    ./gitsigns.nix
   ];
 }
