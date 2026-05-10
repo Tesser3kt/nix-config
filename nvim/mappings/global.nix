@@ -5,7 +5,7 @@
     let g:maplocalleader = "\<Space>"
   '';
 
-  programs.neovim.extraLuaConfig = ''
+  programs.neovim.initLua = ''
     vim.keymap.set("n", "<leader>w", ":w<CR>", { desc = "Save current buffer." })
     vim.keymap.set("n", "<C-S>", ":w<CR>", { desc = "Save current buffer." })
     vim.keymap.set("n", "<leader>q", ":q<CR>", { desc = "Close current buffer." })

@@ -4,8 +4,9 @@
   ...
 }: {
   imports = [
-    ./plugins
+    ./options
     ./mappings
+    ./plugins
   ];
 
   programs.neovim = {
