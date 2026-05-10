@@ -8,5 +8,6 @@
     ./nord.nix
     ./bufferline.nix
     ./lualine.nix
+    ./treesitter.nix
   ];
 }
