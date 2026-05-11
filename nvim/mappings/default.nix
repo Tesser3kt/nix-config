@@ -10,5 +10,6 @@
     ./auto-session.nix
     ./vimtex.nix
     ./flash.nix
+    ./treesitter-textobjects.nix
   ];
 }
