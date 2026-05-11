@@ -16,5 +16,7 @@
     ./gitsigns.nix
     ./alpha.nix
     ./indent-blankline.nix
+    ./autopairs.nix
+    ./misc.nix
   ];
 }

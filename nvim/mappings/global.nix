@@ -10,12 +10,11 @@
 
   programs.neovim.initLua = ''
     vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true }) -- Disable default space behavior
-  
+
     -- File management
     vim.keymap.set("n", "<leader>w", ":w<CR>", { desc = "Save current buffer.", noremap = true, silent = true })
     vim.keymap.set("n", "<C-s>", ":w<CR>", { desc = "Save current buffer.", noremap = true, silent = true })
     vim.keymap.set("n", "<leader>sn", ":noautocmd w<CR>", { desc = "Save file without formatting.", noremap = true, silent = true })
-    vim.keymap.set("n", "<leader>q", ":q<CR>", { desc = "Close current buffer.", noremap = true, silent = true })
 
     -- Clipboard mappings
     vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "Yank to system clipboard", noremap = true, silent = true })
@@ -58,7 +57,7 @@
     vim.keymap.set("n", "<C-l>", ":wincmd l<CR>", { desc = "Focus window to the right", noremap = true, silent = true })
 
     -- Tabs
-    vim.keymap.set("n", "<leader>to", ":tabnew<CR>", { desc = "Open new tab", noremap = true, silent = true }) 
+    vim.keymap.set("n", "<leader>to", ":tabnew<CR>", { desc = "Open new tab", noremap = true, silent = true })
     vim.keymap.set("n", "<leader>tx", ":tabclose<CR>", { desc = "Close current tab", noremap = true, silent = true })
     vim.keymap.set("n", "<leader>tn", ":tabn<CR>", { desc = "Go to next tab", noremap = true, silent = true })
     vim.keymap.set("n", "<leader>tp", ":tabp<CR>", { desc = "Go to previous tab", noremap = true, silent = true })

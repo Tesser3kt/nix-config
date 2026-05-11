@@ -88,7 +88,7 @@
             -- popup_border_style is for input and confirmation dialogs.
                 -- Configurtaion of floating window is done in the individual source sections.
                 -- "NC" is a special style that works well with NormalNC set
-                popup_border_style = "NC", -- "double", "rounded", "single", "solid", (or "" to use 'winborder' on Neovim v0.11+)
+                popup_border_style = "", -- "double", "rounded", "single", "solid", (or "" to use 'winborder' on Neovim v0.11+)
                 resize_timer_interval = 500, -- in ms, needed for containers to redraw right aligned and faded content
                 -- set to -1 to disable the resize timer entirely
                 --                           -- NOTE: this will speed up to 50 ms for 1 second following a resize
@@ -274,8 +274,8 @@
                 },
                 name = {
                     trailing_slash = false,
-                    highlight_opened_files = false, -- Requires `enable_opened_markers = true`. 
-                        -- Take values in { false (no highlight), true (only loaded), 
+                    highlight_opened_files = false, -- Requires `enable_opened_markers = true`.
+                        -- Take values in { false (no highlight), true (only loaded),
                             -- "all" (both loaded and unloaded)}. For more information,
                     -- see the `show_unloaded` config of the `buffers` source.
                         use_filtered_colors = true, -- Whether to use a different highlight when the file is filtered (hidden, dotfile, etc.).
