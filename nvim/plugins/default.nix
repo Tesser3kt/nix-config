@@ -21,6 +21,7 @@
     ./comment.nix
     ./cheatsheet.nix
     ./lazygit.nix
+    ./auto-session.nix
     ./misc.nix
   ];
 }

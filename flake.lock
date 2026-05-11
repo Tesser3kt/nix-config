@@ -605,6 +605,22 @@
         "type": "github"
       }
     },
+    "nordic-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1777807431,
+        "narHash": "sha256-7Wod7nybP/3i3fMBnRdcNEeIWbbzowiyjTlqax8Fn4g=",
+        "owner": "AlexvZyl",
+        "repo": "nordic.nvim",
+        "rev": "9fb62116b891184049c50ca6ffb0d3bc100a1a6e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "AlexvZyl",
+        "repo": "nordic.nvim",
+        "type": "github"
+      }
+    },
     "nvchad-starter": {
       "flake": false,
       "locked": {
@@ -673,6 +689,7 @@
         "nix4nvchad": "nix4nvchad",
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-stable": "nixpkgs-stable",
+        "nordic-nvim": "nordic-nvim",
         "nvchad-starter": "nvchad-starter",
         "quickshell": "quickshell",
         "zen-browser": "zen-browser"

@@ -76,4 +76,3 @@
     telescope-ui-select-nvim
   ];
 }
-

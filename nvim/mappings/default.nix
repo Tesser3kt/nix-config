@@ -7,5 +7,6 @@
     ./global.nix
     ./neo-tree.nix
     ./git.nix
+    ./auto-session.nix
   ];
 }
