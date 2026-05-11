@@ -82,6 +82,21 @@
           },
           ts_ls = {},
           pylsp = {
+            on_attach = function(client, bufnr)
+              _G._lsp_on_attach(client, bufnr)
+              local venv = vim.fs.find('.venv', {
+                path = client.config.root_dir,
+                upward = false,
+                type = 'directory',
+              })[1]
+              if venv then
+                client.rpc.notify('workspace/didChangeConfiguration', {
+                  settings = vim.tbl_deep_extend('force', client.config.settings, {
+                    pylsp = { plugins = { jedi = { environment = venv .. '/bin/python3' } } },
+                  }),
+                })
+              end
+            end,
             settings = {
               pylsp = {
                 plugins = {
@@ -93,6 +108,11 @@
                   pylsp_mypy = { enabled = false },
                   pylsp_black = { enabled = true },
                   pylsp_isort = { enabled = true },
+                  jedi_completion = {
+                    enabled = true,
+                    eager = true,
+                    include_params = true,
+                  },
                 },
               },
             },
