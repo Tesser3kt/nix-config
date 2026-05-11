@@ -9,5 +9,6 @@
     ./git.nix
     ./auto-session.nix
     ./vimtex.nix
+    ./flash.nix
   ];
 }
