@@ -23,6 +23,7 @@
     ./lazygit.nix
     ./auto-session.nix
     ./vimtex.nix
+    ./rustaceanvim.nix
     ./misc.nix
   ];
 }
