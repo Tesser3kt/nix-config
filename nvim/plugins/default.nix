@@ -22,6 +22,7 @@
     ./cheatsheet.nix
     ./lazygit.nix
     ./auto-session.nix
+    ./toggleterm.nix
     ./misc.nix
   ];
 }
