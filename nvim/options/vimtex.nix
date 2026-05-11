@@ -5,6 +5,12 @@
 }: {
   programs.neovim.initLua = ''
     -- General vimtex options
+    vim.g.vimtex_compiler_latexmk_engines = {
+      ["_"] = "-lualatex",
+      ["pdflatex"] = "-pdf",
+      ["lualatex"] = "-lualatex",
+      ["xelatex"] = "-xelatex",
+    }
     vim.g.vimtex_view_method = "zathura"
     vim.g.vimtex_view_general_viewer = "zathura"
     vim.g.vimtex_fold_enabled = 1

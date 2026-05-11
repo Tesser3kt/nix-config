@@ -26,12 +26,12 @@
             -- Enable editor background transparency.
             transparent = {
                 -- Enable transparent background.
-                bg = true,
+                bg = false,
                 -- Enable transparent background for floating windows.
                 float = false,
             },
             -- Enable brighter float border.
-            bright_border = false,
+            bright_border = true,
             -- Reduce the overall amount of blue in the theme (diverges from base Nord).
             reduced_blue = true,
             -- Swap the dark background with the normal one.
@@ -43,7 +43,7 @@
                 -- Bold cursorline number.
                 bold_number = true,
                 -- Available styles: 'dark', 'light'.
-                theme = 'dark',
+                theme = 'light',
                 -- Blending the cursorline bg with the buffer bg.
                 blend = 0.85,
             },
@@ -54,7 +54,7 @@
                 -- Bold visual selection number.
                 bold_number = true,
                 -- Available styles: 'dark', 'light'.
-                theme = 'dark',
+                theme = 'light',
                 -- Blending the visual selection bg with the buffer bg.
                 blend = 0.85,
             },
@@ -64,7 +64,7 @@
             },
             telescope = {
                 -- Available styles: `classic`, `flat`.
-                style = 'flat',
+                style = 'classic',
             },
             leap = {
                 -- Dims the backdrop when using leap.
