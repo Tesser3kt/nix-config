@@ -36,7 +36,7 @@
         -- add item on Enter in itemize/enumerate/description
         vim.cmd [[
           function! AddItem()
-            let [end_lnum, end_col] = searchpairpos('\\begin{", "", '\\end{', 'nW')
+            let [end_lnum, end_col] = searchpairpos('\\begin{', ''', '\\end{', 'nW')
             if match(getline(end_lnum), '\(itemize\|enumerate\|description\)') != -1
               return "\\item "
             else

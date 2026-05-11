@@ -26,4 +26,14 @@
     withPython3 = true;
     withRuby = true;
   };
+
+  # Copy spell and snippets folders
+  home.file.".config/nvim/snippets" = {
+    source = ./snippets;
+    recursive = true;
+  };
+  home.file.".config/nvim/spell" = {
+    source = ./spell;
+    recursive = true;
+  };
 }

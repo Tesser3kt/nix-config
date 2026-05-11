@@ -144,12 +144,41 @@
                 end,
               },
             }
+
+            -- Disable cmp for LaTeX
+            cmp.setup.filetype({ 'tex', 'plaintex' }, {
+              enabled = false,
+            })
+
+            -- Buffer-local luasnip keymaps for tex (cmp is disabled there)
+            vim.api.nvim_create_autocmd('FileType', {
+              pattern = { 'tex', 'plaintex' },
+              callback = function()
+                local tab = vim.api.nvim_replace_termcodes('<Tab>', true, false, true)
+                local stab = vim.api.nvim_replace_termcodes('<S-Tab>', true, false, true)
+                vim.keymap.set({ 'i', 's' }, '<Tab>', function()
+                  if luasnip.expand_or_locally_jumpable() then
+                    luasnip.expand_or_jump()
+                  else
+                    vim.api.nvim_feedkeys(tab, 'n', false)
+                  end
+                end, { buffer = true })
+                vim.keymap.set({ 'i', 's' }, '<S-Tab>', function()
+                  if luasnip.locally_jumpable(-1) then
+                    luasnip.jump(-1)
+                  else
+                    vim.api.nvim_feedkeys(stab, 'n', false)
+                  end
+                end, { buffer = true })
+              end,
+            })
       '';
     }
     {
       plugin = vimPlugins.luasnip;
       type = "lua";
       config = ''
+        require('luasnip.loaders.from_lua').lazy_load({ paths = { '~/.config/nvim/snippets' } })
         require('luasnip').config.set_config {
           enable_autosnippets = true,
           store_selection_keys = '<Tab>'
