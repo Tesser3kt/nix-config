@@ -8,11 +8,6 @@
       plugin = bufferline-nvim;
       type = "lua";
       config = ''
-        local highlights = require("nord").bufferline.highlights({
-            italic = false,
-            bold = true,
-        })
-
         require("bufferline").setup({
           options = {
             mode = "buffers",

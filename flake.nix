@@ -27,6 +27,10 @@
       url = "github:jeslie0/fonts";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nordic-nvim = {
+      url = "github:AlexvZyl/nordic.nvim";
+      flake = false;
+    };
   };
   outputs = inputs @ {
     self,

@@ -5,6 +5,6 @@
 }: {
   programs.neovim.initLua = ''
     -- Git mappings
-    vim.keymap.set("n", "<leader>gg", ":Lazygit<CR>", { desc = "Open Lazygit" })
+    vim.keymap.set("n", "<leader>gg", ":LazyGit<CR>", { desc = "Open Lazygit" })
   '';
 }
