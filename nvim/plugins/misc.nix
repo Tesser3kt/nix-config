@@ -64,5 +64,6 @@
       };
       type = "lua";
     }
+    nvim-numbertoggle
   ];
 }

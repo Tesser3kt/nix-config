@@ -54,6 +54,22 @@
         "type": "github"
       }
     },
+    "bg-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1771454993,
+        "narHash": "sha256-s9m5OgQpehrkIU6bWj70RDEqvSzlxzpih8sRuQrtdC0=",
+        "owner": "typicode",
+        "repo": "bg.nvim",
+        "rev": "85da2c68409820466753b50c2e6f699517778a17",
+        "type": "github"
+      },
+      "original": {
+        "owner": "typicode",
+        "repo": "bg.nvim",
+        "type": "github"
+      }
+    },
     "claude-code": {
       "inputs": {
         "flake-utils": "flake-utils_2",
@@ -683,6 +699,7 @@
     "root": {
       "inputs": {
         "additional-fonts": "additional-fonts",
+        "bg-nvim": "bg-nvim",
         "claude-code": "claude-code",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
