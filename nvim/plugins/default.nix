@@ -24,6 +24,7 @@
     ./auto-session.nix
     ./vimtex.nix
     ./rustaceanvim.nix
+    ./tabout.nix
     ./misc.nix
   ];
 }
