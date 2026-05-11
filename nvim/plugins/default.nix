@@ -19,6 +19,7 @@
     ./autopairs.nix
     ./comment.nix
     ./cheatsheet.nix
+    ./lazygit.nix
     ./misc.nix
   ];
 }
