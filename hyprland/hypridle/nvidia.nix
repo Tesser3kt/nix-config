@@ -18,12 +18,12 @@
           timeout = 300;
           on-timeout = "hyprlock";
         }
-        # Hibernate
-        # {
-        #   timeout = 1800;
-        #   on-timeout = "systemctl hibernate";
-        #   on-resume = "hyprctl dispatch dpms on";
-        # }
+        # Suspend
+        {
+          timeout = 1800;
+          on-timeout = "systemctl suspend";
+          on-resume = "hyprctl dispatch dpms on";
+        }
       ];
     };
   };
