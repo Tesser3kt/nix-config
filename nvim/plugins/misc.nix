@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  inputs,
   ...
 }: {
   programs.neovim.plugins = with pkgs.vimPlugins; [
@@ -28,7 +29,7 @@
           },
           popup = {
             position = {
-              row = '10%',
+              row = '50%',
               col = '50%',
             },
             size = {
@@ -38,7 +39,7 @@
               style = 'rounded',
             },
             win_options = {
-              winhighlight = 'Normal:Normal,FloatBorder:FloatBorder',
+              winhighlight = 'Normal:Normal,FloatBorder:Normal',
             },
           },
           hooks = {
@@ -56,5 +57,12 @@
       '';
     }
     nui-nvim
+    {
+      plugin = pkgs.vimUtils.buildVimPlugin {
+        name = "bg-nvim";
+        src = inputs.bg-nvim;
+      };
+      type = "lua";
+    }
   ];
 }
