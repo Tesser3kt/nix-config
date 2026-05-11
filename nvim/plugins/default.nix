@@ -22,7 +22,7 @@
     ./cheatsheet.nix
     ./lazygit.nix
     ./auto-session.nix
-    # ./toggleterm.nix
+    ./vimtex.nix
     ./misc.nix
   ];
 }

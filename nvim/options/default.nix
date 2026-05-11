@@ -3,5 +3,9 @@
   pkgs,
   ...
 }: {
-  imports = [./global.nix ./colorscheme.nix];
+  imports = [
+    ./global.nix
+    ./colorscheme.nix
+    ./vimtex.nix
+  ];
 }

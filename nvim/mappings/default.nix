@@ -8,5 +8,6 @@
     ./neo-tree.nix
     ./git.nix
     ./auto-session.nix
+    ./vimtex.nix
   ];
 }

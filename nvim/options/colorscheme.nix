@@ -4,7 +4,7 @@
   ...
 }: {
   programs.neovim.extraConfig = ''
-    " Nord colorscheme
+    " Nordic colorscheme
     colorscheme nordic
   '';
 }

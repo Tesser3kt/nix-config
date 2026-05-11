@@ -3,6 +3,11 @@
   pkgs,
   ...
 }: {
+  programs.neovim.extraConfig = ''
+    filetype plugin indent on
+    syntax enable
+  '';
+
   programs.neovim.initLua = ''
     vim.wo.number = true 					-- Make line numbers default
     vim.o.relativenumber = true 				-- Set relative numbered lines
