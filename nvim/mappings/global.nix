@@ -48,7 +48,7 @@
     vim.keymap.set("n", "<leader>v", "<C-w>v", { desc = "Vertical split", noremap = true, silent = true })
     vim.keymap.set("n", "<leader>h", "<C-w>s", { desc = "Horizontal split", noremap = true, silent = true })
     vim.keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make split windows the same size", noremap = true, silent = true })
-    vim.keymap.set("n", "<leader>xs", ":close<CR>", { desc = "Close window", noremap = true, silent = true })
+    vim.keymap.set("n", "<leader>q", ":close<CR>", { desc = "Close window", noremap = true, silent = true })
 
     -- Window navigation
     vim.keymap.set("n", "<C-k>", ":wincmd k<CR>", { desc = "Focus window to the top", noremap = true, silent = true })
@@ -95,5 +95,8 @@
 
     -- Spelling
     vim.keymap.set("i", "<C-l>", "<c-g>u<Esc>[s1z=`]a<c-g>u", { desc = "Correct last spelling mistake.", noremap = true, silent = true })
+
+    -- Command line
+    vim.keymap.set("n", ":", ":FineCmdline<CR>", { desc = "Remap : to fine command line", noremap = true, silent = true })
   '';
 }
