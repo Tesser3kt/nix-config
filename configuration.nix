@@ -117,6 +117,13 @@
   # Enable i2c support
   hardware.i2c.enable = true;
 
+  # Enable location services
+  location.provider = "geoclue2";
+  services.geoclue2 = {
+    enable = true;
+    geoProviderUrl = "https://api.beacondb.net/v1/geolocate";
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.tesserekt = {
     isNormalUser = true;
