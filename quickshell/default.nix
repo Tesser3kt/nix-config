@@ -14,7 +14,7 @@ in {
   programs.quickshell = {
     enable = true;
     package = quickshellVulkan;
-    systemd.enable = true;
+    systemd.enable = false;
   };
 
   # xdg.configFile."quickshell".source = config.lib.file.mkOutOfStoreSymlink quickshellConfig;

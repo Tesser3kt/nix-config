@@ -54,6 +54,22 @@
         "type": "github"
       }
     },
+    "bg-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1771454993,
+        "narHash": "sha256-s9m5OgQpehrkIU6bWj70RDEqvSzlxzpih8sRuQrtdC0=",
+        "owner": "typicode",
+        "repo": "bg.nvim",
+        "rev": "85da2c68409820466753b50c2e6f699517778a17",
+        "type": "github"
+      },
+      "original": {
+        "owner": "typicode",
+        "repo": "bg.nvim",
+        "type": "github"
+      }
+    },
     "claude-code": {
       "inputs": {
         "flake-utils": "flake-utils_2",
@@ -605,6 +621,22 @@
         "type": "github"
       }
     },
+    "nordic-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1777807431,
+        "narHash": "sha256-7Wod7nybP/3i3fMBnRdcNEeIWbbzowiyjTlqax8Fn4g=",
+        "owner": "AlexvZyl",
+        "repo": "nordic.nvim",
+        "rev": "9fb62116b891184049c50ca6ffb0d3bc100a1a6e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "AlexvZyl",
+        "repo": "nordic.nvim",
+        "type": "github"
+      }
+    },
     "nvchad-starter": {
       "flake": false,
       "locked": {
@@ -667,12 +699,14 @@
     "root": {
       "inputs": {
         "additional-fonts": "additional-fonts",
+        "bg-nvim": "bg-nvim",
         "claude-code": "claude-code",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
         "nix4nvchad": "nix4nvchad",
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-stable": "nixpkgs-stable",
+        "nordic-nvim": "nordic-nvim",
         "nvchad-starter": "nvchad-starter",
         "quickshell": "quickshell",
         "zen-browser": "zen-browser"
