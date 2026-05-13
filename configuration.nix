@@ -313,6 +313,12 @@
     HibernateDelaySec = "30m";
   };
 
+  # Wireguard UniFi config
+  networking.wg-quick.interfaces.unifi = {
+    configFile = "/etc/wireguard/unifi.conf";
+    autostart = false;
+  };
+
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [53317];
   networking.firewall.allowedUDPPorts = [53317];
