@@ -85,7 +85,7 @@
     vim.keymap.set("n", "<leader>dl", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
 
     -- Terminal
-    vim.keymap.set("n", "<leader>\\", ":sp | resize -16 | terminal<CR>", { desc = "New horizontal terminal", noremap = true, silent = true })
+    vim.keymap.set("n", "<leader>\\", ":sp | resize 20 | terminal<CR>", { desc = "New horizontal terminal", noremap = true, silent = true })
     vim.keymap.set("n", "<leader>|", ":vsp | terminal<CR>", { desc = "New vertical terminal", noremap = true, silent = true })
     vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit terminal", noremap = true, silent = true })
     vim.keymap.set("t", "<C-k>", "<C-\\><C-n><C-w>k", { desc = "Focus window to the top", noremap = true, silent = true })
