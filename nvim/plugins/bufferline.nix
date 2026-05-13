@@ -43,6 +43,16 @@
             maximum_padding = 5,
             maximum_length = 15,
             sort_by = "insert_at_end",
+            custom_filter = function(buf_number, buf_numbers)
+                -- filter out by buffer name
+                local buf_name = vim.fn.bufname(buf_number)
+                return not buf_name:match("term://")
+            end,
+            offsets = {
+                {
+                    filetype = "neo-tree",
+                }
+            },
           },
           highlights = highlights
         })
