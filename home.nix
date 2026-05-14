@@ -54,7 +54,6 @@
 
   home.packages = with pkgs; [
     # terminal stuff
-    fastfetch
 
     # archives
     zip

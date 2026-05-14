@@ -8,6 +8,7 @@
     ./alacritty.nix
     ./ghostty.nix
     ./starship.nix
+    ./fastfetch.nix
     ./git.nix
   ];
 
