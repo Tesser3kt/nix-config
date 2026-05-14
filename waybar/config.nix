@@ -244,7 +244,7 @@
           "format-alt-click" = "click";
           tooltip = true;
           "tooltip-format" = "{used:0.1f}GB/{total:0.1f}G";
-          "on-click" = "alacritty --title btop sh -c 'btop'";
+          "on-click" = "ghostty -e nu -c 'btop'";
         };
 
         mpris = {
@@ -352,7 +352,7 @@
           "format-critical" = "<span font='13'>{icon}</span> {temperatureC}°C";
           format = "<span font='13'>{icon}</span> {temperatureC}°C";
           "format-icons" = ["󰈸"];
-          "on-click" = "alacritty --title nvtop -e 'nvtop'";
+          "on-click" = "ghostty -e nu -c 'nvtop'";
         };
 
         tray = {

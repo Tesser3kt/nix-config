@@ -41,7 +41,7 @@
     "x-scheme-handler/about" = ["zen.desktop"];
     "x-scheme-handler/unknown" = ["zen.desktop"];
     "application/pdf" = ["zathura.desktop"];
-    "application/x-shellscript" = ["alacritty.desktop"];
+    "application/x-shellscript" = ["com.mitchellh.ghostty.desktop"];
     "text/plain" = ["nvim.desktop"];
     "image/png" = ["gwenview.desktop"];
     "image/jpeg" = ["gwenview.desktop"];

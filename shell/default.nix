@@ -6,6 +6,7 @@
   imports = [
     ./nushell.nix
     ./alacritty.nix
+    ./ghostty.nix
     ./starship.nix
     ./git.nix
   ];
@@ -15,7 +16,7 @@
     EDITOR = "nvim";
     BROWSER = "zen";
     DEFAULT_BROWSER = "zen";
-    TERMINAL = "alacritty";
+    TERMINAL = "ghostty";
     XDG_CONFIG_HOME = "${config.home.homeDirectory}/.config";
     XDG_CACHE_HOME = "${config.home.homeDirectory}/.cache";
   };

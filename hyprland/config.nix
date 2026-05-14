@@ -7,11 +7,11 @@
   graphics,
   ...
 }: let
-  terminal = "alacritty";
+  terminal = "ghostty";
   browser = "zen";
-  files = "alacritty -e nu -c 'yazi'";
-  calculator = "alacritty -e nu -c 'sage'";
-  mail = "alacritty -e nu -c 'neomutt'";
+  files = "ghostty -e nu -c 'yazi'";
+  calculator = "ghostty -e nu -c 'sage'";
+  mail = "ghostty -e nu -c 'neomutt'";
   ai = "zen --new-window 'https://chatgpt.com'";
   chat = "element-desktop";
   drawing = "zen --new-window 'https://excalidraw.com'";
@@ -266,7 +266,7 @@ in {
       mouse_move_enables_dpms = true;
       vrr = 2;
       enable_swallow = true;
-      swallow_regex = "^(Alacritty)$";
+      swallow_regex = "(Alacritty|ghostty)";
       focus_on_activate = false;
     };
 
