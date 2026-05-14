@@ -9,7 +9,7 @@
 }: let
   terminal = "alacritty";
   browser = "zen";
-  files = "alacritty -e nu -c 'ranger'";
+  files = "alacritty -e nu -c 'yazi'";
   calculator = "alacritty -e nu -c 'sage'";
   mail = "alacritty -e nu -c 'neomutt'";
   ai = "zen --new-window 'https://chatgpt.com'";

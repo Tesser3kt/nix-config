@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  pkgsStable,
   ...
 }: {
   home.packages = with pkgs; [

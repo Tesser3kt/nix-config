@@ -55,7 +55,6 @@
   home.packages = with pkgs; [
     # terminal stuff
     fastfetch
-    ranger
 
     # archives
     zip

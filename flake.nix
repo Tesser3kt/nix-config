@@ -6,6 +6,7 @@
     hyprland.url = "github:hyprwm/Hyprland";
     zen-browser.url = "github:youwen5/zen-browser-flake";
     claude-code.url = "github:sadjow/claude-code-nix";
+    yazi.url = "github:sxyazi/yazi";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -49,52 +50,12 @@
     fonts-overlay = final: prev: {
       palatino-font = additional-fonts.packages.${system}.palatino;
     };
-    ltrace-overlay = final: prev: {
-      ltrace = prev.ltrace.overrideAttrs (_: {
-        doCheck = false;
-      });
-    };
-    ffmpegAvMallocFix = final: prev: let
-      fixOne = pkg:
-        pkg.overrideAttrs (old: {
-          postPatch =
-            (old.postPatch or "")
-            + ''
-                    # Replace any previous failed injection blocks (from earlier attempts)
-                    perl -0777 -i -pe 's@#ifdef AVUTIL_MEM_H.*?#include "libavutil/mem.h"\n@@s' libavcodec/vlc.c || true
-
-                    replacement="$(cat <<'EOF'
-              #if defined(av_free) || defined(av_freep)
-              #ifndef av_malloc
-              #define av_malloc(x) malloc(x)
-              #endif
-              #else
-              #include "libavutil/mem.h"
-              #endif
-              EOF
-              )"
-
-                    # Now replace the mem.h include with a tablegen-safe conditional
-                    substituteInPlace libavcodec/vlc.c \
-                      --replace-fail '#include "libavutil/mem.h"' "$replacement"
-            '';
-        });
-    in {
-      ffmpeg-full = fixOne prev.ffmpeg-full;
-      ffmpeg_7-full =
-        if prev ? ffmpeg_7-full
-        then fixOne prev.ffmpeg_7-full
-        else prev.ffmpeg_7-full;
-    };
-    pkgsStable = import inputs.nixpkgs-stable {
-      inherit system;
-      overlays = [fonts-overlay ffmpegAvMallocFix];
-    };
+    common-overlays = [fonts-overlay inputs.yazi.overlays.default];
   in {
     nixosConfigurations.tesserekt-pc = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {
-        inherit inputs username pkgsStable;
+        inherit inputs username;
         hostname = "tesserekt-pc";
         openrgbEnabled = true;
         coolercontrolEnabled = true;
@@ -106,7 +67,7 @@
         ./hw-pc.nix
         ./amd.nix
         ./display-manager.nix
-        {nixpkgs.overlays = [fonts-overlay ffmpegAvMallocFix];}
+        {nixpkgs.overlays = common-overlays ++ [];}
 
         # Home Manager
         home-manager.nixosModules.home-manager
@@ -116,7 +77,7 @@
 
           home-manager.users.${username} = import ./home.nix;
           home-manager.extraSpecialArgs = {
-            inherit inputs username pkgsStable;
+            inherit inputs username;
             displayConfig = "pc";
             waybarConfig = "pc";
             startupConfig = "pc";
@@ -130,7 +91,7 @@
     nixosConfigurations.tesserekt-laptop = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {
-        inherit inputs username pkgsStable;
+        inherit inputs username;
         hostname = "tesserekt-laptop";
         openrgbEnabled = false;
         coolercontrolEnabled = false;
@@ -142,7 +103,7 @@
         ./hw-laptop.nix
         ./intel.nix
         ./display-manager.nix
-        {nixpkgs.overlays = [fonts-overlay];}
+        {nixpkgs.overlays = common-overlays ++ [];}
 
         # Home Manager
         home-manager.nixosModules.home-manager
@@ -152,7 +113,7 @@
 
           home-manager.users.${username} = import ./home.nix;
           home-manager.extraSpecialArgs = {
-            inherit inputs username pkgsStable;
+            inherit inputs username;
             displayConfig = "laptop";
             waybarConfig = "laptop";
             startupConfig = "laptop";
@@ -166,7 +127,7 @@
     nixosConfigurations.tesserekt-nvidia = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {
-        inherit inputs username pkgsStable;
+        inherit inputs username;
         hostname = "tesserekt-nvidia";
         openrgbEnabled = false;
         coolercontrolEnabled = false;
@@ -178,7 +139,7 @@
         ./hw-nvidia.nix
         ./nvidia.nix
         ./display-manager.nix
-        {nixpkgs.overlays = [fonts-overlay];}
+        {nixpkgs.overlays = common-overlays;}
 
         # Home Manager
         home-manager.nixosModules.home-manager
@@ -188,7 +149,7 @@
 
           home-manager.users.${username} = import ./home.nix;
           home-manager.extraSpecialArgs = {
-            inherit inputs username pkgsStable;
+            inherit inputs username;
             displayConfig = "nvidia";
             waybarConfig = "pc";
             startupConfig = "nvidia";
