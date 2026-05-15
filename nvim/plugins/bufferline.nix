@@ -29,7 +29,6 @@
               local icon = level:match("error") and " " or " "
               return " " .. icon .. count
             end,
-            diagnostics_update_in_insert = true,
             color_icons = true,
             show_buffer_icons = true,
             show_buffer_close_icons = true,
@@ -61,6 +60,10 @@
           },
           highlights = highlights
         })
+
+        vim.diagnostic.config {
+          update_in_insert = true
+        }
       '';
     }
     {
