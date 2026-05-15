@@ -95,8 +95,6 @@ in {
       LIBLLDB_PATH = "${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb/lldb/lib/liblldb.so";
     };
     extraConfig = ''
-      fastfetch
-
       # Git functions
       def gclean [] { git reset --hard; git clean -dfx }
       def ggsync [] { git pull; git push }
