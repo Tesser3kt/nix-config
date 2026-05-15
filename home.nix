@@ -33,23 +33,26 @@
   home.file."Music/notification.wav".source = ./notification.wav;
 
   # Set default apps
-  xdg.mimeApps.defaultApplications = {
-    "text/html" = ["zen.desktop"];
-    "application/xhtml+xml" = ["zen.desktop"];
-    "x-scheme-handler/http" = ["zen.desktop"];
-    "x-scheme-handler/https" = ["zen.desktop"];
-    "x-scheme-handler/about" = ["zen.desktop"];
-    "x-scheme-handler/unknown" = ["zen.desktop"];
-    "application/pdf" = ["zathura.desktop"];
-    "application/x-shellscript" = ["com.mitchellh.ghostty.desktop"];
-    "text/plain" = ["nvim.desktop"];
-    "image/png" = ["gwenview.desktop"];
-    "image/jpeg" = ["gwenview.desktop"];
-    "image/gif" = ["gwenview.desktop"];
-    "video/mp4" = ["vlc.desktop"];
-    "video/mkv" = ["vlc.desktop"];
-    "video/x-matroska" = ["vlc.desktop"];
-    "video/x-msvideo" = ["vlc.desktop"];
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "text/html" = ["zen.desktop"];
+      "application/xhtml+xml" = ["zen.desktop"];
+      "x-scheme-handler/http" = ["zen.desktop"];
+      "x-scheme-handler/https" = ["zen.desktop"];
+      "x-scheme-handler/about" = ["zen.desktop"];
+      "x-scheme-handler/unknown" = ["zen.desktop"];
+      "application/pdf" = ["org.pwmt.zathura.desktop"];
+      "application/x-shellscript" = ["com.mitchellh.ghostty.desktop"];
+      "text/plain" = ["nvim.desktop"];
+      "image/png" = ["org.kde.gwenview.desktop"];
+      "image/jpeg" = ["org.kde.gwenview.desktop"];
+      "image/gif" = ["org.kde.gwenview.desktop"];
+      "video/mp4" = ["vlc.desktop"];
+      "video/mkv" = ["vlc.desktop"];
+      "video/x-matroska" = ["vlc.desktop"];
+      "video/x-msvideo" = ["vlc.desktop"];
+    };
   };
 
   home.packages = with pkgs; [
