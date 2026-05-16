@@ -67,5 +67,6 @@
     nvim-numbertoggle
     flash-nvim
     nvim-treesitter-textobjects
+    emmet-vim
   ];
 }
