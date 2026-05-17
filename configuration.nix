@@ -228,6 +228,7 @@
     rocmPackages.rocm-smi
     cachix
     ddcutil
+    cifs-utils
   ];
 
   # Dynamic linking
