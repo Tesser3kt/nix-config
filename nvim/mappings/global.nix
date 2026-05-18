@@ -39,8 +39,40 @@
     vim.keymap.set("n", "<Right>", ":vertical resize +2<CR>", { desc = "Vertical resize +", noremap = true, silent = true })
 
     -- Buffer mappings
-    vim.keymap.set("n", "<Tab>", ":bnext<CR>", { desc = "Next buffer", noremap = true, silent = true })
-    vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>", { desc = "Previous buffer", noremap = true, silent = true })
+    local function next_non_terminal_buf()
+      local current = vim.api.nvim_get_current_buf()
+      local bufs = vim.fn.getbufinfo({ buflisted = 1 })
+      local filtered = vim.tbl_filter(function(b)
+        return vim.bo[b.bufnr].buftype ~= "terminal"
+      end, bufs)
+      if #filtered == 0 then return end
+      for i, b in ipairs(filtered) do
+        if b.bufnr == current then
+          vim.api.nvim_set_current_buf(filtered[(i % #filtered) + 1].bufnr)
+          return
+        end
+      end
+      vim.api.nvim_set_current_buf(filtered[1].bufnr)
+    end
+
+    local function prev_non_terminal_buf()
+      local current = vim.api.nvim_get_current_buf()
+      local bufs = vim.fn.getbufinfo({ buflisted = 1 })
+      local filtered = vim.tbl_filter(function(b)
+        return vim.bo[b.bufnr].buftype ~= "terminal"
+      end, bufs)
+      if #filtered == 0 then return end
+      for i, b in ipairs(filtered) do
+        if b.bufnr == current then
+          vim.api.nvim_set_current_buf(filtered[((i - 2) % #filtered) + 1].bufnr)
+          return
+        end
+      end
+      vim.api.nvim_set_current_buf(filtered[#filtered].bufnr)
+    end
+
+    vim.keymap.set("n", "<Tab>", next_non_terminal_buf, { desc = "Next buffer (skip terminals)", noremap = true, silent = true })
+    vim.keymap.set("n", "<S-Tab>", prev_non_terminal_buf, { desc = "Previous buffer (skip terminals)", noremap = true, silent = true })
     vim.keymap.set("n", "<leader>x", ":Bdelete!<CR>", { desc = "Close buffer", noremap = true, silent = true })
     vim.keymap.set("n", "<leader>b", ":enew<CR>", { desc = "New buffer", noremap = true, silent = true })
 

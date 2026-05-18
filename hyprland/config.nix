@@ -50,6 +50,9 @@ in {
 
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
+    env = [
+      "GTK_IM_MODULE,simple"
+    ];
     bind =
       [
         # App bindings
