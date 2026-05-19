@@ -1,6 +1,6 @@
 [
   {
     name = "wacom-intuos-bt-m-pen";
-    output = "DP-1";
+    output = "HDMI-A-1";
   }
 ]
