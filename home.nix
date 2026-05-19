@@ -40,12 +40,12 @@
     "x-scheme-handler/https" = ["zen.desktop"];
     "x-scheme-handler/about" = ["zen.desktop"];
     "x-scheme-handler/unknown" = ["zen.desktop"];
-    "application/pdf" = ["zathura.desktop"];
+    "application/pdf" = ["org.pwmt.zathura.desktop"];
     "application/x-shellscript" = ["com.mitchellh.ghostty.desktop"];
     "text/plain" = ["nvim.desktop"];
-    "image/png" = ["gwenview.desktop"];
-    "image/jpeg" = ["gwenview.desktop"];
-    "image/gif" = ["gwenview.desktop"];
+    "image/png" = ["org.kde.gwenview.desktop"];
+    "image/jpeg" = ["org.kde.gwenview.desktop"];
+    "image/gif" = ["org.kde.gwenview.desktop"];
     "video/mp4" = ["vlc.desktop"];
     "video/mkv" = ["vlc.desktop"];
     "video/x-matroska" = ["vlc.desktop"];
