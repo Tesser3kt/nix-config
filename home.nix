@@ -33,6 +33,7 @@
   home.file."Music/notification.wav".source = ./notification.wav;
 
   # Set default apps
+  xdg.mimeApps.enable = true;
   xdg.mimeApps.defaultApplications = {
     "text/html" = ["zen.desktop"];
     "application/xhtml+xml" = ["zen.desktop"];
@@ -50,6 +51,8 @@
     "video/mkv" = ["vlc.desktop"];
     "video/x-matroska" = ["vlc.desktop"];
     "video/x-msvideo" = ["vlc.desktop"];
+    "x-scheme-handler/discord" = ["vesktop.desktop"];
+    "x-scheme-handler/claude-cli" = ["claude-code-url-handler.desktop"];
   };
 
   home.packages = with pkgs; [
