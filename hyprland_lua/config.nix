@@ -122,39 +122,116 @@ in {
         }
 
         # Kill window
-        "$mod, Q, killactive"
-        "$mod SHIFT, Q, forcekillactive"
+        {
+          _args = [
+            "${mod} + q"
+            (mklua "hl.dsp.window.close()")
+          ];
+        }
+        {
+          _args = [
+            "${mod} + SHIFT + q"
+            (mklua "hl.dsp.window.kill()")
+          ];
+        }
 
         # Float & fullscreen toggle
-        "$mod, Space, togglefloating"
-        "$mod, Space, centerwindow, 1"
-        "$mod, Space, resizeactive, exact 75% 75%"
-        "$mod, F, fullscreen"
+        {
+          _args = [
+            "${mod} + Space"
+            (mklua "hl.dsp.window.float({ action = \"toggle\" })")
+          ];
+        }
+        {
+          _args = [
+            "${mod} + Space"
+            (mklua "hl.dsp.window.center()")
+          ];
+        }
+        {
+          _args = [
+            "${mod} + Space"
+            (mklua "hl.dsp.window.resize({ x = \"75%\", y = \"75%\" })")
+          ];
+        }
+        {
+          _args = [
+            "${mod} + f"
+            (mklua "hl.dsp.window.fullscreen{ action = \"toggle\" }")
+          ];
+        }
 
         # Scroll through existing workspaces
-        "$mod, period, workspace, e+1"
-        "$mod, comma, workspace, e-1"
+        {
+          _args = [
+            "${mod} + period"
+            (mklua "hl.dsp.focus({ workspace = \"e+1\" })")
+          ];
+        }
+        {
+          _args = [
+            "${mod} + comma"
+            (mklua "hl.dsp.focus({ workspace = \"e-1\" })")
+          ];
+        }
 
         # Screenshots
-        "$mod SHIFT, S, exec, hyprshot -m output"
-        "$mod, S, exec, hyprshot -m region"
-        "$mod ALT, S, exec, hyprshot -m window"
+        {
+          _args = [
+            "${mod} + SHIFT + s"
+            (mklua "hl.dsp.exec_cmd(\"hyprshot -m output\")")
+          ];
+        }
+        {
+          _args = [
+            "${mod} + s"
+            (mklua "hl.dsp.exec_cmd(\"hyprshot -m region\")")
+          ];
+        }
+        {
+          _args = [
+            "${mod} + ALT + s"
+            (mklua "hl.dsp.exec_cmd(\"hyprshot -m window\")")
+          ];
+        }
 
         # Rofi
-        "$mod, D, exec, pkill rofi || rofi -show drun -modi drun,filebrowser,run,window"
-        "$mod ALT, V, exec, $HOME/.config/hypr/scripts/clip_manager.sh"
+        {
+          _args = [
+            "${mod} + d"
+            (mklua "hl.dsp.exec_cmd(\"pkill rofi || rofi -show drun -modi drun,filebrowser,run,window\")")
+          ];
+        }
+        {
+          _args = [
+            "${mod} + ALT + v"
+            (mklua "hl.dsp.exec_cmd(\"$HOME/.config/hypr/scripts/clip_manager.sh\")")
+          ];
+        }
 
         # Logout menu
-        "$mod, X, exec, wlogout -b 5 -B 400 -T 400"
+        {
+          _args = [
+            "${mod} + x"
+            (mklua "hl.dsp.exec_cmd(\"wlogout -b 5 -B 400 -T 400\")")
+          ];
+        }
 
         # Enable DND mode
-        "$mod, P, exec, makoctl mode -t dnd"
-
-        # Sway notification center panel
-        "$mod SHIFT, N, exec, swaync-client -t -sw"
+        {
+          _args = [
+            "${mod} + p"
+            (mklua "hl.dsp.exec_cmd(\"makoctl mode -t dnd\")")
+          ];
+        }
 
         # Exit hyprland
-        "CTRL ALT, Delete, exec, hyprctl dispatch exit 0"
+        {
+          _args = [
+            "CTRL + ALT + Delete"
+            (mklua "hl.dsp.exec_cmd(\"hyprctl dispatch exit 0\")")
+          ];
+        }
       ]
       ++ (
         # Focus & window movement
@@ -164,10 +241,30 @@ in {
               key = builtins.elemAt pair 0;
               dir = builtins.elemAt pair 1;
             in [
-              "$mod, ${key}, movefocus, ${dir}"
-              "$mod SHIFT, ${key}, movewindow, ${dir}"
-              "$mod CTRL, ${key}, focusmonitor, ${dir}"
-              "$mod CTRL SHIFT, ${key}, movecurrentworkspacetomonitor, ${dir}"
+              {
+                _args = [
+                  "${mod} + ${key}"
+                  (mklua "hl.dsp.focus({ direction = \"${dir}\" })")
+                ];
+              }
+              {
+                _args = [
+                  "${mod} + SHIFT + ${key}"
+                  (mklua "hl.dsp.window.move({ direction = \"${dir}\" })")
+                ];
+              }
+              {
+                _args = [
+                  "${mod} + CTRL + ${key}"
+                  (mklua "hl.dsp.focus({ monitor = \"${dir}\" })")
+                ];
+              }
+              {
+                _args = [
+                  "${mod} + CTRL + SHIFT + ${key}"
+                  (mklua "hl.dsp.workspace.move({ monitor = \"${dir}\" })")
+                ];
+              }
             ]
           )
           [
@@ -179,6 +276,7 @@ in {
         )
       );
 
+    # TODO!
     # Mouse binds
     bindm = [
       # Move/resize windows with mouse
