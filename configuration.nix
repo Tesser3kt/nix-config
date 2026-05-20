@@ -238,6 +238,7 @@
     libraries = with pkgs; [
       glibc
       gcc
+      openssl
     ];
   };
 
