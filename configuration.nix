@@ -229,6 +229,7 @@
     cachix
     ddcutil
     cifs-utils
+    openssl
   ];
 
   # Dynamic linking
