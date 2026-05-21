@@ -561,7 +561,7 @@ in {
         disable_hyprland_logo = true;
         disable_splash_rendering = true;
         mouse_move_enables_dpms = true;
-        vrr = 1;
+        vrr = 0;
         focus_on_activate = false;
       };
 
