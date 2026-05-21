@@ -17,7 +17,7 @@
   ai = "zen --new-window 'gemini.google.com'";
   chat = "element-desktop";
   drawing = "zen --new-window 'https://excalidraw.com'";
-  single_border_active = "rgba(81A1C1D2) rgba(8FBCBBD2) 90deg";
+  single_border_active = mklua "{ colors = { \"rgba(81A1C1D2)\", \"rgba(8FBCBBD2)\" }, angle = 90 }";
   single_border_inactive = "rgba(2E344096)";
   group_border_active = "rgba(81A1C1D2)";
   groupbar_active = "rgba(81A1C1D2)";
@@ -63,49 +63,49 @@ in {
         {
           _args = [
             "${mod} + Return"
-            (mklua "hl.dsp.exec_cmd(${terminal})")
+            (mklua "hl.dsp.exec_cmd(\"${terminal}\")")
           ];
         }
         {
           _args = [
             "${mod} + SHIFT + w"
-            (mklua "hl.dsp.exec_cmd(${browser})")
+            (mklua "hl.dsp.exec_cmd(\"${browser}\")")
           ];
         }
         {
           _args = [
             "${mod} + e"
-            (mklua "hl.dsp.exec_cmd(${files})")
+            (mklua "hl.dsp.exec_cmd(\"${files}\")")
           ];
         }
         {
           _args = [
             "${mod} + c"
-            (mklua "hl.dsp.exec_cmd(${calculator})")
+            (mklua "hl.dsp.exec_cmd(\"${calculator}\")")
           ];
         }
         {
           _args = [
             "${mod} + m"
-            (mklua "hl.dsp.exec_cmd(${mail})")
+            (mklua "hl.dsp.exec_cmd(\"${mail}\")")
           ];
         }
         {
           _args = [
-            (mklua "${mod} + a")
-            (mklua "hl.dsp.exec_cmd(${ai})")
+            "${mod} + a"
+            (mklua "hl.dsp.exec_cmd(\"${ai}\")")
           ];
         }
         {
           _args = [
             "${mod} + v"
-            (mklua "hl.dsp.exec_cmd(${chat})")
+            (mklua "hl.dsp.exec_cmd(\"${chat}\")")
           ];
         }
         {
           _args = [
             "${mod} + SHIFT + d"
-            (mklua "hl.dsp.exec_cmd(${drawing})")
+            (mklua "hl.dsp.exec_cmd(\"${drawing}\")")
           ];
         }
 
@@ -141,13 +141,16 @@ in {
         {
           _args = [
             "${mod} + Space"
-            (mklua "hl.dsp.window.center()")
-          ];
-        }
-        {
-          _args = [
-            "${mod} + Space"
-            (mklua "hl.dsp.window.resize({ x = \"75%\", y = \"75%\" })")
+            (mklua ''
+              function()
+                local m = hl.get_active_monitor()
+                hl.dsp.window.resize({
+                  x = math.floor(m.width * 0.75),
+                  y = math.floor(m.height * 0.75),
+                })
+                hl.dsp.window.center()
+              end
+            '')
           ];
         }
         {
@@ -398,8 +401,8 @@ in {
       {
         _args = [
           "shot"
-          {type = "bezier";}
           {
+            type = "bezier";
             points = [
               [0.2 1.0]
               [0.2 1.0]
@@ -410,8 +413,8 @@ in {
       {
         _args = [
           "swipe"
-          {type = "bezier";}
           {
+            type = "bezier";
             points = [
               [0.6 0.0]
               [0.2 1.05]
@@ -422,8 +425,8 @@ in {
       {
         _args = [
           "linear"
-          {type = "bezier";}
           {
+            type = "bezier";
             points = [
               [0.0 0.0]
               [1.0 1.0]
@@ -434,8 +437,8 @@ in {
       {
         _args = [
           "progressive"
-          {type = "bezier";}
           {
+            type = "bezier";
             points = [
               [1.0 0.0]
               [0.6 1.0]
@@ -448,7 +451,7 @@ in {
     # Animations
     animation = [
       {
-        leaf = "window";
+        leaf = "windows";
         enabled = true;
         speed = 4;
         bezier = "shot";
@@ -499,7 +502,7 @@ in {
 
       # Layout settings
       dwindle = {
-        perserve_split = true;
+        preserve_split = true;
         special_scale_factor = 0.8;
       };
       master = {
