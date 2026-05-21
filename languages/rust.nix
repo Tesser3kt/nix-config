@@ -12,5 +12,6 @@
     glibc
     gcc
     vscode-extensions.vadimcn.vscode-lldb
+    cargo-cross
   ];
 }
