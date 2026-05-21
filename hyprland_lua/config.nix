@@ -25,15 +25,13 @@
   output = {
     "pc" = import ./output/pc.nix;
     "laptop" = import ./output/laptop.nix;
-    "raider" = import ./output/raider.nix;
     "nvidia" = import ./output/nvidia.nix;
   };
   startup = {
-    "common" = import ./startup/common.nix;
-    "pc" = import ./startup/pc.nix;
-    "raider" = import ./startup/raider.nix;
-    "nvidia" = import ./startup/nvidia.nix;
-    "laptop" = import ./startup/laptop.nix;
+    "common" = import ./startup/common.nix {inherit lib;};
+    "pc" = import ./startup/pc.nix {inherit lib;};
+    "nvidia" = import ./startup/nvidia.nix {inherit lib;};
+    "laptop" = import ./startup/laptop.nix {inherit lib;};
   };
   devices = {
     "pc" = import ./tablet/pc.nix;
@@ -41,10 +39,9 @@
     "raider" = import ./tablet/raider.nix;
   };
   workspaceSettings = {
-    "pc" = [(import ./workspaces/pc.nix {inherit config pkgs;})];
-    "raider" = [(import ./workspaces/raider.nix {inherit config pkgs;})];
-    "laptop" = [(import ./workspaces/laptop.nix {inherit config pkgs;})];
-    "nvidia" = [(import ./workspaces/nvidia.nix {inherit config pkgs;})];
+    "pc" = [(import ./workspaces/pc.nix {inherit lib mod;})];
+    "laptop" = [(import ./workspaces/laptop.nix {inherit lib mod;})];
+    "nvidia" = [(import ./workspaces/nvidia.nix {inherit lib mod;})];
   };
 in {
   imports = (
@@ -321,68 +318,64 @@ in {
       ]
       ++
       # Playback control
-      (
-        builtins.map (
-          let
-            key = builtins.elemAt 0;
-            cmd = builtins.elemAt 1;
-          in {
-            _args = [
-              key
-              (mklua "hl.dsp.exec_cmd(\"playerctl ${cmd}\")")
-              {locked = true;}
-            ];
-          }
-        )
-        [
-          ["XF86AudioPlay" "play-pause"]
-          ["XF86AudioStop" "stop"]
-          ["XF86AudioNext" "next"]
-          ["XF86AudioPrev" "previous"]
-        ]
+      builtins.map (
+        pair: let
+          key = builtins.elemAt pair 0;
+          cmd = builtins.elemAt pair 1;
+        in {
+          _args = [
+            key
+            (mklua "hl.dsp.exec_cmd(\"playerctl ${cmd}\")")
+            {locked = true;}
+          ];
+        }
       )
+      [
+        ["XF86AudioPlay" "play-pause"]
+        ["XF86AudioStop" "stop"]
+        ["XF86AudioNext" "next"]
+        ["XF86AudioPrev" "previous"]
+      ]
       ++
       # Focus & window movement
-      (
-        builtins.concatLists (
-          builtins.map (
-            pair: let
-              key = builtins.elemAt pair 0;
-              dir = builtins.elemAt pair 1;
-            in [
-              {
-                _args = [
-                  "${mod} + ${key}"
-                  (mklua "hl.dsp.focus({ direction = \"${dir}\" })")
-                ];
-              }
-              {
-                _args = [
-                  "${mod} + SHIFT + ${key}"
-                  (mklua "hl.dsp.window.move({ direction = \"${dir}\" })")
-                ];
-              }
-              {
-                _args = [
-                  "${mod} + CTRL + ${key}"
-                  (mklua "hl.dsp.focus({ monitor = \"${dir}\" })")
-                ];
-              }
-              {
-                _args = [
-                  "${mod} + CTRL + SHIFT + ${key}"
-                  (mklua "hl.dsp.workspace.move({ monitor = \"${dir}\" })")
-                ];
-              }
-            ]
-          )
-          [
-            ["up" "u"]
-            ["right" "r"]
-            ["down" "d"]
-            ["left" "l"]
+      builtins.concatLists (
+        builtins.map (
+          pair: let
+            key = builtins.elemAt pair 0;
+            dir = builtins.elemAt pair 1;
+          in [
+            {
+              _args = [
+                "${mod} + ${key}"
+                (mklua "hl.dsp.focus({ direction = \"${dir}\" })")
+              ];
+            }
+            {
+              _args = [
+                "${mod} + SHIFT + ${key}"
+                (mklua "hl.dsp.window.move({ direction = \"${dir}\" })")
+              ];
+            }
+            {
+              _args = [
+                "${mod} + CTRL + ${key}"
+                (mklua "hl.dsp.focus({ monitor = \"${dir}\" })")
+              ];
+            }
+            {
+              _args = [
+                "${mod} + CTRL + SHIFT + ${key}"
+                (mklua "hl.dsp.workspace.move({ monitor = \"${dir}\" })")
+              ];
+            }
           ]
         )
+        [
+          ["up" "u"]
+          ["right" "r"]
+          ["down" "d"]
+          ["left" "l"]
+        ]
       );
 
     # Output configuration
