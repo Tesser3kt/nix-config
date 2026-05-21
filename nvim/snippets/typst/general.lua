@@ -97,7 +97,9 @@ return {
 			dscr = "Text emphasis",
 		},
 		fmta("<>#emph[<>]<>", {
-      f( function(_, snip) return snip.captures[1] end ),
+			f(function(_, snip)
+				return snip.captures[1]
+			end),
 			i(1),
 			i(0),
 		})
@@ -111,7 +113,9 @@ return {
 			dscr = "Text strong emphasis",
 		},
 		fmta("<>#strong[<>]<>", {
-      f( function(_, snip) return snip.captures[1] end ),
+			f(function(_, snip)
+				return snip.captures[1]
+			end),
 			i(1),
 			i(0),
 		})

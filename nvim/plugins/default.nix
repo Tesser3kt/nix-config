@@ -26,6 +26,7 @@
     ./rustaceanvim.nix
     ./tabout.nix
     ./mini-surround.nix
+    ./typst.nix
     ./misc.nix
   ];
 }

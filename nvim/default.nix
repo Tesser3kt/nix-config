@@ -36,4 +36,9 @@
     source = ./spell;
     recursive = true;
   };
+
+  # Copy custom typst-mathzone plugin
+  home.file.".config/nvim/lua/typst-mathzone.lua" = {
+    source = ./typst-mathzone.lua;
+  };
 }
