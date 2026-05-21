@@ -7,6 +7,7 @@
     ./nushell.nix
     ./alacritty.nix
     ./ghostty.nix
+    ./kitty.nix
     ./starship.nix
     ./fastfetch.nix
     ./git.nix
