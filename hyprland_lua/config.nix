@@ -135,22 +135,18 @@ in {
         {
           _args = [
             "${mod} + Space"
-            (mklua "hl.dsp.window.float({ action = \"toggle\" })")
-          ];
-        }
-        {
-          _args = [
-            "${mod} + Space"
-            (mklua ''
-              function()
-                local m = hl.get_active_monitor()
-                hl.dsp.window.resize({
-                  x = math.floor(m.width * 0.75),
-                  y = math.floor(m.height * 0.75),
-                })
-                hl.dsp.window.center()
-              end
-            '')
+            (mklua
+              ''
+                function()
+                  local m = hl.get_active_monitor()
+                  hl.dispatch(hl.dsp.window.float({ action = "toggle" }))
+                  hl.dispatch(hl.dsp.window.resize({
+                    x = math.floor(m.width / m.scale * 0.75),
+                    y = math.floor(m.height / m.scale * 0.75),
+                  }))
+                  hl.dispatch(hl.dsp.window.center())
+                end
+              '')
           ];
         }
         {
