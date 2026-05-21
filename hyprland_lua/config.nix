@@ -295,7 +295,7 @@ in {
         {
           _args = [
             "XF86AudioMute"
-            (mklua "hl.dsp.exec_cmd(\"wpctl set-volume @DEFAULT_AUDIO_SINK@ toggle\")")
+            (mklua "hl.dsp.exec_cmd(\"wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle\")")
             {locked = true;}
           ];
         }
@@ -303,14 +303,14 @@ in {
         {
           _args = [
             "XF86MonBrightnessUp"
-            (mklua "hl.dsp.exec_cmd(\"brightnessctl set +5%\")")
+            (mklua "hl.dsp.exec_cmd(\"brightnessctl set 5%+\")")
             {locked = true;}
           ];
         }
         {
           _args = [
             "XF86MonBrightnessDown"
-            (mklua "hl.dsp.exec_cmd(\"brightnessctl set -5%\")")
+            (mklua "hl.dsp.exec_cmd(\"brightnessctl set 5%-\")")
             {locked = true;}
           ];
         }
