@@ -5,7 +5,6 @@
   displayConfig,
   startupConfig,
   deviceConfig,
-  graphics,
   ...
 }: let
   mod = "SUPER";
@@ -232,9 +231,119 @@ in {
             (mklua "hl.dsp.exec_cmd(\"hyprctl dispatch exit 0\")")
           ];
         }
+        # Mouse binds
+        {
+          _args = [
+            "${mod} + mouse:272"
+            (mklua "hl.dsp.window.drag()")
+            {mouse = true;}
+          ];
+        }
+        {
+          _args = [
+            "${mod} + mouse:273"
+            (mklua "hl.dsp.window.resize()")
+            {mouse = true;}
+          ];
+        }
+        # Repeat/hold binds
+        {
+          _args = [
+            "${mod} + ALT + left"
+            (mklua "hl.dsp.window.resize({ x = -50, y = 0, relative = true })")
+            {repeating = true;}
+          ];
+        }
+        {
+          _args = [
+            "${mod} + ALT + right"
+            (mklua "hl.dsp.window.resize({ x = 50, y = 0, relative = true })")
+            {repeating = true;}
+          ];
+        }
+        {
+          _args = [
+            "${mod} + ALT + up"
+            (mklua "hl.dsp.window.resize({ x = 0, y = -50, relative = true })")
+            {repeating = true;}
+          ];
+        }
+        {
+          _args = [
+            "${mod} + ALT + down"
+            (mklua "hl.dsp.window.resize({ x = 0, y = 50, relative = true })")
+            {repeating = true;}
+          ];
+        }
+        # Volume control
+        {
+          _args = [
+            "XF86AudioRaiseVolume"
+            (mklua "hl.dsp.exec_cmd(\"wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+\")")
+            {
+              repeating = true;
+              locked = true;
+            }
+          ];
+        }
+        {
+          _args = [
+            "XF86AudioLowerVolume"
+            (mklua "hl.dsp.exec_cmd(\"wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-\")")
+            {
+              repeating = true;
+              locked = true;
+            }
+          ];
+        }
+        {
+          _args = [
+            "XF86AudioMute"
+            (mklua "hl.dsp.exec_cmd(\"wpctl set-volume @DEFAULT_AUDIO_SINK@ toggle\")")
+            {locked = true;}
+          ];
+        }
+        # Brightness control
+        {
+          _args = [
+            "XF86MonBrightnessUp"
+            (mklua "hl.dsp.exec_cmd(\"brightnessctl set +5%\")")
+            {locked = true;}
+          ];
+        }
+        {
+          _args = [
+            "XF86MonBrightnessDown"
+            (mklua "hl.dsp.exec_cmd(\"brightnessctl set -5%\")")
+            {locked = true;}
+          ];
+        }
       ]
-      ++ (
-        # Focus & window movement
+      ++
+      # Playback control
+      (
+        builtins.map (
+          let
+            key = builtins.elemAt 0;
+            cmd = builtins.elemAt 1;
+          in {
+            _args = [
+              key
+              (mklua "hl.dsp.exec_cmd(\"playerctl ${cmd}\")")
+              {locked = true;}
+            ];
+          }
+        )
+        [
+          ["XF86AudioPlay" "play-pause"]
+          ["XF86AudioStop" "stop"]
+          ["XF86AudioNext" "next"]
+          ["XF86AudioPrev" "previous"]
+        ]
+      )
+      ++
+      # Focus & window movement
+      (
         builtins.concatLists (
           builtins.map (
             pair: let
@@ -276,182 +385,218 @@ in {
         )
       );
 
-    # TODO!
-    # Mouse binds
-    bindm = [
-      # Move/resize windows with mouse
-      "$mod, mouse:272, movewindow"
-      "$mod, mouse:273, resizewindow"
-    ];
-
-    # Repeat/hold binds
-    binde = [
-      "$mod ALT, left, resizeactive, -50 0"
-      "$mod ALT, right, resizeactive, 50 0"
-      "$mod ALT, up, resizeactive, 0 -50"
-      "$mod ALT, down, resizeactive, 0 50"
-
-      # Volume control
-      ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
-      ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-      ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-
-      # Playback control
-      ", XF86AudioPlay, exec, playerctl play-pause"
-      ", XF86AudioStop, exec, playerctl stop"
-      ", XF86AudioNext, exec, playerctl next"
-      ", XF86AudioPrev, exec, playerctl previous"
-
-      # Brightness control
-      ", XF86MonBrightnessUp, exec, brightnessctl set +5%"
-      ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
-    ];
-
     # Output configuration
     monitor = output.${displayConfig} or [];
 
     # Window rules
-    windowrule = [
-      # Idle inhibit fullscreen apps
-      "match:fullscreen 1, idle_inhibit fullscreen"
+    window_rule = [
+      {
+        match.fullscreen = true;
+        idle_inhibit = "fullscreen";
+      }
+      {
+        match.class = "sioyek";
+        tile = true;
+      }
+    ];
 
-      # Tile sioyek as it starts in floating mode
-      "match:class sioyek, tile on"
+    # Curves
+    curve = [
+      {
+        _args = [
+          "shot"
+          {type = "bezier";}
+          {
+            points = [
+              [0.2 1.0]
+              [0.2 1.0]
+            ];
+          }
+        ];
+      }
+      {
+        _args = [
+          "swipe"
+          {type = "bezier";}
+          {
+            points = [
+              [0.6 0.0]
+              [0.2 1.05]
+            ];
+          }
+        ];
+      }
+      {
+        _args = [
+          "linear"
+          {type = "bezier";}
+          {
+            points = [
+              [0.0 0.0]
+              [1.0 1.0]
+            ];
+          }
+        ];
+      }
+      {
+        _args = [
+          "progressive"
+          {type = "bezier";}
+          {
+            points = [
+              [1.0 0.0]
+              [0.6 1.0]
+            ];
+          }
+        ];
+      }
     ];
 
     # Animations
-    animations = {
-      enabled = "yes";
-      bezier = [
-        "shot, 0.2, 1.0, 0.2, 1.0"
-        "swipe, 0.6, 0.0, 0.2, 1.05"
-        "linear, 0.0, 0.0, 1.0, 1.0"
-        "progressive, 1.0, 0.0, 0.6, 1.0"
-      ];
-      animation = [
-        "windows, 1, 4, shot, slide"
-        "workspaces, 1, 4, swipe, slide"
-        "fade, 1, 3, progressive"
-        "border, 1, 4, linear"
-        "borderangle, 1, 180, linear, loop"
-      ];
-    };
-
-    # General settings
-    dwindle = {
-      pseudotile = "yes";
-      preserve_split = "yes";
-      special_scale_factor = 0.8;
-    };
-
-    master = {
-      new_on_top = 1;
-      mfact = 0.5;
-    };
-
-    general = {
-      gaps_in = 8;
-      gaps_out = 12;
-      border_size = 1;
-      resize_on_border = true;
-
-      "col.active_border" = single_border_active;
-      "col.inactive_border" = single_border_inactive;
-
-      layout = "dwindle";
-    };
-
-    group = {
-      "col.border_active" = group_border_active;
-
-      groupbar = {
-        "col.active" = groupbar_active;
-      };
-    };
-
-    decoration = {
-      rounding = 10;
-
-      active_opacity = 1.0;
-      inactive_opacity = 0.9;
-      fullscreen_opacity = 1.0;
-
-      dim_inactive = true;
-      dim_strength = 0.25;
-
-      shadow = {
+    animation = [
+      {
+        leaf = "window";
         enabled = true;
-        range = 16;
-        render_power = 2;
-        offset = "2 2";
-        color = drop_shadow;
-      };
-
-      blur = {
+        speed = 4;
+        bezier = "shot";
+        style = "slide";
+      }
+      {
+        leaf = "workspaces";
         enabled = true;
-        size = 5;
-        passes = 3;
-        ignore_opacity = true;
-        new_optimizations = true;
+        speed = 4;
+        bezier = "swipe";
+        style = "slide";
+      }
+      {
+        leaf = "fade";
+        enabled = true;
+        speed = 3;
+        bezier = "progressive";
+      }
+      {
+        leaf = "border";
+        enabled = true;
+        speed = 4;
+        bezier = "linear";
+      }
+    ];
+
+    config = {
+      # General settings
+      general = {
+        gaps_in = 8;
+        gaps_out = 12;
+        border_size = 1;
+        resize_on_border = true;
+
+        "col.active_border" = single_border_active;
+        "col.inactive_border" = single_border_inactive;
+
+        layout = "dwindle";
+      };
+
+      # Group settings
+      group = {
+        "col.border_active" = group_border_active;
+        groupbar = {
+          "col.active" = groupbar_active;
+        };
+      };
+
+      # Layout settings
+      dwindle = {
+        perserve_split = true;
+        special_scale_factor = 0.8;
+      };
+      master = {
+        new_on_top = true;
+        mfact = 0.5;
+      };
+
+      # Decorations
+      decoration = {
+        rounding = 10;
+
+        active_opacity = 1.0;
+        inactive_opacity = 0.9;
+        fullscreen_opacity = 1.0;
+
+        dim_inactive = true;
+        dim_strength = 0.25;
+
+        blur = {
+          enabled = true;
+          size = 5;
+          passes = 3;
+          ignore_opacity = true;
+          new_optimizations = true;
+        };
+
+        shadow = {
+          enabled = true;
+          range = 16;
+          render_power = 2;
+          offset = [2 2];
+          color = drop_shadow;
+        };
+      };
+
+      # Input settings
+      input = {
+        kb_layout = "us,cz";
+        kb_variant = ",qwerty";
+        kb_options = "caps:escape,grp:switch,grp:alt_shift_toggle";
+        numlock_by_default = true;
+        follow_mouse = true;
+
+        touchpad = {
+          disable_while_typing = true;
+          natural_scroll = true;
+          tap_to_click = true;
+          clickfinger_behavior = true;
+          drag_lock = 2;
+        };
+      };
+
+      # Miscellaneous
+      misc = {
+        disable_hyprland_logo = true;
+        disable_splash_rendering = true;
+        mouse_move_enables_dpms = true;
+        vrr = 1;
+        focus_on_activate = false;
+      };
+
+      render = {
+        direct_scanout = 2;
+      };
+
+      # Binds
+      binds = {
+        workspace_back_and_forth = true;
+        allow_workspace_cycles = true;
+        workspace_center_on = 1;
+        pass_mouse_when_bound = false;
+      };
+
+      # XWayland
+      xwayland = {
+        enabled = true;
+        force_zero_scaling = true;
+      };
+
+      # Cursor
+      cursor = {
+        no_hardware_cursors = 1;
       };
     };
 
-    # Input settings
-    input = {
-      kb_layout = "us,cz";
-      kb_variant = ",qwerty";
-      kb_options = "caps:escape,grp:switch,grp:alt_shift_toggle";
-      numlock_by_default = true;
-      follow_mouse = true;
-
-      touchpad = {
-        disable_while_typing = true;
-        natural_scroll = true;
-        tap-to-click = true;
-        clickfinger_behavior = false;
-        drag_lock = 2;
-      };
-    };
-
-    # Miscellaneous
-    misc = {
-      disable_hyprland_logo = true;
-      disable_splash_rendering = true;
-      mouse_move_enables_dpms = true;
-      vrr = 2;
-      enable_swallow = true;
-      swallow_regex = "(Alacritty|ghostty)";
-      focus_on_activate = false;
-    };
-
-    # Render settings
-    render = {
-      direct_scanout = 2;
-    };
-
-    # Binds
-    binds = {
-      workspace_back_and_forth = true;
-      allow_workspace_cycles = false;
-      workspace_center_on = 1;
-      pass_mouse_when_bound = false;
-    };
-
-    # XWayland
-    xwayland = {
-      enabled = true;
-      force_zero_scaling = true;
-    };
-
-    # Fix cursor issue in some apps.
-    cursor = {
-      no_hardware_cursors = true;
-    };
-
-    # Startup apps
-    exec-once =
+    # Startup
+    on = [
       startup.common
-      ++ startup.${startupConfig} or [];
+      startup.${startupConfig} or {}
+    ];
 
     # Per-device config
     device = devices.${deviceConfig} or [];

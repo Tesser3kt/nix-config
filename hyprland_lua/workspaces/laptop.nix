@@ -39,11 +39,9 @@ in {
         i: let
           ws = i + 1;
         in {
-          _args = [
-            {workspace = "name:${toString ws}";}
-            {monitor = "eDP-1";}
-            {default = ws == 1;}
-          ];
+          workspace = "name:${toString ws}";
+          monitor = "eDP-1";
+          default = ws == 1;
         }
       )
       8
