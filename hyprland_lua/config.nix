@@ -390,6 +390,11 @@ in {
         match.class = "sioyek";
         tile = true;
       }
+      {
+        match.title = ".*Element.*";
+        float = true;
+        size = ["(monitor_w*0.75)" "(monitor_h*0.75)"];
+      }
     ];
 
     # Curves
