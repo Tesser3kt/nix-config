@@ -84,6 +84,10 @@
             deviceConfig = "pc";
             graphics = "amd";
             gpgKeygrip = "91957720EE42E89A4DDF080DE22E95D7E3E98FA4";
+            pkgs-stable = import inputs.nixpkgs-stable {
+              inherit system;
+              config.allowUnfree = true;
+            };
           };
         }
       ];
@@ -120,6 +124,10 @@
             deviceConfig = "laptop";
             graphics = "intel";
             gpgKeygrip = "FD108A1438702B075EB5921DFA9C798F7614F016";
+            pkgs-stable = import inputs.nixpkgs-stable {
+              inherit system;
+              config.allowUnfree = true;
+            };
           };
         }
       ];
@@ -156,6 +164,10 @@
             deviceConfig = "nvidia";
             graphics = "nvidia";
             gpgKeygrip = "0DE4C646CC67946C9B880452C7897E02304EEC65";
+            pkgs-stable = import inputs.nixpkgs-stable {
+              inherit system;
+              config.allowUnfree = true;
+            };
           };
         }
       ];
