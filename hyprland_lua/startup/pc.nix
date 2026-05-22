@@ -1,5 +1,13 @@
-[
-  "openrgb --startminimized &"
-  "solaar -w hide &"
-  "sleep 0.5 && hyprctl --batch 'dispatch focusmonitor DP-2; dispatch workspace 1; dispatch focusmonitor DP-1; dispatch workspace 6'"
-]
+{lib, ...}: let
+  mklua = lib.generators.mkLuaInline;
+in {
+  _args = [
+    "hyprland.start"
+    (mklua ''
+      function()
+        hl.exec_cmd("solaar -w hide")
+        hl.exec_cmd("openrgb --startminimized")
+      end
+    '')
+  ];
+}
