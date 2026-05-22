@@ -230,6 +230,7 @@
     ddcutil
     cifs-utils
     openssl
+    dmg2img
   ];
 
   # Dynamic linking
