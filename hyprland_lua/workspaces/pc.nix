@@ -12,7 +12,7 @@ in {
         builtins.concatLists (builtins.genList (
             i: let
               ws = i + 1;
-            in
+            in [
               {
                 _args = [
                   "${mod} + code:1${toString i}"
@@ -27,6 +27,7 @@ in {
                   {bypass = true;}
                 ];
               }
+            ]
           )
           5)
       )
@@ -34,7 +35,7 @@ in {
         builtins.concatLists (builtins.genList (
             i: let
               ws = i + 6;
-            in
+            in [
               {
                 _args = [
                   "CTRL + code:1${toString i}"
@@ -49,6 +50,7 @@ in {
                   {bypass = true;}
                 ];
               }
+            ]
           )
           5)
       );
