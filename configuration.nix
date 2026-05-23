@@ -212,6 +212,7 @@
     libsForQt5.qt5ct
     libsForQt5.qtstyleplugin-kvantum
     kdePackages.qt6ct
+    kdePackages.breeze-icons
     brave
     webkitgtk_6_0
     mcontrolcenter

@@ -56,6 +56,18 @@ in {
           "simple"
         ];
       }
+      {
+        _args = [
+          "QT_QPA_PLATFORMTHEME"
+          "qt6ct"
+        ];
+      }
+      {
+        _args = [
+          "QT_ICON_THEME"
+          "Papirus-Dark"
+        ];
+      }
     ];
     bind =
       [
