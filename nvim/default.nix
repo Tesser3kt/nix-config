@@ -31,14 +31,17 @@
   home.file.".config/nvim/snippets" = {
     source = ./snippets;
     recursive = true;
+    force = true;
   };
   home.file.".config/nvim/spell" = {
     source = ./spell;
     recursive = true;
+    force = true;
   };
 
   # Copy custom typst-mathzone plugin
   home.file.".config/nvim/lua/typst-mathzone.lua" = {
     source = ./typst-mathzone.lua;
+    force = true;
   };
 }
