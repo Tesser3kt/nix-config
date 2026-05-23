@@ -68,5 +68,6 @@
     flash-nvim
     nvim-treesitter-textobjects
     emmet-vim
+    neoscroll-nvim
   ];
 }
