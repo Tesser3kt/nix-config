@@ -391,7 +391,7 @@ in {
         tile = true;
       }
       {
-        match.title = "(.*Element.*|.*WhatsApp.*|.*Thunar.*)";
+        match.class = ".*electron.*";
         float = true;
         size = ["(monitor_w*0.75)" "(monitor_h*0.75)"];
       }
