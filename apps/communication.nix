@@ -11,6 +11,5 @@ in {
     whatsapp-electron
     vesktop
     element-desktop
-    commet
   ];
 }

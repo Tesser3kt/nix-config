@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: let
-  colors = import ../nordic.nix;
+  colors = import ../catppuccin.nix;
 in {
   programs.waybar = {
     style = ''
@@ -37,12 +37,12 @@ in {
       }
 
       tooltip {
-      	background: ${colors.black1};
+      	background: ${colors.macchiato.mantle};
       	border-radius: 10px;
       	border-width: 2px;
       	border-style: solid;
-      	border-color: ${colors.black0};
-      	color: ${colors.magenta_b};
+      	border-color: ${colors.macchiato.base};
+      	color: ${colors.macchiato.lavender};
       }
 
       /*-----module groups----*/
@@ -59,7 +59,7 @@ in {
       }
 
       #workspaces button {
-      	color: ${colors.gray5};
+      	color: ${colors.macchiato.surface2};
         box-shadow: none;
       	text-shadow: none;
         padding: 0px;
@@ -70,20 +70,20 @@ in {
       }
 
       #workspaces button.active {
-      	color: ${colors.cyan_b};
+      	color: ${colors.macchiato.mauve};
         transition: all 0.3s;
       }
 
       #workspaces button.focused {
-      	color: ${colors.green_b};
+      	color: ${colors.macchiato.teal};
       }
 
       #workspaces button.urgent {
-      	color: ${colors.orange_b};
+      	color: ${colors.macchiato.red};
       }
 
       #workspaces button:hover {
-      	color: whitesmoke;
+      	color: ${colors.macchiato.text};
         border-radius: 15px;
         transition: all 0.3s;
       }
@@ -137,51 +137,51 @@ in {
       }
 
       #clock {
-        color: ${colors.cyan};
+        color: ${colors.macchiato.blue};
       }
 
       #language {
-        color: ${colors.magenta};
-      }
-
-      #bluetooth {
-        color: ${colors.blue0};
-      }
-
-      #cpu {
-        color: ${colors.yellow};
-      }
-
-      #memory {
-        color: ${colors.green};
-      }
-
-      #temperature {
-        color: ${colors.orange};
-      }
-
-      #temperature.critical {
-      	color: ${colors.red};
-      }
-
-      #disk {
-        color: ${colors.blue1};
-      }
-
-      #backlight {
-        color: ${colors.yellow_d};
-      }
-
-      #battery {
-        color: ${colors.cyan_d};
-      }
-
-      #wireplumber {
-        color: ${colors.green_b};
+        color: ${colors.macchiato.sapphire};
       }
 
       #idle_inhibitor{
-        color: ${colors.orange};
+        color: ${colors.macchiato.sky};
+      }
+
+      #bluetooth {
+        color: ${colors.macchiato.teal};
+      }
+
+      #cpu {
+        color: ${colors.macchiato.mauve};
+      }
+
+      #memory {
+        color: ${colors.macchiato.pink};
+      }
+
+      #temperature {
+        color: ${colors.macchiato.lavender};
+      }
+
+      #temperature.critical {
+      	color: ${colors.macchiato.maroon};
+      }
+
+      #disk {
+        color: ${colors.macchiato.yellow};
+      }
+
+      #backlight {
+        color: ${colors.macchiato.peach};
+      }
+
+      #battery {
+        color: ${colors.macchiato.flamingo};
+      }
+
+      #wireplumber {
+        color: ${colors.macchiato.green};
       }
 
       @keyframes blink {
@@ -197,7 +197,7 @@ in {
       }
 
       #taskbar button.active {
-      	background-color: ${colors.gray5};
+      	background-color: ${colors.macchiato.base};
           padding-left: 12px;
           padding-right: 12px;
           animation: gradient_f 20s ease-in infinite;
@@ -205,7 +205,7 @@ in {
       }
 
       #battery.critical:not(.charging) {
-      	color: ${colors.red};
+      	color: ${colors.macchiato.red};
       	animation-name: blink;
       	animation-duration: 0.5s;
       	animation-timing-function: linear;
@@ -232,7 +232,7 @@ in {
       #pulseaudio-slider highlight {
       	min-height: 10px;
       	border-radius: 5px;
-      	background-color: ${colors.yellow_b};
+      	background-color: ${colors.macchiato.yellow};
       }
 
       #backlight-slider slider {
@@ -254,7 +254,7 @@ in {
       #backlight-slider highlight {
       	min-width: 10px;
       	border-radius: 5px;
-      	background-color: ${colors.yellow_b};
+      	background-color: ${colors.macchiato.yellow};
       }
     '';
   };

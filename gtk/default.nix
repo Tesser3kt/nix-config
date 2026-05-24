@@ -6,18 +6,26 @@
   gtk = {
     enable = true;
     theme = {
-      name = "Nordic";
-      package = pkgs.nordic;
+      name = "catppuccin-macchiato-mauve-standard";
+      package = pkgs.catppuccin-gtk.override {
+        variant = "macchiato";
+        accents = ["mauve"];
+        size = "standard";
+      };
     };
-    gtk4.theme = config.gtk.theme;
+    gtk4 = {
+      enable = true;
+      theme = config.gtk.theme;
+    };
     font = {
       name = "Source Sans Pro";
       size = 11;
     };
     iconTheme = {
       name = "Papirus-Dark";
-      package = pkgs.papirus-nord.override {
-        accent = "frostblue3";
+      package = pkgs.catppuccin-papirus-folders.override {
+        flavor = "macchiato";
+        accent = "mauve";
       };
     };
   };

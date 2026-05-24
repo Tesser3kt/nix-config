@@ -5,8 +5,8 @@
 }: {
   imports = [
     ./neo-tree.nix
-    # ./nord.nix
-    ./nordic.nix
+    # ./nordic.nix
+    ./catppuccin.nix
     ./bufferline.nix
     ./lualine.nix
     ./treesitter.nix

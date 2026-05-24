@@ -15,8 +15,4 @@
     ./emulation.nix
     ./ai.nix
   ];
-
-  home.packages = with pkgs; [
-    zotero
-  ];
 }

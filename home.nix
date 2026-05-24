@@ -26,7 +26,7 @@
   home.homeDirectory = "/home/${username}";
 
   # Link wallpaper file
-  home.file."Pictures/wallpaper.png".source = ./wallpaper.png;
+  home.file."Pictures/wallpaper.png".source = ./wallpaper-catppuccin.png;
 
   # Link notification sound
   home.file."Music/notification.wav".source = ./notification.wav;

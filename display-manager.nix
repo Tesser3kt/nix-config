@@ -3,22 +3,22 @@
   pkgs,
   ...
 }: {
-  environment.systemPackages = with pkgs; [
-    # SDDM theme
-    sddm-astronaut
-  ];
-
   # SDDM config
   services.displayManager.sddm = {
     enable = true;
     wayland = {
       enable = true;
     };
-    theme = "sddm-astronaut-theme";
-    extraPackages = with pkgs; [
-      sddm-astronaut
-    ];
+    theme = "catppuccin-macchiato-mauve";
   };
+  environment.systemPackages = with pkgs; [
+    (catppuccin-sddm.override {
+      flavor = "macchiato";
+      accent = "mauve";
+      font = "CaskaydiaCove Nerd Font";
+      fontSize = "12";
+    })
+  ];
   # Enable GPG keyring on SDDM login
   security.pam.services.login.gnupg = {
     enable = true;

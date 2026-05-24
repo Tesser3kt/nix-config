@@ -3,14 +3,7 @@
   pkgs,
   ...
 }: let
-  colors = {
-    selected-active-bg = "#2e3440";
-    selected-normal-bg = "#434c5e";
-    selected-urgent-bg = "#d08770";
-    background = "#242933";
-    launcher-bg = "#2e3440A0";
-    foreground = "#bbc3d4";
-  };
+  colors = import ../catppuccin.nix;
 in {
   home.packages = with pkgs; [
     rofi
@@ -18,13 +11,13 @@ in {
 
   xdg.configFile."rofi/themes/default.rasi".text = ''
     * {
-      background-alt: ${colors.selected-active-bg};
-      selected: ${colors.selected-normal-bg};
-      active: ${colors.selected-urgent-bg};
-      urgent: ${colors.selected-normal-bg};
+      background-alt: ${colors.macchiato.crust};
+      selected: ${colors.macchiato.base};
+      active: ${colors.macchiato.red};
+      urgent: ${colors.macchiato.surface1};
 
-      text-selected: ${colors.background};
-      text: ${colors.foreground};
+      text-selected: ${colors.macchiato.crust};
+      text: ${colors.macchiato.text};
 
       shade-shadow: white / 12%;
       shade-bg: white / 24%;
@@ -171,7 +164,7 @@ in {
       fixed-height: true;
       fixed-columns: true;
 
-      background-color: ${colors.launcher-bg};
+      background-color: ${colors.macchiato.crust}A0;
       text-color: @text;
 
       spacing: 0px;
@@ -269,7 +262,7 @@ in {
       content: " [CTRL DEL] Delete \n [ALT DEL] Wipe";
 
       border-radius: 12px;
-      background-color: ${colors.launcher-bg};
+      background-color: ${colors.macchiato.crust}A0;
       text-color: white;
 
       margin: 0px;
@@ -308,7 +301,7 @@ in {
       fixed-height: true;
       fixed-columns: true;
 
-      background-color: ${colors.launcher-bg};
+      background-color: ${colors.macchiato.crust}A0;
       text-color: @foreground;
 
       spacing: 12px;
