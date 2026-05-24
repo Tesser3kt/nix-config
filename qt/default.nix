@@ -6,13 +6,16 @@
   qt = {
     enable = true;
     platformTheme.name = "qt6ct";
+    style = {
+      name = "kvantum";
+    };
     qt6ctSettings = {
       Appearance = {
         color_scheme_path = "/home/tesserekt/.config/qt6ct/style-colors.conf";
         custom_palette = true;
         icon_theme = "Papirus-Dark";
         standard_dialogs = "xdgdesktopportal";
-        style = "kvantum-dark";
+        style = "kvantum";
       };
       Interface = {
         activate_item_on_single_click = "1";

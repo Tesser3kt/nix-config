@@ -54,6 +54,9 @@
     "x-scheme-handler/claude-cli" = ["claude-code-url-handler.desktop"];
   };
 
+  # Enable catppuccin theme for various apps.
+  catppuccin.enable = true;
+
   home.packages = with pkgs; [
     # terminal stuff
 
