@@ -16,7 +16,6 @@
     ./languages
     ./rofi
     ./waybar
-    # ./swaync
     ./mako
     ./gtk
     ./qt
