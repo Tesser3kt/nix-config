@@ -20,7 +20,6 @@ in {
       ./config.nix
       ./hyprpaper.nix
       ./hyprlock.nix
-      ./breezex-cursors.nix
       ./scripts
     ]
     ++ (envVariables.${graphics} or [])
@@ -40,7 +39,7 @@ in {
 
   # Cursor
   home.file.".local/share/icons/BreezeX-Dark".source = ./hyprcursors/BreezeX-Dark;
-  home.file.".local/share/icons/CatppuccinMacchiato".source = ./hyprcursors/CatppuccinMacchiatoMauve;
+  home.file.".local/share/icons/CatppuccinMacchiatoMauve".source = ./hyprcursors/CatppuccinMacchiatoMauve;
 
   # Environment
   home.sessionVariables = {
@@ -56,7 +55,5 @@ in {
     XDG_CURRENT_DESKTOP = "Hyprland";
     XDG_SESSION_DESKTOP = "Hyprland";
     XDG_SESSION_TYPE = "wayland";
-    HYPRCURSOR_THEME = "CatppuccinMacchiatoMauve";
-    HYPRCURSOR_SIZE = "28";
   };
 }

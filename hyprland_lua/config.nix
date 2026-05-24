@@ -69,6 +69,18 @@ in {
           "Papirus-Dark"
         ];
       }
+      {
+        _args = [
+          "HYPRCURSOR_THEME"
+          "CatppuccinMacchiatoMauve"
+        ];
+      }
+      {
+        _args = [
+          "HYPRCURSOR_SIZE"
+          "24"
+        ];
+      }
     ];
     bind =
       [
