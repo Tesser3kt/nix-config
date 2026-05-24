@@ -7,7 +7,6 @@
     zen-browser.url = "github:youwen5/zen-browser-flake";
     claude-code.url = "github:sadjow/claude-code-nix";
     yazi.url = "github:sxyazi/yazi";
-    catppuccin.url = "github:catppuccin/nix";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -19,6 +18,11 @@
     nvchad-starter = {
       url = "github:Tesser3kt/nvchad-starter";
       flake = false;
+    };
+    nix4nvchad = {
+      url = "github:nix-community/nix4nvchad";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nvchad-starter.follows = "nvchad-starter";
     };
     additional-fonts = {
       url = "github:jeslie0/fonts";
@@ -37,8 +41,8 @@
     self,
     nixpkgs,
     home-manager,
+    nix4nvchad,
     additional-fonts,
-    catppuccin,
     ...
   }: let
     system = "x86_64-linux";
@@ -63,7 +67,6 @@
         ./hw-pc.nix
         ./amd.nix
         ./display-manager.nix
-        catppuccin.nixosModules.catppuccin
         {nixpkgs.overlays = common-overlays ++ [];}
 
         # Home Manager
@@ -72,9 +75,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
 
-          home-manager.users.${username} = {
-            imports = [./home.nix catppuccin.homeModules.catppuccin];
-          };
+          home-manager.users.${username} = import ./home.nix;
           home-manager.extraSpecialArgs = {
             inherit inputs username;
             displayConfig = "pc";
@@ -106,7 +107,6 @@
         ./hw-laptop.nix
         ./intel.nix
         ./display-manager.nix
-        catppuccin.nixosModules.catppuccin
         {nixpkgs.overlays = common-overlays ++ [];}
 
         # Home Manager
@@ -115,9 +115,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
 
-          home-manager.users.${username} = {
-            imports = [./home.nix catppuccin.homeModules.catppuccin];
-          };
+          home-manager.users.${username} = import ./home.nix;
           home-manager.extraSpecialArgs = {
             inherit inputs username;
             displayConfig = "laptop";
@@ -149,7 +147,6 @@
         ./hw-nvidia.nix
         ./nvidia.nix
         ./display-manager.nix
-        catppuccin.nixosModules.catppuccin
         {nixpkgs.overlays = common-overlays;}
 
         # Home Manager
@@ -158,9 +155,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
 
-          home-manager.users.${username} = {
-            imports = [./home.nix catppuccin.homeModules.catppuccin];
-          };
+          home-manager.users.${username} = import ./home.nix;
           home-manager.extraSpecialArgs = {
             inherit inputs username;
             displayConfig = "nvidia";
