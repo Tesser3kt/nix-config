@@ -3,18 +3,18 @@
   pkgs,
   ...
 }: let
-  colors = import ../nordic.nix;
+  colors = import ../catppuccin.nix;
 in {
   services.mako.settings = {
     sort = "-time";
-    background-color = colors.gray1;
-    text-color = colors.white0;
-    progress-color = "over ${colors.cyan}";
+    background-color = colors.macchiato.base;
+    text-color = colors.macchiato.text;
+    progress-color = "over ${colors.macchiato.teal}";
     layer = "overlay";
     width = 400;
     height = 150;
     border-size = 2;
-    border-color = colors.gray3;
+    border-color = colors.macchiato.surface0;
     border-radius = 5;
     max-visible = 3;
     max-history = 5;
@@ -36,13 +36,13 @@ in {
   };
   services.mako.extraConfig = ''
     [urgency=low]
-    border-color=${colors.blue0}
+    border-color=${colors.macchiato.green}
 
     [urgency=normal]
-    border-color=${colors.yellow}
+    border-color=${colors.macchiato.lavender}
 
     [urgency=high]
-    border-color=${colors.red}
+    border-color=${colors.macchiato.red}
 
     [mode=dnd]
     invisible=1

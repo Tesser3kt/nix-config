@@ -4,14 +4,11 @@
   ...
 }: {
   programs.vscode.profiles.default.extensions = with pkgs.vscode-extensions; [
-    ms-python.vscode-pylance
     vue.volar
     ms-python.black-formatter
     ms-vscode.cpptools
     ms-azuretools.vscode-containers
-    leonardssh.vscord
     dbaeumer.vscode-eslint
-    github.copilot
     github.copilot-chat
     ms-python.isort
     ms-toolsai.jupyter
@@ -22,6 +19,8 @@
     ms-vscode.live-server
     ms-vsliveshare.vsliveshare
     arcticicestudio.nord-visual-studio-code
+    catppuccin.catppuccin-vsc
+    catppuccin.catppuccin-vsc-icons
     esbenp.prettier-vscode
     ms-python.debugpy
     ms-python.python

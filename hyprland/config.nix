@@ -15,10 +15,10 @@
   ai = "zen --new-window 'https://chatgpt.com'";
   chat = "element-desktop";
   drawing = "zen --new-window 'https://excalidraw.com'";
-  single_border_active = "rgba(81A1C1D2) rgba(8FBCBBD2) 90deg";
-  single_border_inactive = "rgba(2E344096)";
-  group_border_active = "rgba(81A1C1D2)";
-  groupbar_active = "rgba(81A1C1D2)";
+  single_border_active = "rgba(C6A0F6D2) rgba(91D7E3D2) 90deg";
+  single_border_inactive = "rgba(24273A96)";
+  group_border_active = "rgba(C6A0F6D2)";
+  groupbar_active = "rgba(C6A0F6D2)";
   drop_shadow = "rgba(242933A6)";
   output = {
     "pc" = import ./output/pc.nix;

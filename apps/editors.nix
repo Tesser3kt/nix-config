@@ -27,6 +27,9 @@ in {
 
     # Okular
     kdePackages.okular
+
+    # Zotero
+    zotero
   ];
 
   # Zathura configuration

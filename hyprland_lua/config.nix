@@ -12,15 +12,16 @@
   terminal = "ghostty";
   browser = "zen";
   files = "ghostty -e nu -c 'yazi'";
+  files_ui = "thunar";
   calculator = "ghostty -e nu -c 'sage'";
   mail = "ghostty -e nu -c 'neomutt'";
   ai = "zen --new-window 'gemini.google.com'";
   chat = "element-desktop";
   drawing = "zen --new-window 'https://excalidraw.com'";
-  single_border_active = mklua "{ colors = { \"rgba(81A1C1D2)\", \"rgba(8FBCBBD2)\" }, angle = 90 }";
-  single_border_inactive = "rgba(2E344096)";
-  group_border_active = "rgba(81A1C1D2)";
-  groupbar_active = "rgba(81A1C1D2)";
+  single_border_active = mklua "{ colors = { \"rgba(C6A0F6D2)\", \"rgba(91D7E3D2)\" }, angle = 90 }";
+  single_border_inactive = "rgba(24273A96)";
+  group_border_active = "rgba(C6A0F6D2)";
+  groupbar_active = "rgba(C6A0F6D2)";
   drop_shadow = "rgba(242933A6)";
   output = {
     "pc" = import ./output/pc.nix;
@@ -88,6 +89,12 @@ in {
           _args = [
             "${mod} + e"
             (mklua "hl.dsp.exec_cmd(\"${files}\")")
+          ];
+        }
+        {
+          _args = [
+            "${mod} + SHIFT + e"
+            (mklua "hl.dsp.exec_cmd(\"${files_ui}\")")
           ];
         }
         {
@@ -403,9 +410,13 @@ in {
         tile = true;
       }
       {
-        match.class = ".*electron.*";
+        match.class = "(.*electron.*|thunar)";
         float = true;
         size = ["(monitor_w*0.75)" "(monitor_h*0.75)"];
+      }
+      {
+        match.class = ".*ghostty.*";
+        opacity = "0.9 override 0.7 override";
       }
     ];
 

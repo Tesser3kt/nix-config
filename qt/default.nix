@@ -2,14 +2,29 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  kvantumTheme = pkgs.catppuccin-kvantum.override {
+    variant = "macchiato";
+    accent = "mauve";
+  };
+in {
+  home.packages = [kvantumTheme];
+
+  xdg.configFile."Kvantum/kvantum.kvconfig".text = ''
+    [General]
+    theme=catppuccin-macchiato-mauve
+  '';
+
   qt = {
     enable = true;
-    platformTheme.name = "qt6ct";
+    platformTheme = {
+      name = "qt6ct";
+    };
+    style.package = pkgs.catppuccin-qt5ct;
     qt6ctSettings = {
       Appearance = {
-        color_scheme_path = "/home/tesserekt/.config/qt6ct/style-colors.conf";
         custom_palette = true;
+        color_scheme_path = "${pkgs.catppuccin-qt5ct}/share/qt6ct/colors/catppuccin-macchiato-mauve.conf";
         icon_theme = "Papirus-Dark";
         standard_dialogs = "xdgdesktopportal";
         style = "kvantum-dark";

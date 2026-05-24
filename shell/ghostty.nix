@@ -2,8 +2,7 @@
   programs.ghostty = {
     enable = true;
     settings = {
-      background-opacity = "0.9";
-      theme = "Onenord";
+      theme = "Catppuccin Macchiato";
       font-family = "CaskaydiaCove Nerd Font";
       font-size = "12.5";
       window-padding-x = "12";

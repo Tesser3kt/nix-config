@@ -140,7 +140,8 @@
       "editor.defaultFormatter" = "esbenp.prettier-vscode";
     };
     "window.menuBarVisibility" = "toggle";
-    "workbench.colorTheme" = "Nord";
+    "workbench.colorTheme" = "Catppuccin Macchiato";
+    "workbench.accentColor" = "mauve";
     "[typst]" = {
       "editor.wordWrap" = "wordWrapColumn";
       "editor.wordWrapColumn" = 80;
