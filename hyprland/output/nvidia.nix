@@ -4,7 +4,6 @@
     mode = "3840x2160@240.00Hz";
     position = "auto";
     scale = 1.5;
-    icc = "/home/tesserekt/source/repos/nix-config/hyprland/output/icc-profiles/nvidia-primary.icc";
   }
   {
     output = "DP-1";
