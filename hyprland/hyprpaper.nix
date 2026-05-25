@@ -1,5 +1,5 @@
 {config, ...}: let
-  wp = "${config.home.homeDirectory}/Pictures/wallpaper.png";
+  wp = "${config.home.homeDirectory}/Pictures/wallpaper.jpg";
 in {
   services.hyprpaper = {
     enable = true;

@@ -1,9 +1,11 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: let
   colors = import ../catppuccin.nix;
+  removeHash = lib.strings.removePrefix "#";
 in {
   programs.hyprlock = {
     enable = true;
@@ -25,7 +27,7 @@ in {
         {
           monitor = "";
           text = "cmd[update:1000] echo \"<b><big> $(date +\"%H\") </big></b>\"";
-          color = "rgb(${colors.macchiato.sky})";
+          color = "rgb(${removeHash colors.macchiato.sky})";
           font_size = 112;
           font_family = "CaskaydiaCove Nerd Font";
           shadow_passes = 3;
@@ -38,7 +40,7 @@ in {
         {
           monitor = "";
           text = "cmd[update:1000] echo \"<b><big> $(date +\"%M\") </big></b>\"";
-          color = "rgb(${colors.macchiato.mauve})";
+          color = "rgb(${removeHash colors.macchiato.mauve})";
           font_size = 112;
           font_family = "CaskaydiaCove Nerd Font";
           shadow_passes = 3;
@@ -51,7 +53,7 @@ in {
         {
           monitor = "";
           text = "cmd[update:18000000] echo \"<b><big> \"$(date +'%A')\" </big></b>\"";
-          color = "rgb(${colors.macchiato.text})";
+          color = "rgb(${removeHash colors.macchiato.text})";
           font_size = 22;
           font_family = "CaskaydiaCove Nerd Font";
 
@@ -62,7 +64,7 @@ in {
         {
           monitor = "";
           text = "cmd[update:18000000] echo \"<b> \"$(date +'%d %b')\" </b>\"";
-          color = "rgb(${colors.macchiato.text})";
+          color = "rgb(${removeHash colors.macchiato.text})";
           font_size = 18;
           font_family = "CaskaydiaCove Nerd Font";
 
@@ -82,9 +84,9 @@ in {
           dots_center = true;
 
           rounding = 22;
-          outer_color = "rgb(${colors.macchiato.lavender})";
-          inner_color = "rgb(${colors.macchiato.base})";
-          font_color = "rgb(${colors.macchiato.text})";
+          outer_color = "rgb(${removeHash colors.macchiato.lavender})";
+          inner_color = "rgb(${removeHash colors.macchiato.base})";
+          font_color = "rgb(${removeHash colors.macchiato.text})";
           fade_on_empty = true;
           placeholder_text = "<i>Password...</i>";
 
