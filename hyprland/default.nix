@@ -20,7 +20,6 @@ in {
       ./config.nix
       ./hyprpaper.nix
       ./hyprlock.nix
-      ./breezex-cursors.nix
       ./scripts
     ]
     ++ (envVariables.${graphics} or [])
@@ -28,8 +27,8 @@ in {
 
   wayland.windowManager.hyprland = {
     enable = true;
-    configType = "hyprlang";
     package = pkgs.hyprland;
+    configType = "lua";
   };
 
   home.packages = with pkgs; [
@@ -40,6 +39,7 @@ in {
 
   # Cursor
   home.file.".local/share/icons/BreezeX-Dark".source = ./hyprcursors/BreezeX-Dark;
+  home.file.".local/share/icons/CatppuccinMacchiatoMauve".source = ./hyprcursors/CatppuccinMacchiatoMauve;
 
   # Environment
   home.sessionVariables = {
@@ -48,13 +48,12 @@ in {
     GDK_BACKEND = "wayland,x11";
     # QT_AUTO_SCREEN_SCALE_FACTOR = "1";
     # QT_QPA_PLATFORM = "wayland;xcb";
-    # QT_QPA_PLATFORMTHEME = "qt5ct";
+    # QT_QPA_PLATFORMTHEME = "qt6ct";
+    # QT_ICON_THEME = "Nordic";
     # QT_SCALE_FACTOR = "1";
     # QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
     XDG_CURRENT_DESKTOP = "Hyprland";
     XDG_SESSION_DESKTOP = "Hyprland";
     XDG_SESSION_TYPE = "wayland";
-    HYPRCURSOR_THEME = "BreezeX-Dark";
-    HYPRCURSOR_SIZE = "28";
   };
 }

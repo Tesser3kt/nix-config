@@ -62,8 +62,18 @@ in {
     settings = {
       # Make sure env vars are present for XWayland apps
       env = [
-        "XCURSOR_THEME,BreezeX-X11-${variant}"
-        "XCURSOR_SIZE,28"
+        {
+          _args = [
+            "XCURSOR_THEME"
+            "BreezeX-X11-${variant}"
+          ];
+        }
+        {
+          _args = [
+            "XCURSOR_SIZE"
+            "28"
+          ];
+        }
       ];
     };
   };

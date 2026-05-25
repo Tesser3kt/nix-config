@@ -1,8 +1,10 @@
 {
-  config,
-  pkgs,
+  lib,
+  mod,
   ...
-}: {
+}: let
+  mklua = lib.generators.mkLuaInline;
+in {
   wayland.windowManager.hyprland.settings = {
     # Workspace bindings
     bind = (
@@ -10,24 +12,38 @@
           i: let
             ws = i + 1;
           in [
-            "$mod, code:1${toString i}, workspace, ${toString ws}"
-            "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
+            {
+              _args = [
+                "${mod} + code:1${toString i}"
+                (mklua "hl.dsp.focus({ workspace = ${toString ws} })")
+                {bypass = true;}
+              ];
+            }
+            {
+              _args = [
+                "${mod} + SHIFT + code:1${toString i}"
+                (mklua "hl.dsp.window.move({ workspace = ${toString ws}, follow = true })")
+                {bypass = true;}
+              ];
+            }
           ]
         )
         8)
     );
 
     # Bind workspaces to monitors
-    workspace = [
-      "name:1, monitor:eDP-1, default:true"
-      "name:2, monitor:eDP-1"
-      "name:3, monitor:eDP-1"
-      "name:4, monitor:eDP-1"
-      "name:5, monitor:eDP-1"
-      "name:6, monitor:eDP-1"
-      "name:7, monitor:eDP-1"
-      "name:8, monitor:eDP-1"
-    ];
+    workspace_rule = (
+      builtins.genList (
+        i: let
+          ws = i + 1;
+        in {
+          workspace = "name:${toString ws}";
+          monitor = "eDP-1";
+          default = ws == 1;
+        }
+      )
+      8
+    );
   };
 
   programs.waybar.settings.main = {

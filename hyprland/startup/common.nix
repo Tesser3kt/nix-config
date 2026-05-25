@@ -1,10 +1,8 @@
-[
-  "sleep 1 &"
-  "waybar &"
-  "nm-applet --indicator &"
-  "swaync &"
-  "hypridle &"
-  "whatsapp-electron &"
-  # "vesktop --start-minimized &"
-  "element-desktop --hidden &"
-]
+{lib, ...}: let
+  mklua = lib.generators.mkLuaInline;
+in {
+  _args = [
+    "hyprland.start"
+    (mklua "function()\n  hl.exec_cmd(\"sleep \")\n  hl.exec_cmd(\"waybar\")\n  hl.exec_cmd(\"nm-applet --indicator\")\n  hl.exec_cmd(\"hypridle\")\n  hl.exec_cmd(\"whatsapp-electron\")\n  hl.exec_cmd(\"element-desktop --hidden\")\nend")
+  ];
+}

@@ -3,11 +3,7 @@
   pkgs,
   ...
 }: let
-  colors = {
-    foreground = "#bbc3d4";
-    background = "#242933";
-    button-hover = "#81a1c1";
-  };
+  colors = import ../catppuccin.nix;
 in {
   home.packages = with pkgs; [
     wlogout
@@ -52,12 +48,12 @@ in {
         font-family: CaskaydiaCove Nerd Font, sans-serif;
         font-size: 16pt;
         font-weight: 700;
-        color: ${colors.foreground};
+        color: ${colors.macchiato.text};
         background-color: rgba(24, 27, 32, 0.5);
       }
 
       button {
-        color: ${colors.foreground};
+        color: ${colors.macchiato.text};
         background-repeat: no-repeat;
         background-position: center;
         background-size: 20%;
@@ -79,8 +75,8 @@ in {
         background-size: 20%;
         box-shadow: 0 0 10px 3px rgba(0,0,0,.4);
         text-shadow: none;
-        background-color: ${colors.button-hover};
-        color: ${colors.background};
+        background-color: ${colors.macchiato.lavender};
+        color: ${colors.macchiato.base};
         transition: all 0.3s cubic-bezier(.55, 0.0, .28, 1.682), box-shadow 0.5s ease-in;
       }
 

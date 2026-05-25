@@ -9,7 +9,7 @@
     ./fonts
     ./systemd.nix
     ./shell
-    ./hyprland_lua
+    ./hyprland
     ./tools
     ./apps
     ./nvim

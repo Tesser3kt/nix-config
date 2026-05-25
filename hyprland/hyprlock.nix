@@ -2,7 +2,9 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  colors = import ../catppuccin.nix;
+in {
   programs.hyprlock = {
     enable = true;
     settings = {
@@ -23,9 +25,9 @@
         {
           monitor = "";
           text = "cmd[update:1000] echo \"<b><big> $(date +\"%H\") </big></b>\"";
-          color = "rgb(8FBCBB)";
+          color = "rgb(${colors.macchiato.sky})";
           font_size = 112;
-          font_family = "GeistMono Nerd Font 10";
+          font_family = "CaskaydiaCove Nerd Font";
           shadow_passes = 3;
           shadow_size = 4;
 
@@ -36,9 +38,9 @@
         {
           monitor = "";
           text = "cmd[update:1000] echo \"<b><big> $(date +\"%M\") </big></b>\"";
-          color = "rgb(8FBCBB)";
+          color = "rgb(${colors.macchiato.mauve})";
           font_size = 112;
-          font_family = "Geist Mono 10";
+          font_family = "CaskaydiaCove Nerd Font";
           shadow_passes = 3;
           shadow_size = 4;
 
@@ -49,9 +51,9 @@
         {
           monitor = "";
           text = "cmd[update:18000000] echo \"<b><big> \"$(date +'%A')\" </big></b>\"";
-          color = "rgb(E5E9F0)";
+          color = "rgb(${colors.macchiato.text})";
           font_size = 22;
-          font_family = "CaskaydiaCove Nerd Font 10";
+          font_family = "CaskaydiaCove Nerd Font";
 
           position = "0, 30";
           halign = "center";
@@ -60,9 +62,9 @@
         {
           monitor = "";
           text = "cmd[update:18000000] echo \"<b> \"$(date +'%d %b')\" </b>\"";
-          color = "rgb(E5E9F0)";
+          color = "rgb(${colors.macchiato.text})";
           font_size = 18;
-          font_family = "CaskaydiaCove Nerd Font 10";
+          font_family = "CaskaydiaCove Nerd Font";
 
           position = "0, 0";
           halign = "center";
@@ -80,9 +82,9 @@
           dots_center = true;
 
           rounding = 22;
-          outer_color = "rgb(BBC3D4)";
-          inner_color = "rgb(BBC3D4)";
-          font_color = "rgb(60728A)";
+          outer_color = "rgb(${colors.macchiato.lavender})";
+          inner_color = "rgb(${colors.macchiato.base})";
+          font_color = "rgb(${colors.macchiato.text})";
           fade_on_empty = true;
           placeholder_text = "<i>Password...</i>";
 
