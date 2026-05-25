@@ -18,7 +18,7 @@ in {
       }
 
       window#waybar {
-      	background: transparent;
+      	background-color: transparent;
       	border-radius: 1px;
       	color: whitesmoke;
       }
@@ -31,9 +31,9 @@ in {
       }
 
       window#waybar.empty #window {
-         padding: 0px;
-         border: 0px;
-         background-color: transparent;
+        padding: 0px;
+        border: 0px;
+      	background-color: transparent;
       }
 
       tooltip {
