@@ -13,7 +13,7 @@ in {
       background = [
         {
           monitor = "";
-          path = "$HOME/Pictures/wallpaper.png";
+          path = "$HOME/Pictures/wallpaper.jpg";
           blur_size = 4;
           blur_passes = 3;
           nose = 0.0117;
