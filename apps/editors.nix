@@ -24,6 +24,7 @@ in {
     # Note-taking
     rnote
     pympress
+    obsidian
 
     # Okular
     kdePackages.okular
