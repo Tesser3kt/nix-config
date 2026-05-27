@@ -6,7 +6,7 @@
   programs.neovim.initLua = ''
     -- General vimtex options
     vim.g.vimtex_compiler_latexmk_engines = {
-      ["_"] = "-lualatex",
+      ["_"] = "-pdf",
       ["pdflatex"] = "-pdf",
       ["lualatex"] = "-lualatex",
       ["xelatex"] = "-xelatex",
