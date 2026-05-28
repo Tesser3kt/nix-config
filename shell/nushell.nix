@@ -88,6 +88,7 @@ in {
       TERMINAL = "ghostty";
       XDG_CONFIG_HOME = "${config.home.homeDirectory}/.config";
       XDG_CACHE_HOME = "${config.home.homeDirectory}/.cache";
+      GTK_IM_MODULE = "simple";
 
       # LLDB linking
       # Set env variables so we can refer to them from the vim configuration
