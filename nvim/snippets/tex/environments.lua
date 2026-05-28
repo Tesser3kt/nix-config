@@ -71,80 +71,80 @@ end
 -- Matrix building function for dynamic matrix snippets
 local ls = require("luasnip")
 local sn = ls.snippet_node
-local t  = ls.text_node
-local i  = ls.insert_node
+local t = ls.text_node
+local i = ls.insert_node
 
 local function build_matrix(rows, cols, brackets)
-  local env = "matrix"
-  if brackets == "()" then
-    env = "pmatrix"
-  elseif brackets == "[]" then
-    env = "bmatrix"
-  end
+	local env = "matrix"
+	if brackets == "()" then
+		env = "pmatrix"
+	elseif brackets == "[]" then
+		env = "bmatrix"
+	end
 
-  local nodes = {}
-  local idx = 1
+	local nodes = {}
+	local idx = 1
 
-  table.insert(nodes, t({ "\\begin{" .. env .. "}", "" }))
+	table.insert(nodes, t({ "\\begin{" .. env .. "}", "" }))
 
-  for r = 1, rows do
-    for c = 1, cols do
-      table.insert(nodes, i(idx))
-      idx = idx + 1
-      if c ~= cols then
-        table.insert(nodes, t(" & "))
-      end
-    end
+	for r = 1, rows do
+		for c = 1, cols do
+			table.insert(nodes, i(idx))
+			idx = idx + 1
+			if c ~= cols then
+				table.insert(nodes, t(" & "))
+			end
+		end
 
-    if r ~= rows then
-      table.insert(nodes, t({ " \\\\", "" }))
-    else
-      table.insert(nodes, t({ "", "\\end{" .. env .. "}" }))
-      table.insert(nodes, i(0))
-    end
-  end
+		if r ~= rows then
+			table.insert(nodes, t({ " \\\\", "" }))
+		else
+			table.insert(nodes, t({ "", "\\end{" .. env .. "}" }))
+			table.insert(nodes, i(0))
+		end
+	end
 
-  return sn(nil, nodes)
+	return sn(nil, nodes)
 end
 
 local function build_diag_matrix(size, brackets)
-  local env = "matrix"
-  if brackets == "()" then
-    env = "pmatrix"
-  elseif brackets == "[]" then
-    env = "bmatrix"
-  end
+	local env = "matrix"
+	if brackets == "()" then
+		env = "pmatrix"
+	elseif brackets == "[]" then
+		env = "bmatrix"
+	end
 
-  local nodes = {}
-  local idx = 1
+	local nodes = {}
+	local idx = 1
 
-  table.insert(nodes, t({ "\\begin{" .. env .. "}", "" }))
+	table.insert(nodes, t({ "\\begin{" .. env .. "}", "" }))
 
-  for r = 1, size do
-    for c = 1, size do
-      if r == c then
-        table.insert(nodes, i(idx))
-        idx = idx + 1
-      end
+	for r = 1, size do
+		for c = 1, size do
+			if r == c then
+				table.insert(nodes, i(idx))
+				idx = idx + 1
+			end
 
-      if c ~= size then
-        if r ~= c then
-          table.insert(nodes, t("0 & "))
-        else
-          table.insert(nodes, t(" & "))
-        end
-      end
-    end
+			if c ~= size then
+				if r ~= c then
+					table.insert(nodes, t("0 & "))
+				else
+					table.insert(nodes, t(" & "))
+				end
+			end
+		end
 
-    if r ~= size then
-      table.insert(nodes, t({ "0 \\\\", "" }))
-    else
-      table.insert(nodes, t({ "", "\\end{" .. env .. "}" }))
-      table.insert(nodes, i(0))
-    end
-  end
+		if r ~= size then
+			table.insert(nodes, t({ "0 \\\\", "" }))
+		else
+			table.insert(nodes, t({ "", "\\end{" .. env .. "}" }))
+			table.insert(nodes, i(0))
+		end
+	end
 
-  return sn(nil, nodes)
+	return sn(nil, nodes)
 end
 
 -- Snippets
@@ -429,20 +429,244 @@ return {
 	),
 
 	-- Theorem environments
+	-- s(
+	-- 	{ trig = "thm", dscr = "Theorem environment" },
+	-- 	fmta(
+	-- 		[[
+	--        \begin{theorem}{<>}{<><>}
+	--         <>
+	--        \end{theorem}
+	--      ]],
+	-- 		{
+	-- 			i(1),
+	-- 			f(function(args)
+	-- 				return labelize(args[1][1])
+	-- 			end, { 1 }),
+	-- 			i(2),
+	-- 			i(0),
+	-- 		}
+	-- 	)
+	-- ),
+	-- s(
+	-- 	{ trig = "prop", dscr = "Proposition environment" },
+	-- 	fmta(
+	-- 		[[
+	--        \begin{proposition}{<>}{<><>}
+	--         <>
+	--        \end{proposition}
+	--      ]],
+	-- 		{
+	-- 			i(1),
+	-- 			f(function(args)
+	-- 				return labelize(args[1][1])
+	-- 			end, { 1 }),
+	-- 			i(2),
+	-- 			i(0),
+	-- 		}
+	-- 	)
+	-- ),
+	-- s(
+	-- 	{ trig = "lem", dscr = "Lemma environment" },
+	-- 	fmta(
+	-- 		[[
+	--        \begin{lemma}{<>}{<><>}
+	--         <>
+	--        \end{lemma}
+	--      ]],
+	-- 		{
+	-- 			i(1),
+	-- 			f(function(args)
+	-- 				return labelize(args[1][1])
+	-- 			end, { 1 }),
+	-- 			i(2),
+	-- 			i(0),
+	-- 		}
+	-- 	)
+	-- ),
+	-- s(
+	-- 	{ trig = "obs", dscr = "Observation environment" },
+	-- 	fmta(
+	-- 		[[
+	--        \begin{observation}{<>}{<><>}
+	--         <>
+	--        \end{observation}
+	--      ]],
+	-- 		{
+	-- 			i(1),
+	-- 			f(function(args)
+	-- 				return labelize(args[1][1])
+	-- 			end, { 1 }),
+	-- 			i(2),
+	-- 			i(0),
+	-- 		}
+	-- 	)
+	-- ),
+	-- s(
+	-- 	{ trig = "cor", dscr = "Corollary environment" },
+	-- 	fmta(
+	-- 		[[
+	--        \begin{corollary}{<>}{<><>}
+	--         <>
+	--        \end{corollary}
+	--      ]],
+	-- 		{
+	-- 			i(1),
+	-- 			f(function(args)
+	-- 				return labelize(args[1][1])
+	-- 			end, { 1 }),
+	-- 			i(2),
+	-- 			i(0),
+	-- 		}
+	-- 	)
+	-- ),
+	-- s(
+	-- 	{ trig = "prob", dscr = "Problem environment" },
+	-- 	fmta(
+	-- 		[[
+	--        \begin{problem}{<>}{<><>}
+	--         <>
+	--        \end{problem}
+	--      ]],
+	-- 		{
+	-- 			i(1),
+	-- 			f(function(args)
+	-- 				return labelize(args[1][1])
+	-- 			end, { 1 }),
+	-- 			i(2),
+	-- 			i(0),
+	-- 		}
+	-- 	)
+	-- ),
+	-- s(
+	-- 	{ trig = "def", dscr = "Definition environment" },
+	-- 	fmta(
+	-- 		[[
+	--        \begin{definition}{<>}{<><>}
+	--         <>
+	--        \end{definition}
+	--      ]],
+	-- 		{
+	-- 			i(1),
+	-- 			f(function(args)
+	-- 				return labelize(args[1][1])
+	-- 			end, { 1 }),
+	-- 			i(2),
+	-- 			i(0),
+	-- 		}
+	-- 	)
+	-- ),
+	-- s(
+	-- 	{ trig = "exam", dscr = "Example environment" },
+	-- 	fmta(
+	-- 		[[
+	--        \begin{example}{<>}{<><>}
+	--         <>
+	--        \end{example}
+	--      ]],
+	-- 		{
+	-- 			i(1),
+	-- 			f(function(args)
+	-- 				return labelize(args[1][1])
+	-- 			end, { 1 }),
+	-- 			i(2),
+	-- 			i(0),
+	-- 		}
+	-- 	)
+	-- ),
+	-- s(
+	-- 	{ trig = "rmrk", dscr = "Remark environment" },
+	-- 	fmta(
+	-- 		[[
+	--        \begin{remark}{<>}{<><>}
+	--         <>
+	--        \end{remark}
+	--      ]],
+	-- 		{
+	-- 			i(1),
+	-- 			f(function(args)
+	-- 				return labelize(args[1][1])
+	-- 			end, { 1 }),
+	-- 			i(2),
+	-- 			i(0),
+	-- 		}
+	-- 	)
+	-- ),
+	-- s(
+	-- 	{ trig = "warn", dscr = "Warning environment" },
+	-- 	fmta(
+	-- 		[[
+	--        \begin{warning}{<>}{<><>}
+	--         <>
+	--        \end{warning}
+	--      ]],
+	-- 		{
+	-- 			i(1),
+	-- 			f(function(args)
+	-- 				return labelize(args[1][1])
+	-- 			end, { 1 }),
+	-- 			i(2),
+	-- 			i(0),
+	-- 		}
+	-- 	)
+	-- ),
+	-- s(
+	-- 	{ trig = "exer", dscr = "Exercise environment" },
+	-- 	fmta(
+	-- 		[[
+	--        \begin{exercise}{<>}{<><>}
+	--         <>
+	--        \end{exercise}
+	--      ]],
+	-- 		{
+	-- 			i(1),
+	-- 			f(function(args)
+	-- 				return labelize(args[1][1])
+	-- 			end, { 1 }),
+	-- 			i(2),
+	-- 			i(0),
+	-- 		}
+	-- 	)
+	-- ),
+	-- s(
+	-- 	{ trig = "prob", dscr = "Problem environment" },
+	-- 	fmta(
+	-- 		[[
+	--        \begin{problem}{<>}{<><>}
+	--         <>
+	--        \end{problem}
+	--      ]],
+	-- 		{
+	-- 			i(1),
+	-- 			f(function(args)
+	-- 				return labelize(args[1][1])
+	-- 			end, { 1 }),
+	-- 			i(2),
+	-- 			i(0),
+	-- 		}
+	-- 	)
+	-- ),
+
 	s(
 		{ trig = "thm", dscr = "Theorem environment" },
 		fmta(
 			[[
-        \begin{theorem}{<>}{<><>}
-         <>
-        \end{theorem}
-      ]],
+	      \begin{theorem}<><><>
+	       \label{thm:<><>}
+	       <>
+	      \end{theorem}
+	    ]],
 			{
+				f(function(args)
+					return string.len(args[1][1]) > 0 and "[" or ""
+				end, { 1 }),
 				i(1),
+				f(function(args)
+					return string.len(args[1][1]) > 0 and "]" or ""
+				end, { 1 }),
+				i(2),
 				f(function(args)
 					return labelize(args[1][1])
 				end, { 1 }),
-				i(2),
 				i(0),
 			}
 		)
@@ -451,16 +675,48 @@ return {
 		{ trig = "prop", dscr = "Proposition environment" },
 		fmta(
 			[[
-        \begin{proposition}{<>}{<><>}
-         <>
-        \end{proposition}
-      ]],
+	      \begin{proposition}<><><>
+	       \label{prop:<><>}
+	       <>
+	      \end{proposition}
+	    ]],
 			{
+				f(function(args)
+					return string.len(args[1][1]) > 0 and "[" or ""
+				end, { 1 }),
 				i(1),
+				f(function(args)
+					return string.len(args[1][1]) > 0 and "]" or ""
+				end, { 1 }),
+				i(2),
 				f(function(args)
 					return labelize(args[1][1])
 				end, { 1 }),
+				i(0),
+			}
+		)
+	),
+	s(
+		{ trig = "claim", dscr = "Claim environment" },
+		fmta(
+			[[
+	      \begin{claim}<><><>
+	       \label{claim:<><>}
+	       <>
+	      \end{claim}
+	    ]],
+			{
+				f(function(args)
+					return string.len(args[1][1]) > 0 and "[" or ""
+				end, { 1 }),
+				i(1),
+				f(function(args)
+					return string.len(args[1][1]) > 0 and "]" or ""
+				end, { 1 }),
 				i(2),
+				f(function(args)
+					return labelize(args[1][1])
+				end, { 1 }),
 				i(0),
 			}
 		)
@@ -469,70 +725,23 @@ return {
 		{ trig = "lem", dscr = "Lemma environment" },
 		fmta(
 			[[
-        \begin{lemma}{<>}{<><>}
-         <>
-        \end{lemma}
-      ]],
+	      \begin{lemma}<><><>
+	       \label{lem:<><>}
+	       <>
+	      \end{lemma}
+	    ]],
 			{
+				f(function(args)
+					return string.len(args[1][1]) > 0 and "[" or ""
+				end, { 1 }),
 				i(1),
+				f(function(args)
+					return string.len(args[1][1]) > 0 and "]" or ""
+				end, { 1 }),
+				i(2),
 				f(function(args)
 					return labelize(args[1][1])
 				end, { 1 }),
-				i(2),
-				i(0),
-			}
-		)
-	),
-	s(
-		{ trig = "obs", dscr = "Observation environment" },
-		fmta(
-			[[
-        \begin{observation}{<>}{<><>}
-         <>
-        \end{observation}
-      ]],
-			{
-				i(1),
-				f(function(args)
-					return labelize(args[1][1])
-				end, { 1 }),
-				i(2),
-				i(0),
-			}
-		)
-	),
-	s(
-		{ trig = "cor", dscr = "Corollary environment" },
-		fmta(
-			[[
-        \begin{corollary}{<>}{<><>}
-         <>
-        \end{corollary}
-      ]],
-			{
-				i(1),
-				f(function(args)
-					return labelize(args[1][1])
-				end, { 1 }),
-				i(2),
-				i(0),
-			}
-		)
-	),
-	s(
-		{ trig = "prob", dscr = "Problem environment" },
-		fmta(
-			[[
-        \begin{problem}{<>}{<><>}
-         <>
-        \end{problem}
-      ]],
-			{
-				i(1),
-				f(function(args)
-					return labelize(args[1][1])
-				end, { 1 }),
-				i(2),
 				i(0),
 			}
 		)
@@ -541,88 +750,68 @@ return {
 		{ trig = "def", dscr = "Definition environment" },
 		fmta(
 			[[
-        \begin{definition}{<>}{<><>}
-         <>
-        \end{definition}
-      ]],
+	      \begin{definition}<><><>
+	       \label{def:<><>}
+	       <>
+	      \end{definition}
+	    ]],
 			{
+				f(function(args)
+					return string.len(args[1][1]) > 0 and "[" or ""
+				end, { 1 }),
 				i(1),
+				f(function(args)
+					return string.len(args[1][1]) > 0 and "]" or ""
+				end, { 1 }),
+				i(2),
 				f(function(args)
 					return labelize(args[1][1])
 				end, { 1 }),
-				i(2),
 				i(0),
 			}
 		)
 	),
 	s(
-		{ trig = "exam", dscr = "Example environment" },
+		{ trig = "cor", dscr = "Corollary environment" },
 		fmta(
 			[[
-        \begin{example}{<>}{<><>}
-         <>
-        \end{example}
-      ]],
+	      \begin{corollary}<><><>
+	       \label{cor:<><>}
+	       <>
+	      \end{corollary}
+	    ]],
 			{
+				f(function(args)
+					return string.len(args[1][1]) > 0 and "[" or ""
+				end, { 1 }),
 				i(1),
+				f(function(args)
+					return string.len(args[1][1]) > 0 and "]" or ""
+				end, { 1 }),
+				i(2),
 				f(function(args)
 					return labelize(args[1][1])
 				end, { 1 }),
-				i(2),
 				i(0),
 			}
 		)
 	),
 	s(
-		{ trig = "rmrk", dscr = "Remark environment" },
+		{ trig = "exer", dscr = "Exercise environment." },
 		fmta(
 			[[
-        \begin{remark}{<>}{<><>}
-         <>
-        \end{remark}
-      ]],
+	      \begin{exercise}<><><>
+	       <>
+	      \end{exercise}
+	    ]],
 			{
+				f(function(args)
+					return string.len(args[1][1]) > 0 and "[" or ""
+				end, { 1 }),
 				i(1),
 				f(function(args)
-					return labelize(args[1][1])
+					return string.len(args[1][1]) > 0 and "]" or ""
 				end, { 1 }),
-				i(2),
-				i(0),
-			}
-		)
-	),
-	s(
-		{ trig = "warn", dscr = "Warning environment" },
-		fmta(
-			[[
-        \begin{warning}{<>}{<><>}
-         <>
-        \end{warning}
-      ]],
-			{
-				i(1),
-				f(function(args)
-					return labelize(args[1][1])
-				end, { 1 }),
-				i(2),
-				i(0),
-			}
-		)
-	),
-	s(
-		{ trig = "exer", dscr = "Exercise environment" },
-		fmta(
-			[[
-        \begin{exercise}{<>}{<><>}
-         <>
-        \end{exercise}
-      ]],
-			{
-				i(1),
-				f(function(args)
-					return labelize(args[1][1])
-				end, { 1 }),
-				i(2),
 				i(0),
 			}
 		)
@@ -631,243 +820,106 @@ return {
 		{ trig = "prob", dscr = "Problem environment" },
 		fmta(
 			[[
-        \begin{problem}{<>}{<><>}
-         <>
-        \end{problem}
-      ]],
+	      \begin{problem}<><><>
+	       \label{prob:<><>}
+	       <>
+	      \end{problem}
+	    ]],
 			{
+				f(function(args)
+					return string.len(args[1][1]) > 0 and "[" or ""
+				end, { 1 }),
 				i(1),
+				f(function(args)
+					return string.len(args[1][1]) > 0 and "]" or ""
+				end, { 1 }),
+				i(2),
 				f(function(args)
 					return labelize(args[1][1])
 				end, { 1 }),
+				i(0),
+			}
+		)
+	),
+	s(
+		{ trig = "exam", dscr = "Example environment" },
+		fmta(
+			[[
+	      \begin{example}<><><>
+	       \label{exam:<><>}
+	       <>
+	      \end{example}
+	    ]],
+			{
+				f(function(args)
+					return string.len(args[1][1]) > 0 and "[" or ""
+				end, { 1 }),
+				i(1),
+				f(function(args)
+					return string.len(args[1][1]) > 0 and "]" or ""
+				end, { 1 }),
 				i(2),
+				f(function(args)
+					return labelize(args[1][1])
+				end, { 1 }),
 				i(0),
 			}
 		)
 	),
 
-	-- s(
-	--   {trig = "thm", dscr = "Theorem environment" },
-	--   fmta(
-	--     [[
-	--       \begin{theorem}<><><>
-	--        \label{thm:<><>}
-	--        <>
-	--       \end{theorem}
-	--     ]],
-	--     {
-	--       f(function(args) return string.len(args[1][1]) > 0 and "[" or "" end, {1}),
-	--       i(1),
-	--       f(function(args) return string.len(args[1][1]) > 0 and "]" or "" end, {1}),
-	--       i(2),
-	--       f(function(args) return labelize(args[1][1]) end, {1}),
-	--       i(0)
-	--     }
-	--   )
-	-- ),
-	-- s(
-	--   {trig = "prop", dscr = "Proposition environment" },
-	--   fmta(
-	--     [[
-	--       \begin{proposition}<><><>
-	--        \label{prop:<><>}
-	--        <>
-	--       \end{proposition}
-	--     ]],
-	--     {
-	--       f(function(args) return string.len(args[1][1]) > 0 and "[" or "" end, {1}),
-	--       i(1),
-	--       f(function(args) return string.len(args[1][1]) > 0 and "]" or "" end, {1}),
-	--       i(2),
-	--       f(function(args) return labelize(args[1][1]) end, {1}),
-	--       i(0)
-	--     }
-	--   )
-	-- ),
-	-- s(
-	--   { trig = "claim", dscr = "Claim environment" },
-	--   fmta(
-	--     [[
-	--       \begin{claim}<><><>
-	--        \label{claim:<><>}
-	--        <>
-	--       \end{claim}
-	--     ]],
-	--     {
-	--       f(function(args) return string.len(args[1][1]) > 0 and "[" or "" end, {1}),
-	--       i(1),
-	--       f(function(args) return string.len(args[1][1]) > 0 and "]" or "" end, {1}),
-	--       i(2),
-	--       f(function(args) return labelize(args[1][1]) end, {1}),
-	--       i(0)
-	--     }
-	--   )
-	-- ),
-	-- s(
-	--   {trig = "lem", dscr = "Lemma environment" },
-	--   fmta(
-	--     [[
-	--       \begin{lemma}<><><>
-	--        \label{lem:<><>}
-	--        <>
-	--       \end{lemma}
-	--     ]],
-	--     {
-	--       f(function(args) return string.len(args[1][1]) > 0 and "[" or "" end, {1}),
-	--       i(1),
-	--       f(function(args) return string.len(args[1][1]) > 0 and "]" or "" end, {1}),
-	--       i(2),
-	--       f(function(args) return labelize(args[1][1]) end, {1}),
-	--       i(0)
-	--     }
-	--   )
-	-- ),
-	-- s(
-	--   {trig = "def", dscr = "Definition environment" },
-	--   fmta(
-	--     [[
-	--       \begin{definition}<><><>
-	--        \label{def:<><>}
-	--        <>
-	--       \end{definition}
-	--     ]],
-	--     {
-	--       f(function(args) return string.len(args[1][1]) > 0 and "[" or "" end, {1}),
-	--       i(1),
-	--       f(function(args) return string.len(args[1][1]) > 0 and "]" or "" end, {1}),
-	--       i(2),
-	--       f(function(args) return labelize(args[1][1]) end, {1}),
-	--       i(0)
-	--     }
-	--   )
-	-- ),
-	-- s(
-	--   {trig = "cor", dscr = "Corollary environment" },
-	--   fmta(
-	--     [[
-	--       \begin{corollary}<><><>
-	--        \label{cor:<><>}
-	--        <>
-	--       \end{corollary}
-	--     ]],
-	--     {
-	--       f(function(args) return string.len(args[1][1]) > 0 and "[" or "" end, {1}),
-	--       i(1),
-	--       f(function(args) return string.len(args[1][1]) > 0 and "]" or "" end, {1}),
-	--       i(2),
-	--       f(function(args) return labelize(args[1][1]) end, {1}),
-	--       i(0)
-	--     }
-	--   )
-	-- ),
-	-- s(
-	--   {trig = "exer", dscr = "Exercise environment." },
-	--   fmta(
-	--     [[
-	--       \begin{exercise}<><><>
-	--        <>
-	--       \end{exercise}
-	--     ]],
-	--     {
-	--       f(function(args) return string.len(args[1][1]) > 0 and "[" or "" end, {1}),
-	--       i(1),
-	--       f(function(args) return string.len(args[1][1]) > 0 and "]" or "" end, {1}),
-	--       i(0)
-	--     }
-	--   )
-	-- ),
-	-- s(
-	--   {trig = "prob", dscr = "Problem environment" },
-	--   fmta(
-	--     [[
-	--       \begin{problem}<><><>
-	--        \label{prob:<><>}
-	--        <>
-	--       \end{problem}
-	--     ]],
-	--     {
-	--       f(function(args) return string.len(args[1][1]) > 0 and "[" or "" end, {1}),
-	--       i(1),
-	--       f(function(args) return string.len(args[1][1]) > 0 and "]" or "" end, {1}),
-	--       i(2),
-	--       f(function(args) return labelize(args[1][1]) end, {1}),
-	--       i(0)
-	--     }
-	--   )
-	-- ),
-	-- s(
-	--   {trig = "exam", dscr = "Example environment" },
-	--   fmta(
-	--     [[
-	--       \begin{example}<><><>
-	--        \label{exam:<><>}
-	--        <>
-	--       \end{example}
-	--     ]],
-	--     {
-	--       f(function(args) return string.len(args[1][1]) > 0 and "[" or "" end, {1}),
-	--       i(1),
-	--       f(function(args) return string.len(args[1][1]) > 0 and "]" or "" end, {1}),
-	--       i(2),
-	--       f(function(args) return labelize(args[1][1]) end, {1}),
-	--       i(0)
-	--     }
-	--   )
-	-- ),
-	--
-	-- -- Plain theorem environments
-	-- s(
-	--   {trig = "rmrk", dscr = "Remark environment" },
-	--   fmta(
-	--     [[
-	--       \begin{remark}
-	--        <>
-	--       \end{remark}
-	--     ]],
-	--     {
-	--       i(0)
-	--     }
-	--   )
-	-- ),
-	-- s(
-	--   {trig = "prf", dscr = "Proof environment" },
-	--   fmta(
-	--     [[
-	--       \begin{proof}
-	--        <>
-	--       \end{proof}
-	--     ]],
-	--     {
-	--       i(0)
-	--     }
-	--   )
-	-- ),
-	-- s(
-	--   {trig = "warn", dscr = "Warning environment" },
-	--   fmta(
-	--     [[
-	--       \begin{warning}
-	--        <>
-	--       \end{warning}
-	--     ]],
-	--     {
-	--       i(0)
-	--     }
-	--   )
-	-- ),
-	-- s(
-	--   {trig = "obs", dscr = "Observation environment" },
-	--   fmta(
-	--     [[
-	--       \begin{observation}
-	--        <>
-	--       \end{observation}
-	--     ]],
-	--     {
-	--       i(0)
-	--     }
-	--   )
-	-- ),
+	-- Plain theorem environments
+	s(
+		{ trig = "rmrk", dscr = "Remark environment" },
+		fmta(
+			[[
+	      \begin{remark}
+	       <>
+	      \end{remark}
+	    ]],
+			{
+				i(0),
+			}
+		)
+	),
+	s(
+		{ trig = "prf", dscr = "Proof environment" },
+		fmta(
+			[[
+	      \begin{proof}
+	       <>
+	      \end{proof}
+	    ]],
+			{
+				i(0),
+			}
+		)
+	),
+	s(
+		{ trig = "warn", dscr = "Warning environment" },
+		fmta(
+			[[
+	      \begin{warning}
+	       <>
+	      \end{warning}
+	    ]],
+			{
+				i(0),
+			}
+		)
+	),
+	s(
+		{ trig = "obs", dscr = "Observation environment" },
+		fmta(
+			[[
+	      \begin{observation}
+	       <>
+	      \end{observation}
+	    ]],
+			{
+				i(0),
+			}
+		)
+	),
 
 	-- Matrices
 	s(
@@ -910,126 +962,126 @@ return {
 		),
 		{ condition = line_begin }
 	),
-  s(
-    {
-      trig = "mat%s+(%d+)%s+(%d+)",
-      trigEngine = "pattern",
-      regTrig = true,
-      wordTrig = false,
-      dscr = "matrix rows x cols",
-      priority = 100
-    },
-    d(1, function(_, snip)
-      local rows = tonumber(snip.captures[1]) or 1
-      local cols = tonumber(snip.captures[2]) or 1
+	s(
+		{
+			trig = "mat%s+(%d+)%s+(%d+)",
+			trigEngine = "pattern",
+			regTrig = true,
+			wordTrig = false,
+			dscr = "matrix rows x cols",
+			priority = 100,
+		},
+		d(1, function(_, snip)
+			local rows = tonumber(snip.captures[1]) or 1
+			local cols = tonumber(snip.captures[2]) or 1
 
-      -- Failsafe for overgenerating
-      rows = math.max(1, math.min(rows, 20))
-      cols = math.max(1, math.min(cols, 20))
+			-- Failsafe for overgenerating
+			rows = math.max(1, math.min(rows, 20))
+			cols = math.max(1, math.min(cols, 20))
 
-      return build_matrix(rows, cols, "")
-    end),
+			return build_matrix(rows, cols, "")
+		end),
 		{ condition = line_begin }
-  ),
-  s(
-    {
-      trig = "pmat%s+(%d+)%s+(%d+)",
-      trigEngine = "pattern",
-      regTrig = true,
-      wordTrig = false,
-      dscr = "pmatrix rows x cols",
-      priority = 200
-    },
-    d(1, function(_, snip)
-      local rows = tonumber(snip.captures[1]) or 1
-      local cols = tonumber(snip.captures[2]) or 1
+	),
+	s(
+		{
+			trig = "pmat%s+(%d+)%s+(%d+)",
+			trigEngine = "pattern",
+			regTrig = true,
+			wordTrig = false,
+			dscr = "pmatrix rows x cols",
+			priority = 200,
+		},
+		d(1, function(_, snip)
+			local rows = tonumber(snip.captures[1]) or 1
+			local cols = tonumber(snip.captures[2]) or 1
 
-      -- Failsafe for overgenerating
-      rows = math.max(1, math.min(rows, 20))
-      cols = math.max(1, math.min(cols, 20))
+			-- Failsafe for overgenerating
+			rows = math.max(1, math.min(rows, 20))
+			cols = math.max(1, math.min(cols, 20))
 
-      return build_matrix(rows, cols, "()")
-    end),
+			return build_matrix(rows, cols, "()")
+		end),
 		{ condition = line_begin }
-  ),
-  s(
-    {
-      trig = "bmat%s+(%d+)%s+(%d+)",
-      trigEngine = "pattern",
-      regTrig = true,
-      wordTrig = false,
-      dscr = "bmatrix rows x cols",
-      priority = 200
-    },
-    d(1, function(_, snip)
-      local rows = tonumber(snip.captures[1]) or 1
-      local cols = tonumber(snip.captures[2]) or 1
+	),
+	s(
+		{
+			trig = "bmat%s+(%d+)%s+(%d+)",
+			trigEngine = "pattern",
+			regTrig = true,
+			wordTrig = false,
+			dscr = "bmatrix rows x cols",
+			priority = 200,
+		},
+		d(1, function(_, snip)
+			local rows = tonumber(snip.captures[1]) or 1
+			local cols = tonumber(snip.captures[2]) or 1
 
-      -- Failsafe for overgenerating
-      rows = math.max(1, math.min(rows, 20))
-      cols = math.max(1, math.min(cols, 20))
+			-- Failsafe for overgenerating
+			rows = math.max(1, math.min(rows, 20))
+			cols = math.max(1, math.min(cols, 20))
 
-      return build_matrix(rows, cols, "[]")
-    end),
+			return build_matrix(rows, cols, "[]")
+		end),
 		{ condition = line_begin }
-  ),
-  s(
-    {
-      trig = "diag%s+(%d+)",
-      trigEngine = "pattern",
-      regTrig = true,
-      wordTrig = false,
-      dscr = "diagonal matrix size x size",
-      priority = 100
-    },
-    d(1, function(_, snip)
-      local size = tonumber(snip.captures[1]) or 1
+	),
+	s(
+		{
+			trig = "diag%s+(%d+)",
+			trigEngine = "pattern",
+			regTrig = true,
+			wordTrig = false,
+			dscr = "diagonal matrix size x size",
+			priority = 100,
+		},
+		d(1, function(_, snip)
+			local size = tonumber(snip.captures[1]) or 1
 
-      -- Failsafe for overgenerating
-      size = math.max(1, math.min(size, 20))
+			-- Failsafe for overgenerating
+			size = math.max(1, math.min(size, 20))
 
-      return build_diag_matrix(size, "")
-    end),
+			return build_diag_matrix(size, "")
+		end),
 		{ condition = line_begin }
-  ),
-  s(
-    {
-      trig = "pdiag%s+(%d+)",
-      trigEngine = "pattern",
-      regTrig = true,
-      wordTrig = false,
-      dscr = "diagonal pmatrix size x size",
-      priority = 200
-    },
-    d(1, function(_, snip)
-      local size = tonumber(snip.captures[1]) or 1
+	),
+	s(
+		{
+			trig = "pdiag%s+(%d+)",
+			trigEngine = "pattern",
+			regTrig = true,
+			wordTrig = false,
+			dscr = "diagonal pmatrix size x size",
+			priority = 200,
+		},
+		d(1, function(_, snip)
+			local size = tonumber(snip.captures[1]) or 1
 
-      -- Failsafe for overgenerating
-      size = math.max(1, math.min(size, 20))
+			-- Failsafe for overgenerating
+			size = math.max(1, math.min(size, 20))
 
-      return build_diag_matrix(size, "()")
-    end),
+			return build_diag_matrix(size, "()")
+		end),
 		{ condition = line_begin }
-  ),
-  s(
-    {
-      trig = "bdiag%s+(%d+)",
-      trigEngine = "pattern",
-      regTrig = true,
-      wordTrig = false,
-      dscr = "diagonal bmatrix size x size",
-      priority = 200
-    },
-    d(1, function(_, snip)
-      local size = tonumber(snip.captures[1]) or 1
+	),
+	s(
+		{
+			trig = "bdiag%s+(%d+)",
+			trigEngine = "pattern",
+			regTrig = true,
+			wordTrig = false,
+			dscr = "diagonal bmatrix size x size",
+			priority = 200,
+		},
+		d(1, function(_, snip)
+			local size = tonumber(snip.captures[1]) or 1
 
-      -- Failsafe for overgenerating
-      size = math.max(1, math.min(size, 20))
+			-- Failsafe for overgenerating
+			size = math.max(1, math.min(size, 20))
 
-      return build_diag_matrix(size, "[]")
-    end),
+			return build_diag_matrix(size, "[]")
+		end),
 		{ condition = line_begin }
-  ),
+	),
 
 	-- Algorithms
 	s(
