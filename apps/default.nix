@@ -14,5 +14,6 @@
     ./office.nix
     ./emulation.nix
     ./ai.nix
+    ./remote-desktop.nix
   ];
 }
