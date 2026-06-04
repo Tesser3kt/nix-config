@@ -10,6 +10,6 @@
     mode = "1920x1200@60.00Hz";
     position = "auto";
     scale = 1;
-    mirror = "eDP-1";
+    # mirror = "eDP-1";
   }
 ]
