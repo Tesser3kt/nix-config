@@ -15,7 +15,7 @@
   files_ui = "thunar";
   calculator = "ghostty -e nu -c 'sage'";
   mail = "ghostty -e nu -c 'neomutt'";
-  ai = "zen --new-window 'gemini.google.com'";
+  ai = "ghostty -e nu -c 'claude'";
   chat = "element-desktop";
   drawing = "zen --new-window 'https://excalidraw.com'";
   single_border_active = mklua "{ colors = { \"rgba(C6A0F6D2)\", \"rgba(91D7E3D2)\" }, angle = 90 }";
