@@ -1,0 +1,13 @@
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -28,7 +28,7 @@
+ [dependencies.nu-plugin]
+-version = "0.112.0"
++version = "0.113.1"
+
+ [dependencies.nu-protocol]
+-version = "0.112.0"
++version = "0.113.1"
+ features = ["plugin"]
+
+ [dependencies.rodio]

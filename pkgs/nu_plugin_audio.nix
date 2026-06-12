@@ -7,7 +7,7 @@
 }:
 rustPlatform.buildRustPackage {
   pname = "nu_plugin_audio";
-  version = "0.2.7";
+  version = "0.2.7+0.113.1";
 
   src = fetchFromGitHub {
     owner = "SuaveIV";
@@ -16,7 +16,8 @@ rustPlatform.buildRustPackage {
     hash = "sha256-3JVvPzL+jSqB3HJpLkdnQI+bsZQZhWAK/iBWbLquUoQ=";
   };
 
-  cargoHash = "sha256-wKwaLE5mRuJ4PkuSv80+ATMi2bJh2FARzU+5o1KRM4k=";
+  patches = [./nu_plugin_audio_cargo.patch ./nu_plugin_audio_Cargo.lock.patch];
+  cargoLock = {lockFile = ./nu_plugin_audio_Cargo.lock;};
 
   nativeBuildInputs = [pkg-config];
   buildInputs = [alsa-lib];
