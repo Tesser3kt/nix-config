@@ -13,6 +13,7 @@
             lua = { "stylua" },
             css = { "prettierd" },
             python = { "isort", "black" },
+            html = { "djlint" },
             javascript = { "prettierd" },
             typescript = { "prettierd" },
             svelte = { "prettierd" },
@@ -44,5 +45,6 @@
     tex-fmt
     haskellPackages.ormolu
     rustfmt
+    djlint
   ];
 }
