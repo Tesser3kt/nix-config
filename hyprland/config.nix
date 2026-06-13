@@ -422,7 +422,7 @@ in {
         tile = true;
       }
       {
-        match.class = "(.*electron.*|thunar)";
+        match.class = "(.*electron.*|thunar|element)";
         float = true;
         size = ["(monitor_w*0.75)" "(monitor_h*0.75)"];
       }
