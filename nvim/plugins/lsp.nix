@@ -68,6 +68,24 @@
         local capabilities = vim.lsp.protocol.make_client_capabilities()
         capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
+        local function find_venv_python(start_path)
+          for _, name in ipairs({ '.venv', 'venv', '.virtualenv', 'env' }) do
+            local found = vim.fs.find(name, {
+              path = start_path,
+              upward = true,
+              type = 'directory',
+            })[1]
+            if found then
+              for _, py in ipairs({ 'python3', 'python' }) do
+                if vim.fn.executable(found .. '/bin/' .. py) == 1 then
+                  return found .. '/bin/' .. py
+                end
+              end
+            end
+          end
+          return nil
+        end
+
         -- Enable the following language servers
         --
         -- Add any additional override configuration in the following tables. Available keys are:
@@ -81,38 +99,16 @@
             filetypes = { 'bash', 'sh' }
           },
           ts_ls = {},
-          pylsp = {
-            on_attach = function(client, bufnr)
-              _G._lsp_on_attach(client, bufnr)
-              local venv = vim.fs.find('.venv', {
-                path = client.config.root_dir,
-                upward = false,
-                type = 'directory',
-              })[1]
-              if venv then
-                client.rpc.notify('workspace/didChangeConfiguration', {
-                  settings = vim.tbl_deep_extend('force', client.config.settings, {
-                    pylsp = { plugins = { jedi = { environment = venv .. '/bin/python3' } } },
-                  }),
-                })
-              end
-            end,
+          basedpyright = {
+            cmd = { 'basedpyright-langserver', '--stdio' },
+            filetypes = { 'python' },
+            on_attach = function(client, bufnr) _G._lsp_on_attach(client, bufnr) end,
             settings = {
-              pylsp = {
-                plugins = {
-                  pyflakes = { enabled = false },
-                  pycodestyle = { enabled = false },
-                  autopep8 = { enabled = false },
-                  yapf = { enabled = false },
-                  mccabe = { enabled = false },
-                  pylsp_mypy = { enabled = false },
-                  pylsp_black = { enabled = true },
-                  pylsp_isort = { enabled = true },
-                  jedi_completion = {
-                    enabled = true,
-                    eager = true,
-                    include_params = true,
-                  },
+              python = {
+                analysis = {
+                  autoSearchPaths = true,
+                  useLibraryCodeForTypes = true,
+                  diagnosticMode = 'openFilesOnly',
                 },
               },
             },
@@ -156,15 +152,38 @@
           hls = {}
         }
 
-        for server, cfg in pairs(servers) do
-          -- For each LSP server (cfg), we merge:
-          -- 1. A fresh empty table (to avoid mutating capabilities globally)
-          -- 2. Your capabilities object with Neovim + cmp features
-          -- 3. Any server-specific cfg.capabilities if defined in `servers`
-          cfg.capabilities = vim.tbl_deep_extend('force', {}, capabilities, cfg.capabilities or {})
+        -- basedpyright needs the venv resolved before the server starts,
+        -- so we defer its enable until the first Python file is opened and
+        -- bake pythonPath into the cfg statically.
+        vim.api.nvim_create_autocmd('FileType', {
+          pattern = 'python',
+          callback = function(args)
+            if #vim.lsp.get_clients({ name = 'basedpyright' }) > 0 then
+              return
+            end
+            local bufname = vim.api.nvim_buf_get_name(args.buf)
+            local start = bufname ~= "" and vim.fs.dirname(bufname) or vim.fn.getcwd()
+            local python_path = find_venv_python(start)
+            if python_path then
+              servers.basedpyright.settings.python.pythonPath = python_path
+            end
+            servers.basedpyright.capabilities = vim.tbl_deep_extend('force', {}, capabilities, servers.basedpyright.capabilities or {})
+            vim.lsp.config('basedpyright', servers.basedpyright)
+            vim.lsp.enable('basedpyright')
+          end,
+        })
 
-          vim.lsp.config(server, cfg)
-          vim.lsp.enable(server)
+        for server, cfg in pairs(servers) do
+          if server ~= 'basedpyright' then
+            -- For each LSP server (cfg), we merge:
+            -- 1. A fresh empty table (to avoid mutating capabilities globally)
+            -- 2. Your capabilities object with Neovim + cmp features
+            -- 3. Any server-specific cfg.capabilities if defined in `servers`
+            cfg.capabilities = vim.tbl_deep_extend('force', {}, capabilities, cfg.capabilities or {})
+
+            vim.lsp.config(server, cfg)
+            vim.lsp.enable(server)
+          end
         end;
       '';
     }
@@ -192,13 +211,7 @@
     docker-language-server
     emmet-language-server
     lua-language-server
-    (python3.withPackages (p:
-      with p; [
-        python-lsp-server
-        python-lsp-black
-        pyls-isort
-        pyls-flake8
-      ]))
+    basedpyright
     sqls
     tailwindcss-language-server
     texlab

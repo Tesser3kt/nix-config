@@ -5,6 +5,8 @@
 }: {
   home.packages = with pkgs; [
     uv
+    ruff
+    basedpyright
     (python3.withPackages (p:
       with p; [
         python-lsp-server

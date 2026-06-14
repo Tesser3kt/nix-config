@@ -12,7 +12,7 @@
           formatters_by_ft = {
             lua = { "stylua" },
             css = { "prettierd" },
-            python = { "isort", "black" },
+            python = { "ruff_fix", "ruff_format" },
             html = { "djlint" },
             javascript = { "prettierd" },
             typescript = { "prettierd" },
@@ -38,8 +38,7 @@
       '';
     }
     stylua
-    python3Packages.isort
-    python3Packages.black
+    ruff
     prettierd
     alejandra
     tex-fmt
