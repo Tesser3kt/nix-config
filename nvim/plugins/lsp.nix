@@ -81,38 +81,83 @@
             filetypes = { 'bash', 'sh' }
           },
           ts_ls = {},
-          pylsp = {
+          ruff = {
+            filetypes = { 'python' },
+            init_options = {
+              settings = {
+                -- Ruff handles linting + import sorting + formatting; turn
+                -- off anything that would duplicate work.
+                -- https://docs.astral.sh/ruff/editors/
+              },
+            },
+            on_attach = _G._lsp_on_attach,
+          },
+          basedpyright = {
+            filetypes = { 'python' },
             on_attach = function(client, bufnr)
               _G._lsp_on_attach(client, bufnr)
-              local venv = vim.fs.find('.venv', {
-                path = client.config.root_dir,
-                upward = false,
-                type = 'directory',
-              })[1]
+
+              -- Locate a venv inside the project root. Prefer .venv, then
+              -- venv, then .env (poetry-style, conda-style, etc.).
+              local root = client.config.root_dir
+              local venv =
+                vim.fs.find({ '.venv', 'venv', '.env' }, {
+                  path = root,
+                  upward = false,
+                  type = 'directory',
+                })[1]
+
+              local python_path
               if venv then
-                client.rpc.notify('workspace/didChangeConfiguration', {
-                  settings = vim.tbl_deep_extend('force', client.config.settings, {
-                    pylsp = { plugins = { jedi = { environment = venv .. '/bin/python3' } } },
-                  }),
-                })
+                local candidates = { 'bin/python3', 'bin/python' }
+                for _, rel in ipairs(candidates) do
+                  local full = venv .. '/' .. rel
+                  if vim.uv.fs_stat(full) then
+                    python_path = full
+                    break
+                  end
+                end
               end
+
+              if not python_path or python_path == "" then
+                -- Fall back to the first `python3`/`python` on $PATH.
+                local p3 = vim.fn.exepath('python3')
+                if p3 ~= "" then
+                  python_path = p3
+                end
+              end
+              if not python_path or python_path == "" then
+                local p = vim.fn.exepath('python')
+                if p ~= "" then
+                  python_path = p
+                end
+              end
+
+              if not python_path or python_path == "" then
+                return
+              end
+
+              -- basedpyright reads `python.pythonPath` from settings on
+              -- `workspace/didChangeConfiguration`, so updating it after
+              -- attach is the supported way to switch interpreters.
+              -- See lsp/basedpyright.lua in nvim-lspconfig.
+              local existing = client.config.settings or {}
+              client.config.settings = vim.tbl_deep_extend('force', existing, {
+                basedpyright = {
+                  python = {
+                    pythonPath = python_path,
+                  },
+                },
+              })
+              client.notify('workspace/didChangeConfiguration', { settings = client.config.settings })
             end,
             settings = {
-              pylsp = {
-                plugins = {
-                  pyflakes = { enabled = false },
-                  pycodestyle = { enabled = false },
-                  autopep8 = { enabled = false },
-                  yapf = { enabled = false },
-                  mccabe = { enabled = false },
-                  pylsp_mypy = { enabled = false },
-                  pylsp_black = { enabled = true },
-                  pylsp_isort = { enabled = true },
-                  jedi_completion = {
-                    enabled = true,
-                    eager = true,
-                    include_params = true,
-                  },
+              basedpyright = {
+                analysis = {
+                  autoSearchPaths = true,
+                  useLibraryCodeForTypes = true,
+                  diagnosticMode = 'openFilesOnly',
+                  typeCheckingMode = 'standard',
                 },
               },
             },
@@ -192,13 +237,6 @@
     docker-language-server
     emmet-language-server
     lua-language-server
-    (python3.withPackages (p:
-      with p; [
-        python-lsp-server
-        python-lsp-black
-        pyls-isort
-        pyls-flake8
-      ]))
     sqls
     tailwindcss-language-server
     texlab
@@ -209,5 +247,7 @@
     haskell-language-server
     svelte-language-server
     yaml-language-server
+    ruff
+    basedpyright
   ];
 }
