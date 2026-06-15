@@ -109,6 +109,7 @@
                   autoSearchPaths = true,
                   useLibraryCodeForTypes = true,
                   diagnosticMode = 'openFilesOnly',
+                  typeCheckingMode = 'standard',
                 },
               },
             },
@@ -152,9 +153,6 @@
           hls = {}
         }
 
-        -- basedpyright needs the venv resolved before the server starts,
-        -- so we defer its enable until the first Python file is opened and
-        -- bake pythonPath into the cfg statically.
         vim.api.nvim_create_autocmd('FileType', {
           pattern = 'python',
           callback = function(args)
