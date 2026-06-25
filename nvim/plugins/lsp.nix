@@ -115,7 +115,9 @@
             },
           },
           html = { filetypes = { 'html', 'twig', 'hbs' } },
-          cssls = {},
+          cssls = {
+            cmd = { 'vscode-css-language-server', '--stdio' },
+          },
           tailwindcss = {},
           dockerls = {},
           sqls = {},
