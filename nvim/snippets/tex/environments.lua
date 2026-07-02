@@ -882,6 +882,19 @@ return {
 		)
 	),
 	s(
+		{ trig = "par", dscr = "Parable environment" },
+		fmta(
+			[[
+	      \begin{parable}
+	       <>
+	      \end{parable}
+	    ]],
+			{
+				i(0),
+			}
+		)
+	),
+	s(
 		{ trig = "prf", dscr = "Proof environment" },
 		fmta(
 			[[
