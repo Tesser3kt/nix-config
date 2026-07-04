@@ -236,6 +236,8 @@
     dmg2img
     bluez
     bluez-tools
+    wineWow64Packages.staging
+    winetricks
   ];
 
   # Dynamic linking
