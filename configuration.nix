@@ -234,6 +234,8 @@
     cifs-utils
     openssl
     dmg2img
+    bluez
+    bluez-tools
   ];
 
   # Dynamic linking
