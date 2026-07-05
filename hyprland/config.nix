@@ -10,6 +10,7 @@
   mod = "SUPER";
   mklua = lib.generators.mkLuaInline;
   terminal = "ghostty";
+  backup_terminal = "alacritty";
   browser = "zen";
   files = "ghostty -e nu -c 'yazi'";
   files_ui = "thunar";
@@ -89,6 +90,12 @@ in {
           _args = [
             "${mod} + Return"
             (mklua "hl.dsp.exec_cmd(\"${terminal}\")")
+          ];
+        }
+        {
+          _args = [
+            "${mod} + SHIFT + Return"
+            (mklua "hl.dsp.exec_cmd(\"${backup_terminal}\")")
           ];
         }
         {
