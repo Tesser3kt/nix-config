@@ -7,5 +7,6 @@
     docker-language-server
     docker-buildx
     yaml-language-server
+    tombi
   ];
 }

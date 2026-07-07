@@ -25,6 +25,7 @@
             cpp = { "clang-format" },
             haskell = { "ormolu" },
             rust = { "rustfmt" },
+            toml = { "tombi" }
           },
           format_on_save = {
             timeout_ms = 500,
@@ -45,5 +46,6 @@
     rustfmt
     djlint
     ruff
+    tombi
   ];
 }
