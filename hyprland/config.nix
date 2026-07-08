@@ -18,7 +18,7 @@
   mail = "ghostty -e nu -c 'neomutt'";
   ai = "ghostty -e nu -c 'claude'";
   chat = "element-desktop";
-  drawing = "zen --new-window 'https://excalidraw.com'";
+  drawing = "zen --blank-window 'https://excalidraw.com'";
   single_border_active = mklua "{ colors = { \"rgba(C6A0F6D2)\", \"rgba(91D7E3D2)\" }, angle = 90 }";
   single_border_inactive = "rgba(24273A96)";
   group_border_active = "rgba(C6A0F6D2)";
