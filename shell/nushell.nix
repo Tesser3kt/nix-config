@@ -94,9 +94,6 @@ in {
       # Set env variables so we can refer to them from the vim configuration
       CODELLDB_PATH = "${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb/adapter/codelldb";
       LIBLLDB_PATH = "${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb/lldb/lib/liblldb.so";
-
-      # Claude config
-      ANTHROPIC_BASE_URL = "https://api.minimax.io/anthropic";
     };
     extraConfig = ''
       # Git functions
@@ -163,7 +160,7 @@ in {
       }
 
       # Read anthropic API key from env file.
-      load-env (open ${config.home.homeDirectory}/.anthropic-api-key.nuon)
+      load-env (open ${config.home.homeDirectory}/.anthropic-config.nuon)
     '';
   };
   programs.carapace = {
