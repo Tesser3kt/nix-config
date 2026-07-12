@@ -39,6 +39,9 @@
         icalendar
         pytz
         tzlocal
+
+        # jupyter
+        jupyter
       ]))
   ];
 }
