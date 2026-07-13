@@ -10,7 +10,7 @@
       window-padding-balance = "true";
       window-vsync = "true";
       copy-on-select = "true";
-      mouse-scroll-multiplier = "2";
+      mouse-scroll-multiplier = "precision:0.1,discrete:3";
     };
   };
 }
