@@ -16,6 +16,8 @@
             html = { "djlint" },
             javascript = { "prettierd" },
             typescript = { "prettierd" },
+            javascriptreact = { "prettierd" },
+            typescriptreact = { "prettierd" },
             svelte = { "prettierd" },
             nix = { "alejandra" },
             tex = { "tex-fmt" },
