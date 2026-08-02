@@ -26,7 +26,7 @@
   drop_shadow = "rgba(242933A6)";
   output = {
     "pc" = import ./output/pc.nix;
-    "laptop" = import ./output/laptop.nix;
+    "laptop" = import ./output/laptop-2.nix;
     "nvidia" = import ./output/nvidia.nix;
   };
   startup = {
@@ -42,7 +42,7 @@
   };
   workspaceSettings = {
     "pc" = [(import ./workspaces/pc.nix {inherit lib mod;})];
-    "laptop" = [(import ./workspaces/laptop.nix {inherit lib mod;})];
+    "laptop" = [(import ./workspaces/laptop-2.nix {inherit lib mod;})];
     "nvidia" = [(import ./workspaces/nvidia.nix {inherit lib mod;})];
   };
 in {
