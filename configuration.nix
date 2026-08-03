@@ -102,6 +102,9 @@
   hardware.graphics = {
     enable = true;
   };
+  hardware.opengl = {
+    enable = true;
+  };
 
   # Enable bluetooth support.
   hardware.bluetooth = {
