@@ -21,6 +21,8 @@
     "default_hugepagesz=1G"
     "hugepagesz=1G"
     "hugepages=8"
+    "i915.force_probe=!7d55"
+    "xe.force_probe=7d55"
   ];
   boot.extraModprobeConfig = ''
     options kvm ignore_msrs=1

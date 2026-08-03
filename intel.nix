@@ -10,6 +10,8 @@
       intel-media-driver
       # QSV
       vpl-gpu-rt
+
+      intel-compute-runtime
     ];
   };
   environment.sessionVariables = {
