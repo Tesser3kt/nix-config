@@ -7,7 +7,7 @@
 }:
 rustPlatform.buildRustPackage {
   pname = "nu_plugin_audio";
-  version = "0.2.7+0.113.1";
+  version = "0.2.7+0.114.1";
 
   src = fetchFromGitHub {
     owner = "SuaveIV";

@@ -5,7 +5,7 @@
 }:
 rustPlatform.buildRustPackage {
   pname = "nu_plugin_compress";
-  version = "0.2.10+0.113.1";
+  version = "0.2.10+0.114.1";
 
   src = fetchFromGitHub {
     owner = "yybit";

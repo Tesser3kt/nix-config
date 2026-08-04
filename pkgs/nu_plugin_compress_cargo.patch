@@ -5,6 +5,6 @@
  flate2 = "1.1.5"
 -nu-plugin = "0.112.1"
 -nu-protocol = { version = "0.112.1", features = ["plugin"] }
-+nu-plugin = "0.113.1"
-+nu-protocol = { version = "0.113.1", features = ["plugin"] }
++nu-plugin = "0.114.1"
++nu-protocol = { version = "0.114.1", features = ["plugin"] }
  xz2 = "0.1.7"
