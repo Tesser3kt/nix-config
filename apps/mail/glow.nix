@@ -13,5 +13,8 @@
     width: 80
   '';
 
-  xdg.configFile."glow/catppuccin-mocha.json".source = ./glow/catppuccin-mocha.json;
+  xdg.configFile."glow/catppuccin-mocha.json" = {
+    source = ./glow/catppuccin-mocha.json;
+    force = true;
+  };
 }
