@@ -335,11 +335,14 @@
   };
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [53317];
-  networking.firewall.allowedUDPPorts = [53317];
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [51820 53317];
+    allowedUDPPorts = [51820 53317];
 
-  # Allow wireguard through firewall
-  networking.firewall.checkReversePath = "loose";
+    # Allow wireguard through firewall
+    checkReversePath = "loose";
+  };
 
   # Enable Steam
   programs.steam = {
