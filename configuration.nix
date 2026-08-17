@@ -344,6 +344,11 @@
     checkReversePath = "loose";
   };
 
+  # Enable systemd-resolved
+  services.resolved = {
+    enable = true;
+  };
+
   # Enable Steam
   programs.steam = {
     enable = true;
