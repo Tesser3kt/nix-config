@@ -15,5 +15,6 @@
     ./emulation.nix
     ./ai.nix
     ./remote-desktop.nix
+    ./design.nix
   ];
 }
