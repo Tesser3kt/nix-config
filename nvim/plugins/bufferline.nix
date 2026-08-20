@@ -51,7 +51,7 @@
             custom_filter = function(buf_number, buf_numbers)
                 -- filter out by buffer name
                 local buf_name = vim.fn.bufname(buf_number)
-                return not buf_name:match("term://")
+                return not (buf_name:match("term://") or buf_name:match("No Name"))
             end,
             offsets = {
                 {
