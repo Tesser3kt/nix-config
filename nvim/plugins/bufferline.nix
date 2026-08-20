@@ -51,7 +51,8 @@
             custom_filter = function(buf_number, buf_numbers)
                 -- filter out by buffer name
                 local buf_name = vim.fn.bufname(buf_number)
-                return not (buf_name:match("term://") or buf_name:match("No Name"))
+                -- hide terminal buffers and unnamed ("[No Name]") buffers
+                return not (buf_name:match("term://") or buf_name == "" or buf_name == "[No Name]")
             end,
             offsets = {
                 {
