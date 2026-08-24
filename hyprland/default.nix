@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  lib,
   deviceConfig,
   graphics,
   ...
@@ -10,7 +9,6 @@
     "nvidia" = [(import ./nvidia-envs.nix {inherit config pkgs;})];
   };
   idleConfig = {
-    "raider" = [(import ./hypridle/raider.nix {inherit config pkgs;})];
     "laptop" = [(import ./hypridle/laptop.nix {inherit config pkgs;})];
     "pc" = [(import ./hypridle/pc.nix {inherit config pkgs;})];
     "nvidia" = [(import ./hypridle/nvidia.nix {inherit config pkgs;})];
@@ -21,6 +19,7 @@ in {
       ./config.nix
       ./hyprpaper.nix
       ./hyprlock.nix
+      ./hyprshot.nix
       ./scripts
     ]
     ++ (envVariables.${graphics} or [])
