@@ -9,7 +9,6 @@
   hostname,
   openrgbEnabled,
   coolercontrolEnabled,
-  corsairEnabled,
   ...
 }: {
   # Use the systemd-boot EFI boot loader.
@@ -147,6 +146,11 @@
   };
   # Enable password-less sudo
   security.sudo.wheelNeedsPassword = false;
+
+  # Add ProtonMail SSL certificates.
+  security.pki.certificateFiles = [
+    ./apps/mail/protonmail-cert.pem
+  ];
 
   # Enable browsers.
   programs.firefox = {

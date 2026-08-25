@@ -6,6 +6,7 @@
 }: {
   imports = [
     ./glow.nix
+    ./aerc.nix
   ];
 
   home.packages = with pkgs;
