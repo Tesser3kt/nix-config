@@ -31,6 +31,9 @@ in {
 
     # Zotero
     zotero
+
+    # Zen Notes
+    zennotes-desktop
   ];
 
   # Zathura configuration
