@@ -13,8 +13,7 @@
     };
     extraAccounts = {
       Personal = {
-        source = "imap://djklepy%40pm.me@127.0.0.1:1143";
-        source-cred-cmd = "pass email/djklepy@pm.me";
+        source = "maildir://~/.mail/personal";
         outgoing = "smtp://djklepy%40pm.me@127.0.0.1:1025";
         outgoing-cred-cmd = "pass email/djklepy@pm.me";
         default = "Inbox";

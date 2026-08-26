@@ -7,6 +7,7 @@
   imports = [
     ./glow.nix
     ./aerc.nix
+    ./mbsync.nix
   ];
 
   home.packages = with pkgs;
