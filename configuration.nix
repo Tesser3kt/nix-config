@@ -86,7 +86,6 @@
     enable = true;
     drivers = with pkgs; [
       hplipWithPlugin
-      cups-kyodialog
     ];
   };
 
@@ -166,11 +165,6 @@
   # You can use https://search.nixos.org/ to find more packages (and options).
   # Allow unfree packages.
   nixpkgs.config.allowUnfree = true;
-
-  # Allow Python PyPDF
-  nixpkgs.config.permittedInsecurePackages = [
-    "python3.14-pypdf3-1.0.6"
-  ];
 
   # Enable cachix
   nix.settings = {
