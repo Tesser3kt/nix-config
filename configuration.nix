@@ -86,6 +86,7 @@
     enable = true;
     drivers = with pkgs; [
       hplipWithPlugin
+      cups-kyodialog
     ];
   };
 
