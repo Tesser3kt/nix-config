@@ -1,10 +1,14 @@
+diff --git a/Cargo.toml b/Cargo.toml
+index 607dae6..6cebca1 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
-@@ -15,5 +15,5 @@
-
+@@ -14,7 +14,7 @@ keywords = ["nu", "plugin", "compression", "gzip", "zstd"]
+ [dependencies]
+ bzip2 = "0.6.1"
  flate2 = "1.1.5"
 -nu-plugin = "0.112.1"
 -nu-protocol = { version = "0.112.1", features = ["plugin"] }
-+nu-plugin = "0.114.1"
-+nu-protocol = { version = "0.114.1", features = ["plugin"] }
++nu-plugin = "0.115.1"
++nu-protocol = { version = "0.115.1", features = ["plugin"] }
  xz2 = "0.1.7"
+ zstd = "0.13.3"

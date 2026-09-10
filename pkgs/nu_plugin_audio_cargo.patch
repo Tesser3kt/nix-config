@@ -1,13 +1,17 @@
+diff --git a/Cargo.toml b/Cargo.toml
+index 601b382..e691de8 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
-@@ -28,7 +28,7 @@
+@@ -27,10 +27,10 @@ log = "0.4"
+ version = "0.29"
+ 
  [dependencies.nu-plugin]
 -version = "0.112.0"
-+version = "0.114.1"
-
++version = "0.115.1"
+ 
  [dependencies.nu-protocol]
 -version = "0.112.0"
-+version = "0.114.1"
++version = "0.115.1"
  features = ["plugin"]
-
+ 
  [dependencies.rodio]
