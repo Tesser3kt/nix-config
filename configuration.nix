@@ -112,7 +112,9 @@
   # Enable Logitech device support (for Solaar)
   hardware.logitech.wireless = {
     enable = true;
-    enableGraphical = true;
+  };
+  programs.solaar = {
+    enable = true;
   };
 
   # Enable i2c support

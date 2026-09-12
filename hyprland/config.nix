@@ -546,7 +546,6 @@ in {
       # Layout settings
       dwindle = {
         preserve_split = true;
-        special_scale_factor = 0.8;
       };
       master = {
         new_on_top = true;
