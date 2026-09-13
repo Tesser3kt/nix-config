@@ -363,6 +363,11 @@
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
   };
 
+  # Enable Tailscale
+  services.tailscale = {
+    enable = true;
+  };
+
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
