@@ -9,7 +9,6 @@
     ms-vscode.cpptools
     ms-azuretools.vscode-containers
     dbaeumer.vscode-eslint
-    github.copilot-chat
     ms-python.isort
     ms-toolsai.jupyter
     ms-toolsai.jupyter-keymap
