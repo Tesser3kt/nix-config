@@ -37,7 +37,7 @@ in {
         i: let
           ws = i + 1;
         in {
-          workspace = "name:${toString ws}";
+          workspace = toString ws;
           monitor = "eDP-1";
           default = ws == 1;
         }

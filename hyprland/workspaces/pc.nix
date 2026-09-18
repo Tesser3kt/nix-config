@@ -62,7 +62,7 @@ in {
           i: let
             ws = i + 1;
           in {
-            workspace = "name:${toString ws}";
+            workspace = toString ws;
             monitor = "DP-2";
             default = ws == 1;
           }
@@ -74,7 +74,7 @@ in {
           i: let
             ws = i + 6;
           in {
-            workspace = "name:${toString ws}";
+            workspace = toString ws;
             monitor = "DP-1";
             default = ws == 6;
           }
