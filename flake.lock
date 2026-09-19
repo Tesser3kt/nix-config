@@ -37,6 +37,22 @@
         "type": "github"
       }
     },
+    "aegis": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1789533012,
+        "narHash": "sha256-w//JnqdKAnFvhm20gJV/TX8lLwsfokNI6oycC/naVOI=",
+        "owner": "GanyuanRan",
+        "repo": "Aegis",
+        "rev": "d60671f4106c4b354193c5c9e17f74b8f863c7b8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "GanyuanRan",
+        "repo": "Aegis",
+        "type": "github"
+      }
+    },
     "aquamarine": {
       "inputs": {
         "hyprutils": [
@@ -690,6 +706,7 @@
       "inputs": {
         "a-team": "a-team",
         "additional-fonts": "additional-fonts",
+        "aegis": "aegis",
         "bg-nvim": "bg-nvim",
         "claude-code": "claude-code",
         "home-manager": "home-manager",

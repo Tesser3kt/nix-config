@@ -40,6 +40,10 @@
       url = "github:RBraga01/a-team";
       flake = false;
     };
+    aegis = {
+      url = "github:GanyuanRan/Aegis";
+      flake = false;
+    };
   };
   outputs = inputs @ {
     self,

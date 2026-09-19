@@ -59,6 +59,12 @@
       echo "Next: edit $target/INIT.md"
     '';
   };
+
+  # Aegis plugin.
+  aegisPlugin = pkgs.runCommand "aegis" {} ''
+    mkdir -p "$out"
+    cp -r ${inputs.aegis}/. "$out/"
+  '';
 in {
   # Enable writable .codex/config.toml.
   home.file.".codex/config.toml".force = true;
@@ -82,6 +88,14 @@ in {
     aTeamInit
   ];
 
+  # Prepares Aegis config.
+  xdg.configFile."aegis/config.toml".text = ''
+    activation_mode = "auto"
+    tdd_mode = "off"
+    method_pack_root = "${aegisPlugin}"
+    workspace_helper = "${aegisPlugin}/scripts/aegis-workspace.py"
+  '';
+
   programs.codex = {
     enable = true;
     enableMcpIntegration = true;
@@ -90,10 +104,15 @@ in {
 
       approval_policy = "on-request";
       sandbox_mode = "workspace-write";
+
+      features = {
+        multi_agent = true;
+      };
     };
 
     plugins = [
-      aTeamPlugin
+      # aTeamPlugin
+      aegisPlugin
     ];
 
     context = ''
