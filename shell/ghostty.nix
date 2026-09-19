@@ -11,9 +11,6 @@
       window-vsync = "true";
       copy-on-select = "true";
       mouse-scroll-multiplier = "precision:0.1,discrete:3";
-      keybind = [
-        "global:ctrl+grave_accent=toggle_quick_terminal"
-      ];
     };
   };
 }
