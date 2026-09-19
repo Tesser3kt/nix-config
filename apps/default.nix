@@ -16,5 +16,6 @@
     ./ai.nix
     ./remote-desktop.nix
     ./design.nix
+    ./mcp.nix
   ];
 }
