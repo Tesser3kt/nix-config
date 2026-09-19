@@ -1,8 +1,54 @@
 {
   config,
   pkgs,
+  inputs,
   ...
-}: {
+}: let
+  aTeamPlugin = pkgs.runCommand "a-team" {} ''
+    mkdir -p "$out"
+    cp -r ${inputs.a-team}/. "$out/"
+  '';
+in {
+  programs.codex = {
+    enable = true;
+    enableMcpIntegration = true;
+    settings = {
+      model = "gpt-5.6";
+
+      approval_policy = "on-request";
+      sandbox_mode = "workspace-write";
+    };
+
+    plugins = [
+      aTeamPlugin
+    ];
+
+    context = ''
+      # Global Codex instructions
+
+      - Prefer concise explanations.
+      - Do not modify unrelated files.
+      - Run relevant tests after making changes.
+      - When working with Nix, prefer declarative configuration.
+    '';
+
+    profiles = {
+      deep = {
+        model = "gpt-5.6";
+        model_reasoning_effort = "high";
+        approval_policy = "on-request";
+        sandbox_mode = "workspace-write";
+      };
+    };
+
+    rules = {
+      default = ''
+        prefix_rule(pattern = ["nix", "build"], decision = "allow")
+        prefix_rule(pattern = ["nix", "flake", "check"], decision = "allow")
+      '';
+    };
+  };
+
   programs.claude-code = {
     enable = true;
     lspServers = {

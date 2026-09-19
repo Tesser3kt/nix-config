@@ -36,6 +36,10 @@
       url = "github:typicode/bg.nvim";
       flake = false;
     };
+    a-team = {
+      url = "github:RBraga01/a-team";
+      flake = false;
+    };
   };
   outputs = inputs @ {
     self,
