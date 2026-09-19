@@ -11,6 +11,10 @@
       window-vsync = "true";
       copy-on-select = "true";
       mouse-scroll-multiplier = "precision:0.1,discrete:3";
+      keybind = [
+        "ctrl+shift+e=new_split:down"
+        "chain=resize_split:down,400"
+      ];
     };
   };
 }
