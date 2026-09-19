@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "a-team": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1786313590,
+        "narHash": "sha256-TXfVa5ZSIB8ID4nZQ3OLYo60UBRm/UIeD5kp/Hej5ds=",
+        "owner": "RBraga01",
+        "repo": "a-team",
+        "rev": "efd76d7d577d746b0f49aa1cbb07b1c0d224f99e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "RBraga01",
+        "repo": "a-team",
+        "type": "github"
+      }
+    },
     "additional-fonts": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -672,6 +688,7 @@
     },
     "root": {
       "inputs": {
+        "a-team": "a-team",
         "additional-fonts": "additional-fonts",
         "bg-nvim": "bg-nvim",
         "claude-code": "claude-code",
