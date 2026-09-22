@@ -80,6 +80,7 @@
     # event readers
     wev
     evtest
+    keyd
   ];
 
   services.blueman-applet.enable = false;

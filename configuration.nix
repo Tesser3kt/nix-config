@@ -368,6 +368,26 @@
     enable = true;
   };
 
+  # Remap Wacom Tablet keys with keyd.
+  services.keyd = {
+    enable = true;
+
+    keyboards.wacom = {
+      ids = [
+        "056a:03c7"
+      ];
+
+      settings = {
+        main = {
+          f13 = "f13";
+          f14 = "f14";
+          f15 = "f15";
+          f16 = "f16";
+        };
+      };
+    };
+  };
+
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
