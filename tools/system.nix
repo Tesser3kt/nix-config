@@ -76,6 +76,10 @@
     # nix tools
     nix-prefetch
     nix-prefetch-git
+
+    # event readers
+    wev
+    evtest
   ];
 
   services.blueman-applet.enable = false;
