@@ -352,32 +352,6 @@ in {
             {locked = true;}
           ];
         }
-
-        # Tablet buttons
-        {
-          _args = [
-            "F13"
-            (mklua "hl.dsp.exec_cmd(\"${terminal}\")")
-          ];
-        }
-        {
-          _args = [
-            "F14"
-            (mklua "hl.dsp.exec_cmd(\"${calculator}\")")
-          ];
-        }
-        {
-          _args = [
-            "F15"
-            (mklua "hl.dsp.exec_cmd(\"hyprshot -m region\")")
-          ];
-        }
-        {
-          _args = [
-            "F16"
-            (mklua "hl.dsp.window.fullscreen{ action = \"toggle\" }")
-          ];
-        }
       ]
       ++
       # Playback control
