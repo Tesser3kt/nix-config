@@ -352,6 +352,32 @@ in {
             {locked = true;}
           ];
         }
+
+        # Tablet buttons
+        {
+          _args = [
+            "code:191"
+            (mklua "hl.dsp.exec_cmd(\"${terminal}\")")
+          ];
+        }
+        {
+          _args = [
+            "code:192"
+            (mklua "hl.dsp.exec_cmd(\"${calculator}\")")
+          ];
+        }
+        {
+          _args = [
+            "code:193"
+            (mklua "hl.dsp.exec_cmd(\"hyprshot -m region\")")
+          ];
+        }
+        {
+          _args = [
+            "code:194"
+            (mklua "hl.dsp.window.fullscreen{ action = \"toggle\" }")
+          ];
+        }
       ]
       ++
       # Playback control
