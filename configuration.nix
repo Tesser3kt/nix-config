@@ -369,7 +369,25 @@
   };
 
   # Remap Wacom Tablet keys with evremap.
+  services.evdevremapkeys = {
+    enable = true;
 
+    settings = {
+      devices = [
+        {
+          input_name = "Wacom Intuos BT M Pad";
+          output_name = "Wacom Intuos Remapped Pad";
+
+          remappings = {
+            BTN_0 = ["KEY_F13"];
+            BTN_1 = ["KEY_F14"];
+            BTN_2 = ["KEY_F15"];
+            BTN_3 = ["KEY_F16"];
+          };
+        }
+      ];
+    };
+  };
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
