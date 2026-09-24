@@ -2,7 +2,7 @@
   description = "Basic NixOS configuration.";
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-26.05";
     hyprland.url = "github:hyprwm/Hyprland";
     zen-browser.url = "github:youwen5/zen-browser-flake";
     claude-code.url = "github:sadjow/claude-code-nix";
