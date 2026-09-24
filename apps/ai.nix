@@ -87,7 +87,7 @@ in {
     # Initialises A Team project.
     aTeamInit
     # ChatGPT desktop app
-    inputs.chatgpt
+    inputs.chatgpt.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   # Prepares Aegis config.
