@@ -103,7 +103,7 @@ in {
     enableMcpIntegration = true;
     settings = {
       model = "gpt-5.6-sol";
-      model_reasoning_effort = "medium";
+      model_reasoning_effort = "high";
 
       approval_policy = "on-request";
       sandbox_mode = "workspace-write";
@@ -130,7 +130,7 @@ in {
     profiles = {
       deep = {
         model = "gpt-6-astra";
-        model_reasoning_effort = "high";
+        model_reasoning_effort = "xhigh";
         approval_policy = "on-request";
         sandbox_mode = "workspace-write";
       };
