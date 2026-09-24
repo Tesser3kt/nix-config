@@ -276,6 +276,9 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
+  # Enable GNOME keyring.
+  services.gnome.gnome-keyring.enable = true;
+
   # Power management
   powerManagement.enable = true;
   services.tlp.enable = true;
