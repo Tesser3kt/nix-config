@@ -44,6 +44,10 @@
       url = "github:GanyuanRan/Aegis";
       flake = false;
     };
+    chatgpt = {
+      url = "github:csoftware-arigpt/nixos-chatgpt";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = inputs @ {
     self,

@@ -102,6 +102,26 @@
         "type": "github"
       }
     },
+    "chatgpt": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1790225807,
+        "narHash": "sha256-0W8RKv6AUiu/nRgTLT/ZjlkIxggp0dEQifQe2e+bJsQ=",
+        "owner": "csoftware-arigpt",
+        "repo": "nixos-chatgpt",
+        "rev": "04ad45160bdf9ad7bbb01dc77d90b1165c22e570",
+        "type": "github"
+      },
+      "original": {
+        "owner": "csoftware-arigpt",
+        "repo": "nixos-chatgpt",
+        "type": "github"
+      }
+    },
     "claude-code": {
       "inputs": {
         "nixpkgs": "nixpkgs",
@@ -708,6 +728,7 @@
         "additional-fonts": "additional-fonts",
         "aegis": "aegis",
         "bg-nvim": "bg-nvim",
+        "chatgpt": "chatgpt",
         "claude-code": "claude-code",
         "home-manager": "home-manager",
         "hyprland": "hyprland",

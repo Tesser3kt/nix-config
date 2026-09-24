@@ -83,9 +83,11 @@ in {
     fi
   '';
 
-  # Initialises A Team project.
   home.packages = [
+    # Initialises A Team project.
     aTeamInit
+    # ChatGPT desktop app
+    inputs.chatgpt
   ];
 
   # Prepares Aegis config.
