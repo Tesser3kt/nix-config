@@ -120,7 +120,7 @@ in {
     enableMcpIntegration = true;
     settings = {
       model = "gpt-5.6-sol";
-      model_reasoning_effort = "high";
+      model_reasoning_effort = "medium";
 
       approval_policy = "on-request";
       sandbox_mode = "workspace-write";
