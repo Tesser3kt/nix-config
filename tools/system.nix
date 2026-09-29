@@ -83,6 +83,9 @@
 
     # event remappers
     evremap
+
+    # speedtest
+    speedtest-cli
   ];
 
   services.blueman-applet.enable = false;
