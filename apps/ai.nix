@@ -128,6 +128,30 @@ in {
       features = {
         multi_agent = true;
       };
+
+      desktop = {
+        followUpQueueMode = "steer";
+        conversationDetailMode = "STEPS_PROSE";
+        preventSleepWhileRunning = true;
+
+        appearanceTheme = "system";
+        appearanceDarkCodeThemeId = "catppuccin";
+
+        appearanceDarkChromeTheme = {
+          accent = "#cba6f7";
+          accentSource = "custom";
+          contrast = 60;
+          ink = "#cdd6f4";
+          opaqueWindows = false;
+          surface = "#1e1e2e";
+
+          semanticColors = {
+            diffAdded = "#a6e3a1";
+            diffRemoved = "#f38ba8";
+            skill = "#cba6f7";
+          };
+        };
+      };
     };
 
     plugins = [
