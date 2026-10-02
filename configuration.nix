@@ -157,7 +157,6 @@
   # Enable browsers.
   programs.firefox = {
     enable = true;
-    package = pkgs.firefox-beta; # Use Firefox Beta
   };
   programs.chromium.enable = true;
 
