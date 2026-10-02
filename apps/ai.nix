@@ -119,7 +119,7 @@ in {
     enable = true;
     enableMcpIntegration = true;
     settings = {
-      model = "gpt-5.6-sol";
+      model = "gpt-6.1-sol";
       model_reasoning_effort = "medium";
 
       approval_policy = "on-request";
