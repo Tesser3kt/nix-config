@@ -65,6 +65,23 @@
     mkdir -p "$out"
     cp -r ${inputs.aegis}/. "$out/"
   '';
+
+  # Remove this override once nixos-chatgpt pins the updated upstream artifact.
+  chatgpt =
+    inputs.chatgpt.packages.${pkgs.stdenv.hostPlatform.system}.default.overrideAttrs
+    (oldAttrs: {
+      version = "26.930.21537";
+
+      src = oldAttrs.src.overrideAttrs (_: {
+        outputHash = "sha256-YP222JXXdviDH/NaeD3gTNv6KA8PPZclhDFfmOV6olY=";
+      });
+
+      installPhase =
+        builtins.replaceStrings
+        ["resources/plugins/openai-bundled/plugins/latex/bin/tectonic"]
+        ["resources/tectonic/tectonic"]
+        oldAttrs.installPhase;
+    });
 in {
   # Enable writable .codex/config.toml.
   home.file.".codex/config.toml".force = true;
@@ -87,7 +104,7 @@ in {
     # Initialises A Team project.
     aTeamInit
     # ChatGPT desktop app
-    inputs.chatgpt.packages.${pkgs.stdenv.hostPlatform.system}.default
+    chatgpt
   ];
 
   # Prepares Aegis config.
@@ -102,7 +119,7 @@ in {
     enable = true;
     enableMcpIntegration = true;
     settings = {
-      model = "gpt-5.6-sol";
+      model = "gpt-6.1-sol";
       model_reasoning_effort = "medium";
 
       approval_policy = "on-request";
@@ -110,6 +127,30 @@ in {
 
       features = {
         multi_agent = true;
+      };
+
+      desktop = {
+        followUpQueueMode = "steer";
+        conversationDetailMode = "STEPS_PROSE";
+        preventSleepWhileRunning = true;
+
+        appearanceTheme = "system";
+        appearanceDarkCodeThemeId = "catppuccin";
+
+        appearanceDarkChromeTheme = {
+          accent = "#cba6f7";
+          accentSource = "custom";
+          contrast = 60;
+          ink = "#cdd6f4";
+          opaqueWindows = false;
+          surface = "#1e1e2e";
+
+          semanticColors = {
+            diffAdded = "#a6e3a1";
+            diffRemoved = "#f38ba8";
+            skill = "#cba6f7";
+          };
+        };
       };
     };
 
