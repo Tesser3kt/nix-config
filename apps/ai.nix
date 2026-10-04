@@ -117,7 +117,6 @@ in {
 
   programs.codex = {
     enable = true;
-    package = inputs.codex.packages.${pkgs.stdenv.hostPlatform.system}.default;
     enableMcpIntegration = true;
     settings = {
       model = "gpt-6.1-sol";

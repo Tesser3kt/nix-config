@@ -48,10 +48,6 @@
       url = "github:csoftware-arigpt/nixos-chatgpt";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    codex = {
-      url = "github:openai/codex";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
   outputs = inputs @ {
     self,
