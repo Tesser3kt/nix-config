@@ -141,6 +141,10 @@ in {
           accent = "#cba6f7";
           accentSource = "custom";
           contrast = 60;
+          fonts = {
+            code = "CaskaydiaCove Nerd Font";
+            ui = "Source Sans Pro";
+          };
           ink = "#cdd6f4";
           opaqueWindows = false;
           surface = "#1e1e2e";
