@@ -34,6 +34,9 @@ in {
 
     # Zen Notes
     zennotes-desktop
+
+    # DBeaver
+    dbeaver-bin
   ];
 
   # Zathura configuration
