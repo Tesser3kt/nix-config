@@ -1,89 +1,93 @@
 {
   config,
   pkgs,
+  pkgs-stable,
   ...
 }: {
-  home.packages = with pkgs; [
-    # system tools
-    sysstat
-    lm_sensors
-    ethtool
-    pciutils
-    usbutils
+  home.packages = with pkgs;
+    [
+      # system tools
+      sysstat
+      lm_sensors
+      ethtool
+      pciutils
+      usbutils
 
-    # system call monitors
-    strace
-    ltrace
-    lsof
+      # system call monitors
+      strace
+      lsof
 
-    # system monitors
-    btop
-    iotop
-    iftop
-    nvtopPackages.full
+      # system monitors
+      btop
+      iotop
+      iftop
+      nvtopPackages.full
 
-    # Volume control
-    pwvucontrol
-    wireplumber
-    alsa-utils
+      # Volume control
+      pwvucontrol
+      wireplumber
+      alsa-utils
 
-    # Media control
-    playerctl
-    mpd
-    waybar-mpris
+      # Media control
+      playerctl
+      mpd
+      waybar-mpris
 
-    # Brightness control
-    brightnessctl
+      # Brightness control
+      brightnessctl
 
-    # Network
-    networkmanagerapplet
+      # Network
+      networkmanagerapplet
 
-    # Bluetooth
-    blueman
+      # Bluetooth
+      blueman
 
-    # GTK theme editor
-    nwg-look
+      # GTK theme editor
+      nwg-look
 
-    # Logitech stuff
-    solaar
+      # Logitech stuff
+      solaar
 
-    # HID devices control
-    hidapi
+      # HID devices control
+      hidapi
 
-    # Dbus explorer
-    d-spy
+      # Dbus explorer
+      d-spy
 
-    # Notification library
-    libnotify
+      # Notification library
+      libnotify
 
-    # Partition management
-    parted
-    tparted
+      # Partition management
+      parted
+      tparted
 
-    # Raspberry Pi
-    (pkgs.callPackage ./rpi-imager-appimage.nix {})
+      # Raspberry Pi
+      (pkgs.callPackage ./rpi-imager-appimage.nix {})
 
-    # Crypto
-    libsecret
+      # Crypto
+      libsecret
 
-    # Mounting NTFS drives
-    ntfs3g
-    fuse
+      # Mounting NTFS drives
+      ntfs3g
+      fuse
 
-    # keyboard
-    libxkbcommon
+      # keyboard
+      libxkbcommon
 
-    # nix tools
-    nix-prefetch
-    nix-prefetch-git
+      # nix tools
+      nix-prefetch
+      nix-prefetch-git
 
-    # event readers
-    wev
-    evtest
+      # event readers
+      wev
+      evtest
 
-    # event remappers
-    evremap
-  ];
+      # event remappers
+      evremap
+    ]
+    ++ [
+      pkgs-stable.ltrace
+    ];
 
   services.blueman-applet.enable = false;
 
