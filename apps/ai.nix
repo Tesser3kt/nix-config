@@ -119,7 +119,7 @@ in {
     enable = true;
     enableMcpIntegration = true;
     settings = {
-      model = "gpt-5.6-sol";
+      model = "gpt-6.1-sol";
       model_reasoning_effort = "medium";
 
       approval_policy = "on-request";
@@ -127,6 +127,34 @@ in {
 
       features = {
         multi_agent = true;
+      };
+
+      desktop = {
+        followUpQueueMode = "steer";
+        conversationDetailMode = "STEPS_PROSE";
+        preventSleepWhileRunning = true;
+
+        appearanceTheme = "system";
+        appearanceDarkCodeThemeId = "catppuccin";
+
+        appearanceDarkChromeTheme = {
+          accent = "#cba6f7";
+          accentSource = "custom";
+          contrast = 60;
+          fonts = {
+            code = "CaskaydiaCove Nerd Font";
+            ui = "Source Sans Pro";
+          };
+          ink = "#cdd6f4";
+          opaqueWindows = false;
+          surface = "#1e1e2e";
+
+          semanticColors = {
+            diffAdded = "#a6e3a1";
+            diffRemoved = "#f38ba8";
+            skill = "#cba6f7";
+          };
+        };
       };
     };
 
