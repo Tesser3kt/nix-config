@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  pkgs-stable,
   graphics,
   ...
 }: let
@@ -16,28 +17,30 @@
     };
   };
 in {
-  home.packages = with pkgs; [
-    # Arduino
-    arduino-ide
-    arduino-cli
+  home.packages = with pkgs;
+    [
+      # Arduino
+      arduino-ide
+      arduino-cli
 
-    # Note-taking
-    rnote
-    pympress
-    obsidian
+      # Note-taking
+      rnote
+      pympress
+      obsidian
 
-    # Okular
-    kdePackages.okular
+      # Okular
+      kdePackages.okular
 
-    # Zotero
-    zotero
+      # Zen Notes
+      zennotes-desktop
 
-    # Zen Notes
-    zennotes-desktop
-
-    # DBeaver
-    dbeaver-bin
-  ];
+      # DBeaver
+      dbeaver-bin
+    ]
+    ++ [
+      # Zotero
+      pkgs-stable.zotero
+    ];
 
   # Zathura configuration
   programs.zathura = {
