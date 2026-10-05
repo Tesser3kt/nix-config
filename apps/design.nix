@@ -6,5 +6,6 @@
   home.packages = with pkgs; [
     gpick
     figma-linux
+    kdePackages.kruler
   ];
 }

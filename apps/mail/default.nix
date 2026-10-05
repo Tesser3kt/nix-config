@@ -23,11 +23,11 @@
       gcalcli
       urlscan
       pandoc
-      protonmail-bridge
-      protonmail-bridge-gui
       pass
     ]
     ++ [
+      pkgs-stable.protonmail-bridge
+      pkgs-stable.protonmail-bridge-gui
       pkgs-stable.goobook
     ];
 }
