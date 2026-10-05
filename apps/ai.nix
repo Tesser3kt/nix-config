@@ -73,7 +73,7 @@
       version = "26.930.21537";
 
       src = oldAttrs.src.overrideAttrs (_: {
-        outputHash = "sha256-YP222JXXdviDH/NaeD3gTNv6KA8PPZclhDFfmOV6olY=";
+        outputHash = "sha256-Y3w8lLxQ+O4zoV4uKOx/kqeH8JQ+cA7+ERvAvw1IE7Q=";
       });
 
       installPhase =
