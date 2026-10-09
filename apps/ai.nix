@@ -65,23 +65,6 @@
     mkdir -p "$out"
     cp -r ${inputs.aegis}/. "$out/"
   '';
-
-  # Remove this override once nixos-chatgpt pins the updated upstream artifact.
-  chatgpt =
-    inputs.chatgpt.packages.${pkgs.stdenv.hostPlatform.system}.default.overrideAttrs
-    (oldAttrs: {
-      version = "26.930.21537";
-
-      src = oldAttrs.src.overrideAttrs (_: {
-        outputHash = "sha256-Y3w8lLxQ+O4zoV4uKOx/kqeH8JQ+cA7+ERvAvw1IE7Q=";
-      });
-
-      installPhase =
-        builtins.replaceStrings
-        ["resources/plugins/openai-bundled/plugins/latex/bin/tectonic"]
-        ["resources/tectonic/tectonic"]
-        oldAttrs.installPhase;
-    });
 in {
   # Enable writable .codex/config.toml.
   home.file.".codex/config.toml".force = true;
@@ -104,7 +87,7 @@ in {
     # Initialises A Team project.
     aTeamInit
     # ChatGPT desktop app
-    chatgpt
+    inputs.chatgpt.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   # Prepares Aegis config.
