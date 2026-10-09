@@ -109,11 +109,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1791362670,
-        "narHash": "sha256-FMQ211XxbbzarQPFKEnYxPpwI5s4yonISTgcOWTO1G8=",
+        "lastModified": 1791512017,
+        "narHash": "sha256-NNglvX5A6PIjC40WGm7ZqQ9z81grcC8GPrJwVmiHAIQ=",
         "owner": "csoftware-arigpt",
         "repo": "nixos-chatgpt",
-        "rev": "52fbe31ff1098c04f6fbcb9d8ebf9572604abe8b",
+        "rev": "e06887fbd1b8ce42d629ef3c28774f299f47eaaa",
         "type": "github"
       },
       "original": {
