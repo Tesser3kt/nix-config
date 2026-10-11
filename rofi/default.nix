@@ -4,6 +4,7 @@
   ...
 }: let
   colors = import ../catppuccin.nix;
+  font = "Google Sans Code NF";
 in {
   home.packages = with pkgs; [
     rofi
@@ -99,7 +100,7 @@ in {
       display-calc: " ";
       display-drun: " ";
       drun-display-format: "{name}";
-      font: "CaskaydiaCove Nerd Font 12";
+      font: "${font} 12";
     }
 
     @import "default.rasi"
@@ -221,7 +222,7 @@ in {
       modi: "drun";
       show-icons: false;
       drun-display-format: "{name}";
-      font: "CaskaydiaCove Nerd Font 14";
+      font: "${font} 14";
     }
 
     @import "default.rasi"

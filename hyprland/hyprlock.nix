@@ -6,6 +6,7 @@
 }: let
   colors = import ../catppuccin.nix;
   removeHash = lib.strings.removePrefix "#";
+  font = "Google Sans Code NF";
 in {
   programs.hyprlock = {
     enable = true;
@@ -29,7 +30,7 @@ in {
           text = "cmd[update:1000] echo \"<b><big> $(date +\"%H\") </big></b>\"";
           color = "rgb(${removeHash colors.macchiato.sky})";
           font_size = 112;
-          font_family = "CaskaydiaCove Nerd Font";
+          font_family = font;
           shadow_passes = 3;
           shadow_size = 4;
 
@@ -42,7 +43,7 @@ in {
           text = "cmd[update:1000] echo \"<b><big> $(date +\"%M\") </big></b>\"";
           color = "rgb(${removeHash colors.macchiato.mauve})";
           font_size = 112;
-          font_family = "CaskaydiaCove Nerd Font";
+          font_family = font;
           shadow_passes = 3;
           shadow_size = 4;
 
@@ -55,7 +56,7 @@ in {
           text = "cmd[update:18000000] echo \"<b><big> \"$(date +'%A')\" </big></b>\"";
           color = "rgb(${removeHash colors.macchiato.text})";
           font_size = 22;
-          font_family = "CaskaydiaCove Nerd Font";
+          font_family = font;
 
           position = "0, 30";
           halign = "center";
@@ -66,7 +67,7 @@ in {
           text = "cmd[update:18000000] echo \"<b> \"$(date +'%d %b')\" </b>\"";
           color = "rgb(${removeHash colors.macchiato.text})";
           font_size = 18;
-          font_family = "CaskaydiaCove Nerd Font";
+          font_family = font;
 
           position = "0, 0";
           halign = "center";

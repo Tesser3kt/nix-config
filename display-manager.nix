@@ -15,7 +15,7 @@
     (catppuccin-sddm.override {
       flavor = "macchiato";
       accent = "mauve";
-      font = "CaskaydiaCove Nerd Font";
+      font = "Google Sans Code NF";
       fontSize = "12";
     })
   ];

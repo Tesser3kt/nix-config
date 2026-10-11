@@ -4,6 +4,7 @@
   ...
 }: let
   colors = import ../catppuccin.nix;
+  font = "Google Sans Code NF";
 in {
   home.packages = with pkgs; [
     wlogout
@@ -45,7 +46,7 @@ in {
     ];
     style = ''
       window {
-        font-family: CaskaydiaCove Nerd Font, sans-serif;
+        font-family: "${font}";
         font-size: 16pt;
         font-weight: 700;
         color: ${colors.macchiato.text};

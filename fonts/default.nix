@@ -26,6 +26,7 @@
     nerd-fonts.ubuntu-mono
     nerd-fonts.victor-mono
     nerd-fonts.zed-mono
+    nerd-fonts.googlesanscode
     source-code-pro
     source-sans-pro
     palatino-font
@@ -48,7 +49,4 @@
 
   # Copy TeX Gyre Schola Math to fonts.
   home.file.".local/share/fonts/TeX-Gyre-Schola-Math.otf".source = ./texgyreschola-math.otf;
-
-  # Copy Google Sand Code to fonts.
-  home.file.".local/share/fonts/Google Sans Code".source = ./. + "/Google Sans Code";
 }

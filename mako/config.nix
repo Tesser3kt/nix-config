@@ -4,6 +4,7 @@
   ...
 }: let
   colors = import ../catppuccin.nix;
+  font = "Google Sans Code NF";
 in {
   services.mako.settings = {
     sort = "-time";
@@ -23,7 +24,7 @@ in {
     on-button-right = "dismiss";
     on-notify = "exec mpv $HOME/Music/notification.wav";
     padding = 10;
-    font = "CaskaydiaCove Nerd Font 12";
+    font = "${font} 12";
     max-icon-size = 64;
     margin = 5;
     icons = 1;

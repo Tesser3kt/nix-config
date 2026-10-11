@@ -3,7 +3,7 @@
     enable = true;
     settings = {
       theme = "Catppuccin Macchiato";
-      font-family = "CaskaydiaCove Nerd Font";
+      font-family = "Google Sans Code NF";
       font-size = "12.5";
       window-padding-x = "12";
       window-padding-y = "3";

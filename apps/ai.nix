@@ -125,7 +125,7 @@ in {
           accentSource = "custom";
           contrast = 60;
           fonts = {
-            code = "CaskaydiaCove Nerd Font";
+            code = "Google Sans Code NF";
             ui = "Source Sans Pro";
           };
           ink = "#cdd6f4";

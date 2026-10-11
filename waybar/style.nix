@@ -4,11 +4,12 @@
   ...
 }: let
   colors = import ../catppuccin.nix;
+  font = "Google Sans Code NF";
 in {
   programs.waybar = {
     style = ''
       *{
-      	font-family: "CaskaydiaCove Nerd Font";
+      	font-family: "${font}";
       	font-weight: bold;
         font-size: 16px;
       	min-height: 0;

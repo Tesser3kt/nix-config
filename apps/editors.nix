@@ -94,7 +94,7 @@ in {
       recolor-keephue = true;
 
       # Font and GUI options
-      font = "CaskaydiaCove Nerd Font 12";
+      font = "Google Sans Code NF 12";
       guioptions = "none";
 
       # Inverse search
@@ -133,7 +133,7 @@ in {
       "highlight_color_g" = "0.705882 0.556863 0.678431";
 
       "font_size" = "14";
-      "ui_font" = "CaskaydiaCove Nerd Font";
+      "ui_font" = "Google Sans Code NF";
 
       "custom_background_color" = "0.180392 0.203922 0.250980";
       "custom_text_color" = "0.925490 0.937255 0.956863";

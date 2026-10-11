@@ -2,7 +2,9 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  font = "Google Sans Code NF";
+in {
   programs.vscode.profiles.default.userSettings = {
     "files.autoSave" = "on";
     "editor.lineNumbers" = "relative";
@@ -126,7 +128,7 @@
     "extensions.experimental.affinity" = {
       "asvetliakov.vscode-neovim" = 1;
     };
-    "editor.fontFamily" = "'CaskaydiaCove Nerd Font', 'monospace', monospace";
+    "editor.fontFamily" = "'${font}', 'monospace', monospace";
     "[jsonc]" = {
       "editor.defaultFormatter" = "esbenp.prettier-vscode";
     };

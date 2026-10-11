@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  font_name = "CaskaydiaCove Nerd Font";
+  font_name = "Google Sans Code NF";
 in {
   # Alacritty -- GPU-accelerated terminal emulator
   programs.alacritty = {
