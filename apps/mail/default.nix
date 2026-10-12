@@ -10,21 +10,24 @@
     ./mbsync.nix
   ];
 
-  home.packages = with pkgs; [
-    neomutt
-    html2text
-    glow
-    lynx
-    notmuch
-    isync
-    openldap
-    abook
-    gcalcli
-    urlscan
-    pandoc
-    pass
-    protonmail-bridge
-    protonmail-bridge-gui
-    goobook
-  ];
+  home.packages = with pkgs;
+    [
+      neomutt
+      html2text
+      glow
+      lynx
+      notmuch
+      isync
+      openldap
+      abook
+      gcalcli
+      urlscan
+      pandoc
+      pass
+      protonmail-bridge
+      protonmail-bridge-gui
+    ]
+    ++ [
+      pkgs-stable.goobook
+    ];
 }
