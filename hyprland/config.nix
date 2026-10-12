@@ -434,6 +434,11 @@ in {
         size = ["(monitor_w*0.75)" "(monitor_h*0.75)"];
       }
       {
+        match.class = "com\\.github\\.dagmoller\\.whatsapp-electron";
+        # App-requested maximization overrides the initial floating size.
+        suppress_event = "maximize";
+      }
+      {
         match.class = ".*ghostty.*";
         opacity = "0.9 override 0.7 override";
       }
