@@ -24,10 +24,10 @@
       urlscan
       pandoc
       pass
+      protonmail-bridge
+      protonmail-bridge-gui
     ]
     ++ [
-      pkgs-stable.protonmail-bridge
-      pkgs-stable.protonmail-bridge-gui
       pkgs-stable.goobook
     ];
 }
