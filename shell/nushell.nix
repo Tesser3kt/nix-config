@@ -158,9 +158,6 @@ in {
           | if ($in | default [] | where value =~ '^-.*ERR$' | is-empty) { $in } else { null }
         }
       }
-
-      # Read anthropic API key from env file.
-      load-env (open ${config.home.homeDirectory}/.anthropic-config.nuon)
     '';
   };
   programs.carapace = {
