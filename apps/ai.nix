@@ -32,12 +32,10 @@
         ];
         command = "typescript-language-server";
         extensionToLanguage = {
-          extensionToLanguage = {
-            ".js" = "javascript";
-            ".jsx" = "javascriptreact";
-            ".ts" = "typescript";
-            ".tsx" = "typescriptreact";
-          };
+          ".js" = "javascript";
+          ".jsx" = "javascriptreact";
+          ".ts" = "typescript";
+          ".tsx" = "typescriptreact";
         };
       };
       rust = {
@@ -65,6 +63,19 @@
         "pyright-lsp@claude-plugins-official" = true;
         "rust-analyzer-lsp@claude-plugins-official" = true;
         "ponytail@ponytail" = true;
+      };
+      hooks = {
+        PreToolUse = [
+          {
+            matcher = "Bash";
+            hooks = [
+              {
+                type = "command";
+                command = "rtk hook claude";
+              }
+            ];
+          }
+        ];
       };
     };
   };
