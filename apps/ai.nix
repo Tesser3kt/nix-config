@@ -4,188 +4,18 @@
   pkgs,
   inputs,
   ...
-}: let
-  # A Team plugin.
-  aTeamPlugin = pkgs.runCommand "a-team" {} ''
-    mkdir -p "$out"
-    cp -r ${inputs.a-team}/. "$out/"
-    chmod -R u+w $out
-
-    # Fix malformed skill metadata.
-    ${pkgs.gnused}/bin/sed -i \
-      '/^name: skill-duplication-audit$/a description: Audit multiple skills for duplicated or overlapping scope and recommend whether to merge, document boundaries, or keep them separate.' \
-      "$out/skills/skill-duplication-audit/SKILL.md"
-
-    # Force Codex to treat this patched plugin as a new version.
-    ${pkgs.jq}/bin/jq \
-      '.version = "1.4.0+codex.nix1"' \
-      "$out/.codex-plugin/plugin.json" \
-      > "$out/.codex-plugin/plugin.json.tmp"
-
-    mv \
-      "$out/.codex-plugin/plugin.json.tmp" \
-      "$out/.codex-plugin/plugin.json"
-  '';
-
-  # A team project initialised.
-  aTeamInit = pkgs.writeShellApplication {
-    name = "a-team-init";
-
-    runtimeInputs = [
-      pkgs.coreutils
-    ];
-
-    text = ''
-      set -euo pipefail
-
-      target="''${1:-$PWD}"
-      src="${aTeamPlugin}"
-
-      mkdir -p "$target"
-
-      cp -rn \
-        "$src/.claude" \
-        "$src/skills" \
-        "$src/hooks" \
-        "$src/templates" \
-        "$src/scripts" \
-        "$target/"
-
-      if [[ ! -e "$target/INIT.md" ]]; then
-        cp "$src/INIT_TEMPLATE.md" "$target/INIT.md"
-      fi
-
-      echo "A Team initialized in: $target"
-      echo "Next: edit $target/INIT.md"
-    '';
-  };
-
-  # Aegis plugin.
-  aegisPlugin = pkgs.runCommand "aegis" {} ''
-    mkdir -p "$out"
-    cp -r ${inputs.aegis}/. "$out/"
-  '';
-in {
-  # Enable writable .codex/config.toml.
-  home.file.".codex/config.toml".force = true;
-  home.activation.makeCodexConfigWritable = lib.hm.dag.entryAfter ["linkGeneration"] ''
-    configFile="$HOME/.codex/config.toml"
-
-    if [ -L "$configFile" ]; then
-      tmp="$(${pkgs.coreutils}/bin/mktemp)"
-
-      # Dereference HM's /nix/store symlink.
-      ${pkgs.coreutils}/bin/cp -L "$configFile" "$tmp"
-
-      ${pkgs.coreutils}/bin/rm "$configFile"
-      ${pkgs.coreutils}/bin/install -m 600 "$tmp" "$configFile"
-      ${pkgs.coreutils}/bin/rm "$tmp"
-    fi
-  '';
-
-  home.packages = [
-    # Initialises A Team project.
-    aTeamInit
-    # ChatGPT desktop app
-    inputs.chatgpt.packages.${pkgs.stdenv.hostPlatform.system}.default
+}: {
+  # Add rtk context minimiser.
+  home.packages = with pkgs; [
+    rtk
   ];
-
-  # Prepares Aegis config.
-  xdg.configFile."aegis/config.toml".text = ''
-    activation_mode = "auto"
-    tdd_mode = "off"
-    method_pack_root = "${aegisPlugin}"
-    workspace_helper = "${aegisPlugin}/scripts/aegis-workspace.py"
-  '';
-
-  programs.codex = {
-    enable = true;
-    enableMcpIntegration = true;
-    settings = {
-      model = "gpt-6.1-sol";
-      model_reasoning_effort = "medium";
-
-      approval_policy = "on-request";
-      sandbox_mode = "workspace-write";
-
-      features = {
-        multi_agent = true;
-      };
-
-      desktop = {
-        followUpQueueMode = "steer";
-        conversationDetailMode = "STEPS_PROSE";
-        preventSleepWhileRunning = true;
-
-        appearanceTheme = "system";
-        appearanceDarkCodeThemeId = "catppuccin";
-
-        appearanceDarkChromeTheme = {
-          accent = "#cba6f7";
-          accentSource = "custom";
-          contrast = 60;
-          fonts = {
-            code = "Google Sans Code NF";
-            ui = "Source Sans Pro";
-          };
-          ink = "#cdd6f4";
-          opaqueWindows = false;
-          surface = "#1e1e2e";
-
-          semanticColors = {
-            diffAdded = "#a6e3a1";
-            diffRemoved = "#f38ba8";
-            skill = "#cba6f7";
-          };
-        };
-      };
-    };
-
-    plugins = [
-      # aTeamPlugin
-      aegisPlugin
-    ];
-
-    context = ''
-      # Global Codex instructions
-
-      - Prefer concise explanations.
-      - Do not modify unrelated files.
-      - Run relevant tests after making changes.
-      - When working with Nix, prefer declarative configuration.
-    '';
-
-    profiles = {
-      deep = {
-        model = "gpt-6-astra";
-        model_reasoning_effort = "xhigh";
-        approval_policy = "on-request";
-        sandbox_mode = "workspace-write";
-      };
-      normal = {
-        model = "gpt-5.6-terra";
-        model_reasoning_effort = "medium";
-        approval_policy = "on-request";
-        sandbox_mode = "workspace-write";
-      };
-      shallow = {
-        model = "gpt-5.6-luna";
-        model_reasoning_effort = "low";
-        approval_policy = "on-request";
-        sandbox_mode = "workspace-write";
-      };
-    };
-
-    rules = {
-      default = ''
-        prefix_rule(pattern = ["nix", "build"], decision = "allow")
-        prefix_rule(pattern = ["nix", "flake", "check"], decision = "allow")
-      '';
-    };
-  };
 
   programs.claude-code = {
     enable = true;
+    mutableSettings = true;
+    marketplaces = {
+      ponytail = inputs.ponytail;
+    };
     lspServers = {
       nix = {
         args = [
@@ -234,6 +64,7 @@ in {
         "typescript-lsp@claude-plugins-official" = true;
         "pyright-lsp@claude-plugins-official" = true;
         "rust-analyzer-lsp@claude-plugins-official" = true;
+        "ponytail@ponytail" = true;
       };
     };
   };

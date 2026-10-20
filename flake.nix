@@ -47,6 +47,10 @@
       url = "github:GanyuanRan/Aegis";
       flake = false;
     };
+    ponytail = {
+      url = "github:DietrichGebert/ponytail";
+      flake = false;
+    };
     chatgpt = {
       url = "github:csoftware-arigpt/nixos-chatgpt";
       inputs.nixpkgs.follows = "nixpkgs";

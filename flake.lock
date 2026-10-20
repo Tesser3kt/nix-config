@@ -693,6 +693,22 @@
         "type": "github"
       }
     },
+    "ponytail": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1792288514,
+        "narHash": "sha256-sVnxA4rfxa2SlS2g+2+q3odRq0VJz1z7PEVHW2QRPQI=",
+        "owner": "DietrichGebert",
+        "repo": "ponytail",
+        "rev": "09c434ab73ca43761c5d8b0c5d341926c2fba710",
+        "type": "github"
+      },
+      "original": {
+        "owner": "DietrichGebert",
+        "repo": "ponytail",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -750,6 +766,7 @@
         "nixpkgs-stable": "nixpkgs-stable",
         "nordic-nvim": "nordic-nvim",
         "nvchad-starter": "nvchad-starter",
+        "ponytail": "ponytail",
         "quickshell": "quickshell",
         "yazi": "yazi",
         "zen-browser": "zen-browser"
