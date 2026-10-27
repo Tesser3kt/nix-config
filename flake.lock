@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "a-team": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1786313590,
-        "narHash": "sha256-TXfVa5ZSIB8ID4nZQ3OLYo60UBRm/UIeD5kp/Hej5ds=",
-        "owner": "RBraga01",
-        "repo": "a-team",
-        "rev": "efd76d7d577d746b0f49aa1cbb07b1c0d224f99e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "RBraga01",
-        "repo": "a-team",
-        "type": "github"
-      }
-    },
     "additional-fonts": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -34,22 +18,6 @@
       "original": {
         "owner": "jeslie0",
         "repo": "fonts",
-        "type": "github"
-      }
-    },
-    "aegis": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1791767983,
-        "narHash": "sha256-LY05u+NuZZK5WO8OlZCJspMM5spIhrLIgTtEJ3U0tvM=",
-        "owner": "GanyuanRan",
-        "repo": "Aegis",
-        "rev": "f547cc0660885c05bea8c6263718ddfb0a13d9e9",
-        "type": "github"
-      },
-      "original": {
-        "owner": "GanyuanRan",
-        "repo": "Aegis",
         "type": "github"
       }
     },
@@ -99,26 +67,6 @@
       "original": {
         "owner": "typicode",
         "repo": "bg.nvim",
-        "type": "github"
-      }
-    },
-    "chatgpt": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1791512017,
-        "narHash": "sha256-NNglvX5A6PIjC40WGm7ZqQ9z81grcC8GPrJwVmiHAIQ=",
-        "owner": "csoftware-arigpt",
-        "repo": "nixos-chatgpt",
-        "rev": "e06887fbd1b8ce42d629ef3c28774f299f47eaaa",
-        "type": "github"
-      },
-      "original": {
-        "owner": "csoftware-arigpt",
-        "repo": "nixos-chatgpt",
         "type": "github"
       }
     },
@@ -558,29 +506,6 @@
         "type": "github"
       }
     },
-    "nix4nvchad": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "nvchad-starter": [
-          "nvchad-starter"
-        ]
-      },
-      "locked": {
-        "lastModified": 1791022488,
-        "narHash": "sha256-nILOjcmlplFb3mbGAt7wlMHK3tmsDETk4IZ5wKYoE6I=",
-        "owner": "nix-community",
-        "repo": "nix4nvchad",
-        "rev": "3d052b4bd79353f33cefae2888420aef07c3bff4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "nix4nvchad",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1791366222,
@@ -677,22 +602,6 @@
         "type": "github"
       }
     },
-    "nvchad-starter": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1777102008,
-        "narHash": "sha256-eSp5TfD6GpG87Zw7aByCyOOU8xGQ0k+D7BF9K+mC2YA=",
-        "owner": "Tesser3kt",
-        "repo": "nvchad-starter",
-        "rev": "b99469347b8cb7a3487a411242c800a08344c48e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Tesser3kt",
-        "repo": "nvchad-starter",
-        "type": "github"
-      }
-    },
     "ponytail": {
       "flake": false,
       "locked": {
@@ -753,19 +662,14 @@
     },
     "root": {
       "inputs": {
-        "a-team": "a-team",
         "additional-fonts": "additional-fonts",
-        "aegis": "aegis",
         "bg-nvim": "bg-nvim",
-        "chatgpt": "chatgpt",
         "claude-code": "claude-code",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
-        "nix4nvchad": "nix4nvchad",
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-stable": "nixpkgs-stable",
         "nordic-nvim": "nordic-nvim",
-        "nvchad-starter": "nvchad-starter",
         "ponytail": "ponytail",
         "quickshell": "quickshell",
         "yazi": "yazi",

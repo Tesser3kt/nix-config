@@ -18,15 +18,6 @@
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nvchad-starter = {
-      url = "github:Tesser3kt/nvchad-starter";
-      flake = false;
-    };
-    nix4nvchad = {
-      url = "github:nix-community/nix4nvchad";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nvchad-starter.follows = "nvchad-starter";
-    };
     additional-fonts = {
       url = "github:jeslie0/fonts";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -39,28 +30,15 @@
       url = "github:typicode/bg.nvim";
       flake = false;
     };
-    a-team = {
-      url = "github:RBraga01/a-team";
-      flake = false;
-    };
-    aegis = {
-      url = "github:GanyuanRan/Aegis";
-      flake = false;
-    };
     ponytail = {
       url = "github:DietrichGebert/ponytail";
       flake = false;
-    };
-    chatgpt = {
-      url = "github:csoftware-arigpt/nixos-chatgpt";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
   outputs = inputs @ {
     self,
     nixpkgs,
     home-manager,
-    nix4nvchad,
     additional-fonts,
     ...
   }: let
