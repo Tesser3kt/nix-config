@@ -84,6 +84,9 @@
 
     # event remappers
     evremap
+
+    # disk imaging
+    caligula
   ];
 
   services.blueman-applet.enable = false;
